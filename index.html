@@ -101,6 +101,8 @@ var SolarFlareGroup = svg.append("g")
 var node;
 
 var DATA;
+var text;
+var path;
 
 d3.json("http://nithishdeva.github.io/Schedule.json",function(json){
 	DATA =json;
@@ -119,7 +121,7 @@ var g=SolarFlareGroup.datum(DATA).selectAll("g")
 	;
 
 
-var path = g.append("svg:path")
+path = g.append("svg:path")
 	.attr("d", arc)
 	.attr("stroke", "#fff")
 	//.attr("fill", function(d) { return color((d.children ? d : d.parent).name); })
@@ -129,7 +131,7 @@ var path = g.append("svg:path")
 .each(stash)
 	;
 
-	var text = g.append("svg:text")
+text = g.append("svg:text")
 	.attr("transform", function(d) { 
 			angle = Angle(d.x,d.dx);
 			return "rotate(" + angle + ")";
