@@ -54,9 +54,10 @@ name:"Routine", start:0,end:24,
 */
 //*
 var DATA;
-d3.json("Schedule.json",function(json){
+d3.json("http://nithishdeva.github.io/Schedule.json",function(json){
 	DATA =json;
-});
+	console.log(json);
+
 //*/
 
 
@@ -147,6 +148,7 @@ var path = g.append("svg:path")
 	//PlanetClock24.set("TimeOffset",Math.PI/2);
 
 
+});
 
 d3.selectAll("input").on("change", function change() {
 		var value = this.value === "count"
