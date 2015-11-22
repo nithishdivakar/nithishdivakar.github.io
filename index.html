@@ -53,10 +53,6 @@ name:"Routine", start:0,end:24,
 };
 */
 //*
-var DATA;
-d3.json("http://nithishdeva.github.io/Schedule.json",function(json){
-	DATA =json;
-	console.log(json);
 
 //*/
 
@@ -104,6 +100,11 @@ var SolarFlareGroup = svg.append("g")
 	// Keep track of the node that is currently being displayed as the root.
 var node;
 
+var DATA;
+
+d3.json("http://nithishdeva.github.io/Schedule.json",function(json){
+	DATA =json;
+	console.log(json);
 	//d3.json("flare.json", function(error, root) {
 	//		node = DATA;
 	node = DATA;
