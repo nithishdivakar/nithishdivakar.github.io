@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+margin: auto;
+position: relative;
+width: 960px;
+background-color:rgb(89,86,86);;
+}
+
+form {
+position: absolute;
+right: 10px;
+top: 10px;
+}
+
+path {
+stroke: #fff;
+		fill-rule: evenodd;
+}
+
+</style>
+<body>
+<!--form>
+<label><input type="radio" name="mode" value="size"  > Size</label>
+<label><input type="radio" name="mode" value="count" checked> Count</label>
+</form-->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="PlanetClock.js"></script>
+
+
+<!--script type ="text/javascript" src ="Schedule.json?count=10&callback=myCallback"></script>-->
+
+<script>
+
+
+/*
+var DATA = {
+name:"Routine", start:0,end:24,
+	 children:[
+	 {name: "Sleep",start: 2,end:6 ,color:"grey"},
+	 {name: "Sleep",start:14,end:15,color:"grey"},
+	 {name: "Sleep",start:19,end:20,color:"grey"},
+	 {name: "indeterminate",start:6,end:8,color:"#ccc"},
+	 {name: "ss",start:8,end:13},
+	 {name: "ss",start:13,end:14},
+	 {name: "s1",start:15,end:19},
+	 {name: "s2",start:20,end:24},
+	 {name: "s4",start:0,end:2},
+	 ]
+};
+*/
+//*
+
+//*/
+
+
+var width = 960,
+	height = 700,
+	radius = Math.min(width, height) / 2-50;
+
+var TO = Math.PI + Math.PI/2;//Math.PI/6;
+var Clock_radius = radius+26;
+var Clock_thickness = 6;
+
+var x = d3.scale.linear()
+	.range([0, 2 * Math.PI]);
+
+var y = d3.scale.sqrt()
+	.range([0, radius]);
+
+var color = d3.scale.category20c();
+
+var svg = d3.select("body").append("svg")
+	.attr("width", width)
+	.attr("height", height)
+	.append("g")
+	.attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+
+
+var partition = d3.layout.partition()
+	.sort(function(d1,d2){return d1.start>d2.start;})
+	.value(function(d) { return d.end-d.start; });
+
+var arc = d3.svg.arc()
+	.startAngle( function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+	.endAngle(   function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+	.innerRadius(function(d) { return Math.max(0, y(d.y)); })
+	.outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+
+
+var Clock = svg.append("g")
+	.attr("id","Clock");
+var SolarFlareGroup = svg.append("g")
+	.attr("id","flare");
+
+	// Keep track of the node that is currently being displayed as the root.
+var node;
+
+var DATA;
+var text;
+var path;
+
+d3.json("http://nithishdeva.github.io/Schedule.json",function(json){
+	DATA =json;
+	console.log(json);
+	//d3.json("flare.json", function(error, root) {
+	//		node = DATA;
+	node = DATA;
+	root = DATA;
+
+	/////
+	//var g = svg.datum(DATA).selectAll("g")
+var g=SolarFlareGroup.datum(DATA).selectAll("g")
+	.data(partition.nodes)
+	.enter().append("svg:g")
+	.on("click",click)
+	;
+
+
+path = g.append("svg:path")
+	.attr("d", arc)
+	.attr("stroke", "#fff")
+	//.attr("fill", function(d) { return color((d.children ? d : d.parent).name); })
+	.attr("fill", function(d) { if(d.color) return d.color; else return color(Math.random()); })
+	.attr("fill-rule", "evenodd")
+	.attr("id",function(d){return d.name;})
+.each(stash)
+	;
+
+text = g.append("svg:text")
+	.attr("transform", function(d) { 
+			angle = Angle(d.x,d.dx);
+			return "rotate(" + angle + ")";
+			})
+	.attr("x", function(d) { return y(d.y); })
+	.attr("dx", x(0)) // margin
+	.attr("dy", ".2em") // vertical-align
+	.attr("style","font-size:xx-small;z-index:10000")
+	.attr("id", function(d){ return d.name; })
+	.text(function(d) { return d.name; })
+	.each(stash)
+	;
+	///////
+
+	PlanetClock.create(Clock);
+	PlanetClock.set("orbit_radius",radius+30);
+	//PlanetClock24.set("TimeOffset",Math.PI/2);
+
+
+});
+
+d3.selectAll("input").on("change", function change() {
+		var value = this.value === "count"
+		? function() { return 1; }
+		: function(d) { return d.size; };
+
+		path
+		.data(partition.value(value).nodes)
+		.transition()
+		.duration(1000)
+		.attrTween("d", arcTweenData);
+
+		text
+		.data(partition.value(value).nodes)
+		.transition()
+		.duration(1000)
+		.attrTween("transform", function(d,i){
+				angle0 = Angle(d.x0,d.dx0);
+				angle = Angle(d.x,d.dx);
+				return d3.interpolateString("rotate("+angle0+")","rotate("+angle+")");
+				})
+		;
+});
+
+function click(d) {
+	node = d;
+	path.transition()
+		.duration(1000)
+		.attrTween("d", arcTweenZoom(d));
+
+	text
+		.transition()
+		.duration(1000)
+		.attrTween("x", arcTweenZoom2(d))
+		.attrTween("transform", arcTweenZoom3(d))
+		;
+	PlanetClock.setTimeRange(d.start*60*60, d.end*60*60);
+
+}
+
+function Angle(dx, ddx){
+	sA =  Math.max(0, Math.min(2 * Math.PI, x(dx))); 
+	eA =  Math.max(0, Math.min(2 * Math.PI, x(dx + ddx)));
+
+	angle = (sA+eA)/2 / Math.PI*180 -90;
+	/*
+	   angle is in radians but css rotation takes degrees. + there is a 90 degree offset. 
+	 */
+	return angle;
+}
+
+
+d3.select(self.frameElement).style("height", height + "px");
+
+// Setup for switching data: stash the old values for transition.
+function stash(d) {
+	d.x0 = d.x;
+	d.dx0 = d.dx;
+	d.y0 = d.y;
+	d.dy0 = d.dy;
+}
+
+// When switching data: interpolate the arcs in data space.
+function arcTweenData(a, i) {
+	var oi = d3.interpolate({x: a.x0, dx: a.dx0}, a);
+	function tween(t) {
+		var b = oi(t);
+		a.x0 = b.x;
+		a.dx0 = b.dx;
+		return arc(b);
+	}
+	if (i == 0) {
+		// If we are on the first arc, adjust the x domain to match the root node
+		// at the current zoom level. (We only need to do this once.)
+		var xd = d3.interpolate(x.domain(), [node.x, node.x + node.dx]);
+		return function(t) {
+			x.domain(xd(t));
+			return tween(t);
+		};
+	} else {
+		return tween;
+	}
+}
+
+// When zooming: interpolate the scales.
+function arcTweenZoom(d) {
+	var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+		yd = d3.interpolate(y.domain(), [d.y, 1]),
+		yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+	return function(d, i) {
+		return i
+			? function(t) { return arc(d); }
+		: function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+	};
+}
+function arcTweenZoom2(d) {
+	var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+		yd = d3.interpolate(y.domain(), [d.y, 1]),
+		yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+	return function(d, i) {
+		return i
+			? function(t) { return y(d.y); }
+		: function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return y(d.y); };
+	};
+}
+
+function arcTweenZoom3(d) {
+	var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+		yd = d3.interpolate(y.domain(), [d.y, 1]),
+		yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+	return function(d, i) {
+		return i
+			? function(t) { return "rotate("+Angle(d.x,d.dx)+")";}
+		: function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return "rotate("+Angle(d.x,d.dx)+")"; };
+	};
+}
+
+
+
+</script>
+
