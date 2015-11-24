@@ -256,10 +256,13 @@ section.success {
     border: solid 2px #fff;
     font-size: 20px;
     color: #fff;
-    background: 0 0;
+    /*background: 0 0;*/
     transition: all .3s ease-in-out;
 }
 
+.btn{
+	background-color:#{{site.color.tertiary}};
+}
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active,
@@ -344,7 +347,8 @@ footer .footer-col {
 
 footer .footer-below {
     padding: 25px 0;
-    background-color: #{{ site.color.secondary-dark }};
+/*    background-color: #{{ site.color.secondary-dark }};*/
+    background-color: #{{ site.color.secondary }};
 }
 
 .btn-social {

@@ -1,7 +1,10 @@
 ---
-layout: skeleton
-tage: [how-to]
 ---
+<!DOCTYPE html>
+<html>
+    {% include head.html %}
+    <body id="page-top" class="index">
+    {% include nav.html %}
 		<section id="content">
 		<div class="container" style="color:black" >
 		{% capture my_include %}{% include_relative links.md %}{% endcapture %}
@@ -9,3 +12,7 @@ tage: [how-to]
 
 		</div>
 		</section>
+    {% include footer.html %}
+    {% include js.html %}
+    </body>
+</html>

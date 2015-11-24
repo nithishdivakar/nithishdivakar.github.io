@@ -1,10 +1,7 @@
----
----
-<!DOCTYPE html>
-<html>
-    {% include head.html %}
-    <body id="page-top" class="index">
-    {% include nav.html %}
+----
+layout: skeleton
+tage: [how-to]
+-----
 		<section id="content">
 		<div class="container" style="color:black" >
 		{% capture my_include %}{% include_relative credits.md %}{% endcapture %}
@@ -12,7 +9,3 @@
 
 		</div>
 		</section>
-    {% include foot.html %}
-    {% include js.html %}
-    </body>
-</html>

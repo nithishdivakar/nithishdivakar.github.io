@@ -4,9 +4,10 @@
     <body id="page-top" class="index">
     {% include nav.html %}
 	{{ page.matter }}
-
-    {% include foot.html %}
-    {% include modals.html %}
+	<content>
+		{{ content }}
+	</content>
+    {% include footer.html %}
     {% include js.html %}
     </body>
 </html>

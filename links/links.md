@@ -1,10 +1,12 @@
 
 
-
 C++ Operator overloading guidelines
 =============
 <http://courses.cms.caltech.edu/cs11/material/cpp/donnie/cpp-ops.html>
 
+Deep Learning 
+=====
+<http://neuralnetworksanddeeplearning.com/>
 
 Icons for anything
 =====
@@ -17,4 +19,4 @@ Learning to use git
 Documentation for anything
 ====
 <http://devdocs.io/>
-Thie site gives you an easily searchable doucmentation for a lots of language. 
+This site gives you an easily searchable documentation for a lots of language. 

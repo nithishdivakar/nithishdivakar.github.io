@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nithish Divakar</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</description>
+    <description>Website to shocase interesting projects and things I do.</description>
     <link>https://nithishdeva.github.io/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 24 Nov 2015 00:59:12 +0530</pubDate>
-    <lastBuildDate>Tue, 24 Nov 2015 00:59:12 +0530</lastBuildDate>
+    <pubDate>Wed, 25 Nov 2015 00:23:13 +0530</pubDate>
+    <lastBuildDate>Wed, 25 Nov 2015 00:23:13 +0530</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
