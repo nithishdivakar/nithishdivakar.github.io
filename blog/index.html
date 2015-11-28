@@ -1,0 +1,13 @@
+---
+layout: baseframe
+tage: [how-to]
+---
+		<section id="content">
+{% for post in site.posts %}	
+	<h3 ><a style="color:#{{site.color.tertiary}}" href="{{ post.url }}">{{ post.title }}</a></h3>
+	<p><small><strong>{{ post.date | date: "%B %e, %Y" }}</strong> . {{ post.category }} . 
+	</small>
+	</p>
+{% endfor %}	
+
+</section>

@@ -35,12 +35,13 @@
 			</div>
 
 			<div class="row">
-				{% assign items = "blog|fun|code|research|B|C" | split: "|" %}
+				{% assign items = "blog|fun|code|research|B|my repos" | split: "|" %}
+				{% assign links = "blog|fun|code|research|B|http://github.com/nithishdeva" | split: "|" %}
 				{% for item in items %}
 					
 				<div class=" col-sm-4">
 					
-					<a href="{{item}}/" class="tile-link">
+					<a href="{{links[forloop.index0]}}/" class="tile-link">
 						<div class="tile-div">
 							{{item | capitalize}}
 						</div>
