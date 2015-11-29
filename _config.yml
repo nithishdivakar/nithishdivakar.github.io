@@ -32,11 +32,18 @@ disqus_shortname: myshortname
 #  secondary-dark: 233140 #A2122F
 
 color:
-  primary: 03a9f4
+  primary:    03a9f4
   primary-rgb: "0,150,136" #"128,179,255"
-  secondary: 0288d1
+  secondary:  0288d1
   secondary-dark: 03a9f4
-  tertiary: ffa000
+  tertiary:   ffa000
+  col-green:  34A853;
+  col-dgreen: 128F76;
+  col-yellow: FFBC00;
+  col-blue:   0091ea;
+  col-grey:   E0E0E0;
+  col-pink:   ec4559;
+  col-white:  ffffff;
 
 # Footer settings
 footer:

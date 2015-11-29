@@ -1,0 +1,43 @@
+---
+layout: baseframe
+tag: [contact]
+---
+<section id="contact">
+<style>
+	.nx-con-lnk{
+		display:block;
+		color:#{{site.color.primary}};;
+		text-align:center;
+		border:2px solid #{{site.color.primary}};
+		padding-top:30px;
+		padding-bottom:30px;
+		margin-bottom:10px;
+	}
+	.nx-con-lnk:hover{
+		transition:all 0.3s ease-in-out;
+		color:#{{site.color.tertiary}};
+		border:2px solid #{{site.color.tertiary}};
+	}
+</style>
+<div class="container">
+	<div class="row" style="margin-top:50px">
+		<div class="col-lg-12 text-center">
+			<h2>Find me here</h2>
+			<hr class="star-primary">
+		</div>
+	</div>
+
+
+	<div class="row" >
+		{% for network in site.social %}
+			<div class="col-md-4" style="background-color:">
+				<!--<a href="{{ network.url }}" class="btn-social btn-outline nx-con-lnk">-->
+				<a href="{{ network.url }}" class="nx-con-lnk">
+					<i class="fa fa-fw fa-5x fa-{{ network.title }}"></i>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+
+</div>
+</section>

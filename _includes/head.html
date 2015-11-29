@@ -29,3 +29,60 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+<style>
+* {
+	margin: 0;
+}
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+.nx-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+}
+.nx-tlx{
+		width:100%;
+		display:block;
+		min-width:175px;
+		margin-left:auto;
+		margin-right:auto;
+	}
+.nx-tlx:hover{
+	border-color:#{{site.color.tertiary}};
+}
+/* COlors selection*/
+
+header{
+	background-color: #{{ site.color.col-dgreen }};
+}
+
+section#little-things{
+	background-color: #{{site.color.col-white }};
+}
+
+section#about{
+	background-color: #{{site.color.col-blue }};
+}
+
+section#great-links{
+	background-color: #{{site.color.col-green }};
+}
+
+li.page-scroll:hover{
+	background-color: #{{site.color.col-white}};
+}
+
+a.navbar-brand:hover{
+	color: #0091ea !important;
+}
+
+</style>
