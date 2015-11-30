@@ -1,7 +1,7 @@
 # Site settings
 title: Nithish Divakar
 email: nithish.divakar@gmail.com
-url: https://nithishdeva.github.io
+url: https://nithishdivakar.github.io
 description: "Website to shocase interesting projects and things I do."
 skills: "little things are infinitely the most important"
 meta_author: Divakar Nithish
@@ -63,7 +63,7 @@ social:
 #  - title: bitbucket
 #    url: http://bitbucket.org/jekyll
   - title: github
-    url: http://github.com/nithishdeva
+    url: http://github.com/nithishdivakar
   - title: linkedin
     url: https://in.linkedin.com/in/nithish-divakar-591bba73
 # Postal address (add as many lines as necessary)
