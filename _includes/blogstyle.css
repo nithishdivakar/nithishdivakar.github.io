@@ -1,0 +1,101 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+div#sidebar,div#page-container{
+	margin-top:0px;
+}
+
+.navbar-nav>.active>a {
+    background-color: #{{ site.color.secondary-dark }} !important;
+}
+
+.navbar-toggle{
+	display:none;
+}
+
+
+@media(min-width:768px) {
+    .navbar-fixed-top {
+        -webkit-transition: padding .3s;
+        -moz-transition: padding .3s;
+        transition: padding .3s;
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        font-size: 1.5em;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
+    }
+
+    .navbar-fixed-top.navbar-shrink {
+        padding: 10px 0;
+    }
+
+    .navbar-fixed-top.navbar-shrink .navbar-brand {
+        font-size: 1.5em;
+    }
+}
+
+.navbar-brand{	
+	color:#{{site.color.col-white}};
+	line-height:50px;
+}
+.navbar-header{
+	text-align:center;
+}
+
+.navbar-brand:hover{
+	color:#{{site.color.col-blue}};
+}
+.navbar {
+	background-color:#{{site.color.primary}};
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+.navbar a:focus {
+    outline: 0;
+}
+
+.navbar .navbar-nav {
+    letter-spacing: 1px;
+
+}
+
+.home-hidden{
+	display:none;
+}
+.navbar .navbar-nav li a:focus {
+    outline: 0;
+	color :#{{site.color.col-white}};
+}
+
+.navbar-default,
+.navbar-inverse {
+    border: 0;
+}
+
+@media screen and (max-width: 872px) {
+	#sidebar{
+		/*display:none;*/
+	}
+	#page-container{
+		left:0px !important;
+	}
+	.home-hidden{
+		display:block;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-color:#{{site.color.primary}};;
+		color:#{{site.color.col-white}};;
+		z-index:100;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        transition: all .5s;
+
+	}
+}
