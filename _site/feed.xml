@@ -5,9 +5,19 @@
     <description>Website to shocase interesting projects and things I do.</description>
     <link>https://nithishdivakar.github.io/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 02 Dec 2015 18:06:11 +0530</pubDate>
-    <lastBuildDate>Wed, 02 Dec 2015 18:06:11 +0530</lastBuildDate>
+    <pubDate>Wed, 02 Dec 2015 18:20:18 +0530</pubDate>
+    <lastBuildDate>Wed, 02 Dec 2015 18:20:18 +0530</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Keeping Track Of Papers I Read</title>
+        <description></description>
+        <pubDate>Wed, 02 Dec 2015 00:00:00 +0530</pubDate>
+        <link>https://nithishdivakar.github.io/2015/12/02/Keeping-track-of-papers-I-read/</link>
+        <guid isPermaLink="true">https://nithishdivakar.github.io/2015/12/02/Keeping-track-of-papers-I-read/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Back Propogation Algorithm</title>
