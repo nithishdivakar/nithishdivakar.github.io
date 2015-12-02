@@ -7,10 +7,12 @@ skills: "little things are infinitely the most important"
 meta_author: Divakar Nithish
 #baseurl: "/nirjhari"
 
+permalink: /blog/:categories/:year/:month/:day/:title.html
+
 #gems: jekyll-sitemap
 
 # Google webmaster tools
-google_verify:
+google_verify: _hgiIVqFH7qviZhPzFk4xRJumR-D5Ombr1xSj0B956Q
 
 # https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
 bing_verify:
