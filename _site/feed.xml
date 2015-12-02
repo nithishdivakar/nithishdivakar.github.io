@@ -3,18 +3,18 @@
   <channel>
     <title>Nithish Divakar</title>
     <description>Website to shocase interesting projects and things I do.</description>
-    <link>https://nithishdeva.github.io/</link>
+    <link>https://nithishdivakar.github.io/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 30 Nov 2015 18:54:28 +0530</pubDate>
-    <lastBuildDate>Mon, 30 Nov 2015 18:54:28 +0530</lastBuildDate>
+    <pubDate>Wed, 02 Dec 2015 15:53:07 +0530</pubDate>
+    <lastBuildDate>Wed, 02 Dec 2015 15:53:07 +0530</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
         <title>Back Propogation Algorithm</title>
         <description></description>
         <pubDate>Sat, 28 Nov 2015 00:00:00 +0530</pubDate>
-        <link>https://nithishdeva.github.io/2015/11/28/Back-Propogation-Algorithm/</link>
-        <guid isPermaLink="true">https://nithishdeva.github.io/2015/11/28/Back-Propogation-Algorithm/</guid>
+        <link>https://nithishdivakar.github.io/2015/11/28/Back-Propogation-Algorithm/</link>
+        <guid isPermaLink="true">https://nithishdivakar.github.io/2015/11/28/Back-Propogation-Algorithm/</guid>
         
         
       </item>
