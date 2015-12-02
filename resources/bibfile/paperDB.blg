@@ -1,0 +1,13 @@
+[0] Config.pm:387> INFO - This is Biber 1.6
+[0] Config.pm:390> INFO - Logfile is 'paperDB.blg'
+[163] biber-darwin:218> INFO - === Wed Dec  2, 2015, 18:02:29
+[163] Biber.pm:325> INFO - Reading 'paperDB.bcf'
+[256] Biber.pm:600> INFO - Using all citekeys in bib section 0
+[300] Biber.pm:2995> INFO - Processing section 0
+[361] Biber.pm:3129> INFO - Looking for bibtex format file 'paperdb.bib' for section 0
+[362] bibtex.pm:775> INFO - Found BibTeX data source 'paperdb.bib'
+[779] Biber.pm:2881> INFO - Overriding locale 'en_US.UTF-8' default tailoring 'variable = shifted' with 'variable = non-ignorable'
+[779] Biber.pm:2887> INFO - Sorting 'entry' list 'ydnt' keys
+[779] Biber.pm:2891> INFO - No sort tailoring available for locale 'en_US.UTF-8'
+[1071] bbl.pm:472> INFO - Writing 'paperDB.bbl' with encoding 'ascii'
+[1076] bbl.pm:545> INFO - Output to paperDB.bbl

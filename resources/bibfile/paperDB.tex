@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage{iclr2016_conference,times}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage[backend=biber,sorting=ydnt,style=reading]{biblatex}
+
+\title{My Paper Database}
+\addbibresource{paperdb.bib}
+
+
+\author{Nithish Divakar \thanks{Other Stuff about author} \\
+\texttt{nithish.divakar@gmail.com} \\
+}
+\begin{document}
+	\maketitle
+	\nocite{*}
+	\printbibliography[title=papers]
+\end{document}

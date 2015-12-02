@@ -1,0 +1,691 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{entry}{ydnt}
+    \entry{gu2014weighted}{inproceedings}{}
+      \name{labelname}{4}{}{%
+        {{uniquename=1,hash=afe9ac72b7653e55e48e0f402c384dee}{Gu}{G\bibinitperiod}{Shuhang}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=f4a4cbf770add19c206827116c68732e}{Zhang}{Z\bibinitperiod}{Lei}{L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=509ab736fbc2f1e10f41c1bddb2531ed}{Zuo}{Z\bibinitperiod}{Wangmeng}{W\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=a5e0aedac84cf920799b701a46d9b23f}{Feng}{F\bibinitperiod}{Xiangchu}{X\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{uniquename=1,hash=afe9ac72b7653e55e48e0f402c384dee}{Gu}{G\bibinitperiod}{Shuhang}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=f4a4cbf770add19c206827116c68732e}{Zhang}{Z\bibinitperiod}{Lei}{L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=509ab736fbc2f1e10f41c1bddb2531ed}{Zuo}{Z\bibinitperiod}{Wangmeng}{W\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=a5e0aedac84cf920799b701a46d9b23f}{Feng}{F\bibinitperiod}{Xiangchu}{X\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{2cd99575dc440e00bb1aaaef42315f14}
+      \strng{fullhash}{23da88ef919a52e8e140d9830b50b089}
+      \field{sortinit}{2}
+      \field{labeltitle}{Weighted Nuclear Norm Minimization with Application to Image Denoising}
+      \field{abstract}{**to do**}
+      \field{booktitle}{IEEE Conf. on Computer Vision and Pattern Recognition}
+      \field{title}{Weighted Nuclear Norm Minimization with Application to Image Denoising}
+      \field{year}{2014}
+    \endentry
+    \entry{markovsky2012low}{book}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=6be7fb82717031953e5d193fd1ad477f}{Markovsky}{M\bibinitperiod}{Ivan}{I\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=379edf013d20cd7fafadf20728f6ee3e}{Usevich}{U\bibinitperiod}{Konstantin}{K\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=6be7fb82717031953e5d193fd1ad477f}{Markovsky}{M\bibinitperiod}{Ivan}{I\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=379edf013d20cd7fafadf20728f6ee3e}{Usevich}{U\bibinitperiod}{Konstantin}{K\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{ca96dcaf0cf390c5f271fcdb02e57d4b}
+      \strng{fullhash}{ca96dcaf0cf390c5f271fcdb02e57d4b}
+      \field{sortinit}{2}
+      \field{labeltitle}{Low rank approximation}
+      \field{abstract}{**to do**}
+      \field{title}{Low rank approximation}
+      \field{year}{2012}
+    \endentry
+    \entry{polok2012fast}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=a2fab3b263f25addfbd1143997e6f5e9}{Polok}{P\bibinitperiod}{Lukas}{L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=465aa26cac5dc5d6774ac8833dff6b63}{Smrz}{S\bibinitperiod}{Pavel}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=a2fab3b263f25addfbd1143997e6f5e9}{Polok}{P\bibinitperiod}{Lukas}{L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=465aa26cac5dc5d6774ac8833dff6b63}{Smrz}{S\bibinitperiod}{Pavel}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{abb101f17a3606d876563e045253e684}
+      \strng{fullhash}{abb101f17a3606d876563e045253e684}
+      \field{sortinit}{2}
+      \field{labeltitle}{Fast linear algebra on GPU}
+      \field{abstract}{**to do**}
+      \field{booktitle}{High Performance Computing and Communication \& 2012 IEEE 9th International Conference on Embedded Software and Systems (HPCC-ICESS), 2012 IEEE 14th International Conference on}
+      \field{title}{Fast linear algebra on GPU}
+      \field{year}{2012}
+      \field{pages}{439\bibrangedash 444}
+    \endentry
+    \entry{yan2011image}{incollection}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=1bd6bb1487d1ec0712fda5fa61a517f0}{Yan}{Y\bibinitperiod}{Leipo}{L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=0d700d624729f61e92667a378dc9b881}{Wang}{W\bibinitperiod}{Lipo}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=1bd6bb1487d1ec0712fda5fa61a517f0}{Yan}{Y\bibinitperiod}{Leipo}{L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=1,hash=0d700d624729f61e92667a378dc9b881}{Wang}{W\bibinitperiod}{Lipo}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{4def74df57ea7b4fd91f81aada9b96bf}
+      \strng{fullhash}{4def74df57ea7b4fd91f81aada9b96bf}
+      \field{sortinit}{2}
+      \field{labeltitle}{Image denoising using noisy chaotic neural networks}
+      \field{abstract}{This paper uses the noisy chaotic neural network (NCNN) that we proposed earlier for image denoising as a constrained optimization problem}
+      \field{booktitle}{Advances in Cognitive Neurodynamics (II)}
+      \field{title}{Image denoising using noisy chaotic neural networks}
+      \field{year}{2011}
+      \field{pages}{659\bibrangedash 662}
+    \endentry
+    \entry{cai2010singular}{article}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=0,hash=5dfd9c597425ebbe4330801e972b5b56}{Cai}{C\bibinitperiod}{Jian-Feng}{J\bibinithyphendelim F\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=03877c139730aa52922eec645cd6180f}{Cand{\`e}s}{C\bibinitperiod}{Emmanuel\bibnamedelima J}{E\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2cd3ea243f4dcf2b2a4b31d163fcf02e}{Shen}{S\bibinitperiod}{Zuowei}{Z\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=5dfd9c597425ebbe4330801e972b5b56}{Cai}{C\bibinitperiod}{Jian-Feng}{J\bibinithyphendelim F\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=03877c139730aa52922eec645cd6180f}{Cand{\`e}s}{C\bibinitperiod}{Emmanuel\bibnamedelima J}{E\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=2cd3ea243f4dcf2b2a4b31d163fcf02e}{Shen}{S\bibinitperiod}{Zuowei}{Z\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{eb96b04dd12da0de0ed54275151c1bc1}
+      \strng{fullhash}{eb96b04dd12da0de0ed54275151c1bc1}
+      \field{sortinit}{2}
+      \field{labeltitle}{A singular value thresholding algorithm for matrix completion}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{SIAM Journal on Optimization}
+      \field{number}{4}
+      \field{title}{A singular value thresholding algorithm for matrix completion}
+      \field{volume}{20}
+      \field{year}{2010}
+      \field{pages}{1956\bibrangedash 1982}
+    \endentry
+    \entry{condat2010simple}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=0cfbf54abb53d19632a9fc475c9f63df}{Condat}{C\bibinitperiod}{Laurent}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=0cfbf54abb53d19632a9fc475c9f63df}{Condat}{C\bibinitperiod}{Laurent}{L\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{0cfbf54abb53d19632a9fc475c9f63df}
+      \strng{fullhash}{0cfbf54abb53d19632a9fc475c9f63df}
+      \field{sortinit}{2}
+      \field{labeltitle}{A simple trick to speed up and improve the non-local means}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{.}
+      \field{title}{A simple trick to speed up and improve the non-local means}
+      \field{year}{2010}
+    \endentry
+    \entry{candes2009exact}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=03877c139730aa52922eec645cd6180f}{Cand{\`e}s}{C\bibinitperiod}{Emmanuel\bibnamedelima J}{E\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3503059e1c0c778913607c87d8c5173a}{Recht}{R\bibinitperiod}{Benjamin}{B\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=03877c139730aa52922eec645cd6180f}{Cand{\`e}s}{C\bibinitperiod}{Emmanuel\bibnamedelima J}{E\bibinitperiod\bibinitdelim J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3503059e1c0c778913607c87d8c5173a}{Recht}{R\bibinitperiod}{Benjamin}{B\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{8cbd7f6f861ecf81e7cc39e258a7c943}
+      \strng{fullhash}{8cbd7f6f861ecf81e7cc39e258a7c943}
+      \field{sortinit}{2}
+      \field{labeltitle}{Exact matrix completion via convex optimization}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Foundations of Computational mathematics}
+      \field{number}{6}
+      \field{title}{Exact matrix completion via convex optimization}
+      \field{volume}{9}
+      \field{year}{2009}
+      \field{pages}{717\bibrangedash 772}
+    \endentry
+    \entry{mairal2009non}{inproceedings}{}
+      \name{labelname}{5}{}{%
+        {{uniquename=0,hash=d699b6cdc55cf5811dd19c9a2e13c7c1}{Mairal}{M\bibinitperiod}{Julien}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=93da2819ab01d8a5e7bae39ce6f17c1f}{Bach}{B\bibinitperiod}{Francis}{F\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=ee672c13ddea8aa3bc5a45024cfd7354}{Ponce}{P\bibinitperiod}{Jean}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c8b95715cbbf5962b79737d877773fee}{Sapiro}{S\bibinitperiod}{Guillermo}{G\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c72fc39e94030f67717052309266a44d}{Zisserman}{Z\bibinitperiod}{Andrew}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{5}{}{%
+        {{uniquename=0,hash=d699b6cdc55cf5811dd19c9a2e13c7c1}{Mairal}{M\bibinitperiod}{Julien}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=93da2819ab01d8a5e7bae39ce6f17c1f}{Bach}{B\bibinitperiod}{Francis}{F\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=ee672c13ddea8aa3bc5a45024cfd7354}{Ponce}{P\bibinitperiod}{Jean}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c8b95715cbbf5962b79737d877773fee}{Sapiro}{S\bibinitperiod}{Guillermo}{G\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c72fc39e94030f67717052309266a44d}{Zisserman}{Z\bibinitperiod}{Andrew}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{a454f4552f568afd8c9be19c4c3ad473}
+      \strng{fullhash}{f23fccd188c0f3bee241edcfdc1eab57}
+      \field{sortinit}{2}
+      \field{labeltitle}{Non-local sparse models for image restoration}
+      \field{abstract}{**to do**}
+      \field{booktitle}{Computer Vision, 2009 IEEE 12th International Conference on}
+      \field{title}{Non-local sparse models for image restoration}
+      \field{year}{2009}
+      \field{pages}{2272\bibrangedash 2279}
+    \endentry
+    \entry{markovsky2008structured}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=6be7fb82717031953e5d193fd1ad477f}{Markovsky}{M\bibinitperiod}{Ivan}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=6be7fb82717031953e5d193fd1ad477f}{Markovsky}{M\bibinitperiod}{Ivan}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{6be7fb82717031953e5d193fd1ad477f}
+      \strng{fullhash}{6be7fb82717031953e5d193fd1ad477f}
+      \field{sortinit}{2}
+      \field{labeltitle}{Structured low-rank approximation and its applications}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Automatica}
+      \field{number}{4}
+      \field{title}{Structured low-rank approximation and its applications}
+      \field{volume}{44}
+      \field{year}{2008}
+      \field{pages}{891\bibrangedash 909}
+    \endentry
+    \entry{dabov2007image}{article}{}
+      \name{labelname}{4}{}{%
+        {{uniquename=0,hash=5abbd48d620c06288f58ce445844a45f}{Dabov}{D\bibinitperiod}{Kostadin}{K\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=8106dfb2385f0623519697e61e755100}{Foi}{F\bibinitperiod}{Alessandro}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=8bbc6b8ed6f81644d03f17d186776545}{Katkovnik}{K\bibinitperiod}{Vladimir}{V\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=72943da991b92fae8d3fcb28a3080793}{Egiazarian}{E\bibinitperiod}{Karen}{K\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{uniquename=0,hash=5abbd48d620c06288f58ce445844a45f}{Dabov}{D\bibinitperiod}{Kostadin}{K\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=8106dfb2385f0623519697e61e755100}{Foi}{F\bibinitperiod}{Alessandro}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=8bbc6b8ed6f81644d03f17d186776545}{Katkovnik}{K\bibinitperiod}{Vladimir}{V\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=72943da991b92fae8d3fcb28a3080793}{Egiazarian}{E\bibinitperiod}{Karen}{K\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3ebbaf28bcc4c82c8a935ec68e468f8e}
+      \strng{fullhash}{bc8292bf820c45273326ee74ecaa6770}
+      \field{sortinit}{2}
+      \field{labeltitle}{Image denoising by sparse 3-D transform-domain collaborative filtering}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Image Processing, IEEE Transactions on}
+      \field{number}{8}
+      \field{title}{Image denoising by sparse 3-D transform-domain collaborative filtering}
+      \field{volume}{16}
+      \field{year}{2007}
+      \field{pages}{2080\bibrangedash 2095}
+    \endentry
+    \entry{nickolls2007gpu}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=4e9afb5dec66f82dce8dd9cd8b94345c}{Nickolls}{N\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=4e9afb5dec66f82dce8dd9cd8b94345c}{Nickolls}{N\bibinitperiod}{John}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{4e9afb5dec66f82dce8dd9cd8b94345c}
+      \strng{fullhash}{4e9afb5dec66f82dce8dd9cd8b94345c}
+      \field{sortinit}{2}
+      \field{labeltitle}{GPU parallel computing architecture and cuda programming model}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Session on Multi-Core and Parallelism I, Hot Chips}
+      \field{title}{GPU parallel computing architecture and cuda programming model}
+      \field{volume}{19}
+      \field{year}{2007}
+      \field{pages}{19\bibrangedash 21}
+    \endentry
+    \entry{podlozhnyuk2007image}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=7d1bea550844cee8b23660dd7a4eb425}{Podlozhnyuk}{P\bibinitperiod}{Victor}{V\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=7d1bea550844cee8b23660dd7a4eb425}{Podlozhnyuk}{P\bibinitperiod}{Victor}{V\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7d1bea550844cee8b23660dd7a4eb425}
+      \strng{fullhash}{7d1bea550844cee8b23660dd7a4eb425}
+      \field{sortinit}{2}
+      \field{labeltitle}{Image convolution with CUDA}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{NVIDIA Corporation white paper, June}
+      \field{number}{3}
+      \field{title}{Image convolution with CUDA}
+      \field{volume}{2007}
+      \field{year}{2007}
+    \endentry
+    \entry{ailon2006approximate}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=bd6fd6543c06c914ab26404270670ced}{Ailon}{A\bibinitperiod}{Nir}{N\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=63ec4986e378110d2b859464ad942078}{Chazelle}{C\bibinitperiod}{Bernard}{B\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=bd6fd6543c06c914ab26404270670ced}{Ailon}{A\bibinitperiod}{Nir}{N\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=63ec4986e378110d2b859464ad942078}{Chazelle}{C\bibinitperiod}{Bernard}{B\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{df88c5388a93db842a04f3efc50d4b6f}
+      \strng{fullhash}{df88c5388a93db842a04f3efc50d4b6f}
+      \field{sortinit}{2}
+      \field{labeltitle}{Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform}
+      \field{abstract}{**to do**}
+      \field{booktitle}{Proceedings of the thirty-eighth annual ACM symposium on Theory of computing}
+      \field{title}{Approximate nearest neighbors and the fast Johnson-Lindenstrauss transform}
+      \field{year}{2006}
+      \field{pages}{557\bibrangedash 563}
+    \endentry
+    \entry{andoni2006near}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=9f17feb9ebe3b97546681c377fb97416}{Andoni}{A\bibinitperiod}{Alexandr}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=82a47611accc6ebb689ddd28fb6dbf1b}{Indyk}{I\bibinitperiod}{Piotr}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=9f17feb9ebe3b97546681c377fb97416}{Andoni}{A\bibinitperiod}{Alexandr}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=82a47611accc6ebb689ddd28fb6dbf1b}{Indyk}{I\bibinitperiod}{Piotr}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{dc9182cd649430dc44028526dfefbaf3}
+      \strng{fullhash}{dc9182cd649430dc44028526dfefbaf3}
+      \field{sortinit}{2}
+      \field{labeltitle}{Near-optimal hashing algorithms for approximate nearest neighbor in high dimensions}
+      \field{abstract}{**to do**}
+      \field{booktitle}{Foundations of Computer Science, 2006. FOCS'06. 47th Annual IEEE Symposium on}
+      \field{title}{Near-optimal hashing algorithms for approximate nearest neighbor in high dimensions}
+      \field{year}{2006}
+      \field{pages}{459\bibrangedash 468}
+    \endentry
+    \entry{elad2006image}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=20b8206f111f40a7edb0499bc22b9375}{Elad}{E\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=4052d7c497e5f881123cabcef755e872}{Aharon}{A\bibinitperiod}{Michal}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=20b8206f111f40a7edb0499bc22b9375}{Elad}{E\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=4052d7c497e5f881123cabcef755e872}{Aharon}{A\bibinitperiod}{Michal}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{db8f332bb7cc9beab5c144037e801ba9}
+      \strng{fullhash}{db8f332bb7cc9beab5c144037e801ba9}
+      \field{sortinit}{2}
+      \field{labeltitle}{Image denoising via sparse and redundant representations over learned dictionaries}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Image Processing, IEEE Transactions on}
+      \field{number}{12}
+      \field{title}{Image denoising via sparse and redundant representations over learned dictionaries}
+      \field{volume}{15}
+      \field{year}{2006}
+      \field{pages}{3736\bibrangedash 3745}
+    \endentry
+    \entry{ellsworth-concurrentvis-tvcg2006}{article}{}
+      \name{labelname}{5}{}{%
+        {{uniquename=0,hash=296152594b93abdd537693b6673b3095}{Ellsworth}{E\bibinitperiod}{D.}{D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e63b229c3acd4f6135a2b30b123fac86}{Green}{G\bibinitperiod}{B.}{B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=aba9006ca4eef9635ad54635e50c8089}{Henze}{H\bibinitperiod}{C.}{C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c2fd7175db60d9c22a6c6ce62306e3c4}{Moran}{M\bibinitperiod}{P.}{P\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9c6f5528f1ce20bd72330557e9223760}{Sandstrom}{S\bibinitperiod}{T.}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{5}{}{%
+        {{uniquename=0,hash=296152594b93abdd537693b6673b3095}{Ellsworth}{E\bibinitperiod}{D.}{D\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=e63b229c3acd4f6135a2b30b123fac86}{Green}{G\bibinitperiod}{B.}{B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=aba9006ca4eef9635ad54635e50c8089}{Henze}{H\bibinitperiod}{C.}{C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c2fd7175db60d9c22a6c6ce62306e3c4}{Moran}{M\bibinitperiod}{P.}{P\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9c6f5528f1ce20bd72330557e9223760}{Sandstrom}{S\bibinitperiod}{T.}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{3debe55843dcf8f4698f751e109d3480}
+      \strng{fullhash}{623c0c479b25a9a702c7153d4a924190}
+      \field{sortinit}{2}
+      \field{labeltitle}{{C}oncurrent {V}isualization in a {P}roduction {S}upercomputing {E}nvironment}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{IEEE Transactions on Visualization and Computer Graphics}
+      \field{number}{5}
+      \field{title}{{C}oncurrent {V}isualization in a {P}roduction {S}upercomputing {E}nvironment}
+      \field{volume}{12}
+      \field{year}{2006}
+      \field{pages}{997\bibrangedash 1004}
+    \endentry
+    \entry{wang2006fast}{inproceedings}{}
+      \name{labelname}{5}{}{%
+        {{uniquename=1,hash=57cf8531003f9d0c22b8a30358523ffc}{Wang}{W\bibinitperiod}{Jin}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3f8f31bf5543ac63ef384e2e3ac2fb82}{Guo}{G\bibinitperiod}{Yanwen}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=91f6b419d224d4873a7eab9e3c8f708f}{Ying}{Y\bibinitperiod}{Yiting}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=55622f58b282ac721a2269b140132301}{Liu}{L\bibinitperiod}{Yanli}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=852199d62b2902fcb47b3b0d680e65f3}{Peng}{P\bibinitperiod}{Qunsheng}{Q\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{5}{}{%
+        {{uniquename=1,hash=57cf8531003f9d0c22b8a30358523ffc}{Wang}{W\bibinitperiod}{Jin}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=3f8f31bf5543ac63ef384e2e3ac2fb82}{Guo}{G\bibinitperiod}{Yanwen}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=91f6b419d224d4873a7eab9e3c8f708f}{Ying}{Y\bibinitperiod}{Yiting}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=55622f58b282ac721a2269b140132301}{Liu}{L\bibinitperiod}{Yanli}{Y\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=852199d62b2902fcb47b3b0d680e65f3}{Peng}{P\bibinitperiod}{Qunsheng}{Q\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{60720de92f875a3327e25854d282d00b}
+      \strng{fullhash}{a09a2d54fa21147cdd33272ba73d4c91}
+      \field{sortinit}{2}
+      \field{labeltitle}{Fast non-local algorithm for image denoising}
+      \field{abstract}{**to do**}
+      \field{booktitle}{Image Processing, 2006 IEEE International Conference on}
+      \field{title}{Fast non-local algorithm for image denoising}
+      \field{year}{2006}
+      \field{pages}{1429\bibrangedash 1432}
+    \endentry
+    \entry{buades2005non}{inproceedings}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=0,hash=352bef0de72bce7e56580901e3dc1b28}{Buades}{B\bibinitperiod}{Antoni}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9b852797daf7d5eaa9dfd355df3d1268}{Coll}{C\bibinitperiod}{Bartomeu}{B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9dc4eb1de0bd26abe386f4af6eadee89}{Morel}{M\bibinitperiod}{J-M}{J\bibinithyphendelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=352bef0de72bce7e56580901e3dc1b28}{Buades}{B\bibinitperiod}{Antoni}{A\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9b852797daf7d5eaa9dfd355df3d1268}{Coll}{C\bibinitperiod}{Bartomeu}{B\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9dc4eb1de0bd26abe386f4af6eadee89}{Morel}{M\bibinitperiod}{J-M}{J\bibinithyphendelim M\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{aae51127b0a93e43b5edf482e6f54fab}
+      \strng{fullhash}{aae51127b0a93e43b5edf482e6f54fab}
+      \field{sortinit}{2}
+      \field{labeltitle}{A non-local algorithm for image denoising}
+      \field{abstract}{**to do**}
+      \field{booktitle}{Computer Vision and Pattern Recognition, 2005. CVPR 2005. IEEE Computer Society Conference on}
+      \field{title}{A non-local algorithm for image denoising}
+      \field{volume}{2}
+      \field{year}{2005}
+      \field{pages}{60\bibrangedash 65}
+    \endentry
+    \entry{mahmoudi2005fast}{article}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=cb3387f3b471560792529b44c8097180}{Mahmoudi}{M\bibinitperiod}{Mona}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c8b95715cbbf5962b79737d877773fee}{Sapiro}{S\bibinitperiod}{Guillermo}{G\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=cb3387f3b471560792529b44c8097180}{Mahmoudi}{M\bibinitperiod}{Mona}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=c8b95715cbbf5962b79737d877773fee}{Sapiro}{S\bibinitperiod}{Guillermo}{G\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{628c2d5cd8c3308a53146e2bdc50b4e0}
+      \strng{fullhash}{628c2d5cd8c3308a53146e2bdc50b4e0}
+      \field{sortinit}{2}
+      \field{labeltitle}{Fast image and video denoising via nonlocal means of similar neighborhoods}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Signal Processing Letters, IEEE}
+      \field{number}{12}
+      \field{title}{Fast image and video denoising via nonlocal means of similar neighborhoods}
+      \field{volume}{12}
+      \field{year}{2005}
+      \field{pages}{839\bibrangedash 842}
+    \endentry
+    \entry{yu-parvis-sc2004}{inproceedings}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=0,hash=2fe82b8401cfaf8837dccceeaf06e1ae}{Yu}{Y\bibinitperiod}{H.}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=4761e46f8596a3878df2663ae9df53d5}{Ma}{M\bibinitperiod}{K-L.}{K\bibinithyphendelim L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=a08e80f9df3afca2da2a369c763cd5f0}{Welling}{W\bibinitperiod}{J.}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=2fe82b8401cfaf8837dccceeaf06e1ae}{Yu}{Y\bibinitperiod}{H.}{H\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=4761e46f8596a3878df2663ae9df53d5}{Ma}{M\bibinitperiod}{K-L.}{K\bibinithyphendelim L\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=a08e80f9df3afca2da2a369c763cd5f0}{Welling}{W\bibinitperiod}{J.}{J\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{81325a931be58260248ef29662e3aee9}
+      \strng{fullhash}{81325a931be58260248ef29662e3aee9}
+      \field{sortinit}{2}
+      \field{labeltitle}{{A} {P}arallel {V}isualization {P}ipeline for {T}erascale {E}arthquake {S}imulations}
+      \field{abstract}{**to do**}
+      \field{booktitle}{SC '04: Proceedings of the 2004 ACM/IEEE conference on Supercomputing}
+      \field{title}{{A} {P}arallel {V}isualization {P}ipeline for {T}erascale {E}arthquake {S}imulations}
+      \field{year}{2004}
+      \field{pages}{49}
+    \endentry
+    \entry{charikar2002similarity}{inproceedings}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=f2d66fcb075b21cbf4b705beff5da0b7}{Charikar}{C\bibinitperiod}{Moses\bibnamedelima S}{M\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=f2d66fcb075b21cbf4b705beff5da0b7}{Charikar}{C\bibinitperiod}{Moses\bibnamedelima S}{M\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{f2d66fcb075b21cbf4b705beff5da0b7}
+      \strng{fullhash}{f2d66fcb075b21cbf4b705beff5da0b7}
+      \field{sortinit}{2}
+      \field{labeltitle}{Similarity estimation techniques from rounding algorithms}
+      \field{abstract}{**to do**}
+      \field{booktitle}{Proceedings of the thiry-fourth annual ACM symposium on Theory of computing}
+      \field{title}{Similarity estimation techniques from rounding algorithms}
+      \field{year}{2002}
+      \field{pages}{380\bibrangedash 388}
+    \endentry
+    \entry{arya1998optimal}{article}{}
+      \name{labelname}{5}{}{%
+        {{uniquename=0,hash=0ac22fffbd048ff22f8fae15449d2c63}{Arya}{A\bibinitperiod}{Sunil}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=a90976520803cc2c4ad0d55f6a5648de}{Mount}{M\bibinitperiod}{David\bibnamedelima M}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=d3b36e98efdbb9141d4821080b74de7b}{Netanyahu}{N\bibinitperiod}{Nathan\bibnamedelima S}{N\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=63937971a65222d15155d3b83cbb477c}{Silverman}{S\bibinitperiod}{Ruth}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=805e0e9ae50229b226173d95df0b3d38}{Wu}{W\bibinitperiod}{Angela\bibnamedelima Y}{A\bibinitperiod\bibinitdelim Y\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{5}{}{%
+        {{uniquename=0,hash=0ac22fffbd048ff22f8fae15449d2c63}{Arya}{A\bibinitperiod}{Sunil}{S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=a90976520803cc2c4ad0d55f6a5648de}{Mount}{M\bibinitperiod}{David\bibnamedelima M}{D\bibinitperiod\bibinitdelim M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=d3b36e98efdbb9141d4821080b74de7b}{Netanyahu}{N\bibinitperiod}{Nathan\bibnamedelima S}{N\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=63937971a65222d15155d3b83cbb477c}{Silverman}{S\bibinitperiod}{Ruth}{R\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=805e0e9ae50229b226173d95df0b3d38}{Wu}{W\bibinitperiod}{Angela\bibnamedelima Y}{A\bibinitperiod\bibinitdelim Y\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{3569f9778fe3ad79d8facdf294d8d55b}
+      \strng{fullhash}{bd2bda0f493dfe603164fc16cda9d934}
+      \field{sortinit}{1}
+      \field{labeltitle}{An optimal algorithm for approximate nearest neighbor searching fixed dimensions}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Journal of the ACM (JACM)}
+      \field{number}{6}
+      \field{title}{An optimal algorithm for approximate nearest neighbor searching fixed dimensions}
+      \field{volume}{45}
+      \field{year}{1998}
+      \field{pages}{891\bibrangedash 923}
+    \endentry
+    \entry{knuth1998art}{book}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=1098a9bb6b2a52c309044c4af547287e}{Knuth}{K\bibinitperiod}{Donald\bibnamedelima Ervin}{D\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=1098a9bb6b2a52c309044c4af547287e}{Knuth}{K\bibinitperiod}{Donald\bibnamedelima Ervin}{D\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Adison-wesley}%
+      }
+      \strng{namehash}{1098a9bb6b2a52c309044c4af547287e}
+      \strng{fullhash}{1098a9bb6b2a52c309044c4af547287e}
+      \field{sortinit}{1}
+      \field{labeltitle}{The art of computer programming: Seminumerical algorithms}
+      \field{abstract}{**to do**}
+      \field{title}{The art of computer programming: Seminumerical algorithms}
+      \field{volume}{2}
+      \field{year}{1998}
+      \field{pages}{130\bibrangedash 131}
+    \endentry
+    \entry{tomasi1998bilateral}{inproceedings}{}
+      \name{labelname}{2}{}{%
+        {{uniquename=0,hash=5c51dbff8f01c3b5f905da5777a9f5c8}{Tomasi}{T\bibinitperiod}{Carlo}{C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=fc46ce8849185ec69297f514a363fa89}{Manduchi}{M\bibinitperiod}{Roberto}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{uniquename=0,hash=5c51dbff8f01c3b5f905da5777a9f5c8}{Tomasi}{T\bibinitperiod}{Carlo}{C\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=fc46ce8849185ec69297f514a363fa89}{Manduchi}{M\bibinitperiod}{Roberto}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{124c005540a77411ef4327cad376ba3c}
+      \strng{fullhash}{124c005540a77411ef4327cad376ba3c}
+      \field{sortinit}{1}
+      \field{labeltitle}{Bilateral filtering for gray and color images}
+      \field{abstract}{**to do**}
+      \field{booktitle}{Computer Vision, 1998. Sixth International Conference on}
+      \field{title}{Bilateral filtering for gray and color images}
+      \field{year}{1998}
+      \field{pages}{839\bibrangedash 846}
+    \endentry
+    \entry{drmac1997implementation}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=34e8b0e16b39728f881791055d27abc1}{Drmac}{D\bibinitperiod}{Zlatko}{Z\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=34e8b0e16b39728f881791055d27abc1}{Drmac}{D\bibinitperiod}{Zlatko}{Z\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{34e8b0e16b39728f881791055d27abc1}
+      \strng{fullhash}{34e8b0e16b39728f881791055d27abc1}
+      \field{sortinit}{1}
+      \field{labeltitle}{Implementation of Jacobi rotations for accurate singular value computation in floating point arithmetic}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{SIAM Journal on Scientific Computing}
+      \field{number}{4}
+      \field{title}{Implementation of Jacobi rotations for accurate singular value computation in floating point arithmetic}
+      \field{volume}{18}
+      \field{year}{1997}
+      \field{pages}{1200\bibrangedash 1222}
+    \endentry
+    \entry{gu1994cient}{report}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=1,hash=683bf34d5d454947945ece6ac650b33f}{Gu}{G\bibinitperiod}{Ming}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9330dce695f9075420438dd9af0b09db}{Demmely}{D\bibinitperiod}{James}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=a7a0620a628c3bedf939af40d620c28c}{Dhillonz}{D\bibinitperiod}{Inderjit}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=1,hash=683bf34d5d454947945ece6ac650b33f}{Gu}{G\bibinitperiod}{Ming}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=9330dce695f9075420438dd9af0b09db}{Demmely}{D\bibinitperiod}{James}{J\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=a7a0620a628c3bedf939af40d620c28c}{Dhillonz}{D\bibinitperiod}{Inderjit}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{1}{%
+        {Technical Report CS-94-257, Department of Computer Science, University of Tennessee, Knoxville, TN, USA}%
+      }
+      \strng{namehash}{62d873094bf018884da2f634ac58ec9a}
+      \strng{fullhash}{62d873094bf018884da2f634ac58ec9a}
+      \field{sortinit}{1}
+      \field{labeltitle}{Efficient Computation of the Singular Value Decomposition with Applications to Least Squares Problems}
+      \field{abstract}{**to do**}
+      \field{title}{Efficient Computation of the Singular Value Decomposition with Applications to Least Squares Problems}
+      \field{type}{techreport}
+      \field{year}{1994}
+    \endentry
+    \entry{lindenbaum1994gabor}{article}{}
+      \name{labelname}{3}{}{%
+        {{uniquename=0,hash=c91bc3fcf3bf8160c8f64a33bd22bc23}{Lindenbaum}{L\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=cc9f9797882a6d680ef38740a3d48975}{Fischer}{F\bibinitperiod}{M}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=66304a6517be9fc87d74800e07d91577}{Bruckstein}{B\bibinitperiod}{A}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{uniquename=0,hash=c91bc3fcf3bf8160c8f64a33bd22bc23}{Lindenbaum}{L\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=cc9f9797882a6d680ef38740a3d48975}{Fischer}{F\bibinitperiod}{M}{M\bibinitperiod}{}{}{}{}}%
+        {{uniquename=0,hash=66304a6517be9fc87d74800e07d91577}{Bruckstein}{B\bibinitperiod}{A}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{4cfaf0b98cd91ac14884316111ee8c2f}
+      \strng{fullhash}{4cfaf0b98cd91ac14884316111ee8c2f}
+      \field{sortinit}{1}
+      \field{labeltitle}{On Gabor's contribution to image enhancement}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Pattern Recognition}
+      \field{number}{1}
+      \field{title}{On Gabor's contribution to image enhancement}
+      \field{volume}{27}
+      \field{year}{1994}
+      \field{pages}{1\bibrangedash 8}
+    \endentry
+    \entry{muller1959note}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=fafa2c4a2f8875370ee5fa0723fed0f9}{Muller}{M\bibinitperiod}{Mervin\bibnamedelima E}{M\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=fafa2c4a2f8875370ee5fa0723fed0f9}{Muller}{M\bibinitperiod}{Mervin\bibnamedelima E}{M\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{fafa2c4a2f8875370ee5fa0723fed0f9}
+      \strng{fullhash}{fafa2c4a2f8875370ee5fa0723fed0f9}
+      \field{sortinit}{1}
+      \field{labeltitle}{A note on a method for generating points uniformly on n-dimensional spheres}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Communications of the ACM}
+      \field{number}{4}
+      \field{title}{A note on a method for generating points uniformly on n-dimensional spheres}
+      \field{volume}{2}
+      \field{year}{1959}
+      \field{pages}{19\bibrangedash 20}
+    \endentry
+    \entry{hestenes1958inversion}{article}{}
+      \name{labelname}{1}{}{%
+        {{uniquename=0,hash=891b4ca2224fb592185d0bda749605b5}{Hestenes}{H\bibinitperiod}{Magnus\bibnamedelima R}{M\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{uniquename=0,hash=891b4ca2224fb592185d0bda749605b5}{Hestenes}{H\bibinitperiod}{Magnus\bibnamedelima R}{M\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{891b4ca2224fb592185d0bda749605b5}
+      \strng{fullhash}{891b4ca2224fb592185d0bda749605b5}
+      \field{sortinit}{1}
+      \field{labeltitle}{Inversion of matrices by biorthogonalization and related results}
+      \field{abstract}{**to do**}
+      \field{journaltitle}{Journal of the Society for Industrial \& Applied Mathematics}
+      \field{number}{1}
+      \field{title}{Inversion of matrices by biorthogonalization and related results}
+      \field{volume}{6}
+      \field{year}{1958}
+      \field{pages}{51\bibrangedash 90}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
