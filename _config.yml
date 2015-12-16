@@ -35,11 +35,11 @@ disqus_shortname: myshortname
 #  secondary-dark: 233140 #A2122F
 
 color:
-  primary:    03a9f4
-  primary-rgb: "0,150,136" #"128,179,255"
-  secondary:  0288d1
-  secondary-dark: 03a9f4
-  tertiary:   ffa000
+  primary:    transparent
+  primary-rgb: transparent #"128,179,255"
+  secondary:   transparent
+  secondary-dark: transparent
+  tertiary:   transparent
   col-green:  34A853;
   col-dgreen: 128F76;
   col-yellow: FFBC00;
