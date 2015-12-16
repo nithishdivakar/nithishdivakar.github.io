@@ -37,7 +37,7 @@
     <body id="page-top" class="index">
        <!-- Navigation -->
 	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" > 
-		<div class="container">
+		<div class="container" >
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header page-scroll">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="z-index:3000;">
@@ -50,8 +50,8 @@
 				<ul class="nav navbar-nav">
 					<li class="page-scroll">
 						<a href="#page-top"
-						   style="background-color:transparent">
-							Nithish Divakar
+						   style="background-color:transparent;margin-left:10px;">
+							Nithish Divakar |
 						</a>
 					</li>
 				</ul>
@@ -67,6 +67,7 @@
 					<li class="page-scroll">
 						<a href="#little-things">little things </a>
 					</li>
+					<li role="separator" "class="divider"></li>
 					<li class="page-scroll">
 						<a href="#about">about</a>
 					</li>
@@ -81,185 +82,210 @@
 		<!-- /.container-fluid -->
 	</nav>
 
-		    	<!-- Header -->
-	<header>
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="row">
-					<a href="#" data-toggle="tooltip" title="This is one of very few good photos" data-placement="right">
-					<img class="img-responsive img-circle center-block dp" style="width:300px" src="/img/profile.png" alt="">
-					</a>
-					</div>
-					<div class="row">
-						<p class="name text-center" style="font-variant: small-caps;font-size: xx-large;">
-							Nithish Divakar
-						</p>
-						<p class="skills text-center text-warning" style="font-family:fantasy;">maker of little things</p>
-					</div>
+	<div class="row-fluid">
+		<div class="col-sm-4"> <header>
+<div class="well">
+	<br>
+	<a href="#" data-toggle="tooltip" title="This is one of very few good photos" data-placement="right">
+	<img class="img-responsive img-circle center-block dp" style="width:300px" src="/img/profile.png" alt="">
+	</a>
+	<br>
+	<p class="name text-center" style="font-variant: small-caps;font-size: x-large;">
+		Nithish Divakar
+	</p>
+	<p class="skills text-center text-warning" style="font-family:fantasy;">maker of little things</p>
+</div>
+</header>
+ </div>
+		<div class="col-sm-8"> <!-- Little Things Section -->
+<main id="little-things">
+		<p>
+		<h2 class="text-center scshape">The Little Things</h2>
+		</p>
+		
+		
+		
+		
+		<div class=" col-sm-4">
+		<a href="blog/">
+	<div class="well">
+			<p class="text-center">
+				<i class="material-icons md-light md-48">mode_edit</i>
+			</p>
+				<div class="caption">
+					<h3 class="text-center scshape">Blog</h3>
 				</div>
-			</div>
-		</div>
-	</header>
 
-    	<!-- Little Things Section -->
-	<section id="little-things">
-	<style>
-		.tile-div{
-			width: 96%;
-			margin: 2%;
-			background-color: #FFFFFF;
-			text-align: center;
-			padding-top: 20%;
-			padding-bottom: 20%;
-			border: 2px solid #transparent;
-			font-size:28px;
-		}
-		.tile-div:hover{
-			background: #transparent;
-		}
-		.tile-link{
-			width:100%;
-			height:100%;
-			display:block;
-			text-decoration:none;
-		}
-		.tile-link:hover{
-			color:#fff;
-			text-decoration:none;
-		}
-	</style>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2>The Little Things</h2>
-					<hr class="star-light">
-				</div>
-			</div>
-
-			<div class="row">
-				
-				
-				
-					
-				<div class=" col-sm-4">
-					
-					<a href="blog/" class="tile-link">
-						<div class="tile-div">
-							Blog
-						</div>
-					</a>
-				</div>
-				
-					
-				<div class=" col-sm-4">
-					
-					<a href="code/" class="tile-link">
-						<div class="tile-div">
-							Code
-						</div>
-					</a>
-				</div>
-				
-					
-				<div class=" col-sm-4">
-					
-					<a href="http://github.com/nithishdeva/" class="tile-link">
-						<div class="tile-div">
-							Repos
-						</div>
-					</a>
-				</div>
-				
-			</div>
 		</div>
-	</section>
-
-     <!-- About Section -->
-<section class="success" id="about">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<h2>About Me</h2>
-				<hr class="star-light">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-lg-offset-2">
-				<p>  </p>
-			</div>
-			<div class="col-lg-4">
-				<p>About me</p>
-			</div>
-			<div class="col-lg-8 col-lg-offset-2 text-center">
-				<a href="#" class="btn btn-lg btn-outline">
-					<i class="fa fa-download"></i> Download Bio
-				</a>
-			</div>
-		</div>
+		</a>
 	</div>
+		
+		<div class=" col-sm-4">
+		<a href="code/">
+	<div class="well">
+			<p class="text-center">
+				<i class="material-icons md-light md-48">code</i>
+			</p>
+				<div class="caption">
+					<h3 class="text-center scshape">Code</h3>
+				</div>
+
+		</div>
+		</a>
+	</div>
+		
+		<div class=" col-sm-4">
+		<a href="http://github.com/nithishdeva/">
+	<div class="well">
+			<p class="text-center">
+				<i class="material-icons md-light md-48">border_clear</i>
+			</p>
+				<div class="caption">
+					<h3 class="text-center scshape">Repos</h3>
+				</div>
+
+		</div>
+		</a>
+	</div>
+		
+<!--		</div>-->
+</main>
+</div>
+		<div class="col-sm-12 breaker"> </div>
+	</div>
+	<div class="row-fluid">
+		<div class="col-sm-4"> <!-- About Section -->
+<section  id="about">
+	<div class="well">
+		<p>
+			<strong class="scshape" style="font-size:larger">about</strong>
+		</p>
+		<!--
+		<div class="row-fluid">
+			<div class="col-sm-6">
+				<p class="text-justify">
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
+				</p>
+			</div>
+			<div class="col-sm-6">
+				<p class="text-justify">
+				fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+				</p>
+			</div>
+		</div>
+		-->
+		<p><i class="material-icons about-icon md-18">work</i>Works at <a href="www.val.serc.iisc.ernet.in">VAL Lab</a></p>
+		<p><i class="material-icons about-icon md-18">location_on</i><span>Lives in</span> <a href=""> Bangalore, India</a></p>
+		<p><i class="material-icons about-icon md-18">home</i>From <a href=""> Kerala, India</a></p>
+		<p><i class="material-icons about-icon md-18">phone_iphone</i>Contacts 
+			
+			<a href="https://facebook.com/nithish.divakar" class="btn-social">
+				<i class="fa fa-fw  fa-facebook"></i>
+			</a>
+
+			<a href="http://github.com/nithishdivakar" class="btn-social">
+				<i class="fa fa-fw  fa-github"></i>
+			</a>
+
+			<a href="https://in.linkedin.com/in/nithish-divakar-591bba73" class="btn-social">
+				<i class="fa fa-fw  fa-linkedin"></i>
+			</a>
+
+		</p>
+		<p class="text-left">
+			<a href="#" class="btn btn-primary">
+				<i class="fa fa-download"></i> Download Bio
+			</a>
+		</p>
+
 </section>
+ </div>
+		<div class="col-sm-6"><div class="well">
+<h4 class="scshape"> Updates</h4>
 
-    <section id="great-links">
-<div class="container">
-	<div class="row" style="margin-bottom:10px">
-		<div class="col-lg-12 text-center">
-			<h3 style="color:white"> Awesome Pages</h3>
-			<hr class="star-light" style="font-size:10px">
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+		<a style="color:#555" href="/2015/12/02/Keeping-track-of-papers-I-read/">Keeping Track Of Papers I Read</a>
+	</h4>
+	December  2, 2015
+	
+	
+  </div>
+</div>
+
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+		<a style="color:#555" href="/2015/11/28/Back-Propogation-Algorithm/">Back Propogation Algorithm</a>
+	</h4>
+	November 28, 2015
+	
+	
+  </div>
+</div>
+	
+</div>
+ </div>
+		<div class="col-sm-2 ">
+			<div class="alert alert-warning alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>Warning!</strong> Example of an alert.
+
+				</div>
 		</div>
+		<div class="col-sm-12 breaker"> </div>
 	</div>
+	<div class="row-fluid">
+		<div class="col-sm-12"> <section id="great-links">
+			<h3 class="scshape">Trivia</h3>
 
 	<div class="row" style="margin-bottom:10px">
-	<div class="col-sm-3">
-	<a href="http://devdocs.io/" class="btn btn-lg btn-outline nx-tlx" >
+	<div class="col-sm-3"><div class="alert alert-success">
+	<a href="http://devdocs.io/" class="btn btn-default" >
 		devdocs
 	</a>
 	</div>
+	</div>
 	<div class="col-sm-3">
-	<a href="/links" class="btn btn-lg btn-outline nx-tlx" >
+	<a href="/links" class="btn btn-default" >
 		Bla
 	</a>
 	</div>
 	<div class="col-sm-3">
-	<a href="/links" class="btn btn-lg btn-outline nx-tlx" >
-		Blu
+	<a href="/links" class="btn btn-default" >
+		Movies
 	</a>
 	</div>
 	<div class="col-sm-3">
-	<a href="/links" class="btn btn-lg btn-outline nx-tlx" >
-		others..
+	<a href="/links" class="btn btn-default" >
+		Awesone links
 	</a>
 	</div>
 
 	</div>
 </div>
 </section>
-
-
+</div>
+	</div>
+</div>
 
 		<!-- Footer -->
 	<footer class="text-center nx-footer">
 		<div class="footer-below">
 			<!--<div class="container"> -->
 				<div class="row">
-					<div class="col-lg-12">
-						Copyright &copy; Nithish Divakar 2015
-					</div>
-						<ul class="list-inline">
+					<p class="text-center">
+						Copyright &copy; <span class="scshape">Nithish Divakar</span> 2015
 							
-							<li>
 								<a href="https://facebook.com/nithish.divakar" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-							</li>
 							
-							<li>
 								<a href="http://github.com/nithishdivakar" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
-							</li>
 							
-							<li>
 								<a href="https://in.linkedin.com/in/nithish-divakar-591bba73" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-							</li>
 							
-						</ul>
+					</p>
 					
 				</div>
 			<!--</div> -->

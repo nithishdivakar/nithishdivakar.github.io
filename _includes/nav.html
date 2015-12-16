@@ -1,6 +1,6 @@
    <!-- Navigation -->
 	<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" > 
-		<div class="container">
+		<div class="container" >
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header page-scroll">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="z-index:3000;">
@@ -13,8 +13,8 @@
 				<ul class="nav navbar-nav">
 					<li class="page-scroll">
 						<a href="{% if page.url == '/' %}#page-top{% else %}/{% endif %}"
-						   style="background-color:transparent">
-							{{ site.title }}
+						   style="background-color:transparent;margin-left:10px;">
+							{{ site.title }} |
 						</a>
 					</li>
 				</ul>
@@ -30,6 +30,7 @@
 					<li class="page-scroll">
 						<a href="#little-things">little things </a>
 					</li>
+					<li role="separator" "class="divider"></li>
 					<li class="page-scroll">
 						<a href="#about">about</a>
 					</li>

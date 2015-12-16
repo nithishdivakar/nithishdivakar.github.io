@@ -1,24 +1,37 @@
  <!-- About Section -->
-<section class="success" id="about">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<h2>About Me</h2>
-				<hr class="star-light">
+<section  id="about">
+	<div class="well">
+		<p>
+			<strong class="scshape" style="font-size:larger">about</strong>
+		</p>
+		<!--
+		<div class="row-fluid">
+			<div class="col-sm-6">
+				<p class="text-justify">
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut 
+				</p>
+			</div>
+			<div class="col-sm-6">
+				<p class="text-justify">
+				fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
+				</p>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-lg-4 col-lg-offset-2">
-				<p>  </p>
-			</div>
-			<div class="col-lg-4">
-				<p>About me</p>
-			</div>
-			<div class="col-lg-8 col-lg-offset-2 text-center">
-				<a href="#" class="btn btn-lg btn-outline">
-					<i class="fa fa-download"></i> Download Bio
-				</a>
-			</div>
-		</div>
-	</div>
+		-->
+		<p><i class="material-icons about-icon md-18">work</i>Works at <a href="www.val.serc.iisc.ernet.in">VAL Lab</a></p>
+		<p><i class="material-icons about-icon md-18">location_on</i><span>Lives in</span> <a href=""> Bangalore, India</a></p>
+		<p><i class="material-icons about-icon md-18">home</i>From <a href=""> Kerala, India</a></p>
+		<p><i class="material-icons about-icon md-18">phone_iphone</i>Contacts 
+			{% for network in site.social %}
+			<a href="{{ network.url }}" class="btn-social">
+				<i class="fa fa-fw  fa-{{ network.title }}"></i>
+			</a>
+{% endfor %}
+		</p>
+		<p class="text-left">
+			<a href="#" class="btn btn-primary">
+				<i class="fa fa-download"></i> Download Bio
+			</a>
+		</p>
+
 </section>
