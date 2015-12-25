@@ -1,0 +1,20 @@
+$footer-height:25px;
+
+body{
+	background-image:url(img/bg.gif);
+	background-size: cover;
+	background-blend-mode:multiply;
+	background-repeat:no-repeat;
+	background-attachment: fixed;
+	background-position:50% 50%;
+
+	margin-top:$navbar-height;
+	margin-bottom:$footer-height;
+}
+footer{
+	position:absolute;
+	left:0;
+	bottom:0;
+	height:$footer-height;
+	width:100%;
+}

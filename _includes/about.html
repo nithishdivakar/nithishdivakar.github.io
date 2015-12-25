@@ -1,7 +1,7 @@
  <!-- About Section -->
 <section  id="about">
 	<div class="well">
-		<p>
+		<p class="text-left">
 			<strong class="scshape" style="font-size:larger">about</strong>
 		</p>
 		<!--
@@ -18,15 +18,29 @@
 			</div>
 		</div>
 		-->
-		<p><i class="material-icons about-icon md-18">work</i>Works at <a href="www.val.serc.iisc.ernet.in">VAL Lab</a></p>
-		<p><i class="material-icons about-icon md-18">location_on</i><span>Lives in</span> <a href=""> Bangalore, India</a></p>
-		<p><i class="material-icons about-icon md-18">home</i>From <a href=""> Kerala, India</a></p>
-		<p><i class="material-icons about-icon md-18">phone_iphone</i>Contacts 
+		<p class="text-left">
+			<i class="material-icons about-icon md-18">work</i>
+			Works at 
+			<a href="www.val.serc.iisc.ernet.in">VAL Lab</a>
+		</p>
+		<p class="text-left">
+			<i class="material-icons about-icon md-18">location_on</i>
+			<span>Lives in</span> 
+			<a href=""> Bangalore, India</a>
+		</p>
+		<p class="text-left">
+			<i class="material-icons about-icon md-18">home</i>
+			From 
+			<a href=""> Kerala, India</a>
+		</p>
+		<p class="text-left">
+			<i class="material-icons about-icon md-18">phone_iphone</i>
+			Contacts 
 			{% for network in site.social %}
 			<a href="{{ network.url }}" class="btn-social">
 				<i class="fa fa-fw  fa-{{ network.title }}"></i>
 			</a>
-{% endfor %}
+			{% endfor %}
 		</p>
 		<p class="text-left">
 			<a href="#" class="btn btn-primary">

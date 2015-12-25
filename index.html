@@ -2,23 +2,12 @@
 layout: baseframe
 ---
 <div class="container">
-	<div class="row-fluid">
-		<div class="col-sm-4"> {% include dp.html %} </div>
-		<div class="col-sm-8"> {% include little.html %}</div>
-		<div class="col-sm-12 breaker"> </div>
+	<div class="row-fluid hidden-xs" style="padding-top:40%">
+		
 	</div>
 	<div class="row-fluid">
-		<div class="col-sm-4">{% include about.html %} </div>
-		<div class="col-sm-6">{% include updates.html %} </div>
-		<div class="col-sm-2 ">
-			<div class="alert alert-warning alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				{% include alert.html %}
-				</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		{%include main.html%}
 		</div>
-		<div class="col-sm-12 breaker"> </div>
-	</div>
-	<div class="row-fluid">
-		<div class="col-sm-12"> {% include links.html %}</div>
 	</div>
 </div>

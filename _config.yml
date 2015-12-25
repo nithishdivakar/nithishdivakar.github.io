@@ -1,5 +1,5 @@
 # Site settings
-title: Nithish Divakar
+title: NithisH DivakaR
 email: nithish.divakar@gmail.com
 url: https://nithishdivakar.github.io
 description: "Website to shocase interesting projects and things I do."
@@ -34,19 +34,6 @@ disqus_shortname: myshortname
 #  secondary: 2c3e50 #FD6E8A
 #  secondary-dark: 233140 #A2122F
 
-color:
-  primary:    transparent
-  primary-rgb: transparent #"128,179,255"
-  secondary:   transparent
-  secondary-dark: transparent
-  tertiary:   transparent
-  col-green:  34A853;
-  col-dgreen: 128F76;
-  col-yellow: FFBC00;
-  col-blue:   0091ea;
-  col-grey:   E0E0E0;
-  col-pink:   ec4559;
-  col-white:  ffffff;
 
 # Footer settings
 footer:
@@ -69,14 +56,13 @@ social:
     url: http://github.com/nithishdivakar
   - title: linkedin
     url: https://in.linkedin.com/in/nithish-divakar-591bba73
-# Postal address (add as many lines as necessary)
-#address:
-#  - line: 3481 Melrose Place
-#  - line: Beverly Hills, CA 90210
 
-# Credits content
 credits: 'Blah blah blah'
 
 # Build settings
 markdown: kramdown
 permalink: pretty
+sass:
+   sass_dir: _sass
+   style: compressed
+
