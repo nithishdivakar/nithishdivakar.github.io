@@ -2,3 +2,4 @@ _site/*
 _site
 resources/pdf2htmlEx-format
 resources/pdf2htmlEx-format/*
+.sass-cache/*

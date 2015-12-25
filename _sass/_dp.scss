@@ -1,9 +1,9 @@
 $dp-size : 30px;
 
 span.dp{
-	display:block;
-	background-image:url(img/dp.png);
-	background-size:$dp-size $dp-size;
-	@include square($dp-size);
-	margin-right: 2px;
+  display:block;
+  background-image:url(/img/dp.png);
+  background-size:$dp-size $dp-size;
+  @include square($dp-size);
+  margin-right: 2px;
 }
