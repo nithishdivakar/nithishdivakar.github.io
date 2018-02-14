@@ -2,7 +2,7 @@
 
 title: Nithish Divakar
 locale: en_US
-description: Vision Engineer | Coffee Lover | Cat Person 
+description: Vision Engineer | Coffee Lover | Cat Parent
 logo: site-logo2.png
 search: true
 #url: http://localhost:4000
@@ -40,7 +40,7 @@ owner:
   avatar: bio-photo-0.png
   email: nithish.divakar@gmail.com
   disqus-shortname:
-  twitter: #username
+  twitter: nithishdivakar
   facebook: nithish.divakar
   github: nithishdivakar
   stackexchange: #http://stackoverflow.com/users/123456/username

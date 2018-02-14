@@ -1,6 +1,8 @@
-convert -font Junicode -gravity center -size 256 -trim -fuzz 0.1 +repage -quality 100 label:".nd" bla.png
+#convert -font Junicode -gravity center -size 256 -trim -fuzz 0.1 +repage -quality 100 label:"EP" bla.png
+convert -font Junicode -gravity center -size 256 +repage -quality 100 label:"EP" bla.png
 
-convert bla.png -resize 256x256 -transparent white favicon-256.png
+#convert bla.png -resize 256x256 -transparent white favicon-256.png
+convert bla.png -resize 256x256       favicon-256.png
 convert favicon-256.png -resize 16x16 favicon-16.png
 convert favicon-256.png -resize 32x32 favicon-32.png
 convert favicon-256.png -resize 64x64 favicon-64.png

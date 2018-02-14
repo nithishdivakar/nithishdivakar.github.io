@@ -2,6 +2,8 @@
 layout: post
 title: Poster accepted at NVIDIA GTC conference
 date: 2018-02-06 07:23 +0530
+share: true
+tags: [announcements]
 ---
 
 
