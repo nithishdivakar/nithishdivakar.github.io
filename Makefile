@@ -4,7 +4,7 @@ serve:
 build:
 	bundle exec jekyll build
 
-publish:
+post:
 	@echo 'new post      : bundle exec jekyll post "My New Post"'
 	@echo 'New draft     : bundle exec jekyll draft "My new draft"'
 	@echo 'Publish draft : bundle exec jekyll publish _drafts/my-new-draft.md'
