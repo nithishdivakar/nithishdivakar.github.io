@@ -3,6 +3,7 @@ layout: post
 title: Bayes Error
 date: 2018-02-11 20:57 +0530
 share: true
+comments: true
 tags: [machine learning, probability, bayes error]
 ---
 

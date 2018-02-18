@@ -2,6 +2,7 @@
 layout: post
 title: Linear Discriminant Analysis(LDA) Classifier
 date: 2018-02-18 06:35 +0530
+comments: true
 ---
 
 
