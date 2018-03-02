@@ -1,59 +1,132 @@
-# Site wide configuration
+# Site settings
+title:       Everything Project
+email:       xxxxx@example.com
+author:      Nithish Divakar
+description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+baseurl:     ""
+url:         "http://everythingproject.in"
+date_format: "%b %-d, %Y"
+header_pages:
+ - about.md
+ - contact.html
 
-title: Nithish Divakar
-locale: en_US
-description: Vision Engineer | Coffee Lover | Cat Parent
-logo: site-logo2.png
-search: true
-#url: http://localhost:4000
+# Google services
+google_verification:
+# Use either direct GA implementation or set up GTM account
+# - using both will skew your data (leave blank to not use at all)
+google_analytics:
+google_tag_manager:
+# Bing services
+bing_verification:
 
-# Jekyll configuration
+# Optional features
+animated:             false
+show_related_posts:   false
+show_post_footers:    false
+show_social_icons:    false
+ajaxify_contact_form: false
+enable_mathjax: false
+extended_fonts: false
+enable_anchorjs: false
+# Preview image for social media aka og:image and twitter:image
+post_preview_image: false
 
-permalink:   /:categories/:title/
-markdown:    kramdown
-highlighter: rouge
+# Facebook Page integration
+# (for instant articles and other stuff)
+fb_page: false
+fb_page_id:
+
+# Disqus post comments
+# (leave blank to disable Disqus)
+disqus_shortname: everythingproject
+
+# txtpen post comments
+# (leave blank to disable txtpen)
+txtpen_sitename:
+
+# Facebook Comments plugin
+# (leave blank to disable Facebook Comments, otherwise set it to true)
+facebook_comments:
+facebook_appid:
+facebook_comments_number: 10
+
+# Social icons
+github_username: nithishdivakar
+reddit_username:
+bitbucket_username:
+stackoverflow_id:
+twitter_username: nithishdivakar
+skype_username:
+steam_nickname:
+google_plus_id:
+linkedin_username: nithish-divakar-591bba73
+angellist_username:
+medium_id:
+bitcoin_url:
+paypal_url:
+flattr_button:
+telegram_username:
+vk_id:
+
+# Post sharing icons
+show_sharing_icons: true
+# Change to 'true' to enable individual icons
+share_facebook: true
+share_twitter: true
+share_googleplus: false
+share_linkedin: true
+share_digg: false
+share_tumblr: false
+share_reddit: false
+share_stumbleupon: false
+share_hackernews: false
+
+text:
+  pagination:
+    newer: 'Newer'
+    older: 'Older'
+  share_buttons:
+    text:         'Share this post!'
+    facebook:     'Share on Facebook'
+    twitter:      'Share on Twitter'
+    googleplus:   'Share on Google+'
+    linkedin:     'Share on LinkedIn'
+    digg:         'Share on Digg'
+    tumblr:       'Share on Tumblr'
+    reddit:       'Share on Reddit'
+    stumbleupon:  'Share on StumbleUpon'
+    hackernews:   'Share on Hacker News'
+  post:
+    updated:        'Updated'
+    minute_read:    'minute read'
+    related_posts:  'Related Posts'
+  index:
+    coming_soon: 'Coming soon...'
+  contact:
+    email:    'nithish.divakar@gmail.com'
+    content:  'What would you like to say?'
+    subject:  'New submission!'
+    submit:   'Say Hello'
+    ajax:
+      sending:  'sending..'
+      sent:     'Message sent!'
+      error:    'Error!'
+  thanks: 'Thanks for reaching. We will reply as soon as possible.'
+  og_locale: 'en_US'
+
+# Build settings
+markdown:     kramdown
+redcarpet:
+  extensions: ['smart', 'tables', 'with_toc_data']
+permalink:    pretty
+paginate:     10
 sass:
-  sass_dir: _sass
   style: compressed
-gems:
+plugins:
+  - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-gist
-  # - jekyll-feed
-
-kramdown:
-  input: GFM
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..2
-  enable_coderay: false
-
-mathjax: true
-
-include: [".htaccess"]
-exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", ".less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor", "theme-setup"]
-
-
-# Site owner
-owner:
-  name: Nithish Divakar
-  avatar: bio-photo-0.png
-  email: nithish.divakar@gmail.com
-  disqus-shortname: everythingproject
-  twitter: nithishdivakar
-  facebook: nithish.divakar
-  github: nithishdivakar
-  stackexchange: #http://stackoverflow.com/users/123456/username
-  linkedin: nithish-divakar-591bba73
-  instagram: #username
-  flickr: #username
-  tumblr: #username
-  pinterest: #username
-  weibo: #userid
-  google:
-    plus: nithish.divakar
-    analytics:
-    verify:
-    ad-client:
-    ad-slot:
-  bing-verify:
+# https://github.com/jekyll/jekyll/issues/2938
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor

@@ -1,12 +1,25 @@
 ---
-layout: page
-title: Latest Posts
-excerpt: "Welcome to everything project"
-search_omit: true
+layout: default
 ---
+{% assign posts_count = paginator.posts | size %}
 
-<ul class="post-list">
-{% for post in site.posts limit:10 %}
-  <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt | remove: '\[ ... \]' | remove: '\( ... \)' | markdownify | strip_html | strip_newlines | escape_once }}</span>{% endif %}</a></article></li>
-{% endfor %}
-</ul>
+<div class="home">
+  {% if posts_count > 0 %}
+    <div class="posts">
+      {% for post in paginator.posts %}
+        <div class="post py3">
+          <p class="post-meta">{{ post.date | date: site.date_format }}</p>
+          <a href="{{ post.url | prepend: site.baseurl }}" class="post-link"><h3 class="h1 post-title">{{ post.title }}</h3></a>
+<p class="post-summary">
+        <span class="post-meta"></span>
+{{ post.content | strip_html | truncatewords:30}} <a href="{{ post.url }}">more</a>
+        </p>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% include pagination.html %}
+  {% else %}
+    <h1 class='center'>{{ site.text.index.coming_soon }}</h1>
+  {% endif %}
+</div>
