@@ -36,22 +36,10 @@
       <link href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     {% endif %}
 
-      <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        extensions: ["tex2jax.js"],
-        jax: ["input/TeX", "output/HTML-CSS"],
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          displayMath: [ ['$$','$$'], ["\[","\]"], ["\\[","\\]"] ],
-          processEscapes: true
-        },
-        messageStyle: "none",
-        "HTML-CSS": { availableFonts: ["TeX"] }
-      });
-    </script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js">
-    </script>
-
+    <link rel="stylesheet" href="{{ "/katex/katex.min.css"| prepend: site.baseurl }}?{{ site.time | date: "%Y%m%d%H%M" }}" type='text/css'>
+    <script src="{{ "/katex/katex.min.js"| prepend: site.baseurl }}?{{ site.time | date: "%Y%m%d%H%M" }}" ></script>
+    <script src="{{ "/katex/contrib/auto-render.min.js"| prepend: site.baseurl }}?{{ site.time | date: "%Y%m%d%H%M" }}" ></script>
+    <script src="{{ "/js/jquery-3.3.1.min.js"| prepend: site.baseurl }}?{{ site.time | date: "%Y%m%d%H%M" }}" ></script>
     <!-- Verifications -->
     {% if site.google_verification %}
       <meta name="google-site-verification" content="{{ site.google_verification }}" />

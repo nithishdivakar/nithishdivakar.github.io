@@ -11,3 +11,30 @@
     anchors.options.visible = 'always';
     anchors.add('article h2, article h3, article h4, article h5, article h6');
 </script>{% endif %}
+
+<script>
+  renderMathInElement(
+      document.body,
+      {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\[", right: "\\]", display: true},
+              {left: "$", right: "$", display: false},
+              {left: "\\(", right: "\\)", display: false}
+          ]
+      }
+  );
+</script>
+<script>
+  $("script[type='math/tex']").replaceWith(function() {
+      var tex = $(this).text();
+      console.log(tex);
+      return katex.renderToString(tex, {displayMode: false});
+  });
+
+  $("script[type='math/tex; mode=display']").replaceWith(function() {
+      var tex = $(this).html();
+      console.log(tex);
+      return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
+  });
+</script>
