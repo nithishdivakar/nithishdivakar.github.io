@@ -8,7 +8,7 @@ tags: [machine learning, probability, bayes error]
 ---
 
 
-> What is the best classifier you can build when your data is not enought to predict the labels?
+What is the best classifier you can build when your data is not enought to predict the labels?
 
 
 ## The god function. 
