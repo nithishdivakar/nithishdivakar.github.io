@@ -7,3 +7,6 @@ _site
 codekit-config.json
 Gemfile.lock
 node_modules
+articles/**/*.pdf
+articles/**/*.png
+articles/**/*.sta
