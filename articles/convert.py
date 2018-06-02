@@ -42,7 +42,7 @@ def handle_image(m):
   print(directory ,file_path ,type_handle, cmd )
   os.system(cmd)
   print(cmd,out_file)
-  with open(out_file,'rb') as f:
+  with open(directory+out_file,'rb') as f:
     encoded = base64.b64encode(f.read())
     encoded = encoded.decode('utf8')
     ss = '''<img src="data:image/png;base64,{}">'''.format(encoded)
@@ -63,8 +63,9 @@ IGNORES = [
 ]
 
 RULES = [
- (r"\\section{(.+?)}",r"\n## \1\n"),
- (r"([ ,.])\$(.*?)\$([ ,.])", r"\1<span>\\\\(\2\\\\)</span>\3"),
+ (r"\\section{(.+?)}",r"\n# \1\n"),
+ (r"\\subsection{(.+?)}",r"\n## \1\n"),
+ (r"([ ,.])\$(.*?)\$([ ,.'])", r"\1<span>\\\\(\2\\\\)</span>\3"),
  (r"\\textbf{(.+?)}",r" **\1** "),
  (r"\\textit{ *(.+?) *}",r"_\1_"),
  (r"\\begin{verbatim}",r"\n```python"),

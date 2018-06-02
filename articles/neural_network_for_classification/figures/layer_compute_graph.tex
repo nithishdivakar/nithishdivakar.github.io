@@ -1,0 +1,77 @@
+%\documentclass{article}
+\documentclass[
+  convert={
+    density=300,
+    outext=.png
+  },border=5pt
+]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, minimum height=3em, minimum width=5em]
+\tikzstyle{vblock} = [draw, fill=blue!20, rectangle, minimum height=1em, minimum width=1em]
+
+\tikzstyle{param} = [draw, fill=white, rectangle, minimum height=2em, minimum width=1em]
+\tikzstyle{sum} = [draw, fill=red!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [draw=none,coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+    \node [draw=none, name=input](input) {$a_{i-1}$};
+    \node [sum, 
+           name=mult,
+           right of=input, 
+           node distance = 1.5cm
+          ] {$*$};
+
+    \node [sum, 
+           name=plus,
+           right of=mult,
+           node distance = 1.5cm
+          ] {$+$};
+
+    \node [vblock, 
+           name=relu,
+           right of=plus,
+           node distance = 1.2cm
+          ] {$f_i$};
+
+
+    \node [param, 
+           name=weight,
+           below of=mult,
+           node distance = 1.2cm
+          ] {$W_i$};
+
+
+
+    \node [param, 
+           name=bias,
+           below of=plus,
+           node distance = 1.2cm
+          ] {$b_i$};
+
+
+    \node [draw=none, name=out, right of=relu,node distance=1.5cm](output) {$a_i$};
+
+    \draw [->] (input) -- (mult);
+    \draw [->] (weight) -- (mult);
+    \draw [->] (bias) -- (plus);
+    \draw [->] (mult) -- (plus);
+    \draw [->] (plus) -- (relu);
+    \draw [->] (relu) -- (output);
+
+  \draw[black,thick,dotted] ($(mult.north west)+(-0.5,0.6)$)  rectangle ($(relu.south east)+(0.3,-1.8)$);
+    
+  \node [draw=none, name=label, right of=bias,node distance=1.2cm](output) {{\large $\Lambda_i$}};
+
+\end{tikzpicture}
+\end{document}

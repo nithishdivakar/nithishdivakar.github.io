@@ -1,0 +1,280 @@
+\documentclass[10pt]{article}
+\usepackage[subpreambles=true]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+\usepackage{import}
+
+\title{Neural Network for classification}
+\author{Nithish Divakar}
+\date{v0.0.001}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+We have a dataset $\{(x,y)\}_0^m$ which represents each sample $x$ and the class it belongs to by $y$. The objective of classification problem is to develop a model, which when given $x$ can correctly predict $y$. 
+
+In the previous post, we modelled the posterior probability function $P(y|x)$ with a linear projection. 
+In this post, we will model this posterior probabilities, $P(y|x)$ with a 3 layer neural network. A standard feed forward neural network can be seen as a cascade of non-linear functions and hence is the obvious next step to modelling the posterior with linear functions. 
+
+A fully connected layer of neural network is a affine projection of the data $x \mapsto Wx+b$ followed by a pointwise non linear function $f$. 
+
+\begin{center}
+  \import{figures/}{layer_compute_graph} %%TYPE:image CMD:cd figures; pdflatex -shell-escape layer_compute_graph.tex OUT:layer_compute_graph.png
+\end{center}
+\begin{center}
+  A neural network layer.
+\end{center}
+
+
+The layers are cascaded together such that output of one becomes the input of another. The output of the final layer is passed through softmax function to make the final projection look like a probability distribution over classes. 
+
+\begin{center}
+  \import{figures/}{network_compute_graph} %%TYPE:image CMD:cd figures; pdflatex -shell-escape network_compute_graph.tex OUT:network_compute_graph.png
+\end{center}
+
+Finally the difference between the actual class and the predicted class is measured by cross entropy loss function
+
+$$ \begin{aligned}
+L(y,s) = \sum_i y_i\log s_i 
+\end{aligned} $$
+
+The pointwise non linear function used in first and second layer is a vector valued function called relu which is defined as
+
+$$ \begin{aligned}
+  \operatorname{relu}(z)_i = \begin{cases} z_i &z_i>0\\0&z_i\leq 0 \end{cases}
+\end{aligned} $$
+
+
+\section{Code for forward computation}
+The complete functional representation of the network in its forward computation is the follows. 
+$$ \begin{aligned}
+  z_1 &= W_1x+b_1 \\  a_1 &= \operatorname{relu}(z_1)\\
+  z_2 &= W_2a_1+b_2 \\  a_2 &= \operatorname{relu}(z_2)\\
+  z_3 &= W_3a_2+b_3 \\  s &= \operatorname{softmax}(z_3)\\
+\end{aligned} $$
+
+To implement this, we can start off by first implementing some convinience function which can do matrix-vector multiplications, vector-vector addition, computing non-linearities etc.
+
+\begin{verbatim}
+
+## forward ops
+def relu(z):
+  a = z.copy()
+  a[a<0]=0.0
+  return a
+
+def matmul(x,W):
+  return np.matmul(x,W.T)
+
+def bias_add(xW,b):
+  return xW+b
+
+def softmax(z):
+  M = np.max(z,axis=-1,keepdims=True)
+  e = np.exp(z-M) # normalisation trick so 
+                  # that largest of z is 0
+  sigma = e.sum(axis=-1,keepdims=True)
+  s = e/sigma
+  return s
+\end{verbatim}
+
+With the help of these convinience functions, now it is easy to implement the forward computation or the prediction step of the network. The following code(and the convinience functions above) have been written to handle a batch of data instead of a single sample in the equations. 
+
+\begin{verbatim}
+def forward_pass(x_b,y_b,PARAMS):
+  ACTS = {}
+
+  ACTS['a0'] = x_b
+  ACTS['z1'] = bias_add(
+                        matmul(ACTS['a0'],PARAMS['W1']), 
+                        PARAMS['b1']
+                      )
+  ACTS['a1'] = relu(ACTS['z1'])
+
+  ACTS['z2'] = bias_add(
+                        matmul(ACTS['a1'],PARAMS['W2']), 
+                        PARAMS['b2']
+                      )
+  ACTS['a2'] = relu(ACTS['z2'])
+  
+  ACTS['z3'] = bias_add(
+                        matmul(ACTS['a2'],PARAMS['W3']), 
+                        PARAMS['b3']
+                      )
+  ACTS['s']  = softmax(ACTS['z3'])
+  
+  ACTS['y']  = y_b
+  ACTS['L']  = log_loss(
+                        y_true=ACTS['y'], 
+                        y_pred=ACTS['s']
+                      )
+
+  return ACTS
+\end{verbatim}
+
+
+\section{Learning the parameters and Back propagation algorithm}
+
+%\href{https://compsci697l.github.io/docs/vecDerivs.pdf}{REF: Matrix vector derivatives}
+
+The loss function $L$ tells us how good or bad are the predictions for each data samples. To improve the networks predictions, or to make it learn, we have to adjust its parameters so that the loss is minimises. 
+
+If we get the derivatives of each of the parameters with respect to the loss, we can tune the parameters using gradient descent algorithm to minimise the loss. 
+$$ \begin{aligned}
+\theta_{new} = \theta - \alpha \frac{\partial L}{\partial \theta}
+\end{aligned} $$
+But the gradients are not that straight forward to compute. Many parameters output depends on other parameters output. To find derivatives in such situations, we use the chain rule of derivatives. For example, if there is a chain of dependency like $u\leftarrow w \leftarrow v$, then,
+
+$$ \begin{aligned}
+ \frac{\partial u}{\partial v} = \frac{\partial u}{\partial w}\frac{\partial w}{\partial v}
+\end{aligned} $$
+
+The chain rule can be generalised as
+
+$$ \begin{aligned}
+ \frac{\partial u}{\partial v} = \sum_{w\in parents(u)}\frac{\partial u}{\partial w}\frac{\partial w}{\partial v}
+\end{aligned} $$
+
+The dependency of parameters of the neural network is given by the networks architecture. For example, The last layers weight $W_3$'s dependency on loss $L$ and its derivative is. 
+
+$$ \begin{aligned}
+ L &\leftarrow s \leftarrow z_3 \leftarrow W_3
+ \\
+ \frac{\partial L}{\partial W_3} &= \frac{\partial L}{\partial s} \frac{\partial s}{\partial z_3} \frac{\partial z_3}{\partial W_3}
+\end{aligned} $$
+
+Using the same method, we can figure out all derivatives. 
+
+$$ \begin{aligned}
+ L & \dashleftarrow a_i \leftarrow W_i & 
+ \frac{\partial L}{\partial W_i} &= \frac{\partial L}{\partial a_i} \frac{\partial a_i}{\partial W_i}
+ \\
+ L & \dashleftarrow a_i \leftarrow b_i &
+ \frac{\partial L}{\partial b_i} &= \frac{\partial L}{\partial a_i} \frac{\partial a_i}{\partial b_i}
+\end{aligned} $$
+
+
+One particular thing to note here is the following dependencies.
+$$ \begin{aligned}
+ L \dashleftarrow a_{i+1} \leftarrow a_i  \dashleftarrow a_0
+\end{aligned} $$
+What this dependency implies is that computing $\frac{\partial L}{\partial a_i}$ will need computing $\left.\frac{\partial L}{\partial a_j}\right|_{j<i}$ first. It is as if, gradient of a layer depends on derivatives of all previous layers.  The gradients seems like propagating from last layer to the first layer. This form of computing gradients is \textbf{back-propagation algorithm}. 
+
+Some closed forms of various derivatives terms are given below
+
+
+$$ \begin{aligned}
+\frac{\partial L}{\partial W_i} &= \frac{\partial L}{\partial z_i} a_{i-1}^T
+\\ 
+\frac{\partial L}{\partial b_i} &= \frac{\partial L}{\partial z_i}
+\\ 
+\frac{\partial L}{\partial z_3} &= s-y 
+\\ 
+\left[\frac{\partial \operatorname{relu}(z)}{\partial z}\right]_{pq} &=  \begin{cases} 1 &\operatorname{relu}(z)_p > 0~and~p=q\\ 0 & otherwise \end{cases}
+\end{aligned} $$
+See appendix 1 for derivation of the first derivative and see \href{http://everythingproject.in/2018/05/10/softmax-classfier-from-scratch/}{this post} for derivation of the 3rd derivative.
+
+\section{Code for gradient computation}
+\begin{verbatim}
+
+
+def relu_derv(z):
+  t = z.copy()
+  t[t>0] = 1.0
+  t[t<=0]= 0.0
+  return t
+
+def backward_pass(ACTS,PARAMS):
+  
+  GRAD = {}
+  B = ACTS['a0'].shape[0]
+  
+  dz3_da2 = PARAMS['W3']
+  da2_dz2 = relu_derv(ACTS['z2'])
+  dz2_dW2 = ACTS['a1']
+  
+  dz2_da1 = PARAMS['W2']
+  da1_dz1 = relu_derv(ACTS['z1'])
+  dz1_dW1 = ACTS['a0']
+  
+   
+  dl_dz3  = (ACTS['s']-ACTS['y'])
+  dl_da2  = np.dot(dl_dz3,dz3_da2)
+  dl_dz2  = np.multiply(dl_da2,da2_dz2)
+  
+  dl_da1  = np.dot(dl_dz2,dz2_da1)
+  dl_dz1  = np.multiply(dl_da1,da1_dz1)
+  
+  
+  dl_dW3 = (1/B)*np.dot(dl_dz3.T,ACTS['a2'])
+  dl_db3 = (1/B)*dl_dz3.sum(axis=0)
+  
+  dl_dW2 = (1/B)*np.dot(dl_dz2.T,ACTS['a1'])
+  dl_db2 = (1/B)*dl_dz2.sum(axis=0)
+  
+  dl_dW1 = (1/B)*np.dot(dl_dz1.T,ACTS['a0'])
+  dl_db1 = (1/B)*dl_dz1.sum(axis=0)
+  
+
+  GRAD['dl_dW3'] = dl_dW3
+  GRAD['dl_db3'] = dl_db3
+  GRAD['dl_dW2'] = dl_dW2
+  GRAD['dl_db2'] = dl_db2
+  GRAD['dl_dW1'] = dl_dW1
+  GRAD['dl_db1'] = dl_db1
+  
+  return GRAD
+\end{verbatim}
+
+\section{Training using Gradient descent}
+\begin{verbatim}
+PARAMS = init_params()
+for idx in range(10000):
+  x_b,y_b     = next(get_batch)
+  ACTS = forward_pass(x_b, y_b, PARAMS)
+  GRAD        = backward_pass(ACTS, PARAMS)
+
+  ## gradient updates  
+  PARAMS['W3'] = PARAMS['W3'] - lr*GRAD['dl_dW3']
+  PARAMS['b3'] = PARAMS['b3'] - lr*GRAD['dl_db3']
+  PARAMS['W2'] = PARAMS['W2'] - lr*GRAD['dl_dW2']
+  PARAMS['b2'] = PARAMS['b2'] - lr*GRAD['dl_db2']
+  PARAMS['W1'] = PARAMS['W1'] - lr*GRAD['dl_dW1']
+  PARAMS['b1'] = PARAMS['b1'] - lr*GRAD['dl_db1']
+\end{verbatim}
+
+That is it. The following plot shows the decrease in loss when the network is trained on MNIST dataset. 
+
+\begin{center}
+  \import{figures/}{loss_plot} %%TYPE:image CMD:cd figures; latexmk -e '$pdflatex=q/pdflatex %O -shell-escape %S/' -pdf loss_plot.tex OUT:loss_plot.png
+\end{center}
+Test accuraccy was 92.37 
+
+\section{Complete Code}
+The complete code is \href{https://github.com/nithishdivakar/blog-post-codes/blob/master/tiny-neural-network/nnv0.0.001.py}{here}. Do give stars to the repo if you like what you see. 
+
+\subsection{Appendix 1}
+Consider the following system where $W$ is a matrix, $a$ and $z$ are vectors and $f$ is some function such that $l$ is a scalar.
+$$ \begin{aligned}
+z &= Wa
+\\
+l &= f(z)
+\end{aligned} $$
+
+The quantity $\frac{\partial l}{\partial W} = \frac{\partial l}{\partial z}  \frac{\partial z}{\partial W}$ where $\frac{\partial z}{\partial W}$ is a 3 dimensional tensor whose value is given by 
+
+$$ \begin{aligned}
+\frac{\partial z_j}{\partial W_{i,j}} = a_i
+\end{aligned} $$
+
+Every other coordinate of this tensor is $0$. 
+
+But, owing to special structure of this 3 dimensional tensor, the quantity 
+
+$$ \begin{aligned}
+\frac{\partial l}{\partial W} = \frac{\partial l}{\partial z}a^T
+\end{aligned} $$
+More details about computing tensor-tensor drivatives can be found \href{https://compsci697l.github.io/docs/vecDerivs.pdf}{here}.
+\end{document}

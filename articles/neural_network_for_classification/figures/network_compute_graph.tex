@@ -1,0 +1,51 @@
+%\documentclass{article}
+\documentclass[
+  convert={
+    density=300,
+    outext=.png
+  },border=5pt
+]{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, minimum height=3em, minimum width=5em]
+\tikzstyle{vblock} = [draw, fill=blue!20, rectangle, minimum height=1em, minimum width=1em]
+
+\tikzstyle{param} = [draw, fill=white, rectangle, minimum height=2em, minimum width=1em]
+\tikzstyle{sum} = [draw, fill=red!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [draw=none,coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+% The block diagram code is probably more verbose than necessary
+\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+    \node [input, name=input] {};
+    
+    \node [block, name=layer1, right of=input,pin={[pinstyle]left:$x$}](layer1) {$\Lambda_1$};
+    \node [block, name=layer2, right of=layer1,node distance=2.5cm] (layer2){$\Lambda_2$};
+    \node [block, name=layer3, right of=layer2,node distance=2.5cm] (layer3){$\Lambda_3$};
+
+    \node [vblock, name=softmax, right of=layer3,node distance=1.8cm,rotate=90] (softmax){softmax};
+    \node [sum, name=loss, right of=softmax,pin={[pinstyle]above:$y$},node distance=1.5cm] {$L$};
+
+    \node [draw=none, name=out, right of=loss, node distance=1cm](output) {$l$};
+
+
+    \draw [->] (layer1) -- node[name=u] {$a_1$} (layer2);
+    \draw [->] (layer2) -- node[name=u] {$a_2$} (layer3);
+    \draw [->] (layer3) -- node[name=u] {$a_3$} (softmax);
+    \draw [->] (softmax) -- node[name=u] {$s$} (loss);
+    \draw [->] (loss) -- (output);
+
+
+
+\end{tikzpicture}
+
+\end{document}
