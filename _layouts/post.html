@@ -7,23 +7,33 @@ layout: default
 {% assign minutes = 1 %}
 {% endif %}
 
-<div class="post-header mb2">
-  <h1>{{ page.title }}</h1>
-  <span class="post-meta">{{ page.date | date: site.date_format }}</span><br>
-  {% if page.update_date %}
-    <span class="post-meta">{{ site.text.post.updated }}: {{ page.update_date | date: site.date_format }}</span><br>
-  {% endif %}
-  <span class="post-meta small">
-  {% if page.minutes %}
-    {{ page.minutes }} {{ site.text.post.minute_read }}
-  {% else %}
-    {{ minutes }} {{ site.text.post.minute_read }}
-  {% endif %}
-  </span>
-</div>
+<div class="row mb-3"><div class="col-12">
+
+  <div class="px-3 pb-2 pt-5 mt-2">
+    <h2 class="text-center">{{ page.title }}</h2>
+
+    <p class="post-meta small text-right">
+      {{ page.date | date: site.date_format }}
+      {% if page.update_date %}
+        {{ site.text.post.updated }}: {{ page.update_date | date: site.date_format }}
+      {% endif %}
+  
+      {% if page.minutes %}
+        . {{ page.minutes }} {{ site.text.post.minute_read }}
+      {% else %}
+        . {{ minutes }} {{ site.text.post.minute_read }}
+      {% endif %}
+    </p>
+  </div>
+
+</div></div>
 
 <article class="post-content">
+  <div class="row">
+  <div class="col-12">
   {{ content }}
+  <div></div>
+
 </article>
 
 {% if site.show_sharing_icons %}
@@ -69,3 +79,8 @@ layout: default
     </div>
   {% endfor %}
 {% endif %}
+
+<link rel="stylesheet" href="{{ "/static/css/code-highlight/github.css"| prepend: site.baseurl }}?{{ site.time | date: "%Y%m%d%H%M" }}">
+<script src="{{ "/static/js/highlight.pack.js"| prepend: site.baseurl }}?{{ site.time | date: "%Y%m%d%H%M" }}" ></script>
+<script src="{{ "/static/js/markdown-bootstrap.js"| prepend: site.baseurl }}?{{ site.time | date: "%Y%m%d%H%M" }}" ></script>
+

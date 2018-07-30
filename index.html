@@ -3,23 +3,89 @@ layout: default
 ---
 {% assign posts_count = paginator.posts | size %}
 
-<div class="home">
-  {% if posts_count > 0 %}
-    <div class="posts">
-      {% for post in paginator.posts %}
-        <div class="post py3">
-          <p class="post-meta">{{ post.date | date: site.date_format }}</p>
-          <a href="{{ post.url | prepend: site.baseurl }}" class="post-link"><h3 class="h1 post-title">{{ post.title }}</h3></a>
-<p class="post-summary">
-        <span class="post-meta"></span>
-{{ post.content | strip_html | truncatewords:30}} <a href="{{ post.url }}">more</a>
-        </p>
-        </div>
-      {% endfor %}
-    </div>
 
-    {% include pagination.html %}
+
+<div class="row mb-3"><div class="col-12">
+
+  <div class="px-3 pb-2 pt-5 mt-2">
+    <h2 class="text-center">Welcome to Everything project!</h2>
+
+    <p class="post-meta small text-right">
+    
+    </p>
+  </div>
+</div></div>
+
+
+
+<div class="row">
+<div class="col-xs-12 col-sm-6">
+
+<p class="text-justify">
+Hello there. I am Nithish Divakar and this is my website. I am <span class="badge badge-pill badge-primary">AI Engineer</span>  by trade. I work mainly on  <span class="badge badge-pill badge-success">Deep Learning</span> alorithms for <span class="badge badge-pill badge-primary">Computer Vision</span> problems. 
+</p>
+
+
+
+<p class="text-justify">
+Please see the <a class="btn btn-outline-primary" href="/contact">contact page</a> for ways if you want to get in touch with me. 
+</p>
+
+<p class="text-justify">
+I also write about stuff. See below for latest posts or head over to <a class="btn btn-outline-primary" href="/blog">blog</a> page to see more. If you want to know more about my work, have a look at my very detailed <a href="{{ site.url }}/cv.pdf" class="btn btn-outline-primary">resume</a>.
+</p>
+
+</div>
+<div class="col-xs-12 col-sm-6">
+
+<figure class="figure">
+  <img src="/images/bio-photo-0.png" class="figure-img img-fluid rounded" alt="yo">
+  <figcaption class="figure-caption text-right">How I look on a very good day.</figcaption>
+</figure>
+
+</div>
+
+<br>
+
+</div>
+
+
+<div class="row">
+<div class="col-12">
+
+<h3 class="text-center mt-4">Latest Posts</h3>
+
+
+
+  {% if posts_count > 0 %}
+<ul class="list-unstyled">
+  {% for post in site.posts limit:3%}
+  <li class="media mb-4">
+    <!--<img class="align-self-start mr-3" width=64 src="/images/bio-photo-0.png" alt="">-->
+    <div class="media-body bg-light p-3">
+  
+      <a class="btn-light" href="{{ post.url | prepend: site.baseurl }}">
+        <h4 class="mt-1 mb-1 font-weight-bold"> {{ post.title }}</h4>
+        <p class="text-justify">
+          {% if post.bio %}
+             {{post.bio }}
+          {% else %}
+            {{ post.content | strip_html | truncatewords:30}}
+          {% endif %}
+        </p>
+      </a>
+    </div>
+  </li>
+  {% endfor %}
+
+</ul>
+
+     <a class="btn btn-outline-primary btn-block" href="/blog">Click for More</a>
+
   {% else %}
     <h1 class='center'>{{ site.text.index.coming_soon }}</h1>
   {% endif %}
+
+  </div>
 </div>
+

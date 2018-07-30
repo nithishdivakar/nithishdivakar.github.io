@@ -1,47 +1,33 @@
 ---
 layout: page
-title: Contact
+title: How to contact me?
+bio: contact
 permalink: /contact/
 tags: contact
 ---
 
-<div class="py2">
-  {% if site.ajaxify_contact_form %}
-    <form class="form-stacked">
-      <label>
-        Email
-        <input type="text" name="email" class="field-light" placeholder="{{ site.text.contact.email }}">
-      </label>
 
-      <label>
-        Content
-        <textarea type="text" name="content" class="field-light" rows="5" placeholder="{{ site.text.contact.content }}" style="resize: vertical"></textarea>
-      </label>
+<div class="row"><div class="col-12">
+<p>
+I'm on
+<a href="//twitter.com/nithishdivakar" class="btn btn-outline-primary">Twitter</a>, <a href="//www.facebook.com/nithish.divakar" class="btn btn-outline-primary">Facebook</a> and 
+<a href="//www.linkedin.com/in/ndnithishdivakar" class="btn btn-outline-primary">LinkedIn</a>
+</p>
 
-      <input type="text" name="_gotcha" style="display:none" />
+<p> 
+But I'd really prefer an email. I'm available at 
 
-      <button type='submit' class="button button-blue button-big mobile-block">{{ site.text.contact.submit }}</button>
-    </form>
-  {% else %}
-    <form action="https://formspree.io/{{ site.email }}" method="POST" class="form-stacked">
-      <label>
-        Email
-        <input type="text" name="email" class="field-light" placeholder="{{ site.text.contact.email }}">
-      </label>
-      <label>
-        Content
-        <textarea type="text" name="content" class="field-light" rows="5" placeholder="{{ site.text.contact.content }}" style="resize: vertical"></textarea>
-      </label>
-
-      <input type="hidden" name="_next" value="{{ site.baseurl }}/thanks/" />
-      <input type="hidden" name="_subject" value="{{ site.text.contact.subject }}" />
-      <input type="text" name="_gotcha" style="display:none" />
-
-      <input type="submit" class="button button-blue button-big mobile-block" value="{{ site.text.contact.submit }}">
-    </form>
-  {% endif %}
+<div>
+$$
+ \begin{aligned}
+\text{email id} &= x.y@gmail.com\\
+x &= nit\textcolor{red}{h}is\textcolor{red}{h}
+\\
+y &= divakar
+ \end{aligned}
+$$
 </div>
 
-{% if site.ajaxify_contact_form %}
-  {% include ajaxify_content_form.html %}
-{% endif %}
+</p>
+
+</div></div>
