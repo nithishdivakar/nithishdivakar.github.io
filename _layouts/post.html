@@ -7,8 +7,7 @@ layout: default
 {% assign minutes = 1 %}
 {% endif %}
 
-<div class="row mb-3"><div class="col-12">
-
+<div class="row mb-3 mx-auto" style="max-width:720px"><div class="col-12">
   <div class="px-3 pb-2 pt-5 mt-2">
     <h2 class="text-center">{{ page.title }}</h2>
 
@@ -28,13 +27,12 @@ layout: default
 
 </div></div>
 
-<article class="post-content">
-  <div class="row">
-  <div class="col-12">
-  {{ content }}
-  <div></div>
+<div class="row mx-auto" style="max-width:720px"> <div class="col-12">
+    <article class="post-content">
+      {{ content }}
+    </article>
+<div></div>
 
-</article>
 
 {% if site.show_sharing_icons %}
   {% include share_buttons.html %}

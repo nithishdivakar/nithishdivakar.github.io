@@ -11,7 +11,7 @@ $("article.post-content img").each(function(index){
 $("article.post-content h2").each(function(index){
   $(this).replaceWith(function() {
     return $("<h4>", {
-      "class": this.className + " mt-2",
+      "class": this.className + " mt-2 font-weight-bold",
       html: $(this).html()
     });
   });
