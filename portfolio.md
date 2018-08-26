@@ -8,10 +8,8 @@ tags: portfolio
 ## Downloadables
 Are you here for a long decscription of everything I have done so far in my career? 
 
-Then you might be interested in my <b><i><a class="btn btn-outline-primary" href="{{prepend: site.baseurl }}/cv.pdf">CV</a></i></b>.
+Then you might be interested in my <a class="btn btn-outline-primary" href="{{prepend: site.baseurl }}/cv.pdf">CV</a>.
 
 Caution: It's very long...!
 
-<a class="btn btn-outline-primary" href="{{prepend: site.baseurl }}/cv.pdf">cv.pdf</a>
-
-In case you are only looking for a page description of what I have done, then here is <b><i><a class="btn btn-outline-primary" href="{{prepend: site.baseurl }}/resume.pdf">Résumé</a></b></i>.
+In case you are only looking for a page description of what I have done, then here is <a class="btn btn-outline-primary" href="{{prepend: site.baseurl }}/resume.pdf">Résumé</a>.
