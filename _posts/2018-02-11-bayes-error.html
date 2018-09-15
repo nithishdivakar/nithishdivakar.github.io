@@ -1,0 +1,53 @@
+---
+layout: post
+title: Bayes Error
+date: 2018-02-11 20:57 +0530
+share: true
+comments: true
+tags: [machine learning, probability, bayes error]
+---
+
+<p class="font-weight-light p-2">
+What is the best classifier you can build when your data is not enough to predict the labels?
+</p></p><p>
+<h1 class="text-left">The God Function</h1>
+In an ideal world, everything has reason. Every question has a unambiguous answer. The data in sufficient to explain its behaviours, like the class it belongs to. <script type="math/tex; mode=display"> 
+\begin{aligned}
+  g(x) = y
+\end{aligned}
+</script> 
+<span style="display:None">g(x) = y</span></p><p>In the non ideal world, however, there is always something missing that stops us from knowing the entire truth. <script type="math/tex"> g </script> is beyond reach. In such cases we resort to probability. <script type="math/tex; mode=display"> 
+\begin{aligned}
+  n(x) = P(y=1|x)
+\end{aligned}
+</script> 
+<span style="display:None">n(x) = P(y=1|x)</span> It simply tells us how probable is the data belonging to a class(<script type="math/tex"> y=1 </script>) if my observations are <script type="math/tex"> x </script>.</p><p><i>If we build a classifier on this data, how good will it be?</i> This is the question Bayes error answers. </p><p>
+<h1 class="text-left">Bayes Error</h1>
+Lets say I've built a classifier <script type="math/tex"> h </script> to predict the class of data.  <script type="math/tex"> h(x)=\hat{y} </script> is the predicted class and <script type="math/tex"> y </script> is the true class. Even ambiguous data needs to come from somewhere, So we assume <script type="math/tex"> D </script> is the joint distribution of <script type="math/tex"> x </script> and <script type="math/tex"> y </script>. <script type="math/tex; mode=display"> 
+\begin{aligned}
+  er_D[h] = P_D[h(x) \neq y]
+\end{aligned}
+</script> 
+<span style="display:None">er_D[h] = P_D[h(x) \neq y]</span> Using an old trick to convert probability to expectation, <script type="math/tex"> P[A] = E[1(A)] </script>, we have <script type="math/tex; mode=display"> 
+\begin{aligned}
+  er_D[h] = E_{x,y}[1(h(x)\neq y)] = E_x E_{y|x}[1(h(x)\neq y)]
+\end{aligned}
+</script> 
+<span style="display:None">er_D[h] = E_{x,y}[1(h(x)\neq y)] = E_x E_{y|x}[1(h(x)\neq y)]</span> The inner expectation is easier to solve when expanded. <script type="math/tex; mode=display"> 
+\begin{aligned}
+  E_{y|x}[1(h(x)\neq y)] = 1(h(x)\neq +1) P(y=+1|x) + 1(h(x)\neq -1)P(y=-1|x)
+\end{aligned}
+</script> 
+<span style="display:None">E_{y|x}[1(h(x)\neq y)] = 1(h(x)\neq +1) P(y=+1|x) + 1(h(x)\neq -1)P(y=-1|x)</span> Which give the final error to be <script type="math/tex; mode=display"> 
+\begin{aligned}
+  er_D[h] = E_x[1(h(x)\neq +1) n(x) + 1(h(x)\neq -1)(1-n(x))]
+\end{aligned}
+</script> 
+<span style="display:None">er_D[h] = E_x[1(h(x)\neq +1) n(x) + 1(h(x)\neq -1)(1-n(x))]</span></p><p>The last equation means, if the classifier predicts <script type="math/tex"> +1 </script> for the data, it will contribute <script type="math/tex"> n(x) </script> to the error. On the other hand if it predicts <script type="math/tex"> -1 </script> for the data, the contribution will be <script type="math/tex"> 1-n(x) </script>.</p><p>The best classifier would predict <script type="math/tex"> +1 </script> when <script type="math/tex"> n(x) </script> is small and <script type="math/tex"> -1 </script> when <script type="math/tex"> n(x) </script> is large. The minimum achievable error is then <script type="math/tex; mode=display"> 
+\begin{aligned}
+  er_D = E_x [\min(n(x),1-n(x))]
+\end{aligned}
+</script> 
+<span style="display:None">er_D = E_x [\min(n(x),1-n(x))]</span> This error is called <b>Bayes Error</b>.</p><p>
+<h1 class="text-left">References</h1>
+<a href="http://drona.csa.iisc.ernet.in/ e0270/Jan-2015/">Shivani Agarwal's lectures</a>
