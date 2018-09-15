@@ -1,0 +1,136 @@
+---
+layout: post
+title: Linear Classifiers and how to build one
+date: 2018-03-15 16:05 +0530
+comments: true
+---
+
+<p class="font-weight-light p-2">
+</p><p>In this post, I'll show you how to easily build a linear classifier.
+</p></p><p>
+<h1 class="text-left">LDA classifier</h1>
+In the previous post, I have show derivation of Linear Discriminant analysis for binary classification. This technique can be easily extended to derive a <a href="https://en.wikipedia.org/wiki/Linear_discriminant_analysis">multi class LDA</a>.  <a href="/2018/02/11/bayes-error">Bayes error</a> tell us that in general case, the classifier that has least error is  <script type="math/tex; mode=display"> 
+\begin{aligned}
+  h(x) = \operatorname{arg max}_y n_y(x)
+\end{aligned}
+</script> 
+<span style="display:None">h(x) = \operatorname{arg max}_y n_y(x)</span> where <script type="math/tex">  n\_y(x) = P(y=k|x) </script> is the class-wise densities. In general, the data need not follow any distribution and hence, the class-wise densities need not have a closed form. To mitigate this, we first assume that the data does follow a parametric distribution.</p><p>We will assume that the class conditional densities <script type="math/tex">  p(x|y) </script> are Gaussian distributed. This means that each class of the data is centered around some point in the data space(class-wise mean), the density of the data belonging to this class decreases as we go further away from this mean point. We will further assume that all these class-wise distributions have same covariance. Although this assumption is restrictive, this helps in keeping our classifier simple. Deriving a variant of classifier which accommodates for different covariances is fairly straightforward from the following steps. Thus, we have  <script type="math/tex; mode=display"> 
+\begin{aligned}
+  p(x|y) & = f_y(x) \sim N(\mu_y, \Sigma) 
+\\
+\mu_y &= \frac{1}{m_y} \sum_{x\in class[y]}x
+\\
+\Sigma &= \frac{1}{m} \sum_{(x,y)} (x-\mu_y)(x-\mu_y)^T
+\end{aligned}
+</script> 
+<span style="display:None">p(x|y) & = f_y(x) \sim N(\mu_y, \Sigma) 
+\\
+\mu_y &= \frac{1}{m_y} \sum_{x\in class[y]}x
+\\
+\Sigma &= \frac{1}{m} \sum_{(x,y)} (x-\mu_y)(x-\mu_y)^T</span></p><p>With these analytic forms, it is easy to get a closed form for <script type="math/tex"> n_y </script> by a straight forward application of Bayes rule with <script type="math/tex"> p_y=p(y=k) </script> and we get  <script type="math/tex; mode=display"> 
+\begin{aligned}
+  n_y(x) = \frac{p_y f_y(x)}{\sum_yp_y f_y(x)}
+\end{aligned}
+</script> 
+<span style="display:None">n_y(x) = \frac{p_y f_y(x)}{\sum_yp_y f_y(x)}</span></p><p>From here, getting our classifier in only a matter of simplifying the equations. So we have  <script type="math/tex; mode=display"> 
+\begin{aligned}
+  h(x) &= \operatorname{arg max} p_yf_y(x)
+  \\
+  &= \operatorname{arg max} w_y^Tx + b_y
+\end{aligned}
+</script> 
+<span style="display:None">h(x) &= \operatorname{arg max} p_yf_y(x)
+  \\
+  &= \operatorname{arg max} w_y^Tx + b_y</span></p><p>Where <script type="math/tex"> w_y = \Sigma^{-1}\mu_y </script> and <script type="math/tex">  b_y = \log p_y - \frac{1}{2} \mu_y^{T}\Sigma^{-1}\mu_y </script>. See <b>Appendix 1</b> for full derivation.</p><p>
+<h1 class="text-left">How to build one</h1>
+To make the classifier, we first need to estimate the class-wise mean and common covariance from the training data. Computing class-wise mean  is can be done simply by. <pre>
+<code class="python">
+mu[y] = np.mean(X[Y==y],axis=0)
+</code>
+</pre> The common covariance can then be calculated as <pre>
+<code class="python">
+M = np.empty_like(X)
+for y in cls:
+  M[Y==y,:] = mu[y]
+S  = np.cov((X-M).T)/X.shape[0]
+</code>
+</pre> The classifier parameters can then be computed as <pre>
+<code class="python">
+for y in cls:
+  w[y] = S_inv.dot(mu[y])
+  b[y] = np.log(p[y]) - 0.5* mu[y].T.dot(S_inv).dot(mu[y]) 
+</code>
+</pre> Predicting class of a new data is simply <pre>
+<code class="python">
+for y in w:
+  W[:,y] = w[y]
+  B[y]   = b[y]
+pred = np.argmax(X.dot(W)+B,axis=1)
+</code>
+</pre></p><p>That is it! A complete classifier in 20 lines of <em>python+numpy</em> code. See <b>Appendix 2</b> for full code.</p><p>
+<h1 class="text-left">How good are they</h1>
+Here are the accuracies I got for different datasets on using our classifier. All Accuracies are computed for test sets of the corresponding datasets which are not used in computing the parameters.  <pre>
+<code class="python">
+* 83.90% for MNIST 
+* 76.51% for Fashion-MNIST 
+* 37.85% for cifar 10 
+* 16.67% for cifar 100
+</code>
+</pre></p><p>The classifier does well for MNIST and Fashion MNIST, But not so well for both the cifars. All these accuracies are in no way close to the state of the art, which is in high 90 for both MNISTs and cifar 10 and high 70 for cifar 100 (<a href="http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html">link</a>) . Regardless, these are good baselines considering how cheap the computation and effort is required to build them.</p><p>
+<h1 class="text-left">Appendix 1</h1>
+<script type="math/tex; mode=display"> 
+\begin{aligned}
+  h(x) &= \operatorname{arg max} \left( p_yf_y(x) \right)
+  \\
+  &= \operatorname{arg max} \left( \log p_y + \log f_y(x)  \right)
+  \\
+  &= \operatorname{arg max} \left( \log p_y -\frac{1}{2} \log |\Sigma| + \frac{x^T\Sigma^{-1}x}{2} - \frac{\mu_y^T\Sigma^{-1}\mu_y}{2} + \frac{2(\mu_y^T\Sigma^{-1})x}{2}  \right)
+  \\
+  &= \operatorname{arg max} \left( \log p_y - \frac{\mu_y^T\Sigma^{-1}\mu_y}{2} + (\mu_y^T\Sigma^{-1})x  \right)
+\end{aligned}
+</script> 
+<span style="display:None">h(x) &= \operatorname{arg max} \left( p_yf_y(x) \right)
+  \\
+  &= \operatorname{arg max} \left( \log p_y + \log f_y(x)  \right)
+  \\
+  &= \operatorname{arg max} \left( \log p_y -\frac{1}{2} \log |\Sigma| + \frac{x^T\Sigma^{-1}x}{2} - \frac{\mu_y^T\Sigma^{-1}\mu_y}{2} + \frac{2(\mu_y^T\Sigma^{-1})x}{2}  \right)
+  \\
+  &= \operatorname{arg max} \left( \log p_y - \frac{\mu_y^T\Sigma^{-1}\mu_y}{2} + (\mu_y^T\Sigma^{-1})x  \right)</span></p><p>
+<h1 class="text-left">Appendix 2</h1>
+<pre>
+<code class="python">
+def get_linear_classifier(X,Y,cls):
+  mu = {}
+  p  = {}
+  w  = {}
+  b  = {}
+  # class-wise mean and probabilities
+  for c in cls:
+    mu[c] = np.mean(X[Y==c],axis=0)
+    p[c] = (Y==c).sum()/X.shape[0]
+
+  # common covariance matrix and its inverse
+  M = np.empty_like(X)
+  for c in cls:
+    M[Y==c,:] = mu[c]
+
+  S  = np.cov((X-M).T)/X.shape[0] 
+  S_inv = linalg.pinv(S)
+  
+  # classifier parameters
+  for c in cls:
+    w[c] = S_inv.dot(mu[c])
+    b[c] = np.log(p[c]) - 0.5* mu[c].T.dot(S_inv).dot(mu[c]) 
+  return w,b
+
+def test_model(w,b,X,Y):
+  W = np.zeros((X.shape[1],len(w)))
+  B = np.zeros((len(b),))
+  for c in w:
+    W[:,c] = w[c]
+    B[c]   = b[c]
+  pred = np.argmax(X.dot(W)+B,axis=1) 
+  acc  = sum(pred==Y)/Y.shape[0]
+  return acc
+</code>
+</pre>

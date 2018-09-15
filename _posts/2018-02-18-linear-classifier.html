@@ -1,0 +1,73 @@
+---
+layout: post
+title: Linear Classifiers
+date: 2018-02-18 06:35 +0530
+comments: true
+---
+
+In the <a href="/2018/02/11/bayes-error">post on bayes error</a>, we discussed what is the best classifier if the features are not enough to tell the class. We also derived that in such situation, the best classifier is <script type="math/tex; mode=display"> 
+\begin{aligned}
+  h(x) = sign \left( n(x) - \frac{1}{2} \right)
+\end{aligned}
+</script> 
+<span style="display:None">h(x) = sign \left( n(x) - \frac{1}{2} \right)</span> This formulation cannot be used in general situations as there is no easy way to estimate <script type="math/tex">  n(x) = P(y=+1|x) </script> for any data distribution. But what if <script type="math/tex"> x </script> does follow a simple distribution?</p><p>Lets assume that the data is a gaussian for each class <script type="math/tex; mode=display"> 
+\begin{aligned}
+  P(x|y) = N(\mu_y,\Sigma_y) = f_y
+\end{aligned}
+</script> 
+<span style="display:None">P(x|y) = N(\mu_y,\Sigma_y) = f_y</span> The parametric form of <script type="math/tex">  P(x|y) </script> immediately give us a closed form for <script type="math/tex">  n(x) </script> by a simple application of bayes rule  <script type="math/tex; mode=display"> 
+\begin{aligned}
+  n(x) = \frac{pf_{+1}}{p f_{+1}+(1-p)f_{-1}}
+\end{aligned}
+</script> 
+<span style="display:None">n(x) = \frac{pf_{+1}}{p f_{+1}+(1-p)f_{-1}}</span>  which in turn gives us a simple classifier  <script type="math/tex; mode=display"> 
+\begin{aligned}
+  n(x) - \frac{1}{2} = \frac{pf_{+1}}{pf_{+1}+(1-p)f_{-1}} - \frac{1}{2}
+\end{aligned}
+</script> 
+<span style="display:None">n(x) - \frac{1}{2} = \frac{pf_{+1}}{pf_{+1}+(1-p)f_{-1}} - \frac{1}{2}</span></p><p><script type="math/tex; mode=display"> 
+\begin{aligned}
+  = \frac{f_{+1}}{f_{-1}} - \frac{1-p}{p}
+\end{aligned}
+</script> 
+<span style="display:None">= \frac{f_{+1}}{f_{-1}} - \frac{1-p}{p}</span></p><p>To further simplify, we use a strictly increasing property of <script type="math/tex"> \log </script> function and write <script type="math/tex; mode=display"> 
+\begin{aligned}
+  h(x) = \operatorname{sign} \left( \log \frac{f_{+1}}{f_{-1}}- \log\frac{1-p}{p} \right)
+\end{aligned}
+</script> 
+<span style="display:None">h(x) = \operatorname{sign} \left( \log \frac{f_{+1}}{f_{-1}}- \log\frac{1-p}{p} \right)</span> This gives us simpler form of the classifier <script type="math/tex; mode=display"> 
+\begin{aligned}
+  h(x) = sign(x^TAx + b^Tx+c)
+\end{aligned}
+</script> 
+<span style="display:None">h(x) = sign(x^TAx + b^Tx+c)</span>  where <script type="math/tex">  A = \Sigma_{-1}^{-1}-\Sigma_{+1}^{-1} </script>.  </p><p>If we further assume that class covariances are the same( <script type="math/tex"> \Sigma_{-1}=\Sigma_{+1} </script>), then what we get a linear classifier.   <script type="math/tex; mode=display"> 
+\begin{aligned}
+  h(x) = \operatorname{sign}(b^Tx+c)
+\end{aligned}
+</script> 
+<span style="display:None">h(x) = \operatorname{sign}(b^Tx+c)</span></p><p>
+<h1 class="text-left">Appendix</h1>
+<script type="math/tex; mode=display"> 
+\begin{aligned}
+  \log \frac{f_{+1}}{f_{-1}} &= 
+\log 
+    \frac{|\Sigma_{-1}|}{|\Sigma_{+1}|} 
+    - 
+    \frac{1}{2}
+        \left[
+        (x-\mu_{+1})^T\Sigma_{+1}^{-1}(x-\mu_{+1}) 
+        - 
+        (x-\mu_{-1})^T\Sigma_{-1}^{-1}(x-\mu_{-1})  
+    \right]
+\end{aligned}
+</script> 
+<span style="display:None">\log \frac{f_{+1}}{f_{-1}} &= 
+\log 
+    \frac{|\Sigma_{-1}|}{|\Sigma_{+1}|} 
+    - 
+    \frac{1}{2}
+        \left[
+        (x-\mu_{+1})^T\Sigma_{+1}^{-1}(x-\mu_{+1}) 
+        - 
+        (x-\mu_{-1})^T\Sigma_{-1}^{-1}(x-\mu_{-1})  
+    \right]</span>
