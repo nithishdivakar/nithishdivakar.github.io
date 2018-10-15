@@ -1,0 +1,86 @@
+---
+layout: post
+title: Inter Cluster Bounds in BIRCH
+date: 2018-10-15 01:02 +05:30
+comments: true
+---
+
+BIRCH<script type="math/tex"> ^{[R2]} </script> is a very cleaver clustering algorithm which is very fast in practise. At the end of its clustering, it guaranties that the average cluster radius is bounded. This is an attempt to convert this bound to a more useful one.</p><p>
+<h1 class="text-left">Cluster Radius of BIRCH</h1>
+</p><p>BIRCH algorithm maintains a 3 tuple feature for each of its clusters called a Characteristic Feature. If a cluster contains <script type="math/tex"> n </script> points, </p><p><script type="math/tex; mode=display"> 
+\begin{aligned}
+  CF &= (n,LS,SS)
+\\
+LS &= \sum_{i=1}^n x_i
+\\
+SS &= \sum_{i=1}^n \langle x_i,x_i\rangle
+\end{aligned}
+</script> 
+<span style="display:None">CF &= (n,LS,SS)
+\\
+LS &= \sum_{i=1}^n x_i
+\\
+SS &= \sum_{i=1}^n \langle x_i,x_i\rangle</span> As the definition implies, LS stands for <em>Linear Sum</em> and SS is <em>Square Sum</em> of the cluster points. </p><p><script type="math/tex"> CF </script> is very useful to quickly measure how close or far a pair of clusters are. If we decide to combine <script type="math/tex"> 2 </script> clusters into one, the combined <script type="math/tex"> CF </script> can easily be computed from individual <script type="math/tex"> CF </script>'s. Many other useful measures are explained in [R2]. Only the ones relevant to the problem at hand will be enumerated here.</p><p>The centroid of the cluster is given as <script type="math/tex; mode=display"> 
+\begin{aligned}
+  x_0 = \frac{1}{n} \sum_{i=1}^n x_i
+\end{aligned}
+</script> 
+<span style="display:None">x_0 = \frac{1}{n} \sum_{i=1}^n x_i</span></p><p>Radius of a cluster is defined as <script type="math/tex; mode=display"> 
+\begin{aligned}
+  R_x = \left ( \frac{\sum_{i=1}^n \langle x_i-x_0, x_i-x_0 \rangle}{n}\right )^{\frac{1}{2}}
+\end{aligned}
+</script> 
+<span style="display:None">R_x = \left ( \frac{\sum_{i=1}^n \langle x_i-x_0, x_i-x_0 \rangle}{n}\right )^{\frac{1}{2}}</span> This is not equivalent to average distance between all points and the centroid. That would be <script type="math/tex; mode=display"> 
+\begin{aligned}
+  R_c = \frac{1}{n}\sum_{i=1}^n \langle x_i-x_0, x_i-x_0 \rangle^{\frac{1}{2}}
+\end{aligned}
+</script> 
+<span style="display:None">R_c = \frac{1}{n}\sum_{i=1}^n \langle x_i-x_0, x_i-x_0 \rangle^{\frac{1}{2}}</span> The relationship between <script type="math/tex"> R_x </script> and <script type="math/tex"> R_c </script> is the subject of this article.</p><p>
+<h1 class="text-left">Some limits on BIRCH cluster radius</h1>
+</p><p>Consider the cluster in question contains points  <script type="math/tex"> \{ x \}_{i=1}^n </script>. BIRCH algorithm guaranties that the average cluster radius <script type="math/tex"> R_x \leq \epsilon </script>. The algorithms takes <script type="math/tex"> \epsilon </script> as one if its parameters.</p><p>Lets abstract out the basic building blocks of <script type="math/tex"> R_x </script> and <script type="math/tex"> R_c </script> by defining  <script type="math/tex; mode=display"> 
+\begin{aligned}
+  z_i =  \langle x_i-x_0, x_i-x_0 \rangle^{\frac{1}{2}}
+\end{aligned}
+</script> 
+<span style="display:None">z_i =  \langle x_i-x_0, x_i-x_0 \rangle^{\frac{1}{2}}</span> Then <script type="math/tex"> nR_x^2 = \sum z_i^2  </script> and <script type="math/tex"> nR_c = \sum |z_i| </script>. This looks like  <script type="math/tex"> 1 </script> and <script type="math/tex"> 2 </script> norm on <script type="math/tex"> z </script>. So lets try to connect all of them through the following inequality on norms.</p><p><script type="math/tex; mode=display"> 
+\begin{aligned}
+  \textbf{[P1]}\qquad
+\|z\|_p \leq  \|z\|_r  \leq n^{\left(\frac{1}{r}-\frac{1}{p}\right)}\|z\|_p
+\end{aligned}
+</script> 
+<span style="display:None">\textbf{[P1]}\qquad
+\|z\|_p \leq  \|z\|_r  \leq n^{\left(\frac{1}{r}-\frac{1}{p}\right)}\|z\|_p</span> A simple consequence of this inequality is <script type="math/tex"> \|z\|_2 \leq  \|z\|_1  \leq \sqrt{n}\|z\|_2 </script>. With this the bounds possible on the distances are <script type="math/tex; mode=display"> 
+\begin{aligned}
+  \sqrt{nR_x^2} &\leq nR_c \leq \sqrt{n} \sqrt{nR_x^2}
+\\
+\textbf{[B1]}\qquad
+\frac{R_x}{\sqrt{n}} &\leq R_c \leq R_x
+\end{aligned}
+</script> 
+<span style="display:None">\sqrt{nR_x^2} &\leq nR_c \leq \sqrt{n} \sqrt{nR_x^2}
+\\
+\textbf{[B1]}\qquad
+\frac{R_x}{\sqrt{n}} &\leq R_c \leq R_x</span> <b>[P1]</b> also gives us <script type="math/tex"> \|z\|_{\infty} \leq  \|z\|_1  \leq n\|z\|_{\infty} </script> and <script type="math/tex"> \|z\|_{\infty} \leq  \|z\|_2  \leq \sqrt{n}\|z\|_{\infty} </script>. <script type="math/tex"> \max{z_i} </script> represents the distance of farthest point from the centroid. So what we have is <script type="math/tex; mode=display"> 
+\begin{aligned}
+  \textbf{[B2]}\qquad
+\frac{\max{z_i}}{n} &\leq R_c \leq  \max{z_i}
+\\
+\textbf{[B3]}\qquad
+\frac{\max{z_i}}{\sqrt{n}} &\leq R_x \leq  \max{z_i}
+\end{aligned}
+</script> 
+<span style="display:None">\textbf{[B2]}\qquad
+\frac{\max{z_i}}{n} &\leq R_c \leq  \max{z_i}
+\\
+\textbf{[B3]}\qquad
+\frac{\max{z_i}}{\sqrt{n}} &\leq R_x \leq  \max{z_i}</span></p><p>
+<h1 class="text-left">References</h1>
+
+  <p>
+  <b>P1</b>  This property can be proved from <em>Holder's Inequality</em> by assuming <script type="math/tex"> y=1 </script> 
+  </p>
+
+  <p>
+  <b>R2</b>  Zhang, T., Ramakrishnan, R. and Livny, M., 1997. BIRCH: A new data clustering algorithm and its applications. <i>Data Mining and Knowledge Discovery</i>, 1(2), pp.141-182. 
+  </p>
+</p><p>
