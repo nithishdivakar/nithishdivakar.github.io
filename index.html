@@ -1,31 +1,127 @@
 ---
-layout: default
+layout: ex-defaults
 ---
 {% assign posts_count = paginator.posts | size %}
 
 
 
-<div class="row mb-3"><div class="col-12">
-
-  <div class="px-3 pb-2 pt-5 mt-2">
-    <h2 class="text-center">Welcome to Everything project!</h2>
-
-    <p class="post-meta small text-right">
-    
-    </p>
+<div class="row mb-2 bg-white">
+  <div class="col-12 item-fw text-center py-7 mx-auto">
+      <p>Seems like you have landed in</p>
+      <h1 class="display-4 text-center">Everything Project</h1>
+      <hr class="my-4 mx-5">
+      My website. 
   </div>
-</div></div>
+
+  <div class="col-12 d-none d-sm-block">
+    <div class="item-fw text-center py-7 px-auto">
+    </div>
+  </div>
+</div>
 
 
 
-<div class="row">
-<div class="col-xs-12 col-sm-6">
+<div class="row  mb-2">
+  <div class="col-12 col-sm-6 p-0">
+    <div class="item-hw mx-auto mb-2 ml-sm-auto mr-sm-1">
+      <img src="/images/bio-photo-0.png" class="img-fluid" alt="dp">
+    </div>
+  </div>
+  <div class="col-12 col-sm-6  p-0">
+    <div class="item-hw mx-auto      mr-sm-auto ml-sm-1">
+      <img src="/images/wordcloud.jpg" class="img-fluid" alt="dp">
+    </div>
+  </div>
+</div>
 
-<p class="text-justify">
-Hello there. I am Nithish Divakar and this is my website. I am an <span class="badge badge-pill badge-warning">AI Research Engineer</span>  and <em>I make things that can see</em>.
+
+
+<div class="row mb-2 bg-white">
+  <div class="col-12 item-hw py-7 mx-auto text-center">
+    <h2>I write.</h2>
+    <p class="lead"> Some latest posts.</p>
+    <div class="item-hw mx-auto text-left">
+
+      {% if posts_count > 0 %}
+        {% for post in site.posts limit:5 %}
+         <i class="fa fa-file-text" aria-hidden="true"></i><a class="btn btn-link">{{ post.title }}</a>
+         <br>
+        {%endfor %}
+      {%endif %}
+
+    </div>
+    <a href="#" class="btn btn-lg btn-link font-weight-bold sans-serif ">more <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+
+
+
+<div class="row mb-3 mx-auto" style="max-width:960px">
+
+<div class="col-3 feed">
+
+  <div class="card feed-item">
+    <img src="/images/bio-photo-0.png" class="img-fluid" alt="dp">
+  </div>
+
+  <div class="card square-border p-2">
+  <ul class="fa-ul">
+    <li><i class="fa-li fa fa-check-square"></i>contact</li>
+    <li><i class="fa-li fa fa-check-square"></i>blog</li>
+    <li><i class="fa-li fa fa-spinner fa-spin"></i>resume</li>
+    <li><i class="fa-li fa fa-square"></i>cv</li>
+    <li><i class="fa-li fa fa-check-square"></i>book recommendations</li>
+    <li><i class="fa-li fa fa-check-square"></i>xxxx</li>
+    <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
+    <li><i class="fa-li fa fa-square"></i>in lists</li>
+    <li><i class="fa-li fa fa-check-square"></i>List icons</li>
+    <li><i class="fa-li fa fa-check-square"></i>can be used</li>
+    <li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>
+    <li><i class="fa-li fa fa-square"></i>in lists</li>
+  </ul>
+
+</div>
+</div>
+<div class="col-9 feed">
+
+
+<div class="jumbotron card shadow p-5 square-border gray-border" >
+  <h1 class="display-4">Hello!</h1>
+  <p class="lead">Welcome to everything project</p>
+  <hr class="my-4">
+  <p>You have landed in my home page!</p>
+</div>
+
+
+<div class="jumbotron card shadow p-5 square-border gray-border" >
+  <h3 class="monospace"><i class="fa fa-question fa-fw fa-lg fa-border" aria-hidden="true"></i> Who are you?</h3>
+
+  <hr class="my-4">
+  <p>
+  <em>I make things that can see.</em>
+  <br>
+    I am Nithish Divakar 
+  </p>
+  <p>
+    If you want to know more about my work, see my portfolio page.
+  </p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg float-right sans-serif" href="/portfolio" role="button">Portfolio 
+    <i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>
+    </a>
+  </p>
+
+
+</div>
+
+<div class="jumbotron card shadow p-5" >
+<p>
+<i class="fa fa-quote-left fa-3x fa-pull-left fa-border" aria-hidden="true"></i> ...tomorrow we will run faster, stretch out our arms farther...
+And then one fine morning&smash; So we beat on, boats against the
+current, borne back ceaselessly into the past.
 </p>
-
-<p class="text-justify">
+Hello there. I am Nithish Divakar and this is my website. I am an <span class="badge badge-pill badge-warning">AI Research Engineer</span>  and <em>I make things that can see</em>.
 I work at <a href="http://www.cogknit.com" class="badge badge-warning">Cogknit</a> during day making 
 <span class="badge badge-pill badge-warning">Deep</span> 
 <span class="badge badge-pill badge-warning">Learning</span> 
@@ -33,45 +129,26 @@ alorithms for
 <span class="badge badge-pill badge-warning">Computer</span>
 <span class="badge badge-pill badge-warning">Vision</span>
 problems.
-</p>
 
-<p class="text-justify">
 Rest of the time, you can find me learning. My philosophy when it come to learning about things is
 <strong>See one, do one, teach one.</strong> So I write about stuff. Head over to my
 <a class="btn btn-outline-primary" href="/blog">blog</a>
 page to see these.
-</p>
 
-<p class="text-justify">
 I'm always happy to hear from you. So Head over to my
 <a class="btn btn-outline-primary" href="/contact">contact</a>
 page to find ways on contacting me. 
-</p>
 
-<p class="text-justify">
 If case you are here to know more about me, have a look at my
 <a href="{{ site.url }}/resume.pdf" class="btn btn-outline-primary">resume</a>.
 Maybe also have a look at my 
 <a href="/portfolio" class="btn btn-outline-primary">Portfolio</a>
 page to know about my work.
-</p>
-</div>
-<div class="col-xs-12 col-sm-6">
-
-<figure class="figure">
-  <img src="/images/bio-photo-0.png" class="figure-img img-fluid rounded" alt="yo">
-  <figcaption class="figure-caption text-right">How I look on a very good day.</figcaption>
-</figure>
 
 </div>
 
 <br>
 
-</div>
-
-
-<div class="row">
-<div class="col-12">
 
 <h3 class="text-center mt-4">Latest Posts</h3>
 
@@ -80,8 +157,34 @@ page to know about my work.
   {% if posts_count > 0 %}
 <ul class="list-unstyled">
   {% for post in site.posts limit:3%}
-  <li class="media mb-4">
-    <!--<img class="align-self-start mr-3" width=64 src="/images/bio-photo-0.png" alt="">-->
+  <li class="mb-4">
+
+
+<div class="jumbotron card shadow p-5" >
+  <h3> <i class="fa fa-file-text" aria-hidden="true"></i> {{ post.title }}</h3>
+
+  <p class="lead">October 26th, 2018</p>
+  <hr class="my-4">
+  <p>
+          {% if post.bio %}
+             {{post.bio }}
+          {% else %}
+            {{ post.content | strip_html | truncatewords:30}}
+          {% endif %}
+</p>
+
+<p class="m-0">
+    <a class="btn btn-link-primary btn-lg float-right sans-serif" href="/portfolio" role="button"> read more..
+</a>
+</p>
+</div>
+
+
+
+
+
+<!--
+
     <div class="media-body bg-light p-3">
   
       <a class="btn-light" href="{{ post.url | prepend: site.baseurl }}">
@@ -95,6 +198,7 @@ page to know about my work.
         </p>
       </a>
     </div>
+-->
   </li>
   {% endfor %}
 

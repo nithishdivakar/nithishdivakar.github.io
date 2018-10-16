@@ -8,10 +8,48 @@
 
 
 // Your variable overrides
-$body-bg: #fff;
+$body-bg: hsl(0, 0%, 97%);/*#fff;*/
 $body-color: #000;
 
 
 $font-family-sans-serif: "Merriweather","PT Serif",Georgia,"Times New Roman",serif;
 
 @import "bootstrap";
+
+
+.p-6 {
+  padding: ($spacer * 4)!important;
+}
+
+.py-6 {
+  padding-top: ($spacer * 4)!important;
+  padding-bottom: ($spacer * 4)!important;
+}
+
+.p-7 {
+  padding: ($spacer * 5)!important;
+}
+
+.py-7 {
+  padding-top: ($spacer * 5)!important;
+  padding-bottom: ($spacer * 5)!important;
+}
+
+
+
+
+
+html { font-size: 0.5rem; }
+
+@media (min-width: 576px) {
+    html { font-size: 0.75rem; }
+}
+@media (min-width: 768px) {
+    html { font-size: 1.0rem; }
+}
+@media (min-width: 992px) {
+    html { font-size: 1.25rem; }
+}
+@media (min-width: 1200px) {
+    html { font-size: 1.25rem; }
+}
