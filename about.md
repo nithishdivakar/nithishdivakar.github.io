@@ -1,4 +1,5 @@
 # About
 
-This is where you put the contents of your *About* page. Like all your pages, it's in [Markdown](https://guides.github.com/features/mastering-markdown/) format.
+Outer Product Space is the research blog of Nithish Divakar. Find his [cv here](http://outerproduct.space/wp-content/uploads/2019/05/cv.pdf).
 
+![logo](images/logo.png)
