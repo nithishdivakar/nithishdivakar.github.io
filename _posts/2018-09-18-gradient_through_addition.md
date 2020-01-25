@@ -1,4 +1,6 @@
-# Gradient Through Addition
+---
+Title: Gradient Through Addition
+---
 
 Gradient of Addition
 ====================

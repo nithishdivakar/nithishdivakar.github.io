@@ -1,5 +1,6 @@
-# Derivative Through Concatenation
-
+---
+title: Gradient Through Concatenation
+---
 
 Concatenation of vector is a common operation in computational graph of modern day Deep Learning Networks. This post describes how to compute derivative of the output w.r.to the parameters of concatenation.
 
