@@ -1,11 +1,5 @@
----
-author:
-- Nithish Divakar
----
 # Linear Classifiers
 
-LDA Classifier
-==============
 
 In the [post on bayes error](/2018/02/11/bayes-error), we discussed what
 is the best classifier if the features are not enough to tell the class

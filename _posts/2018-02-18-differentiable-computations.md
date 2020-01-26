@@ -1,8 +1,5 @@
 # Differentiable Computations
 
-A generalised view of Computations
-==================================
-
 Auto gradient is a nice feature found in many computational frameworks.
 Specify the computation in forward direction and the framework computes
 backward gradients. Let's talk about the generic method to do this.

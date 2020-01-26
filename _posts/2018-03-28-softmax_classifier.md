@@ -1,8 +1,5 @@
 # Softmax Classifier
 
-Softmax Classifier
-==================
-
 Imagine we have a dataset $\{x,y\}_{i=0}^m$ where $x$ is a data point
 and $y$ indicates the class $x$ belongs to. For deriving LDA classifier,
 we had modelled the class conditional density $P(x|y)$ as a gaussian and
