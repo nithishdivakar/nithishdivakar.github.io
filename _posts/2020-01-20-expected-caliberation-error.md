@@ -1,13 +1,14 @@
----
-Title: Expected Calibration Error
----
+# Expected Calibration Error
+
+
 
 ECE quantifies how much you can trust the class confidences your model gives. It is the difference between the predicted confidence and reality. 
+
 ## How to compute the Caliberation Error?
 
-Computing caliberation error is simple. First run your model over a set of samples and collect all the predictions. We need to compute two things. The accuracy of the predictions and the average confidence of all the predictions. 
+Computing calibration error is simple. First run your model over a set of samples and collect all the predictions. We need to compute two things. The accuracy of the predictions and the average confidence of all the predictions. 
 
-The absolute difference between the two is caliberation error.
+The absolute difference between the two is calibration error.
 
 ```python
 def compute_accuracy(predictions, targets):
@@ -23,11 +24,11 @@ def compute_caliberation_error(class_confidences, gt_idxs):
 
 ## Expected Caliberation Error 
 
-A classifier is said to be well caliberated if it has a low ECE. I came across Expected Calibration Error from a recent, aptly titled paper “[*Your classifier is secretly an energy based model and you should treat it like one*](https://arxiv.org/abs/1912.03263)”. It defines ECE as
+A classifier is said to be well calibrated if it has a low ECE. I came across Expected Calibration Error from a recent, aptly titled paper “[*Your classifier is secretly an energy based model and you should treat it like one*](https://arxiv.org/abs/1912.03263)”. It defines ECE as
 
 $$ECE = \sum _{m=1}^{M} \frac{|B_m|}{n} |acc(B_m) - conf(B_m)|$$
 
-To compute ECE of a model, we simply bins the predictions first. Then, calculate average of all the caliberation errors. 
+To compute ECE of a model, we simply bins the predictions first. Then, calculate average of all the calibration errors. 
 
 ```python
 def expected_caliberation_error(class_confidences,gt_idxs, num_bins=20):
@@ -49,7 +50,7 @@ def expected_caliberation_error(class_confidences,gt_idxs, num_bins=20):
     return ece, data
 ```
 
-For testing, I finetuned a model with resnet18 stem and computed predictions over [ImageWoof](https://github.com/fastai/imagenette) dataset. 
+For testing, I fine-tuned a model with resnet18 stem and computed predictions over [ImageWoof](https://github.com/fastai/imagenette) dataset. 
 
 Before training, the model has very high ECE
 
