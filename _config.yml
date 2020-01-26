@@ -41,3 +41,5 @@ kramdown:
 # extra
 exclude:
   - _posts/*.ipynb
+  - _posts/*.py
+  - _posts/*.txt

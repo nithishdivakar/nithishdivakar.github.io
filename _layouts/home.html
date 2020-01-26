@@ -22,7 +22,7 @@ layout: default
           </a>
         </h3>
         {%- if site.show_excerpts -%}
-          {{ post.excerpt | strip_html | truncatewords:75 }}
+          {{ post.excerpt | strip_html | truncatewords:200 }}
         {%- endif -%}
       </li>
       {%- endfor -%}
