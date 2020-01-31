@@ -4,6 +4,7 @@
 In the [post on bayes error](/2018/02/11/bayes-error), we discussed what
 is the best classifier if the features are not enough to tell the class
 apart. We also derived that in such situation, the best classifier is
+
 $$\begin{aligned}
   h(x) = sign \left( n(x) - \frac{1}{2} \right) \end{aligned}$$
 
@@ -83,6 +84,7 @@ distributions have same covariance. Although this assumption is
 restrictive, this helps in keeping our classifier simple. Deriving a
 variant of classifier which accommodates for different covariances is
 fairly straightforward from the following steps. Thus, we have
+
 $$\begin{aligned}
 p(x|y) & = f_y(x) \sim N(\mu_y, \Sigma) 
 \\

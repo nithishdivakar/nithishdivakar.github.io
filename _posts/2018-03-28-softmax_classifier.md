@@ -140,6 +140,8 @@ $$\begin{aligned}
 $\sum_k y_k (\delta_{kp} - s_p)$ can be expanded as
 $\sum_k y_k \delta_{kp} - s_p\sum_k y_k$. Only $\delta_{pp}=1$ and
 $\sum y_k =1$. Thus the original term evaluates to $y_p - s_p$.
+
+
 $$\begin{aligned}
 \nabla_{w_p} E(w) &= \sum_x (s_p - y_p) x
 \\
@@ -211,9 +213,14 @@ used that now it has become the vanilla. SGD now refers to batched SGD.
 
 This is how you implement SGD.
 
-$idx \gets 1$ $W = initialise\_weights()$ $x_b,y_b$ = next(get\_batch)
-$s_b  = M(x_b;W)$\
-$g_b  = \nabla_W s_b$ $W  \gets W - \alpha g_b$ break
+
+$$\begin{aligned}
+idx &\gets 1 \\
+W &= initialise\_weights() \\
+x_b,y_b &= next(get\_batch)\\
+g_b  &= \nabla_W s_b \\
+W  &\gets W - \alpha g_b 
+\end{aligned}$$
 
 Implementing Softmax classifier and its gradients
 =================================================
@@ -230,13 +237,13 @@ numerical errors.
 ![image](figures/exponential-curve){width="0.7\\linewidth"}
 
 To get rid of the numerical errors we use the following trick.
+
 $$\begin{aligned}
 \operatorname{softmax}(z)_k &= \frac{e^{z_k}}{\sum_i e^{z_i}}
 \\
 &= \frac{e^{-M}e^{z_k}}{e^{-M}\sum_i e^{z_i}}
 \\
 &= \frac{e^{z_k-M}}{\sum_i e^{z_i-M}}\end{aligned}$$
-
 
 
 If we choose $M$ large enough such that all the terms in the powers are
@@ -322,7 +329,7 @@ we will train the model for longer duration(1000000 gradient updates)
 with these parameters. The following plot shows validation loss during
 training progress.
 
-![image](figures/validation-loss){width="1.0\\linewidth"}
+![image](figures/validation-loss)
 
 We get a final test accuracy of 38.05%.
 
