@@ -4,26 +4,45 @@ permalink: /bio
 title: About
 ---
 
-<div class="col-12 col-sm-4">
-<div class="card" style="width: 22rem;">
-  <img src="/images/dp.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h3 class="card-title text-bold">Nithish Divakar</h3>
-    <p class="card-text">
-        Researcher in Computer Vision
-    </p>
-  </div>
+<div class="col">
+	<div class="jumbotron">
+		<div class="row">
+			<div class="col-12 col-lg-6">
+				<img src="/images/dp.jpg" alt="..." class="img-thumbnail">
+			</div>
+			<div class="col-12 col-lg-6">
+				<span class="mb-2 text-muted small text-uppercase d-none d-lg-inline">Hello There. I am, </span>
+  				<p class="display-4 pt-2" style="font-variant:small-caps;">Nithish Divakar</p>
+ 				<p class="lead">Researcher in  Computer Vision</p>
+  				<hr class="my-4" style="background-color: #a90909;">
+  				<p class="text-left">
+  					<span class="badge badge-primary">Image Aesthetics</span>
+					<span class="badge badge-secondary">Aesthetic Enhancement</span>
+					<span class="badge badge-success">GANs</span>
+					<span class="badge badge-warning">Density Estimation</span>
+					<span class="badge badge-warning">Super Resolution</span>
+					<span class="badge badge-info">Denoising</span>
+					<span class="badge badge-primary">Auto Differenciation</span>
+					<span class="badge badge-success">Image Based Authentication</span>
+					<span class="badge badge-warning">Large Scale Object Detection</span>
+					<span class="badge badge-warning">High Performance Computing</span>
+					<span class="badge badge-success">Video Description</span>
+					<span class="badge badge-secondary">Scene Tagging</span>
+  				</p>
+				<p class="pt-2">
+  					Click <a href="/resume" target="_blank" role="button">HERE</a> for my detailed cv. 
+  				</p>
+
+  				<hr class="my-4" style="background-color: #a90909;">
+  				
+				<a href="https://www.linkedin.com/in/ndivakar/"  target="_blank" class="fa fa-linkedin-square fa-4x fa-colored "></a>
+				<a href="https://twitter.com/nithishdivakar"  target="_blank" class="fa fa-twitter-square fa-4x fa-colored "></a>
+				<a href="https://github.com/nithishdivakar"  target="_blank" class="fa fa-github-square fa-colored  fa-4x"></a>
+				<a href="https://www.facebook.com/nithish.divakar"  target="_blank" class="fa fa-facebook-square fa-4x fa-colored "></a>
+  			</div>
+  		</div>
+  	</div>
 </div>
 
-</div>
-<div class="col-12 col-sm-8">
- Twitter: https://twitter.com/nithishdivakar
-<br>
- Facebook: https://www.facebook.com/nithish.divakar
-<br>
- github: https://github.com/nithishdivakar
-<br>
- resume: <a href="/resume" class="btn btn-outline-primary">Resume</a>
-</div>
 
-
+ 

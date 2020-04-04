@@ -2,14 +2,20 @@
 layout: default
 ---
 
-<div class="home">
+<div class="col">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
   {{ content }}
 
-  {%- if site.posts.size > 0 -%}
+
+</div>
+</div>
+
+<div class="row">
+
+<!--   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list">
       {%- for post in site.posts -%}
@@ -28,7 +34,31 @@ layout: default
       {%- endfor -%}
     </ul>
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%}
+  {%- endif -%} -->
+
+
+
+{%- for post in site.posts -%}
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+<div class="media py-1">
+  <div class="media-body">
+    <h4 class="post-listing-header">
+      <a class="text-decoration-none" href="{{ post.url | relative_url }}">
+        {{ post.title | escape }}
+      </a><br>
+      <span class="font-weight-lighter text-muted text-monospace" style="font-size:50%">{{ post.date | date: date_format }}</span>
+    </h4>
+    
+    <p>
+    {{ post.excerpt | strip_html | truncatewords:25 }}
+    </p>  
+  </div>
+</div>
+</div>
+
+      {%- endfor -%}
 
 </div>
+
+<div class="row">

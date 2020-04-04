@@ -2,7 +2,7 @@
  * Site header
  */
 .site-header {
-  border-top: 5px solid $grey-color-dark;
+  border-top: 5px solid $brand-color-dark;
   border-bottom: 1px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
 
@@ -171,6 +171,30 @@
 }
 
 
+.fa-500px.fa-colored { color: #0099e5; }
+.fa-amazon.fa-colored { color: #ff9900; }
+.fa-android.fa-colored { color: #a4c639; }
+.fa-apple.fa-colored { color: #000; }
+.fa-bitbucket.fa-colored, .fa-bitbucket-square.fa-colored { color: #205081; }
+.fa-bitcoin.fa-colored { color: #f79326 ; }
+.fa-bluetooth.fa-colored, .fa-bluetooth-b.fa-colored { color: #0063A9; }
+.fa-facebook.fa-colored, .fa-facebook-f.fa-colored, .fa-facebook-official.fa-colored, .fa-facebook-square.fa-colored { color: #3b5998; }
+.fa-font-awesome.fa-colored { color: #21b384; }
+.fa-git.fa-colored, .fa-git-square.fa-colored { color: #000; }
+.fa-github.fa-colored, .fa-github-alt.fa-colored, .fa-github-square.fa-colored { color: #000; }
+.fa-google.fa-colored { color: #4285f4; }
+.fa-google-plus.fa-colored { color: #dc4e41; }
+.fa-google-plus-square.fa-colored { color: #dc4e41; }
+.fa-instagram.fa-colored { color: #3f729b; }
+.fa-linkedin.fa-colored .fa-linkedin-square.fa-colored { color: #0077b5; }
+.fa-paypal.fa-colored { color: #0070ba; }
+.fa-tumblr.fa-colored, .fa-tumblr-square.fa-colored { color: #35465c; }
+.fa-slack.fa-colored { color: #00bd8d; }
+.fa-twitter.fa-colored, .fa-twitter-square.fa-colored { color: #55acee; }
+.fa-wikipedia-w.fa-colored { color: #000; }
+.fa-wordpress.fa-colored { color: #21759b; }
+.fa-youtube.fa-colored, .fa-youtube-play.fa-colored, .fa-youtube-square.fa-colored { color: #cc181e; }
+.fa-envelope.fa-colored { color: #93a1a1; }
 
 /**
  * Page content
@@ -182,6 +206,8 @@
 
 .page-heading {
   @include relative-font-size(2);
+  border-left:0px;
+  padding-left:0px;
 }
 
 .post-list-heading {
@@ -207,6 +233,11 @@
   @include relative-font-size(1.5);
 }
 
+.post-listing-header{
+  border-left: 3px solid $brand-color;
+  padding-left:10px;
+  margin-top:0px;
+}
 
 
 /**

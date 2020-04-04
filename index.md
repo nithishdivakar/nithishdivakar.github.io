@@ -1,6 +1,7 @@
-Hello. This is Outer Product Space, a research blog. 
+---
+layout: home
+title: Posts
+---
 
-
-![logo](images/logo.png)
 
 

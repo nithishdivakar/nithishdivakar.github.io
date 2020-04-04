@@ -100,6 +100,11 @@ li {
  */
 h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
+
+
+
+  border-left: 3px solid $brand-color;
+  padding-left:10px;
 }
 
 
@@ -108,11 +113,11 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: $brand-color;
+  color: $brand-color-negative;
   text-decoration: none;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    color: darken($brand-color-negative, 4%);
   }
 
   &:hover {
