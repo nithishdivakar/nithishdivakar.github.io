@@ -13,7 +13,7 @@ title: About
 			<div class="col-12 col-lg-6">
 				<span class="mb-2 text-muted small text-uppercase d-none d-lg-inline">Hello There. I am, </span>
   				<p class="display-4 d-none d-md-block pt-2" style="font-variant:small-caps;">Nithish Divakar</p>
-  				<p class="h1 d-md-none pt-2" style="font-variant:small-caps;">Nithish Divakar.</p>
+  				<p class="h1 d-md-none pt-2" style="font-variant:small-caps;">Nithish Divakar</p>
 
  				<p class="lead">Researcher in  Computer Vision</p>
   				<hr class="my-4" style="background-color: #a90909;">
