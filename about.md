@@ -32,7 +32,7 @@ title: About
 					<span class="badge badge-secondary">Scene Tagging</span>
   				</p>
 				<p class="pt-2">
-  					Click <a href="/resume" target="_blank" role="button">HERE</a> for my detailed cv. 
+  					Click <a href="/cv.pdf" target="_blank" role="button">HERE</a> for my detailed cv. 
   				</p>
 
   				<hr class="my-4" style="background-color: #a90909;">
