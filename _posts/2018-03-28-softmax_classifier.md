@@ -1,14 +1,19 @@
-# Softmax Classifier
+---
+layout: post
+title: Softmax Classifier
 
-Imagine we have a dataset $\{x,y\}_{i=0}^m$ where $x$ is a data point
+---
+
+
+Imagine we have a dataset $[x,y]_{i=0}^m$ where $x$ is a data point
 and $y$ indicates the class $x$ belongs to. For deriving LDA classifier,
-we had modelled the class conditional density $P(x|y)$ as a gaussian and
+we had modeled the class conditional density $P(x|y)$ as a Gaussian and
 derived the posterior probabilities $P(y|x)$. Here, we will directly
 model the posterior with a linear function. Since the posterior directly
 models what class a data point belongs to, we don't have much to do
 after to get a classifier.
 
-But modelling $P(y|x)$ with only a linear projection $w^Tx$ has some
+But modeling $P(y|x)$ with only a linear projection $w^Tx$ has some
 problems. There is no easy way to restrict $w^Tx$ to always fall in
 $[0,1]$ nor assure that $\sum_k P(y=k|x) = 1$.
 
@@ -20,8 +25,7 @@ linear transformation.
 **Softmax** is a vector valued function defined over a sequence $(z_k)$
 as
 
-$$\begin{aligned}
-\operatorname{softmax}(z)_k = \frac{\operatorname{exp}[z_k]}{\sum_j\operatorname{exp}[z_j]}\end{aligned}$$
+$$\operatorname{softmax}(z)_k = \frac{\operatorname{exp}[z_k]}{\sum_j\operatorname{exp}[z_j]}$$
 
 
 
@@ -29,15 +33,13 @@ Softmax preserves the relative magnitude of its input i.e the larger
 input coordinate get the larger output value. Softmax also squashes the
 values to lie in range $[0,1]$ and makes their sum equal to $1$.
 
-$$\begin{aligned}
-\sum_k \frac{\operatorname{exp}[z_k]}{\sum_j\operatorname{exp}[z_j]} = \frac{\sum_k \operatorname{exp}[z_k]}{\sum_j\operatorname{exp}[z_j]}  = 1\end{aligned}$$
+$$\sum_k \frac{\operatorname{exp}[z_k]}{\sum_j\operatorname{exp}[z_j]} = \frac{\sum_k \operatorname{exp}[z_k]}{\sum_j\operatorname{exp}[z_j]}  = 1$$
 
 
 
 So our classifier is
 
-$$\begin{aligned}
-P(y|x) = \operatorname{softmax}(w^Tx)\end{aligned}$$
+$$P(y|x) = \operatorname{softmax}(w^Tx)$$
 
 
 
@@ -48,29 +50,32 @@ We will need the derivative of softmax function later on. So let's
 figure out what it is. We can begin by writing softmax in a concise
 form.
 
-$$\begin{aligned}
-s_k = \frac{e_k}{\Sigma}\end{aligned}$$
+$$s_k = \frac{e_k}{\Sigma}$$
 
- where
+where
 $e_k = \operatorname{exp}[z_k]$ and
 $\Sigma = \sum_j\operatorname{exp}[z_j]$. With
 $\frac{\partial e_k}{\partial z_k} = e_k$ and
 $\frac{\partial \Sigma}{\partial z_p} = e_p$, we can easily derive the
 derivative for softmax function as follows.
 
-$$\begin{aligned}
-\text{ when $p \neq k$}
-\\
-\frac{\partial s_k}{\partial x_p} &= e_k\left[ \frac{-1}{\Sigma^2} e_p\right] \\&= -s_ks_p
-\\
-\text{ when $p = k$}
-\\
-\frac{\partial s_k}{\partial x_p} &= 
-\frac{  e_k \Sigma-  e_p e_k}{\Sigma^2} \\&= s_k-s_ps_k
-\\
-\text{in general}
-\\
-\frac{\partial s_k}{\partial x_p} &= s_k(\delta_{kp} - s_p)\end{aligned}$$
+
+when $p \neq k$
+
+
+$$\frac{\partial s_k}{\partial x_p} = e_k\left[ \frac{-1}{\Sigma^2} e_p\right] = -s_ks_p$$
+
+
+when $p = k$
+
+
+$$\frac{\partial s_k}{\partial x_p}\frac{  e_k \Sigma-  e_p e_k}{\Sigma^2} = s_k-s_ps_k$$
+
+
+in general
+
+
+$$\frac{\partial s_k}{\partial x_p} = s_k(\delta_{kp} - s_p)$$
 
 
 $\delta_{kp}$ is dirac delta function which is $1$ only when $k=p$ and
@@ -86,33 +91,28 @@ using
 [likelihood](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation)
 of the model explaining the training data.
 
-$$\begin{aligned}
-L(w) &= \prod_x \prod_k P(k|x;w)^{y_k} 
-\\
-&= \prod_x \prod_k \operatorname{softmax}(w_k^Tx)^{y_k} \end{aligned}$$
+$$L(w) = \prod_x \prod_k P(k|x;w)^{y_k} = \prod_x \prod_k \operatorname{softmax}(w_k^Tx)^{y_k} $$
 
 
 
 Likelihood gives a measure of how much the model explains the data
 $\{x,y\}$ for a given parameter $w$. To get the optimum value for the
-parameter, all we have to do find the value of $w$ which maximises the
+parameter, all we have to do find the value of $w$ which maximizes the
 likelihood.
 
 The likelihood function is a bit difficult to work with on its own. But
 we take negative of the log of likelihood function[^1] so that all
 products gets converted to sum and all exponentials gets converted to
-products. $$\begin{aligned}
-E(w) &= -\log L(w) 
-\\
-&= -\sum_x \sum_k y_k \log s_k\end{aligned}$$
+products.
+
+ $$E(w) = -\log L(w) = -\sum_x \sum_k y_k \log s_k$$
 
 
 
-All we have to do to get the best parameter is to minimise the negative
-log likelihood (thereby maximising likelihood)
+All we have to do to get the best parameter is to minimize the negative
+log likelihood (thereby maximizing likelihood)
 
-$$\begin{aligned}
-w_{opt} = \operatorname{argmin}_w  E(w)\end{aligned}$$
+$$w_{opt} = \operatorname{argmin}_w  E(w)$$
 
 
 
@@ -125,25 +125,23 @@ w.r.to $w$ and equate it to 0. But finding derivative over then entire
 $w$ is difficult and non-intuitive. So let's break it down and find
 derivatives over each the columns $w_p$ separately.
 
-$$\begin{aligned}
-\nabla&_{w_p} E(w) 
-\\
-&= -\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial w_p}
-\\
-&=-\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial z_p} \frac{\partial z_p}{\partial w_p} 
-\\
-&=-\sum_x \sum_k y_k \frac{1}{s_k} s_k(\delta_{kp} - s_p) x
-\\
-&= -\sum_x \sum_k y_k (\delta_{kp} - s_p) x\end{aligned}$$
+$$\nabla&_{w_p} E(w) 
+
+= -\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial w_p}
+
+=-\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial z_p} \frac{\partial z_p}{\partial w_p} 
+
+=-\sum_x \sum_k y_k \frac{1}{s_k} s_k(\delta_{kp} - s_p) x
+
+= -\sum_x \sum_k y_k (\delta_{kp} - s_p) x$$
 
 
 $\sum_k y_k (\delta_{kp} - s_p)$ can be expanded as
 $\sum_k y_k \delta_{kp} - s_p\sum_k y_k$. Only $\delta_{pp}=1$ and
 $\sum y_k =1$. Thus the original term evaluates to $y_p - s_p$.
-$$\begin{aligned}
-\nabla_{w_p} E(w) &= \sum_x (s_p - y_p) x
-\\
-\nabla_{w} E(w) &= \sum_x (s - y) x\end{aligned}$$
+$$\nabla_{w_p} E(w) = \sum_x (s_p - y_p) x
+
+\nabla_{w} E(w) = \sum_x (s - y) x$$
 
 
 
@@ -160,16 +158,17 @@ Gradient Descent Algorithm
 ==========================
 
 Gradient descent is exactly that; gradient-descent. If you want to
-minimise a function, keep moving in negative direction of its gradient
+minimize a function, keep moving in negative direction of its gradient
 (thereby descending).
 
 [Gradient descent](https://en.wikipedia.org/wiki/Gradient_descent) is an
-optimisation algorithm for cases where there is no analytic or easy
+optimization algorithm for cases where there is no analytic or easy
 solution for the parameters, but gradients of the models can be computed
 at each point. The algorithm simply says, if $L$ is some loss function
 which measures how good the model is with parameter $\theta$, then we
-can update $\theta$ as to make the model better. $$\begin{aligned}
-\theta_{new} = \theta - \alpha \nabla_\theta L\end{aligned}$$
+can update $\theta$ as to make the model better. 
+
+$$\theta_{new} = \theta - \alpha \nabla_\theta L$$
 
 
 
@@ -182,8 +181,7 @@ In practise however, gradient descent performs well. We do have some
 tricks to pick the (seemingly) best step size and some other ways to
 ensure model improves. In our case, the update step is simply,
 
-$$\begin{aligned}
-w_{new} = w - \alpha \nabla_{w}E(w)\end{aligned}$$
+$$w_{new} = w - \alpha \nabla_{w}E(w)$$
 
 
 
@@ -211,9 +209,14 @@ used that now it has become the vanilla. SGD now refers to batched SGD.
 
 This is how you implement SGD.
 
-$idx \gets 1$ $W = initialise\_weights()$ $x_b,y_b$ = next(get\_batch)
-$s_b  = M(x_b;W)$\
-$g_b  = \nabla_W s_b$ $W  \gets W - \alpha g_b$ break
+```
+$$idx \gets 1$$
+$$W = initialise\_weights()$$
+$x_b,y_b = next(get\_batch)$$
+$$s_b  = M(x_b;W)$$
+$$g_b  = \nabla_W s_b$$ 
+$$W  \gets W - \alpha g_b$$ break
+```
 
 Implementing Softmax classifier and its gradients
 =================================================
@@ -227,15 +230,11 @@ denominator in the softmax step. Since exponentiation creates huge
 numbers if components of $z$ are greater than $1$, this creates some
 numerical errors.
 
-![image](figures/exponential-curve){width="0.7\\linewidth"}
+![image](figures/exponential-curve){width="0.7linewidth"}
 
 To get rid of the numerical errors we use the following trick.
-$$\begin{aligned}
-\operatorname{softmax}(z)_k &= \frac{e^{z_k}}{\sum_i e^{z_i}}
-\\
-&= \frac{e^{-M}e^{z_k}}{e^{-M}\sum_i e^{z_i}}
-\\
-&= \frac{e^{z_k-M}}{\sum_i e^{z_i-M}}\end{aligned}$$
+
+$$\operatorname{softmax}(z)_k = \frac{e^{z_k}}{\sum_i e^{z_i}}= \frac{e^{-M}e^{z_k}}{e^{-M}\sum_i e^{z_i}}= \frac{e^{z_k-M}}{\sum_i e^{z_i-M}}$$
 
 
 
@@ -244,9 +243,10 @@ negative or $0$, all the exponentiated terms will be small. So we set
 $M = \max z_i$.
 
 Following code sample shows how the model's prediction is implemented.
-The code has been vectorised so that it can predict for a batch of $x$
+The code has been vectorized so that it can predict for a batch of $x$
 at once.
 
+```
     def get_predictions(x,W):
       z = np.matmul(x,W.T)
       M = np.max(
@@ -264,12 +264,14 @@ at once.
               )
       s = e/sigma
       return s
+```
 
 Unlike forward pass, implementing gradient is very simple. It's only an
 outer product between two vectors $s-y$ and $x$. But, when we implement
 it for a batch of samples and it's predictions, the outer product can be
 implemented as a matrix multiplication. See the code sample below.
 
+```
     def get_batch_gradient(
         x_b, # input
         y_b, # target
@@ -280,6 +282,7 @@ implemented as a matrix multiplication. See the code sample below.
               x_b
             )
       return g_b/batch_size
+```
 
 Model Performance
 =================
@@ -300,6 +303,7 @@ updates) and see its performance on validation set for different choices
 of hyper parameters. The following table list model performances for
 different hyper parameter combinations.
 
+```
   -------------- ------ ------ ------ ------ -- -- -- --
                                                       
                  4      8      16     32              
@@ -316,13 +320,14 @@ different hyper parameter combinations.
   $10^{-4 }$     0.31   0.30   0.30   0.30            
   $10^{-5}$      0.19   0.19   0.19   0.17            
   -------------- ------ ------ ------ ------ -- -- -- --
+```
 
 Batch size $256$ and learning rate $0.01$ gave the best performance. So
 we will train the model for longer duration(1000000 gradient updates)
 with these parameters. The following plot shows validation loss during
 training progress.
 
-![image](figures/validation-loss){width="1.0\\linewidth"}
+![image](figures/validation-loss){width="1.0linewidth"}
 
 We get a final test accuracy of 38.05%.
 
@@ -332,14 +337,14 @@ Conclusion
 LDA model gave us 37.85% accuracy on Cifar 10 dataset. The softmax
 classifier is giving us 38% accuracy. It appears to be a close tie
 between both the models, but one important distinction is that LDA
-distinctly modelled the data as gaussian while we made no such
+distinctly modeled the data as gaussian while we made no such
 assumption while designing the softmax classifier.
 
 Our simple linear classifier appear useless when compared to bigger and
 complex models(CNNs) that achieves near perfect accuracy on cifar 10.
 But there is some values in learning these simple ones first. They do
-teach some very valuable lessons about data modelling. They are also
-very good to test implementing optimiser algorithms like SGD we have
+teach some very valuable lessons about data modeling. They are also
+very good to test implementing optimizer algorithms like SGD we have
 implemented for this post. Do test them out on some other problems.
 
 Code

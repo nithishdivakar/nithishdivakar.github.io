@@ -1,5 +1,8 @@
-# Expected Calibration Error
+---
+layout: post
+title: Expected Calibration Error
 
+---
 
 
 ECE quantifies how much you can trust the class confidences your model gives. It is the difference between the predicted confidence and reality. 

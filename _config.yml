@@ -6,7 +6,7 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: Outer Product Space
+title: UNdecided
 description: This is where the description of your site will go. You should change it by editing the _config.yml file. It can be as long as you like! Happy blogging... ❤
 github_username: nithishdivakar
 
@@ -18,16 +18,31 @@ twitter_username: nithishdivakar
 use_math: true 
 
 # Everything below here can be ignored, unless you want to change the theme entirely
-theme: minima
+
+# theme: minima
+
+sass:
+  compressed: true
+  # loading path from site root
+  # default to _sass
+  #sass_dir: _sass/bootstrap/bootstrap.scss
+
+  # style : nested (default), compact, compressed, expanded
+  #         :nested, :compact, :compressed, :expanded also works
+  # see http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+  # on a typical twitter bootstrap stats are :
+  # nested 138,7kB, compact 129,1kB, expanded 135,9 kB, compressed 122,4 kB
+  # style: compressed
+
 plugins:
   - jekyll-feed
 
 show_excerpts: true
 
-titles_from_headings:
-  enabled:     true
-  strip_title: true
-  collections: true
+# titles_from_headings:
+#   enabled:     true
+#   strip_title: true
+#   collections: true
 
 highlighter: rouge
 markdown: kramdown
