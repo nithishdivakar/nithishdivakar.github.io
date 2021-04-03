@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Expected Calibration Error
+image: 012-output_14_0.png
 
 ---
 
@@ -73,7 +74,7 @@ plot_figure(x,y,delta)
 ```
 
 
-![png](/images/2020-01-20-expected-caliberation-error_files/output_11_0.png)
+![png](/images/012-output_11_0.png)
 
 
 After training, ECE has considerably reduced. 
@@ -94,5 +95,5 @@ plot_figure(x,y,delta)
 ```
 
 
-![png](/images/2020-01-20-expected-caliberation-error_files/output_14_0.png)
+![png](/images/012-output_14_0.png)
 

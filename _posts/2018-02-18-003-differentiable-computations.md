@@ -1,4 +1,9 @@
-# Differentiable Computations
+---
+title: Differentiable Computations
+layout: post
+
+---
+
 
 Auto gradient is a nice feature found in many computational frameworks.
 Specify the computation in forward direction and the framework computes

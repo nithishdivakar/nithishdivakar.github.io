@@ -22,7 +22,7 @@ use_math: true
 # theme: minima
 
 sass:
-  compressed: true
+  style: compressed
   # loading path from site root
   # default to _sass
   #sass_dir: _sass/bootstrap/bootstrap.scss
@@ -44,17 +44,27 @@ show_excerpts: true
 #   strip_title: true
 #   collections: true
 
-highlighter: rouge
+# highlighter: rouge
+highlighter: none
+
 markdown: kramdown
 kramdown:
   math_engine: katex
   input: GFM
   auto_ids: true
   hard_wrap: false
-  syntax_highlighter: rouge
+#  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    disable: true
 
 # extra
 exclude:
   - _posts/*.ipynb
   - _posts/*.py
   - _posts/*.txt
+
+defaults:
+  - scope:
+      path: "images"
+    values:
+      image: true

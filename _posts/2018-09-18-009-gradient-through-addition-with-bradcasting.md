@@ -1,4 +1,8 @@
-# Gradient Through Addition with broadcasting
+---
+title: Gradient Through Addition with broadcasting
+layout: post
+
+---
 
 
 

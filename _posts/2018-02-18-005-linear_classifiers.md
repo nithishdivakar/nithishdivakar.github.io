@@ -1,4 +1,8 @@
-# Linear Classifiers
+---
+title: Linear Classifiers
+layout: post
+
+---
 
 
 In the [post on bayes error](/2018/02/11/bayes-error), we discussed what

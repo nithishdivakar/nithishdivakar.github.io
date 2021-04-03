@@ -2,40 +2,53 @@
 layout: default
 ---
 
+<!--
 <div class="container">
   {%- if page.title -%}
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
-<!--
   {{ content }}
 -->
 
   {%- if site.posts.size > 0 -%}
-    <h1 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h1>
+    <!-- <h1 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h1>-->
     <ul class="list-unstyled">
       {%- for post in site.posts -%}
       <li>
-      	<div class="postit p-3 my-3  border border-light">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <h2>
-          
-            {{ post.title | escape }}
-
-        </h3>
-        <span class="small font-monospace text-muted">{{ post.date | date: date_format }}</span>
-        <br>
-        <span>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt | strip_html | truncatewords:500 }}
-        {%- endif -%}
-	    </span>
-	    <a class="card-link" href="{{ post.url | relative_url }}" style="text-decoration: none;">read more...</a>
+      	<div class="postit p-3 pt-1 my-5  border border-light">
+       		{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+			<ul class="list-group list-group-flush list-group-horizontal pt-3 border-0">
+			  <li class="list-group-item p-0 border-0">
+			  	<div style="width: 50px;height:50px;padding:1px;" class="border border-1"> 
+			  	{%- if  post.image -%}
+		        	<div style="width: 46px;height:46px; background-size:contain;line-height:3rem;text-align:center;
+						 background-image:url(/images/{{ post.image }});"
+		        	     ></div>
+		        {%- else -%}
+		        	<div style="width: 46px;height:46px; background-size:contain;line-height:3rem;text-align:center;
+		        	     background-color:#fafafa;" 
+		        	     >
+		        		{% assign RR = post.title | split:" " %}
+		        		<span class="fs-1 text-muted"> {{RR[0]| slice:0|upcase}}{{RR[1]| slice:0|downcase}}</span>    		
+		        	</div>
+		        {%- endif -%}
+		   		 </div>
+			  </li>
+			  <li class="list-group-item border-0 p-0 pt-1 ps-3">
+			  	<h2 class="p-0 m-0"> {{ post.title | escape }}</h2>
+			  	<span class="font-monospace text-muted" style="font-size: 0.6em;">{{ post.date | date: date_format }}</span>
+			  </li>
+			</ul>
+	        <span>
+	        {%- if site.show_excerpts -%}
+	          {{ post.excerpt | strip_html | truncatewords:1000 }}
+	        {%- endif -%}
+		    </span>
+		    <a class="card-link" href="{{ post.url | relative_url }}" style="text-decoration: none;">read more...</a>
 	    </div>
       </li>
       {%- endfor -%}
     </ul>
-
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
   {%- endif -%}
 
 </div>

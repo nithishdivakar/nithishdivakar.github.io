@@ -125,15 +125,11 @@ w.r.to $w$ and equate it to 0. But finding derivative over then entire
 $w$ is difficult and non-intuitive. So let's break it down and find
 derivatives over each the columns $w_p$ separately.
 
-$$\nabla&_{w_p} E(w) 
-
-= -\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial w_p}
-
-=-\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial z_p} \frac{\partial z_p}{\partial w_p} 
-
-=-\sum_x \sum_k y_k \frac{1}{s_k} s_k(\delta_{kp} - s_p) x
-
-= -\sum_x \sum_k y_k (\delta_{kp} - s_p) x$$
+$$\nabla_{w_p} E(w) $$
+$$= -\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial w_p}$$
+$$= -\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial z_p} \frac{\partial z_p}{\partial w_p} $$
+$$= -\sum_x \sum_k y_k \frac{1}{s_k} s_k(\delta_{kp} - s_p) x$$
+$$= -\sum_x \sum_k y_k (\delta_{kp} - s_p) x$$
 
 
 $\sum_k y_k (\delta_{kp} - s_p)$ can be expanded as
