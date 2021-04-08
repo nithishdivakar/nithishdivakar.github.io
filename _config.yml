@@ -23,7 +23,7 @@ theme: minima
 
 sass:
   style: compressed
-  sass_dir: _sass
+  sass_dir: ./_sass
 
   # style : nested (default), compact, compressed, expanded
   #         :nested, :compact, :compressed, :expanded also works
