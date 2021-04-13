@@ -13,7 +13,7 @@ The problem is to have a system which can predict the rating a user would have g
 $$M_{ij}  \sim \langle u_i,m_j\rangle$$
 
 ## Bad Modelling
-If we simply model the learning problem as $ error = \|U^TM -R\|_2$, then we are making a few implicit assumptions. We have implicitly converted the sparse rating data $D = \{(u,m,r)\}$ into a dense matrix and while doing so, we have filled the unknown entires with zeros. This is equivalent to assuming that each unknown rating is 0. 
+If we simply model the learning problem as $ error = \lVert U^TM - R \rVert_2$, then we are making a few implicit assumptions. We have implicitly converted the sparse rating data $D = \{(u,m,r)\}$ into a dense matrix and while doing so, we have filled the unknown entires with zeros. This is equivalent to assuming that each unknown rating is 0. 
 
 ## Good Modelling
 
