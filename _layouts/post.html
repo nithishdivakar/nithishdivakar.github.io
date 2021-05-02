@@ -8,11 +8,11 @@ layout: default
   </h1>
 
   <div class="col" style="text-align:center">
-    <span class="small text-black-50">{{page.date|date_to_string}}</span>
+    <span class="small text-black-50 font-monospace" style="font-size: 0.6em;">{{page.date|date_to_string}}</span>
       {% if page.tags.size >0 %}
         {% for tag in page.tags %}
-          <span>•</span>
-          <a href="/tags#{{tag}}" class="px0 small text-black-50">{{tag}}</a>
+          <span class="text-black-50 font-monospace" style="font-size: 0.6em;">•</span>
+          <a href="/tags#{{tag}}" class="px0 text-black-50 font-monospace" style="font-size: 0.6em;">{{tag}}</a>
         {% endfor %}
       {% endif %}
   </div>

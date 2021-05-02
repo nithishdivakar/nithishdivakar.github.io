@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Softmax Classifier
+tags : [ml theory]
 
 ---
 

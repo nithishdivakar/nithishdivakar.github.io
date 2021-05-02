@@ -1,6 +1,6 @@
 ---
 title : With and max structure in Algorithms
-tags: [Algorithm]
+tags: [algorithms]
 
 ---
 

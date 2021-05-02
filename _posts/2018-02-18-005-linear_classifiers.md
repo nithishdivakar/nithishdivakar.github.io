@@ -1,6 +1,7 @@
 ---
 title: Linear Classifiers
 layout: post
+tags : [ml theory]
 
 ---
 

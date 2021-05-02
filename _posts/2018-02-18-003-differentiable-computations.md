@@ -1,6 +1,7 @@
 ---
 title: Differentiable Computations
 layout: post
+tags : [computational graph]
 
 ---
 
