@@ -3,31 +3,20 @@ layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 <div class="row my-5">  
-	<h1 class="text-center display-3">
-		{{ page.title | escape }}
-	</h1>
+  <h1 class="text-center display-3">
+    {{ page.title | escape}}
+  </h1>
 
-{% if page.tags.size >0 %}
-<div class="col" style="text-align:center">
-  {% for tag in page.tags %}
-    <a href="/tags#{{tag}}" class="badge rounded-pill bg-light text-dark px0">{{tag}}</a>
-  {% endfor %}
+  <div class="col" style="text-align:center">
+    <span class="small text-black-50">{{page.date|date_to_string}}</span>
+      {% if page.tags.size >0 %}
+        {% for tag in page.tags %}
+          <span>•</span>
+          <a href="/tags#{{tag}}" class="px0 small text-black-50">{{tag}}</a>
+        {% endfor %}
+      {% endif %}
+  </div>
 </div>
-{% endif %}
-</div>
-<!--
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
-      {%- endif -%}</p>
-  </header>
-  -->
   <div class="">
     {{ content }}
   </div>

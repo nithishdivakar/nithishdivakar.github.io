@@ -2,14 +2,6 @@
 layout: default
 ---
 
-<!--
-<div class="container">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
-  {{ content }}
--->
-
   {%- if site.posts.size > 0 -%}
     <!-- <h1 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h1>-->
     <ul class="list-unstyled">
@@ -50,5 +42,3 @@ layout: default
       {%- endfor -%}
     </ul>
   {%- endif -%}
-
-</div>

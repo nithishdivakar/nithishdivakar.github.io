@@ -1,8 +1,12 @@
-# About
+---
+layout : page
+title: About
+---
 
-Hi there. I am Nithish Divakar and this is Outer Product Space; my research blog. I'm a research scientist working in Computer Vision. 
+
+Hi there. I am NITHISH Divakar and this is my research blog. 
+
+I discuss problems and solutions. 
 
 
-[Resume](http://outerproduct.space/wp-content/uploads/2019/05/cv.pdf).
-
-![logo](images/logo.png)
+You can find contact me at  <a href="https://www.linkedin.com/in/ndivakar/">LinkedIn</a> or <a href="https://twitter.com/nithishdivakar">Twitter</a>
