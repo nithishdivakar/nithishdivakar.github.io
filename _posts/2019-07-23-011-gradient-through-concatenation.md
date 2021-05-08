@@ -1,7 +1,7 @@
 ---
 title: Gradient Through Concatenation
 layout: post
-tags : [computational graph]
+tags : [computational-graph]
 
 ---
 

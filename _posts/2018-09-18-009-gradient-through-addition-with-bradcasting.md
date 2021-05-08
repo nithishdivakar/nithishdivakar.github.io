@@ -1,7 +1,7 @@
 ---
 title: Gradient Through Addition with broadcasting
 layout: post
-tags : [computational graph]
+tags : [computational-graph]
 
 ---
 
