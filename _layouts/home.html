@@ -2,8 +2,65 @@
 layout: default
 ---
 
-  {%- if site.posts.size > 0 -%}
+{%- if site.posts.size > 0 -%}
     <!-- <h1 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h1>-->
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+
+       		{%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+{%- for post in site.posts -%}
+
+<div class="col">
+
+<div class="card" >
+
+
+	<div class="card-img-top"
+	{%- if  post.image -%} 
+		style="background-image: url(/images/{{ post.image }});
+	{%- else -%}
+		style="background-image: url(https://source.unsplash.com/random/300x200?sig={{post.image}});
+	{%- endif -%}
+	background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;    background-blend-mode: overlay;
+    color: white; min-height: 150px;">
+    </div>
+
+  <div class="card-body">
+    <h3 class="card-title">{{ post.title | escape }}</h3>
+    <h6 class="card-subtitle mb-2 text-muted">{{ post.date | date: date_format }}
+		{% for tag in post.tags %}
+					  • {{tag}}
+		{% endfor %}
+    </h6>
+    <p class="card-text">{{ post.excerpt | strip_html | truncatewords:1000 }}</p>
+  </div>
+  		    <a href="{{ post.url | relative_url }}">
+      			<span style="position:absolute; 
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;"></span>
+      		</a>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+{%- endfor -%}
+</div>
+
+
+
     <ul class="list-unstyled">
       {%- for post in site.posts -%}
       <li>
@@ -38,11 +95,11 @@ layout: default
 			    {% endif %}
 			  </li>
 			</ul>
-	        <span>
+	        <p>
 	        {%- if site.show_excerpts -%}
 	          {{ post.excerpt | strip_html | truncatewords:1000 }}
 	        {%- endif -%}
-		    </span>
+		    </p>
 		    <!--
 		    <a class="card-link" href="{{ post.url | relative_url }}" style="text-decoration: none;">read more...</a> -->
 		    <a href="{{ post.url | relative_url }}">
