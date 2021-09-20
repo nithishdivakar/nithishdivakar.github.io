@@ -7,20 +7,20 @@ tags: [algorithms]
 # Kadane's Algorithm
 ```python
 def maxSubArraySum(a,size):
-        ##Your code here
-        max_sum,max_start,max_end = a[0],0,0
-        max_sum_with,max_with_start,max_with_end = a[0],0,0
+    ##Your code here
+    max_sum,max_start,max_end = a[0],0,0
+    max_sum_with,max_with_start,max_with_end = a[0],0,0
 
-        for i,ele in enumerate(a[1:],1):
-            if max_sum_with<=0:
-                max_sum_with,max_with_start,max_with_end = ele,i,i
-            else:
-                max_sum_with,max_with_start,max_with_end = max_sum_with+ele,max_with_start,i
+    for i,ele in enumerate(a[1:],1):
+        if max_sum_with<=0:
+            max_sum_with,max_with_start,max_with_end = ele,i,i
+        else:
+            max_sum_with,max_with_start,max_with_end = max_sum_with+ele,max_with_start,i
 
-            if max_sum<max_sum_with:
-                max_sum,max_start,max_end = max_sum_with,max_with_start,max_with_end
+        if max_sum<max_sum_with:
+            max_sum,max_start,max_end = max_sum_with,max_with_start,max_with_end
 
-        return max_sum,max_start,max_end
+    return max_sum,max_start,max_end
 ```
 
 # Diameter of a Binary Tree

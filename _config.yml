@@ -60,7 +60,14 @@ exclude:
   - _posts/*.ipynb
   - _posts/*.py
   - _posts/*.txt
-
+  - _posts/*.tex
+  - _posts/*.pdf
+  - _posts/*.synctex.gz
+  - _posts/*.log
+  - _posts/*.aux
+  - _posts/*.fls
+  - _posts/*.fdb_latexmk
+  
 defaults:
   - scope:
       path: "images"
