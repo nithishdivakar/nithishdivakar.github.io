@@ -8,16 +8,17 @@ layout: default
 	<ul>
 	{%- for post in site.posts -%}
 		<li>
-		  <a href="{{ post.url | relative_url }}"><b>{{ post.title | escape }}</b></a><br>
+		  <a href="{{ post.url | relative_url }}"><big><b>{{ post.title | escape }}</b></big></a><br>
 		  <small>
-		  	<code>[{{ post.date | date: date_format }}]</code>
+		  	<code>[{{ post.date | date: date_format }}]
 			  {% for tag in post.tags %}
 				• <a href="tags#{{tag}}">{{tag}}</a>
-			  {% endfor %}
+			  {% endfor %}</code>
 		  </small>
 		   
 		  <p>{{ post.excerpt | strip_html | truncatewords:1000 }}</p>
 		</li>
+		<br>
 	{%- endfor -%}
 	</ul>
 {% endif %}

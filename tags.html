@@ -5,7 +5,7 @@ title: Tags
 
 {% for tag in site.tags %}
   <a id="{{tag[0]}}"></a>
-  <h2>#{{ tag[0] }}</h2>
+  <h2><code>#{{ tag[0] }}</code></h2>
   <ul>
     {% for post in tag[1] %}
       <li><a href="{{ post.url }}">{{ post.title }}</a></li>
