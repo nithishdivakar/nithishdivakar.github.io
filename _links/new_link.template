@@ -1,0 +1,8 @@
+cat << EOF
+---
+link: http://example.com
+name: Link Name
+author: Link Author
+tags: [link-tag1, link-tag2] 
+---
+EOF

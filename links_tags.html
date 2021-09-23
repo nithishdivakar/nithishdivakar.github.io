@@ -1,0 +1,38 @@
+---
+layout: page
+title: Articles
+---
+
+{% assign link-tags = "" | split: ',' %}
+{% for link in site.links %}
+  {% for tag in link.tags %}
+       {% assign link-tags = link-tags | push: tag %}
+  {% endfor %}
+{% endfor %}
+
+{% assign link-tags-unique = link-tags | uniq | sort %}
+
+
+
+{% for tag in link-tags-unique %}
+  <a id="{{tag}}"></a>
+  <h2><code>#{{ tag }}</code></h2>
+  <ul>
+    {% for link in site.links %}
+      {% if link.tags contains tag  %}
+        <li> <a href="{{link.link | absolute_url }}" target="_blank">
+{% if link.name %}
+  {{link.name}}
+{% else %}
+  {{link.title}}
+{% endif %}
+</a>
+{% if link.author %} 
+<i> by <a href="/links_authors/#{{link.author}}">{{link.author }}</a></i>
+{% endif %}
+
+        </a> </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}

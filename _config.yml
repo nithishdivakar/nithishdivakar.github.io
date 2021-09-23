@@ -67,6 +67,16 @@ exclude:
   - _posts/*.aux
   - _posts/*.fls
   - _posts/*.fdb_latexmk
+  - _posts/*.template
+  - _links/*.template
+
+
+collections:
+  links:
+    output: false
+    # sort_by: date
+
+# collections_dir: collections
   
 defaults:
   - scope:
