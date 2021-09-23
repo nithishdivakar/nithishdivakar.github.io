@@ -19,12 +19,12 @@ These are a list of articles/blog posts etc that I like in on particular order. 
     </a><br>
     {% if link.author %}
     <small><i><code>&rarr; {{link.link | absolute_url}}</code></i></small><br>
-    <i> by <a href="/links_authors/#{{link.author}}">{{link.author }}</a></i>
+    <i> by <a href="/links_authors#{{link.author}}">{{link.author }}</a></i>
     {% endif %}
     {% if link.tags.size > 0 %}
       <code>
       {% for tag in link.tags %}
-         • <a href="/links_tags/#{{tag}}">{{tag}}</a>
+         • <a href="/links_tags#{{tag}}">{{tag}}</a>
       {% endfor %}
       </code>
       <br>
