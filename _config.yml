@@ -69,11 +69,15 @@ exclude:
   - _posts/*.fdb_latexmk
   - _posts/*.template
   - _links/*.template
+  - _papers/*.template
 
 
 collections:
   links:
     output: false
+    # sort_by: date
+  papers:
+    output: true
     # sort_by: date
 
 # collections_dir: collections

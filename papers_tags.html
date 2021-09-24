@@ -1,0 +1,37 @@
+---
+layout: page
+title: Paper Reviews
+---
+
+{% assign paper-tags = "" | split: ',' %}
+{% for paper in site.papers %}
+  {% for tag in paper.tags %}
+    {% assign paper-tags = paper-tags | push: tag %}
+  {% endfor %}
+{% endfor %}
+
+{% assign paper-tags-unique = paper-tags | uniq | sort %}
+
+
+
+{% for tag in paper-tags-unique %}
+  <a id="{{tag}}"></a>
+  <h2><code>#{{ tag }}</code></h2>
+  <ul>
+    {% for paper in site.papers %}
+      {% if paper.tags contains tag  %}
+        <li> <a href="{{paper.url}}">
+          {% if paper.name %}
+            {{paper.name}}
+          {% else %}
+            {{paper.title}}
+          {% endif %}
+          </a>
+          {% if paper.author %} 
+          <i> by <a href="/papers_authors#{{paper.author}}">{{paper.author }}</a></i>
+          {% endif %}
+        </a> </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}

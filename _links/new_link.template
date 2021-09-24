@@ -1,8 +1,8 @@
 cat << EOF
 ---
-link: http://example.com
+ext_url: http://example.com
 name: Link Name
-author: Link Author
+author: [Link Author1, Link Author2]
 tags: [link-tag1, link-tag2] 
 ---
 EOF

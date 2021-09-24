@@ -1,0 +1,10 @@
+cat << EOF
+---
+layout: paper
+ext_url: http://example.com
+name: Paper Title
+authors: [Paper Author1, Paper Author2]
+tags: [Paper-tag1, Paper-tag2] 
+---
+write review here
+EOF

@@ -1,0 +1,42 @@
+---
+layout: page
+title: Paper Reviews
+---
+
+My notes on research papers.
+
+<ul>
+{% for paper in site.papers reversed%}
+    <li>
+    <a href="{{paper.url}}">
+    <big>
+    {% if paper.name %}
+      {{paper.name}}
+    {% else %}
+      {{paper.title}}
+    {% endif %}
+    </big>
+    </a><br>
+    {% if paper.authors.size > 0 %}
+      <i> by 
+        {% for author in paper.authors %}
+           {% if forloop.index>1 %}
+             ,
+           {% endif %}
+           <a href="/papers_authors#{{author}}">{{author}}</a>
+        {% endfor %}
+      </i>
+    {% endif %}
+
+    {% if paper.tags.size > 0 %}
+      <code>
+      {% for tag in paper.tags %}
+         • <a href="/papers_tags#{{tag}}">{{tag}}</a>
+      {% endfor %}
+      </code>
+      <br>
+    {% endif %}
+    <br>
+    </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,31 @@
+---
+layout: page
+title: Paper Reviews
+---
+
+{% assign paper-authors = "" | split: ',' %}
+{% for paper in site.papers %}
+  {% for author in paper.authors %}
+    {% assign paper-authors = paper-authors | push: author %}
+  {% endfor %}
+{% endfor %}
+
+{% assign paper-authors-unique = paper-authors | uniq | sort %}
+
+{% for author in paper-authors-unique %}
+  <a id="{{author}}"></a>
+  <h2><code>{{ author }}</code></h2>
+  <ul>
+    {% for paper in site.papers %}
+      {% if paper.authors contains author %}
+        <li> <a href="{{paper.url}}">
+          {% if paper.name %}
+            {{paper.name}}
+          {% else %}
+            {{paper.title}}
+          {% endif %}
+        </a> </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}

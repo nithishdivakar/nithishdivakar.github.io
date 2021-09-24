@@ -5,9 +5,9 @@ title: Articles
 
 {% assign link-authors = "" | split: ',' %}
 {% for link in site.links %}
-  {% if link.author %}
-       {% assign link-authors = link-authors | push: link.author %}
-  {% endif %}
+  {% for author in link.authors %}
+    {% assign link-authors = link-authors | push: author %}
+  {% endfor %}
 {% endfor %}
 
 {% assign link-authors-unique = link-authors | uniq | sort %}
@@ -17,13 +17,13 @@ title: Articles
   <h2><code>{{ author }}</code></h2>
   <ul>
     {% for link in site.links %}
-      {% if link.author == author %}
-        <li> <a href="{{link.link | absolute_url }}" target="_blank">
-{% if link.name %}
-  {{link.name}}
-{% else %}
-  {{link.title}}
-{% endif %}
+      {% if link.authors contains author %}
+        <li> <a href="{{link.ext_url | absolute_url }}" target="_blank">
+          {% if link.name %}
+            {{link.name}}
+          {% else %}
+            {{link.title}}
+          {% endif %}
         </a> </li>
       {% endif %}
     {% endfor %}

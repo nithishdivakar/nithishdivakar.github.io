@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<strong>
+<span class="big">
+{% if page.name %}
+  {{page.name}}
+{% else %}
+  {{page.title}}
+{% endif %}
+</span>
+</strong>
+<br>
+{% if page.authors.size > 0 %}
+  {% for author in page.authors %}
+    {% if forloop.index==1 %}
+    	by
+    {% else %}
+        , 
+    {% endif %}
+    <a href="/papers_authors#{{author}}">{{author}}</a>
+  {%endfor%}
+<br>
+{% endif %}
+
+{% if page.tags.size > 0 %}
+  {% for tag in page.tags %}
+    • <a href="/papers_tags#{{tag}}">{{tag}}</a>
+  {%endfor%}
+  <br>
+{% endif %}
+<small><i><code>&rarr; <a href="{{page.ext_url | absolute_url}}" target="_blank">{{page.ext_url | absolute_url}}</a></code></i></small><br>
+<p>
+    {{ content }}
+</p>
