@@ -8,9 +8,8 @@ cat << EOF
 layout: card
 title : ${TITLE}
 tags : [${TAG1},${TAG2}]
-image: ${DATE}-img1.jpg
 ---
 
-<img src="/images/${DATE}-${TITLE}-00.jpg">
-<img src="/images/${DATE}-${TITLE}-01.jpg">
+<img src="/images/${DATE}-${TITLE}.compiled-0.jpg">
+<img src="/images/${DATE}-${TITLE}.compiled-1.jpg">
 EOF
