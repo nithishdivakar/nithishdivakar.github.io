@@ -6,6 +6,6 @@ excerpt: Calculating gradient across an addition op is considered a simple algeb
 ---
 
 
-<img src="/images/2018-09-18-gradient-through-addition-with-bradcasting.compiled-0.png">
-<img src="/images/2018-09-18-gradient-through-addition-with-bradcasting.compiled-1.png">
-<img src="/images/2018-09-18-gradient-through-addition-with-bradcasting.compiled-2.png">
+<img src="{{site.images}}/2018-09-18-gradient-through-addition-with-bradcasting.compiled-0.png">
+<img src="{{site.images}}/2018-09-18-gradient-through-addition-with-bradcasting.compiled-1.png">
+<img src="{{site.images}}/2018-09-18-gradient-through-addition-with-bradcasting.compiled-2.png">
