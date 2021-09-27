@@ -2,7 +2,7 @@
 layout: card
 title : Softmax Classifier
 tags : [ml-theory]
-exercept: Soft max classifier
+excerpt: A simple linear classifier for multiclass classification.
 ---
 
 <img src="/images/2018-03-28-softmax_classifier.compiled-0.png">

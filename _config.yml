@@ -81,6 +81,10 @@ collections:
     # sort_by: date
 
 # collections_dir: collections
+
+# images: "/images"
+images: "https://daxpy-website.s3.ap-southeast-1.amazonaws.com"
+     
   
 defaults:
   - scope:
