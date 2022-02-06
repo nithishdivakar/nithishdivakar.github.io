@@ -1,0 +1,25 @@
+<header id="banner">
+    <h2><a href="{{ .Site.BaseURL }}" class="black">{{ .Site.Title }}</a></h2>
+    <nav>
+        <ul>
+            <!--
+            {{ range .Site.Menus.main.ByWeight -}}
+            <li>
+                {{ .Pre }}<a href="{{ .URL }}" title="{{ .Title }}">{{- .Name -}}</a>{{ .Post }}
+            </li>
+            {{- end }}
+            -->
+            {{ range .Site.Sections }}
+              <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{ end }}
+              <li><a href="/about">about</a></li>
+        </ul>
+    </nav>
+</header>
+<hr style="margin:0">
+
+<!--
+{{ range .Site.Sections }}
+  <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+{{ end }}
+-->

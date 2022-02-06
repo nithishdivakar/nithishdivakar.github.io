@@ -1,0 +1,12 @@
+baseURL = 'https://nithishdivakar.github.io'
+languageCode = 'en-us'
+title = 'daxpy'
+theme = 'etch'
+
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+

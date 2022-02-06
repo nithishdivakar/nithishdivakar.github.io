@@ -1,0 +1,28 @@
+{{ define "main" }}
+<h2>Links</h2>
+{{.Content}}
+
+{{ range (where .Site.Pages "Section" "links") }}
+<ul>
+   {{ range .Pages }} 
+   	<li>
+		<a href="{{ .Params.ext_url }}" target="_blank" >
+		    <big>{{ .Title }}</big>
+		</a>
+		<br>
+		<small class="tiny green"> {{ .Params.ext_url }}</small>
+		<br>
+		<i>by 
+		{{ range .Params.authors }} <a href="">{{.}}</a> {{end}} 
+	   </i>
+		{{ range .Params.tags }} <small>• {{.}}</small> {{end}}
+		{{with .Content}}
+			{{- . -}}
+		{{ else }}
+			<br><br>
+		{{ end }}
+		</li>
+   {{ end }}
+</ul>
+{{ end }}
+{{ end }}

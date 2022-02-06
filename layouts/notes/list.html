@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+<h2>Notes</h2>
+<div style="margin-top:1em" >
+{{ range (where .Site.RegularPages "Section" "notes") }}
+    <div style="display:flex; padding-bottom:5px">
+
+        <div style="flex: 0 0 80px">
+            <time style="font-family:monospace;" class="tiny green">{{ .Date.Format "02,Jan 2006" }}</time>
+        </div>
+        <div style="flex: 0 0 300px">
+            <a href="{{ .Permalink }}" >
+            {{ .Title }}
+            </a><!--
+            {{.File}}
+            {{.File.Path}} -->
+        </div>
+        <div style="flex: 0 0 200px;">
+            {{ range .Params.Tags }}
+                <a class="tiny black" style="padding-right: 5px" href="">{{ . }}</a>
+            {{ end }}
+        </div>
+        <!--
+        <small><time>{{ .Date.Format "Jan 2, 2006" }}</time></small>
+        -->
+    </div>
+{{- end }}
+</div>
+
+
+{{- range where site.RegularPages "Type" "in" site.Params.mainSections }}
+   {{ range .Pages }}
+      {{ .Title }}
+   {{ end }}
+{{ end }}
+
+
+{{ end }}
