@@ -1,0 +1,121 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" href=https://nithishdivakar.github.io/favicon.ico>
+<link rel=stylesheet href=/css/style.min.css>
+<title>Binary Search</title>
+</head>
+<body><header id=banner>
+<h2><a href=https://nithishdivakar.github.io class=black>daxpy</a></h2>
+<nav>
+<ul>
+<li><a href=https://nithishdivakar.github.io/posts/>Posts</a></li>
+<li><a href=https://nithishdivakar.github.io/notes/>Notes</a></li>
+<li><a href=https://nithishdivakar.github.io/links/>Links</a></li>
+<li><a href=/about>about</a></li>
+</ul>
+</nav>
+</header>
+<hr style=margin:0>
+<main id=content>
+<section>
+<h2>Binary Search</h2>
+<h1 id=binary-search>Binary Search</h1>
+<p>Binary search is more than just a search algorithm for sorted arrays. It&rsquo;s an algorithm which keeps showing up as optimal solutions in unlikely places. This note is a very limited exploration of what binary search can do.</p>
+<p>Let&rsquo;s begin by talking about vanilla binary search.</p>
+<h2 id=binary-search-1>Binary Search</h2>
+<p>We are given a sorted array of numbers and a target. Binary search is the most optimal way of finding position of target in the array if present.</p>
+<p>Binary search starts by having the entire array as a search space. It then progressively compares the middle element with the target, eliminating half pf search space as not needing further exploration w.r.to the relativeness of target and middle element.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>binary_search</span>(nums, target):
+    low, high <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, len(nums)
+    <span style=color:#66d9ef>while</span> low <span style=color:#f92672>&lt;</span> high:
+        mid <span style=color:#f92672>=</span> low <span style=color:#f92672>+</span> (high<span style=color:#f92672>-</span>low)<span style=color:#f92672>//</span><span style=color:#ae81ff>2</span>
+        <span style=color:#66d9ef>if</span> nums[mid] <span style=color:#f92672>==</span> target:
+            <span style=color:#66d9ef>return</span> mid
+
+        <span style=color:#66d9ef>if</span> nums[mid] <span style=color:#f92672>&lt;</span> target:
+            low <span style=color:#f92672>=</span> mid<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>
+        <span style=color:#66d9ef>else</span>:
+            high <span style=color:#f92672>=</span> mid
+    <span style=color:#66d9ef>return</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</code></pre></div><p>The basic structure of binary search can be used to solve many other seemingly different problems. A one line abstraction of such problems is</p>
+<blockquote>
+<p>Find a lowest value in a range which is feasible</p>
+</blockquote>
+<p>Lets describe the search in sorted array problem in this framework.</p>
+<p>Instead of trying to find the location of target, let us recast the problem as the smallest index in the which contains elements which are larger than or equal to target. Note that this is no longer solving the search problem exactly. The difference in when target is not present in the array.</p>
+<p>In this description, an index in the array is feasible if the element at the index is larger than or equal to target</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>feasible</span>(index, nums, target):
+    <span style=color:#66d9ef>return</span> (nums[index]<span style=color:#f92672>&gt;=</span>target)
+    
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>binary_search</span>(nums, target):
+    low, high <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>, len(nums)
+    <span style=color:#66d9ef>while</span> low <span style=color:#f92672>&lt;</span> high:
+        mid <span style=color:#f92672>=</span> low <span style=color:#f92672>+</span> (high<span style=color:#f92672>-</span>low)<span style=color:#f92672>//</span><span style=color:#ae81ff>2</span>
+        <span style=color:#66d9ef>if</span> feasible(mid, nums, target):
+            high <span style=color:#f92672>=</span> mid
+        <span style=color:#66d9ef>else</span>
+            low <span style=color:#f92672>=</span> mid<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>
+    <span style=color:#66d9ef>return</span> low
+</code></pre></div><p>This template can be quickly extended to solve a few other problems.</p>
+<h2 id=split-array-largest-sum>Split array largest sum</h2>
+<p>Given an array which consists of non-negative integers, split array into M non-empty contiguous sub-arrays such that the largest sum of the segments is minimum.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>feasible</span>(threshold, M) <span style=color:#f92672>-&gt;</span> bool:
+    count, total <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>
+    <span style=color:#66d9ef>for</span> num <span style=color:#f92672>in</span> nums:
+        total <span style=color:#f92672>+=</span> num
+        <span style=color:#66d9ef>if</span> total <span style=color:#f92672>&gt;</span> threshold:
+            total <span style=color:#f92672>=</span> num
+            count <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+            <span style=color:#66d9ef>if</span> count <span style=color:#f92672>&gt;</span> M:
+                <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>False</span>
+    <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>True</span>
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>binary_search</span>(nums) <span style=color:#f92672>-&gt;</span> int:
+    low, high <span style=color:#f92672>=</span> max(nums), sum(nums)
+    <span style=color:#66d9ef>while</span> low <span style=color:#f92672>&lt;</span> high:
+        mid <span style=color:#f92672>=</span> low <span style=color:#f92672>+</span> (high <span style=color:#f92672>-</span> low)<span style=color:#f92672>//</span><span style=color:#ae81ff>2</span>
+        <span style=color:#66d9ef>if</span> feasible(mid, M):
+            high <span style=color:#f92672>=</span> mid
+        <span style=color:#66d9ef>else</span>:
+            low <span style=color:#f92672>=</span> mid <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+    <span style=color:#66d9ef>return</span> low
+</code></pre></div><p>Now lets look at another problem with similar structure.</p>
+<h2 id=median-in-a-row-wise-sorted-matrix>Median in a row wise sorted Matrix</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>binary_median</span>(A):
+    m, n  <span style=color:#f92672>=</span> len(A),len(A[<span style=color:#ae81ff>0</span>])        
+    low  <span style=color:#f92672>=</span> min(A[i][ <span style=color:#ae81ff>0</span>] <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(m))
+    high <span style=color:#f92672>=</span> max(A[i][<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>] <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(m))
+    median_loc <span style=color:#f92672>=</span> (m <span style=color:#f92672>*</span> n <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>) <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>
+
+    <span style=color:#66d9ef>while</span> low <span style=color:#f92672>&lt;</span> high:
+        mid <span style=color:#f92672>=</span> low <span style=color:#f92672>+</span> (high <span style=color:#f92672>-</span> low) <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>
+        count <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+        <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(m):
+            count <span style=color:#f92672>+=</span> upper_bound(A[i], mid)
+        <span style=color:#66d9ef>if</span> count <span style=color:#f92672>&lt;</span> median_loc:
+            low <span style=color:#f92672>=</span> mid <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+        <span style=color:#66d9ef>else</span>:
+            high <span style=color:#f92672>=</span> mid
+    <span style=color:#66d9ef>return</span> high <span style=color:#75715e># is median</span>
+</code></pre></div><h2 id=square-root-of-a-number>Square root of a number</h2>
+<p>Binary search can also used to find roots of an equations. Let us demonstrate how it is used to find square root of a number.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>square_root</span>(x, tolerance<span style=color:#f92672>=</span><span style=color:#ae81ff>1e-4</span>):
+    low, high <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,x
+    <span style=color:#66d9ef>while</span> (high<span style=color:#f92672>-</span>low) <span style=color:#f92672>&gt;</span> tolerance:
+        mid <span style=color:#f92672>=</span> low <span style=color:#f92672>+</span> (high <span style=color:#f92672>-</span> low)<span style=color:#f92672>/</span><span style=color:#ae81ff>2.0</span>
+        <span style=color:#66d9ef>if</span> mid <span style=color:#f92672>*</span> mid <span style=color:#f92672>&lt;=</span> x:
+            low <span style=color:#f92672>=</span> mid
+        <span style=color:#66d9ef>else</span>:
+            high <span style=color:#f92672>=</span> mid
+    <span style=color:#66d9ef>return</span> low
+</code></pre></div><h2 id=find-minimum-in-rotated-sorted-array-with-no-duplicates>Find Minimum in Rotated Sorted Array With No Duplicates</h2>
+<p>\url{https://www.topcoder.com/thrive/articles/Binary%20Search}</p>
+<h2 id=median-of-2-sorted-arrays>Median of 2 sorted arrays</h2>
+</section>
+</main><hr style=margin:0>
+<footer id=footer>
+Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a>
+</footer>
+</body>
+</html>

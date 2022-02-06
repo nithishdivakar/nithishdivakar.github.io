@@ -1,0 +1,95 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" href=https://nithishdivakar.github.io/favicon.ico>
+<link rel=stylesheet href=/css/style.min.css>
+<title>Knapsack</title>
+</head>
+<body><header id=banner>
+<h2><a href=https://nithishdivakar.github.io class=black>daxpy</a></h2>
+<nav>
+<ul>
+<li><a href=https://nithishdivakar.github.io/posts/>Posts</a></li>
+<li><a href=https://nithishdivakar.github.io/notes/>Notes</a></li>
+<li><a href=https://nithishdivakar.github.io/links/>Links</a></li>
+<li><a href=/about>about</a></li>
+</ul>
+</nav>
+</header>
+<hr style=margin:0>
+<main id=content>
+<section>
+<h2>Knapsack</h2>
+<h1 id=knapsack>Knapsack</h1>
+<p>The following is the description of knapsack problem.</p>
+<p>We are given a set of items each with its own weight ($w_i$) and value ($v_i$). We are also given a limit or maximum capacity $T$.
+How do we select a subset of items such that the total weight is within the limit, but the total value is maximum?</p>
+<p>$$\begin{align}
+&\max; \sum x_i v_i
+\
+&s.t. \quad \sum x_i w_i \leq T
+\end{align}$$</p>
+<p>Recurrence relation solving the problem
+$$S_{k,t} = \max {S_{k-1,t}, v_k + S_{k-1,t-w_k}}$$</p>
+<p>$S_{k,t}$ represents maximum value that can be achieved which has a maximum weight of $t$ with some subset of first $k$ items.</p>
+<p>Can we select more that one of the same item?</p>
+<p>Restricted cases of knapsack are more interesting. Minimising counts of items (value of each item is 1) while constraining on overall sum amounts to a selection problem. And the question we are solving for essentially is what is the minimum number of items we can select which gives us the aspired value.</p>
+<h2 id=bounded-knapsacks>Bounded knapsacks</h2>
+<p>Bounded knapsacks is when we have at most $c$ copies of each item. We need to only consider the case when we have only a single copy of each item or <strong>0/1 knapsack</strong>. We can extending 0/1 knapsack to bounded knapsack by creating copies of items which occur more than one.</p>
+<h3 id=01-knapsack>0/1 knapsack</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># O(nT) time, O(T) space</span>
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>knapsack_01</span>(nums,T) <span style=color:#f92672>-&gt;</span> int:
+    nums<span style=color:#f92672>.</span>sort()                           
+    dp <span style=color:#f92672>=</span> [<span style=color:#ae81ff>0</span> <span style=color:#66d9ef>for</span> _ <span style=color:#f92672>in</span> range(T<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)]     
+    <span style=color:#66d9ef>for</span> num <span style=color:#f92672>in</span> nums:                      
+        <span style=color:#66d9ef>if</span> num <span style=color:#f92672>&gt;</span> T: <span style=color:#66d9ef>break</span>
+        <span style=color:#66d9ef>for</span> slack <span style=color:#f92672>in</span> range(T<span style=color:#f92672>-</span>num,<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>,<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>):
+            <span style=color:#66d9ef>if</span> dp[slack] <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>:
+                dp[slack <span style=color:#f92672>+</span> num] <span style=color:#f92672>=</span> max(
+                              dp[slack <span style=color:#f92672>+</span> num], 
+                              dp[slack]<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)
+        dp[num] <span style=color:#f92672>=</span> max(dp[num], <span style=color:#ae81ff>1</span>)
+    <span style=color:#66d9ef>return</span> dp[T]
+</code></pre></div><p>A few things to unpack here on what the algorithm is doing.</p>
+<p>First we are sorting all the</p>
+<p>Time complexity is $O(n\log n)$ for sorting the items and $O(nT)$
+for computing the optimal answer. The algorithm also uses a $O(T)$ sized array for storing solutions of sub-problems.</p>
+<h2 id=unbounded-knapsack>Unbounded knapsack</h2>
+<p>When we have infinite copies of each items, we have <strong>unbounded knapsack</strong> problem. $x_i > 0$ and $x_i\in \mathbb{Z}$</p>
+<p>A classic example of unbounded knapsack is coin change problem.</p>
+<h3 id=coin-change>Coin Change</h3>
+<p>Given a set of coins denomination find the smallest collection of coins that add up to a given amount.</p>
+<p>The problem is an instance of unbounded <a href=app://obsidian.md/Knapsack>knapsack</a>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>coin_change</span>(coins, amount):
+    dp <span style=color:#f92672>=</span> [float(<span style=color:#e6db74>&#39;inf&#39;</span>) <span style=color:#66d9ef>for</span> _ <span style=color:#f92672>in</span> range(amount<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)]
+    dp[<span style=color:#ae81ff>0</span>] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+    <span style=color:#66d9ef>for</span> coin <span style=color:#f92672>in</span> coins:
+        <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(coin, amount<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>):
+            dp[i] <span style=color:#f92672>=</span> min(dp[i], dp[i<span style=color:#f92672>-</span>coin]<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)
+    <span style=color:#66d9ef>return</span> dp[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>] <span style=color:#66d9ef>if</span> dp[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>] <span style=color:#f92672>!=</span> float(<span style=color:#e6db74>&#39;inf&#39;</span>) <span style=color:#66d9ef>else</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</code></pre></div><h2 id=fractional-knapsack>Fractional Knapsack</h2>
+<p>$x_i \in [0,1]$ $$\begin{align}
+&\max \sum x_iv_i
+\
+& s.t. \quad \sum x_iw_i \leq T\end{align}$$
+Can be solved using greedy algorithm in $O(n \log n)$.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>v,w <span style=color:#f92672>=</span> unzip(sorted(zip(v,w),key<span style=color:#f92672>=</span> <span style=color:#66d9ef>lambda</span> r:r[<span style=color:#ae81ff>0</span>]<span style=color:#f92672>/</span>r[<span style=color:#ae81ff>1</span>]))
+x <span style=color:#f92672>=</span> [<span style=color:#ae81ff>0.0</span> <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(n)]
+C <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0</span>
+
+<span style=color:#66d9ef>for</span> i range(n):
+	x[i] <span style=color:#f92672>=</span> min((T<span style=color:#f92672>-</span>C)<span style=color:#f92672>/</span>w[i],<span style=color:#ae81ff>1.0</span>)
+	C <span style=color:#f92672>+=</span> w[i] <span style=color:#f92672>*</span> x[i]
+</code></pre></div><p>References</p>
+<ul>
+<li>[[Coin Change]]</li>
+<li>[[Knapsack_01]]</li>
+<li></li>
+</ul>
+</section>
+</main><hr style=margin:0>
+<footer id=footer>
+Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a>
+</footer>
+</body>
+</html>
