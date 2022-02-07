@@ -1,4 +1,4 @@
-baseURL = 'https://nithishdivakar.github.io'
+baseURL = 'https://daxpy.xyz/'
 languageCode = 'en-us'
 title = 'daxpy'
 theme = 'etch'
@@ -9,4 +9,3 @@ theme = 'etch'
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-
