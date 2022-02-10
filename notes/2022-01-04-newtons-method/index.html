@@ -2,8 +2,10 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico>
-<link rel=stylesheet href=/css/style.min.css>
-<title>Newton's Method</title>
+<link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script><title>Newton's Method</title>
 </head>
 <body><header id=banner>
 <h2><a href=https://daxpy.xyz/ class=black>daxpy</a></h2>
@@ -19,8 +21,18 @@
 <hr style=margin:0>
 <main id=content>
 <section>
-<h2>Newton's Method</h2>
-<embed src={{site.images}}/2022-01-04-newtons-method.pdf width=500 height=500 type=application/pdf frameborder=0 allowfullscreen>
+<h1 id=newtons-method>Newton&rsquo;s Method</h1>
+<p>To derive newton&rsquo;s method, we simply have to find the optimum point from second order Taylor series expansion of $f(x)$
+$$\begin{aligned}
+x_{k+1} &= x_k - [H(x_k)]^{-1}\nabla f(x_k)^\intercal
+\end{aligned}$$
+<em>Derivation</em>: From a point $x_k$, we want to compute the best possible move $x_k+s$ to minimise $f$. Using taylor series expansion, we have
+$$f(x_k+s) = f(x_k) + s\nabla f(x_k) + \frac{s^2}{2!} H(x_k) = g(s)$$</p>
+<p>$$\begin{aligned}
+0 &= \nabla_s g(s) = \nabla f(x_k) + s H(x_k)
+\\
+s &=H(x_k)^{-1} {\nabla f(x_k)}^\intercal
+\end{aligned}$$</p>
 </section>
 </main><hr style=margin:0>
 <footer id=footer>

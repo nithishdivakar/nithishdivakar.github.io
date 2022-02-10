@@ -2,8 +2,10 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico>
-<link rel=stylesheet href=/css/style.min.css>
-<title>Adam and RMSProp Optimisers</title>
+<link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous onload=renderMathInElement(document.body)></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script><title>Adam and RMSProp Optimisers</title>
 </head>
 <body><header id=banner>
 <h2><a href=https://daxpy.xyz/ class=black>daxpy</a></h2>
@@ -19,8 +21,57 @@
 <hr style=margin:0>
 <main id=content>
 <section>
-<h2>Adam and RMSProp Optimisers</h2>
-<embed src={{site.images}}/2021-10-24-adam-and-rmsprop.pdf width=500 height=500 type=application/pdf frameborder=0 allowfullscreen>
+<h1 id=adam-and-rmsprop-optimisers>Adam and RMSProp Optimisers</h1>
+<h2 id=stochastic-gradient-descent>Stochastic Gradient Descent</h2>
+<p>$$\begin{aligned}
+w_{t+1}&= w_t - \alpha \nabla E(w_t)\end{aligned}$$</p>
+<h2 id=sgd-with-momentum>SGD with Momentum</h2>
+<p>The main idea is the following.</p>
+<blockquote>
+<p>Instead of updating the position of a particle, use gradient to update
+its velocity/direction.</p>
+</blockquote>
+<p>$$\begin{aligned}
+m_{t+1} &= \eta m_t + \alpha \nabla E(w_t)
+\\
+w_{t+1}&= w_t - m_{t+1}
+\end{aligned}$$
+This results in equivalent single update as
+$$w_{t+1}= w_t - \alpha \nabla E(w_t) - \eta m_{t}$$</p>
+<p>$\eta$ is the exponential decay factor in $[0,1]$ which determines
+contribution of previous gradients to the weight change.</p>
+<h2 id=nesterov-accelerated-gradient>Nesterov Accelerated Gradient</h2>
+<p>The observation behind nesterov momentum is that we will update the
+parameters by the momentum term anyway, why not calculate gradient at
+the updated step instead?
+$$\begin{aligned}
+m_{t+1} &= \eta m_t + \alpha \boldsymbol{\nabla E(w_t-\eta m_t)}
+\\
+w_{t+1}&= w_t - m_{t+1}
+\end{aligned}$$
+Since we calculate the gradient at the new location, if there is a difference in direction, the
+update will be able to correct for the difference. It increases responsiveness of the optimiser.</p>
+<h2 id=rmsprop>RMSProp</h2>
+<p>Root Mean Square Propagation. Divide learning rate of each weight by
+running average of magnitudes of recent gradients for that weight.
+$$\begin{aligned}
+v_{t+1} &= \gamma v_{t} + (1-\gamma)(\nabla E(w_t))^2
+\\
+w_{t+1}&=w_{t} - \frac{\alpha}{\sqrt{v_{t+1}}} \nabla E(w_t)
+\end{aligned}$$</p>
+<p><em>Note</em>: $\nabla E(w_t)^2=|\nabla E(w_t)|_F^2$</p>
+<h2 id=adam>Adam</h2>
+<p>Adaptive Moment Estimation is an update to RMSProp. It uses a running
+average for the gradient as well
+$$\begin{aligned}
+v_{t+1} &= \beta_1 v_{t} + (1-\beta_1)(\nabla E(w_t))^2
+\\
+m_{t+1} &= \beta_2 m_{t} + (1-\beta_2)\nabla E(w_t)
+\\
+m &= \frac{m_{t+1}}{1-\beta_2} \quad v = \frac{v_{t+1}}{1-\beta_1}
+\\
+w_{t+1}&=w_{t} - \alpha \frac{m}{\sqrt{v}+\epsilon}
+\end{aligned}$$</p>
 </section>
 </main><hr style=margin:0>
 <footer id=footer>
