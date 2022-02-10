@@ -1,0 +1,103 @@
+{
+  "main": {
+    "id": "32a5f506699bdbad",
+    "type": "split",
+    "children": [
+      {
+        "id": "d4c0ada81c708f40",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "case studies/Visual Composition.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9467dd749b425241",
+    "type": "split",
+    "children": [
+      {
+        "id": "0efbfa23bb4be6ef",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7922e6e0d577493e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "0ea21f04432b6a6d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 226
+  },
+  "right": {
+    "id": "8442837289be1071",
+    "type": "split",
+    "children": [
+      {
+        "id": "9e124aefa3f02a4d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5fa09158f99dad8d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "case studies/Visual Composition.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "d4c0ada81c708f40",
+  "lastOpenFiles": [
+    "case studies/Visual Composition.md",
+    "notes/2021-10-24-adam-and-rmsprop.md",
+    "notes/2022-01-04-newtons-method.md",
+    "notes/2018-02-18-linear_classifiers.md",
+    "notes/2018-02-18-differentiable-computations.md",
+    "notes/2018-02-18-003-differentiable-computations.md",
+    "notes/2018-02-11-bayes_error.md",
+    "notes/2021-10-12-reservoir-sampling.md",
+    "notes/2021-10-10-focal-loss.md",
+    "posts/Knapsack.md"
+  ]
+}

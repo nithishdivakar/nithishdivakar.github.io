@@ -2,6 +2,7 @@
 title: Knapsack
 tags : [algorithms]
 date: 2022-01-28T06:59:51+05:30
+draft: true
 ---
 
 
