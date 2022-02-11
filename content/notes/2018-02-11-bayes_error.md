@@ -4,6 +4,7 @@ layout: post
 tags : [ml-theory]
 date: 2018-02-11T05:04:51+05:30
 ---
+# Bayes Error
 
 In an ideal world, everything has reason. Every question has a
 unambiguous answer. The data in sufficient to explain its behaviours,
@@ -25,8 +26,6 @@ data belonging to a class($y=1$) if my observations are $x$.
 *If we build a classifier on this data, how good will it be?* This is
 the question Bayes error answers.
 
-Bayes Error
-===========
 
 Lets say I've built a classifier $h$ to predict the class of data.
 $h(x)=\hat{y}$ is the predicted class and $y$ is the true class. Even

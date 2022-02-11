@@ -89,6 +89,11 @@ main#content h3 {
     font-size: 1.9rem;
 }
 
+main#content h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
 main#content h1 + p,
 main#content h2 + p,
 main#content h3 + p,
