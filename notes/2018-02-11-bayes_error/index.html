@@ -21,6 +21,7 @@
 <hr style=margin:0>
 <main id=content>
 <section>
+<h1 id=bayes-error>Bayes Error</h1>
 <p>In an ideal world, everything has reason. Every question has a
 unambiguous answer. The data in sufficient to explain its behaviours,
 like the class it belongs to.</p>
@@ -35,7 +36,6 @@ n(x) = P(y=1|x)\end{aligned}$$</p>
 data belonging to a class($y=1$) if my observations are $x$.</p>
 <p><em>If we build a classifier on this data, how good will it be?</em> This is
 the question Bayes error answers.</p>
-<h1 id=bayes-error>Bayes Error</h1>
 <p>Lets say I&rsquo;ve built a classifier $h$ to predict the class of data.
 $h(x)=\hat{y}$ is the predicted class and $y$ is the true class. Even
 ambiguous data needs to come from somewhere, So we assume $D$ is the
