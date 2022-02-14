@@ -5,6 +5,9 @@
     </div>
     <div style="flex: 0 0 300px">
         <a href="{{ .Permalink }}" >
+            {{if .Params.draft}} 
+                [draft]
+            {{end}}
         {{ .Title }}
         </a>
     </div>

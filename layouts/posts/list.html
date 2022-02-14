@@ -1,6 +1,8 @@
-<h2>Notes</h2>
+{{ define "main" }}
+
+<h2>Posts</h2>
 <div style="margin-top:1em" >
-{{ range (where .Site.Pages "Section" "notes") }}
+{{ range (where .Site.RegularPages "Section" "posts") }}
     <div style="display:flex; padding-bottom:5px">
 
         <div style="flex: 0 0 80px">
@@ -8,8 +10,13 @@
         </div>
         <div style="flex: 0 0 300px">
             <a href="{{ .Permalink }}" >
+            {{if .Params.draft}} 
+                [draft]
+            {{end}}
             {{ .Title }}
-            </a>
+            </a><!--
+            {{.File}}
+            {{.File.Path}} -->
         </div>
         <div style="flex: 0 0 200px;">
             {{ range .Params.Tags }}
@@ -22,3 +29,5 @@
     </div>
 {{- end }}
 </div>
+
+{{ end }}

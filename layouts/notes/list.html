@@ -10,6 +10,9 @@
         </div>
         <div style="flex: 0 0 300px">
             <a href="{{ .Permalink }}" >
+            {{if .Params.draft}} 
+                [draft]
+            {{end}}
             {{ .Title }}
             </a><!--
             {{.File}}
@@ -26,13 +29,5 @@
     </div>
 {{- end }}
 </div>
-
-
-{{- range where site.RegularPages "Type" "in" site.Params.mainSections }}
-   {{ range .Pages }}
-      {{ .Title }}
-   {{ end }}
-{{ end }}
-
 
 {{ end }}

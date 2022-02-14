@@ -2,9 +2,9 @@
 <h2>Links</h2>
 {{.Content}}
 
-{{ range (where .Site.Pages "Section" "links") }}
+{{ range (where .Site.Pages.Reverse "Section" "links") }}
 <ul>
-   {{ range .Pages }} 
+   {{ range sort .Pages "File.Path" "desc"}} 
    	<li>
 		<a href="{{ .Params.ext_url }}" target="_blank" >
 		    <big>{{ .Title }}</big>

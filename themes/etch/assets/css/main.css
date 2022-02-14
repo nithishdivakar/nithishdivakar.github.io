@@ -92,6 +92,7 @@ main#content h3 {
 main#content h1 {
     font-size: 3rem;
     margin-bottom: 2rem;
+    margin-top: 6rem;
 }
 
 main#content h1 + p,
