@@ -108,6 +108,7 @@ main#content p {
     color: #000;
     margin: 16px 0;
     word-break: break-word;
+    /*text-align: justify;*/
 }
 
 main#content hr {
@@ -253,8 +254,10 @@ main#content blockquote {
     font-style: italic;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 50px;
-    padding-left: 15px;
+    margin-left: 1rem;
+    margin-right: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
     border-left: 3px solid #ccc;
 }
 
