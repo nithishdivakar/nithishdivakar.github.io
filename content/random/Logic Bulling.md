@@ -6,7 +6,7 @@ draft: false
 ---
 # Logic Bulling
 
-I'm listening to this podcast where Adam Grant talks about being a Logic Bully. 
+I'm listening to [this](https://fs.blog/knowledge-project-podcast/adam-grant2/) podcast where Adam Grant talks about being a Logic Bully. 
 
 When a student approached him seeking advice about a hard life decision, he proceeds to give a very logical answer. But instead of convincing the student; the argument simply confuses the student more. 
 
