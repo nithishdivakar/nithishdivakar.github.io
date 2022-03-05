@@ -3,60 +3,25 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico>
 <link rel=stylesheet href=/css/style.min.css>
-<script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]}}</script>
+<link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel=stylesheet type=text/css>
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
-<title>Bayes Error</title>
-</head>
-<body><header id=banner>
-<h2><a href=https://daxpy.xyz/ class=black>daxpy</a></h2>
-<nav>
+<title>Bayes Error</title></head><body><header id=banner>
+<h2><a href=https://daxpy.xyz/ class=black>daxpy</a></h2><nav>
 <ul>
-<li><a href=https://daxpy.xyz/posts/>Posts</a></li>
-<li><a href=https://daxpy.xyz/notes/>Notes</a></li>
-<li><a href=https://daxpy.xyz/links/>Links</a></li>
-<li><a href=https://daxpy.xyz/random/>Random</a></li>
-<li><a href=/about>about</a></li>
-</ul>
-</nav>
-</header>
-<hr style=margin:0>
+<li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0>
 <main id=content>
 <section>
-<h1 id=bayes-error>Bayes Error</h1>
-<p>In an ideal world, everything has reason. Every question has a unambiguous answer. The data in sufficient to explain its behaviours, like the class it belongs to.</p>
-<p>$$\begin{aligned}
-g(x) = y \end{aligned}$$</p>
-<p>In the non ideal world, however, there is always something missing that stops us from knowing the entire truth. $g$ is beyond reach. In such cases we resort to probability.</p>
-<p>$$\begin{aligned}
-n(x) = P(y=1|x)\end{aligned}$$</p>
-<p>It simply tells us how probable is the data belonging to a class($y=1$) if my observations are $x$.</p>
-<p><em>If we build a classifier on this data, how good will it be?</em> This is the question Bayes error answers.</p>
-<p>Lets say I&rsquo;ve built a classifier $h$ to predict the class of data. $h(x)=\hat{y}$ is the predicted class and $y$ is the true class. Even ambiguous data needs to come from somewhere, So we assume $D$ is the joint distribution of $x$ and $y$.</p>
-<p>$$\begin{aligned}
-er_D[h] = P_D[h(x) \neq y]\end{aligned}$$</p>
-<p>Using an old trick to convert probability to expectation, $P[A] = E[1(A)]$, we have</p>
-<p>$$\begin{aligned}
-er_D[h] = E_{x,y}[1(h(x)\neq y)] = E_x E_{y|x}[1(h(x)\neq y)]\end{aligned}$$</p>
-<p>The inner expectation is easier to solve when expanded.</p>
-<p>$$\begin{aligned}
-E_{y|x}[1(h(x)\neq y)] = 1(h(x)\neq +1) P(y=+1|x) + 1(h(x)\neq -1)P(y=-1|x)\end{aligned}$$</p>
-<p>Which give the final error to be</p>
-<p>$$\begin{aligned}
-er_D[h] = E_x[1(h(x)\neq +1) n(x) + 1(h(x)\neq -1)(1-n(x))]\end{aligned}$$</p>
-<p>The last equation means, if the classifier predicts $+1$ for the data, it will contribute $n(x)$ to the error. On the other hand if it predicts $-1$ for the data, the contribution will be $1-n(x)$.</p>
-<p>The best classifier would predict $+1$ when $n(x)$ is small and $-1$ when $n(x)$ is large. The minimum achievable error is then</p>
-<p>$$\begin{aligned}
-er_D = E_x [\min(n(x),1-n(x))]\end{aligned}$$</p>
-<p>This error is called <strong>Bayes Error</strong>.</p>
-<h2 id=references>References</h2>
-<ul>
-<li><a href=http://drona.csa.iisc.ernet.in/~e0270/Jan-2015/>Shivani Agarwal&rsquo;s lectures</a></li>
-</ul>
-</section>
-</main><hr style=margin:0>
+<h1 id=bayes-error>Bayes Error</h1><p>In an ideal world, everything has reason. Every question has a unambiguous answer. The data in sufficient to explain its behaviours, like the class it belongs to.</p><p>$$\begin{aligned}
+g(x) = y \end{aligned}$$</p><p>In the non ideal world, however, there is always something missing that stops us from knowing the entire truth. $g$ is beyond reach. In such cases we resort to probability.</p><p>$$\begin{aligned}
+n(x) = P(y=1|x)\end{aligned}$$</p><p>It simply tells us how probable is the data belonging to a class($y=1$) if my observations are $x$.</p><p><em>If we build a classifier on this data, how good will it be?</em> This is the question Bayes error answers.</p><p>Lets say I&rsquo;ve built a classifier $h$ to predict the class of data. $h(x)=\hat{y}$ is the predicted class and $y$ is the true class. Even ambiguous data needs to come from somewhere, So we assume $D$ is the joint distribution of $x$ and $y$.</p><p>$$\begin{aligned}
+er_D[h] = P_D[h(x) \neq y]\end{aligned}$$</p><p>Using an old trick to convert probability to expectation, $P[A] = E[1(A)]$, we have</p><p>$$\begin{aligned}
+er_D[h] = E_{x,y}[1(h(x)\neq y)] = E_x E_{y|x}[1(h(x)\neq y)]\end{aligned}$$</p><p>The inner expectation is easier to solve when expanded.</p><p>$$\begin{aligned}
+E_{y|x}[1(h(x)\neq y)] = 1(h(x)\neq +1) P(y=+1|x) + 1(h(x)\neq -1)P(y=-1|x)\end{aligned}$$</p><p>Which give the final error to be</p><p>$$\begin{aligned}
+er_D[h] = E_x[1(h(x)\neq +1) n(x) + 1(h(x)\neq -1)(1-n(x))]\end{aligned}$$</p><p>The last equation means, if the classifier predicts $+1$ for the data, it will contribute $n(x)$ to the error. On the other hand if it predicts $-1$ for the data, the contribution will be $1-n(x)$.</p><p>The best classifier would predict $+1$ when $n(x)$ is small and $-1$ when $n(x)$ is large. The minimum achievable error is then</p><p>$$\begin{aligned}
+er_D = E_x [\min(n(x),1-n(x))]\end{aligned}$$</p><p>This error is called <strong>Bayes Error</strong>.</p><h2 id=references>References</h2><ul>
+<li><a href=http://drona.csa.iisc.ernet.in/~e0270/Jan-2015/>Shivani Agarwal&rsquo;s lectures</a></li></ul></section></main><hr style=margin:0>
 <footer id=footer>
 Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a>
-</footer>
-</body>
-</html>
+</footer></body></html>
