@@ -1,0 +1,97 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico>
+<link rel=stylesheet href=/css/style.min.css>
+<link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel=stylesheet type=text/css>
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+<title>Movie Reviews and Gradient Descent</title></head><body><header id=banner>
+<big class=h2>
+<b>
+<a href=https://daxpy.xyz/ class=black>
+daxpy
+</a>
+</b>
+</big>
+<nav>
+<ul>
+<li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0>
+<main id=content>
+<section>
+<h1 id=movie-reviews-and-gradient-descent>Movie Reviews and Gradient Descent</h1><p>The problem is simple; $m$ movies, $n$ users and we have the data of rating of movies by users. Now in reality, each user might have rated a few movies while total number of users and movies are huge. We can consider the whole ratings data as a matrix $n\times m$ matrix $R$ where $R_{ij}$ is the rating of $i^{th}$ movie by $j^{th}$ user.</p><p>We want a model which can predict the rating a user would have given a movie. Now the modelling part is easy as a matrix factorisation problem. We can assume every user is represented by a embedding $u_i$ and similarly, every movie has a embedding $m_j$. We simply want $$R_{ij} \sim { u_i}^\intercal m_j$$ If we simply model the learning problem as
+$$\mathop{\mathrm{arg,min}}_{U,M} \| {U}^\intercal M - R \|_2$$
+then we are implicitly assuming that all unavailable ratings are $0$. Since we have only a few ratings compared to all possible combinations of movies and users, the model will get biased towards $0$ ratings.</p><h2 id=good-modelling>Good Modelling</h2><p>What we need to do instead is to simply model what the data is available us and nothing else. Essentially,
+$$\mathop{\mathrm{arg,min}}_{u_i,m_j} \sum_{(u_i,m_j,r_{ij})\in D} \left({u_i}^\intercal m_j - r_{ij}\right)^2$$</p><h2 id=gradient-descent-and-training>Gradient Descent and Training</h2><p>The updates for U and M according to gradient descent are
+$$\begin{aligned}
+u_i &\gets u_i - 2\alpha ({u_i}^\intercal m_j - r_{ij})m_j
+\\
+m_j &\gets m_j - 2\alpha ({u_i}^\intercal m_j - r_{ij})u_i\end{aligned}$$</p><p>To convert this to a batched gradient descent, we simply have to take a batch of ratings and work on updating only the concerned rows of $U$ and $M$. But we have to handle the case where <strong>user id or movie id is repeated in our batch</strong>. The gradient have to be averaged in such case.</p><p>Let first look at a naive (slow but correct) code to do that.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>batch_update_slow</span>(mb,ub,rb):
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 45it/s</span>
+</span></span><span style=display:flex><span>    residuals <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>einsum(<span style=color:#e6db74>&#39;ij, ij-&gt;i&#39;</span>,U[ub,:],M[mb,:]) <span style=color:#f92672>-</span> rb
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    U_updates <span style=color:#f92672>=</span> alpha <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> np<span style=color:#f92672>.</span>einsum(<span style=color:#e6db74>&#39;i,ij-&gt;ij&#39;</span>,residuals, M[mb,:])
+</span></span><span style=display:flex><span>    M_updates <span style=color:#f92672>=</span> alpha <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> np<span style=color:#f92672>.</span>einsum(<span style=color:#e6db74>&#39;i,ij-&gt;ij&#39;</span>,residuals, U[ub,:])
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> np<span style=color:#f92672>.</span>unique(ub):
+</span></span><span style=display:flex><span>        idxs <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>nonzero(ub<span style=color:#f92672>==</span>k)[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>        U[k,:] <span style=color:#f92672>=</span> U[k,:] <span style=color:#f92672>-</span> U_updates[idxs]<span style=color:#f92672>.</span>mean(axis<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> k <span style=color:#f92672>in</span> np<span style=color:#f92672>.</span>unique(mb):
+</span></span><span style=display:flex><span>        idxs <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>nonzero(mb<span style=color:#f92672>==</span>k)[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>        M[k,:] <span style=color:#f92672>=</span> M[k,:] <span style=color:#f92672>-</span> M_updates[idxs]<span style=color:#f92672>.</span>mean(axis<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span>
+</span></span></code></pre></div><p>Vectorising the for loops in the above code requires calculation of all gradients and then scaling it using frequency of each indices. The scaled gradients of each indices can them simply be added together to effectively get average gradient from each repeated indices. The vectorised version is significantly faster.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>batch_update</span>(mb,ub,rb):
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 800it/s</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># U &lt;- U - 2a(U^TM-rb)M</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># M &lt;- M - 2a(U^TM-rb)U</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    residuals <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>einsum(<span style=color:#e6db74>&#39;ij, ij-&gt;i&#39;</span>,U[ub,:],M[mb,:]) <span style=color:#f92672>-</span> rb
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>## Update U</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># U[ub,:] = U[ub,:] - alpha * 2 * residue * M[mb,:]</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># get unique user_ids, reverse mappings, and counts of each user_ids</span>
+</span></span><span style=display:flex><span>    idxs, ixds, cnt <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>unique(ub,return_inverse<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, return_counts<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># get frequency of each indices</span>
+</span></span><span style=display:flex><span>    frequency <span style=color:#f92672>=</span> (<span style=color:#ae81ff>1.0</span><span style=color:#f92672>/</span>cnt)[ixds]
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># compute full gradient, then scale each gradient by frequency </span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># gradient        = np.einsum(&#39;ij,i-&gt;ij&#39;,M[mb,:],residuals)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># scaled_gradient = np.einsum(&#39;ij,i-&gt;ij&#39;,gradient,frequency)</span>
+</span></span><span style=display:flex><span>    scaled_gradient   <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>einsum(<span style=color:#e6db74>&#39;ij,i,i-&gt;ij&#39;</span>, M[mb,:], residuals, frequency)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Sum scaled gradient for unique user ids together</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    F <span style=color:#f92672>=</span> <span style=color:#66d9ef>lambda</span> w: np<span style=color:#f92672>.</span>bincount(ixds, weights <span style=color:#f92672>=</span> w)
+</span></span><span style=display:flex><span>    aggregated_gradient <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>apply_along_axis(F, <span style=color:#ae81ff>0</span>, scaled_gradient)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># update U with the gradients</span>
+</span></span><span style=display:flex><span>    U[idxs,:] <span style=color:#f92672>=</span> U[idxs,:] <span style=color:#f92672>-</span> alpha <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> aggregated_gradient
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e>## Update M </span>
+</span></span><span style=display:flex><span>	<span style=color:#75715e># (similar steps as U)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># M[mb,:] = M[mb,:] - alpha * 2 * residue * U[ub,:]</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    idxs,ixds, cnt <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>unique(mb,return_inverse<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>, return_counts<span style=color:#f92672>=</span><span style=color:#66d9ef>True</span>)
+</span></span><span style=display:flex><span>    frequency <span style=color:#f92672>=</span> (<span style=color:#ae81ff>1.0</span><span style=color:#f92672>/</span>cnt)[ixds]
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># gradient        = np.einsum(&#39;ij,i-&gt;ij&#39;,M[mb,:],residuals)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># scaled_gradient = np.einsum(&#39;ij,i-&gt;ij&#39;,gradient,frequency)</span>
+</span></span><span style=display:flex><span>    scaled_gradient   <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>einsum(<span style=color:#e6db74>&#39;ij,i,i-&gt;ij&#39;</span>, U[ub,:], residuals, frequency)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    F <span style=color:#f92672>=</span> <span style=color:#66d9ef>lambda</span> w: np<span style=color:#f92672>.</span>bincount(ixds, weights <span style=color:#f92672>=</span> w)
+</span></span><span style=display:flex><span>    aggregated_gradient <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>apply_along_axis(F, <span style=color:#ae81ff>0</span>, scaled_gradient)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    M[idxs,:] <span style=color:#f92672>=</span> M[idxs,:] <span style=color:#f92672>-</span> alpha <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> aggregated_gradient
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span>
+</span></span></code></pre></div><p>The fast version of the update step looks a bit unreadable, but its <strong>16x</strong> faster <code>:)</code></p></section></main><hr style=margin:0>
+<footer id=footer>
+Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a>
+</footer></body></html>
