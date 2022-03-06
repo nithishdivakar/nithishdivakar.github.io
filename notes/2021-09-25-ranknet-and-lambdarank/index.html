@@ -57,6 +57,9 @@ we can write the individual gradient as $$\begin{aligned}
 $$\lambda_{ij} \mathop{\mathrm{\triangleq}}-\alpha(1-\hat{y}_{ij})|\Delta_{NDCG}|$$</p><p>$\Delta_{NDCG}$ is the change in $NDCG$ measure if we swap $d_i$ and $d_j$ in the ordering. This results in gradient updates optimising for NDCG measure. Since in terms of NDCG, higher is better, we have to do
 gradient ascent instead of gradient descent
 $$w \gets w + \eta \left(\frac{1}{n}\sum_{i=1}^{n}\lambda_{i}\frac{\partial s_i}{\partial w} \right)$$</p></section></main><hr style=margin:0>
-<footer id=footer>
+<footer id=footer style=display:flex;justify-content:space-between>
+<div>
 Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a>
-</footer></body></html>
+</div><div>
+<a href=/resources>::</a>
+</div></footer></body></html>

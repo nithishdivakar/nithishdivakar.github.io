@@ -29,6 +29,9 @@ daxpy
 </span></span></code></pre></div><p>Let prove the above process does infact gives us a uniform sample.</p><p>Let the stream be $(s_1,s_2,\ldots)$ and the reservoir be of size $k$.</p><p>At step $i$, the probability of selecting $s_i$ to add to reservoir is $\frac{k}{i}$. Also, probability of selecting
 an element at random from the reservoir to make room is $\frac{1}{k}$.</p><p>Lets assume $s_j$ is in the reservoir before step $i$. Probability that $s_i$ replaces $s_j$ from the reservoir is that $s_i$ is selected to be added and $s_j$ gets selected to be removed; which is
 $\frac{k}{i}\frac{1}{k}=\frac{1}{i}$. Probability that $s_j$ survives the round is then $1-\frac{1}{i}$</p><p>So at beginning of an arbitrary step $i$, probability that an element $s_j$ is in the reservoir is $\frac{k}{i-1}$ and it survives this round is $s_j$ being in reservoir multiplied by that it was never selected = $\frac{k}{i-1}\left(1- \frac{1}{i}\right)=\frac{k}{i}$.</p><p>So by the end of the stream, each element which is in the reservoir would have been selected by a probability of $\frac{k}{n}$. This results in uniform sampling of $k$ elements from the steam.</p></section></main><hr style=margin:0>
-<footer id=footer>
+<footer id=footer style=display:flex;justify-content:space-between>
+<div>
 Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a>
-</footer></body></html>
+</div><div>
+<a href=/resources>::</a>
+</div></footer></body></html>
