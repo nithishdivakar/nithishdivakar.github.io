@@ -3,7 +3,7 @@
     <div style="flex: 0 0 80px">
         <time style="font-family:monospace;" class="tiny green">{{ .Date.Format "02,Jan 2006" }}</time>
     </div>
-    <div style="flex: 0 0 300px">
+    <div style="flex: 0 0 300px; margin-right: 1rem;">
         <a href="{{ .Permalink }}" >
             {{if .Params.draft}} 
                 [draft]
