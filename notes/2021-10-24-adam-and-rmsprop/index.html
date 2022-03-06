@@ -22,8 +22,7 @@ daxpy
 <section>
 <h1 id=adam-and-rmsprop-optimisers>Adam and RMSProp Optimisers</h1><h2 id=stochastic-gradient-descent>Stochastic Gradient Descent</h2><p>$$\begin{aligned}
 w_{t+1}&= w_t - \alpha \nabla E(w_t)\end{aligned}$$</p><h2 id=sgd-with-momentum>SGD with Momentum</h2><p>The main idea is the following.</p><blockquote>
-<p>Instead of updating the position of a particle, use gradient to update
-its velocity/direction.</p></blockquote><p>$$\begin{aligned}
+<p>Use gradient to update velocity/direction of a particle instead of only updating its position</p></blockquote><p>$$\begin{aligned}
 m_{t+1} &= \eta m_t + \alpha \nabla E(w_t)
 \\
 w_{t+1}&= w_t - m_{t+1}
