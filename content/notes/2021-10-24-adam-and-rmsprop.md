@@ -16,8 +16,8 @@ $$\begin{aligned}
 
 The main idea is the following.
 
-> Instead of updating the position of a particle, use gradient to update
-> its velocity/direction.
+> Use gradient to update velocity/direction of a particle instead of only updating its position
+
 
 $$\begin{aligned}
 m_{t+1} &= \eta m_t + \alpha \nabla E(w_t)
