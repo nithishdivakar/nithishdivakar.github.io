@@ -2,53 +2,39 @@
 title : Reservoir Sampling
 tags : [probability,distributed-computing]
 date: 2021-10-12T05:04:51+05:30
-draft: true
+draft: false
 ---
 
-<!--<embed src="{{site.dev-images}}/2021-10-12-reservoir-sampling.pdf" width="500" height="500"  type="application/pdf" frameborder="0" allowfullscreen>-->
-<embed src="https://daxpy-website.s3.ap-southeast-1.amazonaws.com/2021-10-12-reservoir-sampling.pdf" width="500" height="500"  type="application/pdf" frameborder="0" allowfullscreen>
+# Reservoir Sampling
 
----
-title: Reservoir Sampling
----
+How can you uniformly sample $k$ items from a stream?  
 
-` Machine Learning notes by Nithish Divakar. More at daxpy.xyz `
+Reservoir Sampling is used when you want a uniform sample from a stream. The length of the stream is not known before and the stream is large enough that we cannot look back or store everything.
 
-Reservoir Sampling is a technique for obtaining a uniform sample of
-elements from a stream. The length of the stream is not known apriori
-and the stream is large enough that we cannot look back.
+The algorithm is simple. 
 
--   Reservoir Sampling
+```python
+# Reservoir Sampling
+reservoir[1:k] = stream[1:k]
+for i=k+1 to n
+    j = random(1,i)
+    if j < k:
+        reservoir[j] = stream[i]
+```
 
--   reservoir\[1:k\] = stream\[1:k\]
-
--   i=k+1 to n
-
-    -   j = random(1,i)
-
-    -   $j<k$,
-
-        -   reservoir\[j\]=stream\[i\]
+Let prove the above process does infact gives us a uniform sample.
 
 Let the stream be $(s_1,s_2,\ldots)$ and the reservoir be of size $k$.
 
-At step $i$, the probability of $s_i$ getting selected to be added into
-the reservoir is $\frac{k}{i}$. Also, probability of randomly selecting
-an element from the reservoir to make room is $\frac{1}{k}$.
+At step $i$, the probability of selecting $s_i$ to add to reservoir is $\frac{k}{i}$. Also, probability of selecting
+an element at random from the reservoir to make room is $\frac{1}{k}$.
 
-Lets assume $s_j$ is in the reservoir before step $i$. Probability that
-$s_i$ replaces $s_j$ from the reservoir is probability that $s_i$ is
-selected to be added and $s_j$ gets selected to be removed; which is
-$\frac{k}{i}\frac{1}{k}=\frac{1}{i}$. Probability that $s_j$ survives
-the round is then $1-\frac{1}{i}$
+Lets assume $s_j$ is in the reservoir before step $i$. Probability that $s_i$ replaces $s_j$ from the reservoir is  that $s_i$ is selected to be added and $s_j$ gets selected to be removed; which is
+$\frac{k}{i}\frac{1}{k}=\frac{1}{i}$. Probability that $s_j$ survives the round is then $1-\frac{1}{i}$
 
-So at beginning of an arbitrary step $i$, probability that an element
-$s_j$ is in the reservoir is $\frac{k}{i-1}$ and it survives this round
-is $s_j$ being in reservoir multiplied by that it was never selected =
-$\frac{k}{i-1}\left(1- \frac{1}{i}\right)=\frac{k}{i}$.
+So at beginning of an arbitrary step $i$, probability that an element $s_j$ is in the reservoir is $\frac{k}{i-1}$ and it survives this round is $s_j$ being in reservoir multiplied by that it was never selected = $\frac{k}{i-1}\left(1- \frac{1}{i}\right)=\frac{k}{i}$.
 
-So by the end of the stream, each element which is in the reservoir
-would have been selected by a probability of $\frac{k}{n}$.
+So by the end of the stream, each element which is in the reservoir would have been selected by a probability of $\frac{k}{n}$. This results in uniform sampling of $k$ elements from the steam. 
 
 
     
