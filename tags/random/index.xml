@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>random on daxpy</title><link>https://daxpy.xyz/tags/random/</link><description>Recent content in random on daxpy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/random/index.xml" rel="self" type="application/rss+xml"/><item><title>Binary Search</title><link>https://daxpy.xyz/posts/binary-search-problems/</link><pubDate>Fri, 28 Jan 2022 06:59:51 +0530</pubDate><guid>https://daxpy.xyz/posts/binary-search-problems/</guid><description>&lt;h1 id="binary-search">Binary Search&lt;/h1>
+&lt;p>Binary search is more than just a search algorithm for sorted arrays. It&amp;rsquo;s an algorithm which keeps showing up as optimal solutions in unlikely places. This note is a very limited exploration of what binary search can do.&lt;/p>
+&lt;p>Let&amp;rsquo;s begin by talking about vanilla binary search.&lt;/p>
+&lt;h2 id="binary-search-1">Binary Search&lt;/h2>
+&lt;p>We are given a sorted array of numbers and a target. Binary search is the most optimal way of finding position of target in the array if present.&lt;/p>
+&lt;p>Binary search starts by having the entire array as a search space. It then progressively compares the middle element with the target, eliminating half pf search space as not needing further exploration w.r.to the relativeness of target and middle element.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">binary_search&lt;/span>(nums, target):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low, high &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, len(nums)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> low &lt;span style="color:#f92672">&amp;lt;&lt;/span> high:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> low &lt;span style="color:#f92672">+&lt;/span> (high&lt;span style="color:#f92672">-&lt;/span>low)&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> nums[mid] &lt;span style="color:#f92672">==&lt;/span> target:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> nums[mid] &lt;span style="color:#f92672">&amp;lt;&lt;/span> target:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> mid&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The basic structure of binary search can be used to solve many other seemingly different problems. A one line abstraction of such problems is&lt;/p>
+&lt;blockquote>
+&lt;p>Find a lowest value in a range which is feasible&lt;/p>
+&lt;/blockquote>
+&lt;p>Lets describe the search in sorted array problem in this framework.&lt;/p>
+&lt;p>Instead of trying to find the location of target, let us recast the problem as the smallest index in the which contains elements which are larger than or equal to target. Note that this is no longer solving the search problem exactly. The difference in when target is not present in the array.&lt;/p>
+&lt;p>In this description, an index in the array is feasible if the element at the index is larger than or equal to target&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">feasible&lt;/span>(index, nums, target):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> (nums[index]&lt;span style="color:#f92672">&amp;gt;=&lt;/span>target)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">binary_search&lt;/span>(nums, target):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low, high &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, len(nums)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> low &lt;span style="color:#f92672">&amp;lt;&lt;/span> high:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> low &lt;span style="color:#f92672">+&lt;/span> (high&lt;span style="color:#f92672">-&lt;/span>low)&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> feasible(mid, nums, target):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> mid&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> low
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This template can be quickly extended to solve a few other problems.&lt;/p>
+&lt;h2 id="split-array-largest-sum">Split array largest sum&lt;/h2>
+&lt;p>Given an array which consists of non-negative integers, split array into M non-empty contiguous sub-arrays such that the largest sum of the segments is minimum.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">feasible&lt;/span>(threshold, M) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> bool:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count, total &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> num &lt;span style="color:#f92672">in&lt;/span> nums:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> total &lt;span style="color:#f92672">+=&lt;/span> num
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> total &lt;span style="color:#f92672">&amp;gt;&lt;/span> threshold:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> total &lt;span style="color:#f92672">=&lt;/span> num
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> count &lt;span style="color:#f92672">&amp;gt;&lt;/span> M:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">binary_search&lt;/span>(nums) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> int:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low, high &lt;span style="color:#f92672">=&lt;/span> max(nums), sum(nums)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> low &lt;span style="color:#f92672">&amp;lt;&lt;/span> high:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> low &lt;span style="color:#f92672">+&lt;/span> (high &lt;span style="color:#f92672">-&lt;/span> low)&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> feasible(mid, M):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> mid &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> low
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now lets look at another problem with similar structure.&lt;/p>
+&lt;h2 id="median-in-a-row-wise-sorted-matrix">Median in a row wise sorted Matrix&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">binary_median&lt;/span>(A):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m, n &lt;span style="color:#f92672">=&lt;/span> len(A),len(A[&lt;span style="color:#ae81ff">0&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> min(A[i][ &lt;span style="color:#ae81ff">0&lt;/span>] &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(m))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> max(A[i][&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>] &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(m))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> median_loc &lt;span style="color:#f92672">=&lt;/span> (m &lt;span style="color:#f92672">*&lt;/span> n &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>) &lt;span style="color:#f92672">//&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> low &lt;span style="color:#f92672">&amp;lt;&lt;/span> high:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> low &lt;span style="color:#f92672">+&lt;/span> (high &lt;span style="color:#f92672">-&lt;/span> low) &lt;span style="color:#f92672">//&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(m):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">+=&lt;/span> upper_bound(A[i], mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> count &lt;span style="color:#f92672">&amp;lt;&lt;/span> median_loc:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> mid &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> high &lt;span style="color:#75715e"># is median&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="square-root-of-a-number">Square root of a number&lt;/h2>
+&lt;p>Binary search can also used to find roots of an equations. Let us demonstrate how it is used to find square root of a number.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">square_root&lt;/span>(x, tolerance&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1e-4&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low, high &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>,x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> (high&lt;span style="color:#f92672">-&lt;/span>low) &lt;span style="color:#f92672">&amp;gt;&lt;/span> tolerance:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> low &lt;span style="color:#f92672">+&lt;/span> (high &lt;span style="color:#f92672">-&lt;/span> low)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2.0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> mid &lt;span style="color:#f92672">*&lt;/span> mid &lt;span style="color:#f92672">&amp;lt;=&lt;/span> x:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> low
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="find-minimum-in-rotated-sorted-array-with-no-duplicates">Find Minimum in Rotated Sorted Array With No Duplicates&lt;/h2>
+&lt;p>\url{https://www.topcoder.com/thrive/articles/Binary%20Search}&lt;/p>
+&lt;h2 id="median-of-2-sorted-arrays">Median of 2 sorted arrays&lt;/h2></description></item><item><title>Differentiable Computations</title><link>https://daxpy.xyz/posts/differentiable-computations/</link><pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/posts/differentiable-computations/</guid><description>&lt;h1 id="differentiable-computations">Differentiable Computations&lt;/h1>
+&lt;p>Auto-grad or automatic gradient computation is a nice feature found in many computational frameworks. Specify the computation in forward direction and the framework computes backward gradients. Let&amp;rsquo;s talk about the generic method to do this.&lt;/p>
+&lt;p>Let&amp;rsquo;s say we have to compute the result of &amp;lsquo;something&amp;rsquo;. It may be a
+nasty heat equation or some logic driven steps to get from input to
+output. Abstracting the steps involved gives us a sequence of equations
+$$\begin{aligned}
+z_i = f_i(z_{a(i)})\end{aligned}$$&lt;/p>
+&lt;p>The $z$&amp;rsquo;s are intermediate variables of the computation steps or they may be parameters. The selections $z_{a(i)}$ are inputs to $f_i$.&lt;/p>
+&lt;p>&lt;strong>What does gradient of this sequence of computation mean?&lt;/strong> If is the
+final step of the computation, then computing gradients of the sequence
+means $\frac{\partial z_n}{\partial z_i}$ are the gradients if $z_n=f_n(z_{a(n)})$ is the final step. Computing all those gradients gives us how parameters change w.r.to the output.&lt;/p>
+&lt;h2 id="handling-branches-and-loops">Handling Branches and loops&lt;/h2>
+&lt;p>For any general computation to be included, we need to talk about
+branches and loops. How are these handled in our model?&lt;/p>
+&lt;p>Loops could be unrolled in to a sequence of functions. All of them would
+simply share a same parameters, but inputs will be output of the
+function representing previous iteration. For example&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>begin loop 1:3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x = x + c
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>end
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>can be unrolled as
+$$\begin{aligned}
+x_1 &amp;amp;= x + c
+\\
+x_2 &amp;amp;= x_1 + c
+\\
+x_3 &amp;amp;= x_2 + c
+\end{aligned}$$&lt;/p>
+&lt;p>Unrolling doesn&amp;rsquo;t work for infinite loops because the unrolling will never end. Infinite loops has no business in real world computation. If a loop cannot be unrolled even after applying the &amp;ldquo;reality of the universe&amp;rdquo;, we are not talking about a computational system. It might be an event loop or a queue. Neither needs gradients!&lt;/p>
+&lt;h2 id="forward-computation-as-a-constrained-optimisation-problem">Forward computation as a Constrained optimisation problem&lt;/h2>
+&lt;p>Without loss of generality, we can say that all this hoopla of computing gradient is to minimise the final value. Even if this is not the case, like for example, if maximising the final result was the intent, then append a negating function at the end of the sequence. There are many other techniques out there to convert different problems to a minimisation problem.&lt;/p>
+&lt;p>Now we have &lt;em>that&lt;/em> out of the way, lets look at the following problem.&lt;/p>
+&lt;p>$$\begin{aligned}
+&amp;amp;\min{z_n}
+\\
+s.t~z_i &amp;amp;= f_i(z_{a(i)})
+\end{aligned}$$&lt;/p>
+&lt;p>The formulation if a little bit weird. All it is saying is, minimise $z_n$ such that, outputs of computations ($f_i$) are inputs to some other computation (all $f$&amp;rsquo;s which has $z_i$ as input). Constraints are maintaining integrity of the sequence. So we managed to represent same thing is two ways, each saying the same thing. Great!&lt;/p>
+&lt;h2 id="how-do-you-solve-a-constrained-optimisation-problem">How do you solve a constrained optimisation problem?&lt;/h2>
+&lt;p>Using the method of Lagrange multipliers. It basically says that once we define Lagrange&amp;rsquo;s function&lt;/p>
+&lt;p>$$\begin{aligned}
+L(z,\lambda) = z_n - \sum_i\lambda_i(z_i - f_i(z_{a(i)}))
+\end{aligned}$$&lt;/p>
+&lt;p>These $L$&amp;rsquo;s gradient w.r.to its parameters vanishes at optimum points of original function as well. So we get&lt;/p>
+&lt;p>$$\begin{aligned}
+\nabla_{\lambda_i}=0 &amp;amp;\implies z_i = f_i(z_{a(i)})
+\\
+\nabla_{z_n}=0 &amp;amp;\implies \lambda_n = 1
+\\
+\nabla_{z_i}=0 &amp;amp;\implies \lambda_i = \sum_{k\in b(i)}\lambda_k \frac{\partial f_k}{\partial z_i}
+\end{aligned}$$&lt;/p>
+&lt;p>Final expression of $\lambda_i$&amp;rsquo;s will give $\frac{\partial z_n}{\partial z_i}$ and hence all the gradients of our original computation. $b(\cdot)$ is like inverse of $a(\cdot)$. $a(i)$ gives which $z$&amp;rsquo;s are arguments of $f_i$ while $b(i)$ simply gives which
+$f$ has $z_i$ as an argument. $b=a^{-1}$ ??. Anyway, these equations
+fits nicely as a linear system&lt;/p>
+&lt;p>$$\begin{aligned}
+A \lambda &amp;amp;= \begin{bmatrix}
+0
+\\
+\vdots
+\\
+0
+\\
+-1
+\end{bmatrix}
+\quad
+&amp;amp; A_{k,i} &amp;amp;=
+\begin{cases}
+\frac{\partial f_k}{\partial z_i} &amp;amp; k\in b(i)
+\\
+-1 &amp;amp; k=i
+\\
+0 &amp;amp; otherwise
+\end{cases}
+\end{aligned}$$&lt;/p>
+&lt;p>$A$ is an upper triangular matrix with $1$&amp;rsquo;s on
+the diagonal. Otherwise, we are looking at sequence of computation which
+needs result of a future. That is too complicated for now(example of
+explicit systems).&lt;/p>
+&lt;p>This linear system of equations opens up myriad of possibilities of
+computing gradients faster. The simplest of which is back substitution
+since $A$ is triangular. If the computation we are dealing with is a
+forward pass of a neural network, what we get out of the back
+substitution is &amp;ldquo;backprop&amp;rdquo; algorithm!!&lt;/p>
+&lt;h2 id="deriving-backprop-in-a-weird-way">Deriving backprop, in a weird way&lt;/h2>
+&lt;p>Lets look at a very simple Neural network&lt;/p>
+&lt;p>$$\begin{aligned}
+a_1 &amp;amp;= \sigma(x w_1)
+\\
+a_2 &amp;amp;= \operatorname{sofmax}(a_1 w_2)
+\\
+l &amp;amp;= \operatorname{loss}(a_2,y)
+\end{aligned}$$&lt;/p>
+&lt;p>If we simplify (ahem!) it up according to our problem, we get&lt;/p>
+&lt;p>$$\begin{aligned}
+z_1&amp;amp;=x,~ z_2=y, z_3=w_1, z_4=w_2
+\\
+z_5 &amp;amp;= z_1z_3
+\\
+z_6 &amp;amp;= \sigma(z_5)
+\\
+z_7 &amp;amp;= z_6z_4
+\\
+z_8 &amp;amp;= \operatorname{softmax}(z_7)
+\\
+z_9 &amp;amp;= \operatorname{loss}(z_8,z_2)
+\end{aligned}$$&lt;/p>
+&lt;p>This gives us the linear system&lt;/p>
+&lt;p>$$\begin{aligned}
+\begin{bmatrix}
+\\-1 &amp;amp; &amp;amp; &amp;amp; &amp;amp; \frac{\partial f_{5}}{\partial z_{1}} &amp;amp; &amp;amp; &amp;amp; &amp;amp;&lt;br>
+\\ &amp;amp;-1 &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; \frac{\partial f_{9}}{\partial z_{2}}
+\\ &amp;amp; &amp;amp;-1 &amp;amp; &amp;amp; \frac{\partial f_{5}}{\partial z_{3}} &amp;amp; &amp;amp; &amp;amp; &amp;amp;&lt;br>
+\\ &amp;amp; &amp;amp; &amp;amp;-1 &amp;amp; &amp;amp; &amp;amp; \frac{\partial f_{7}}{\partial z_{4}} &amp;amp; &amp;amp;&lt;br>
+\\ &amp;amp; &amp;amp; &amp;amp; &amp;amp;-1 &amp;amp; \frac{\partial f_{6}}{\partial z_{5}} &amp;amp; &amp;amp; &amp;amp;&lt;br>
+\\ &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp;-1 &amp;amp; \frac{\partial f_{7}}{\partial z_{6}} &amp;amp; &amp;amp;&lt;br>
+\\ &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp;-1 &amp;amp; \frac{\partial f_{8}}{\partial z_{7}} &amp;amp;&lt;br>
+\\ &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp;-1 &amp;amp; \frac{\partial f_{9}}{\partial z_{8}}
+\\ &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; &amp;amp; -1 &amp;amp;
+\end{bmatrix}
+\begin{bmatrix}
+\lambda_{1}\\
+\lambda_{2}\\
+\lambda_{3}\\
+\lambda_{4}\\
+\lambda_{5}\\
+\lambda_{6}\\
+\lambda_{7}\\
+\lambda_{8}\\
+\lambda_{9}\\
+\end{bmatrix} = \begin{bmatrix}
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+0\\
+-1
+\end{bmatrix}
+\end{aligned}$$&lt;/p>
+&lt;p>Apply back substitution and we get&lt;/p>
+&lt;p>$$\begin{aligned}
+\lambda_3 &amp;amp;= \lambda_5 \frac{\partial f_5}{\partial z_3}\quad
+\lambda_4 = \lambda_7 \frac{\partial f_7}{\partial z_4}\\
+\lambda_5 &amp;amp;= \lambda_6 \frac{\partial f_6}{\partial z_6}\quad
+\lambda_6 = \lambda_7 \frac{\partial f_7}{\partial z_6}\\
+\lambda_7 &amp;amp;= \lambda_8 \frac{\partial f_8}{\partial z_7}\quad
+\lambda_8 = \lambda_9 \frac{\partial f_9}{\partial z_8}\\
+\lambda_3 &amp;amp;= \frac{\partial l}{\partial z_8} \frac{\partial z_8}{\partial z_7} \frac{\partial z_7}{\partial z_6} \frac{\partial z_6}{\partial z_6} \frac{\partial z_5}{\partial w_1}\\
+\lambda_4 &amp;amp;= \frac{\partial l}{\partial z_8} \frac{\partial z_8}{\partial z_7} \frac{\partial z_7}{\partial w_2}
+\end{aligned}$$&lt;/p>
+&lt;p>and there it is!! $\lambda_3$ is the gradient for parameter $w_1$ and
+$\lambda_4$ represent the gradient of $w_2$.&lt;/p>
+&lt;p>Now the structure of matrix $A$ for this problem isn&amp;rsquo;t that interesting.
+The example network is very simple. Almost too simple. The computational
+graph is almost a line graph. But with more interesting cases, like for
+example, &lt;a href="https://www.cs.unc.edu/~wliu/papers/GoogLeNet.pdf">inception&lt;/a>
+architecture, the matrix will have very nice structure. A very
+particular example is dense block from
+&lt;a href="https://arxiv.org/abs/1608.06993">DenseNet&lt;/a>. The matrix will have a
+fully filled upper triangular.&lt;/p>
+&lt;p>&lt;strong>Attribution:&lt;/strong>&lt;/p>
+&lt;p>&lt;em>I had my first encounter with the constrained optimisation view of
+computation in Yann LeCunn&amp;rsquo;s 1988 paper&lt;/em>&lt;/p>
+&lt;blockquote>
+&lt;p>&amp;ldquo;&lt;em>A Theoretical Framework for
+back propagation&lt;/em>&amp;rdquo;
+&lt;a href="http://yann.lecun.com/exdb/publis/pdf/lecun-88.pdf">http://yann.lecun.com/exdb/publis/pdf/lecun-88.pdf&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;em>Incidentally, this is the first paper made me understand the connection between optimisation theory and deep learning.&lt;/em>&lt;/p></description></item></channel></rss>
