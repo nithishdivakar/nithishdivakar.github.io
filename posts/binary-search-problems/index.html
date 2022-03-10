@@ -17,7 +17,7 @@ daxpy
 </big>
 <nav>
 <ul>
-<li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0>
+<li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0>
 <main id=content>
 <section>
 <h1 id=binary-search>Binary Search</h1><p>Binary search is more than just a search algorithm for sorted arrays. It&rsquo;s an algorithm which keeps showing up as optimal solutions in unlikely places. This note is a very limited exploration of what binary search can do.</p><p>Let&rsquo;s begin by talking about vanilla binary search.</p><h2 id=binary-search-1>Binary Search</h2><p>We are given a sorted array of numbers and a target. Binary search is the most optimal way of finding position of target in the array if present.</p><p>Binary search starts by having the entire array as a search space. It then progressively compares the middle element with the target, eliminating half pf search space as not needing further exploration w.r.to the relativeness of target and middle element.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>binary_search</span>(nums, target):

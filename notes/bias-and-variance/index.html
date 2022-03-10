@@ -1,0 +1,63 @@
+<!doctype html><html><head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico>
+<link rel=stylesheet href=/css/style.min.css>
+<link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel=stylesheet type=text/css>
+<script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+<title>Bias and Variance</title></head><body><header id=banner>
+<big class=h2>
+<b>
+<a href=https://daxpy.xyz/ class=black>
+daxpy
+</a>
+</b>
+</big>
+<nav>
+<ul>
+<li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0>
+<main id=content>
+<section>
+<h1 id=bias-and-variance>Bias and Variance</h1><p>A training set is only a subset of the population of data. Bias-variance trade-off talks about characteristics of predictions from the same algorithm if we use different subsets of the population as training set.</p><p><strong>Bias</strong> is difference between true value and average predictions from model trained on different training set.</p><p><strong>Variance</strong> is an estimate of how much the average prediction varies when we change the training set.</p><blockquote>
+<p>Bias and variance are the properties of an algorithm rather than a trained model.</p></blockquote><p>Given a training set $D$ from a population $T$ and an algorithm $h$ (eg. linear regression, decision tree), we construct a model by training $h$ on $D$. Lets call such a model $h_D$.</p><p>For a sample $(x,y) \in T$, the prediction of the model is $y_D= h_D(x)$. The average prediction of the model over different training set is $\mu_D=\mathbb{E}_D[y_D]$</p><p>$$\begin{aligned}
+Bias[h] &= \mu_D-y
+\\
+Variance[h] &=\mathbb{E}_D\left[(\mu_D-y_D)^2 \right]
+\end{aligned}$$</p><p>Note that both measures are over $D$, i.e how is the algorithm $h$ behaves over different subset of $T$ as training data.</p><h2 id=bias-variance-decomposition-of-least-squared-error>Bias variance decomposition of least squared error</h2><p>Least squares error for the model $h_D$ is
+$$l_D = |y-y_D|^2$$
+Expected least squared error over $D$ is given by</p><p>$$\begin{aligned}
+\mathbb{E}_D\left[(y-y_D)^2\right]
+&= \mathbb{E}_D \left(y - \mu_D + \mu_D-y_D\right)^2
+\\
+&= \underset{bias^2}{(y - \mu_D)^2}+ \underset{variance}{\mathbb{E}_D(\mu_D-y_D)^2}
+\\&\quad
++ 2\mathbb{E}_D(y - \mu_D)(\mu_D-y_D)
+\end{aligned}$$</p><p>$$\mathbb{E}_D\left[(y - \mu_D)(\mu_D-y_D)\right]
+=(\mathbb{E}_D[y] - \mu_D)(\mu_D - \mu_D)=0$$</p><p>Thus, for squared loss we have
+$$loss = bias^2+variance$$</p><h2 id=bias-and-variance-decomposition-under-uncertain-measurements>Bias and Variance decomposition under uncertain measurements</h2><p>Assume that there is some true function $f(x)$ which explains a distribution. But we can only sample a subset $D={(x,y)}$. There is some noise $\epsilon$ in the sampling. We can model this situation as</p><p>$$\begin{aligned}
+y &= f(x) + \epsilon
+\\
+\mathbb{E}(\epsilon) &= 0
+\\
+\operatorname{Var}(\epsilon)&=\sigma_\epsilon^2
+\end{aligned}$$</p><p>We use algorithm $h$ to model the data and train it to minimise squared error on $D$. Let $y_D = h_D(x)$ be the prediction from such model. The expected prediction from the model is $\mu_D = \mathbb{E}_D[h_D(x)]$. The expected error is given by</p><p>$$\begin{aligned}
+\mathbb{E}&_D[(y - y_D)^2]
+\\
+&= \mathbb{E}_D[(f(x) + \epsilon - h_D(x))^2 ]
+\\
+&=\mathbb{E}_D[(f(x) -h_D(x))^2] + \mathbb{E}_D[\epsilon^2] -2\mathbb{E}_D[\epsilon (h_D(x) - \mu_D)]
+\\
+&= \mathbb{E}_D[(f(x) - h_D(x))^2] + \sigma_{\epsilon}^2
+\\
+&= (f(x) -\mu_D)^2 + \mathbb{E}_D[(\mu_D -h_D(x))^2] + \sigma_{\epsilon}^2
+\\
+&=\text{bias}^2+\text{variance} + \text{irreducible error}
+\end{aligned}$$</p></section></main><hr style=margin:0>
+<footer id=footer style=display:flex;justify-content:space-between>
+<div>
+Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a>
+</div><div>
+<a href=/resources>::</a>
+</div></footer></body></html>

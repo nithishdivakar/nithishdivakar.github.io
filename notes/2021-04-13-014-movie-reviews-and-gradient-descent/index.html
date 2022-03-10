@@ -17,7 +17,7 @@ daxpy
 </big>
 <nav>
 <ul>
-<li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0>
+<li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0>
 <main id=content>
 <section>
 <h1 id=movie-reviews-and-gradient-descent>Movie Reviews and Gradient Descent</h1><p>The problem is simple; $m$ movies, $n$ users and we have the data of rating of movies by users. Now in reality, each user might have rated a few movies while total number of users and movies are huge. We can consider the whole ratings data as a matrix $n\times m$ matrix $R$ where $R_{ij}$ is the rating of $i^{th}$ movie by $j^{th}$ user.</p><p>We want a model which can predict the rating a user would have given a movie. Now the modelling part is easy as a matrix factorisation problem. We can assume every user is represented by a embedding $u_i$ and similarly, every movie has a embedding $m_j$. We simply want $$R_{ij} \sim { u_i}^\intercal m_j$$ If we simply model the learning problem as
