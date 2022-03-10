@@ -1,6 +1,6 @@
 ---
 title: Logic Bulling
-tags : []
+tags : [random]
 date: 2022-02-24
 draft: false
 ---

@@ -1,0 +1,15 @@
+{{ define "main" }}
+
+    <h2>Tags</h2>
+
+    {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
+        <h2 id="{{$key}}" style="margin-bottom: 1rem"> {{ $key }} </h2>
+        <div id="{{$key}}"></div>
+        {{ range $taxonomy.Pages }}
+                <span class="tiny green">[{{ .Section }}]</span>
+                <a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> 
+            <br>
+        {{ end }}
+    {{ end }}
+
+{{ end }}

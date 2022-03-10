@@ -76,12 +76,12 @@ main#content a:hover {
 }
 
 
-h1,.h1{font-size:1.9rem}
-h2,.h2{font-size:1.5rem}
-h3,.h3{font-size:1.3rem}
-h4,.h4{font-size:.9rem}
-h5,.h5{font-size:.875rem}
-h6,.h6{font-size:.75rem}
+h1,.h1{font-size:1.9rem !important}
+h2,.h2{font-size:1.5rem !important}
+h3,.h3{font-size:1.3rem !important}
+h4,.h4{font-size:.9rem !important}
+h5,.h5{font-size:.875rem !important}
+h6,.h6{font-size:.75rem !important}
 
 main#content h1,
 main#content h2,
