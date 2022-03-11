@@ -1,6 +1,6 @@
 ---
 title : Adam and RMSProp Optimisers
-tags : [ml-theory,deep-learning]
+tags : [machine-learning,deep-learning]
 date: 2021-10-24T05:04:51+05:30
 draft: false
 ---

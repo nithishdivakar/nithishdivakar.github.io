@@ -1,7 +1,7 @@
 ---
 title: Bayes Error
 layout: post
-tags : [ml-theory]
+tags : [machine-learning]
 date: 2018-02-11T05:04:51+05:30
 ---
 # Bayes Error

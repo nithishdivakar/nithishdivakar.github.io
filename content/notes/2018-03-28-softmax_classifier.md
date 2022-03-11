@@ -1,6 +1,6 @@
 ---
 title : Softmax Classifier
-tags : [ml-theory]
+tags : [machine-learning]
 date: 2018-03-28T05:04:51+05:30
 draft: true
 ---

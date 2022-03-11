@@ -1,7 +1,7 @@
 ---
 title: Bias and Variance
 layout: post
-tags: [ml-theory]
+tags: [machine-learning]
 date: 2022-03-10T10:15:30+05:30
 draft: false
 ---

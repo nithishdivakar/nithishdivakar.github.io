@@ -1,6 +1,6 @@
 ---
 title : Neural Network Classfier
-tags : [ml-applied]
+tags : [applied-ml]
 date: 2021-05-13T05:04:51+05:30
 draft: true
 ---

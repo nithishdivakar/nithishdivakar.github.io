@@ -1,6 +1,6 @@
 ---
 title : Focal Loss
-tags : [ml-theory,deep-learning]
+tags : [machine-learning,deep-learning]
 date: 2021-10-10T05:04:51+05:30
 draft: False
 ---

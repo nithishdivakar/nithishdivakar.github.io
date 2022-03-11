@@ -309,6 +309,10 @@ footer#footer {
     color: #cc0000 !important;
 }
 
+.gray{
+    color: #424242 !important;
+}
+
 .blue, a {
     color: #0000CC !important;
 }

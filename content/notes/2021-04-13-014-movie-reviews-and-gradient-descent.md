@@ -1,6 +1,6 @@
 ---
 title : Movie Reviews and Gradient Descent
-tags : [ml-applied]
+tags : [applied-ml]
 date: 2021-04-13T05:04:51+05:30
 draft: false
 ---
