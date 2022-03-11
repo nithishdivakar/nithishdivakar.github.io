@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico><link rel=stylesheet href=/css/style.min.css><link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel=stylesheet type=text/css><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>KKT conditions and Lagrange multipliers</title></head><body><header id=banner><big class=h2><b><a href=https://daxpy.xyz/ class=black>daxpy</a></b></big><nav><ul><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0><main id=content><section><h1 id=karush-kuhn-tucker-conditions>Karush-Kuhn-Tucker conditions</h1><p>A typical constrained optimisation problem is as follows.
+$$\begin{aligned}
+\min_{x\in\mathbb{R}^n}&f(x)
+\\
+s.t.~h_i(x) &= 0
+\\
+g_j(x) &\leq 0
+\end{aligned}$$</p><h2 id=karush-kuhn-tucker-conditions-1>Karush-Kuhn-Tucker conditions</h2><p>If the negative of the gradient (of $f$) has any component along an equality constraint $h(x)=0$, then we can take small steps along this surface to reduce $f(x)$.</p><p>Since $\nabla h(x)$, the gradient of the equality constraint is always perpendicular to the constraint surface $h(x)=0$, at optimum, $-\nabla f(x)$ should be either parallel or anti-parallel to $\nabla h(x)$
+$$-\nabla f(x) = \mu \nabla h(x)$$
+A similar argument can be made for inequality constraints. These form KKT conditions. So at an optimum point $x^\ast$ we have,
+$$\begin{aligned}
+h_i(x^\ast)&=0
+&
+g_j(x^\ast) &\leq 0
+\\
+\lambda_j g_j(x^\ast) &= 0
+&
+\lambda_j &\geq 0
+\end{aligned}$$
+$$\nabla f(x^\ast) +\sum_{i} \mu_i\nabla h(x^\ast) + \sum_j \lambda_j \nabla g_j(x^\ast)= 0$$
+These are the KKT conditions for constrained optimisation.</p><h2 id=lagrange-multipliers>Lagrange multipliers</h2><p>The method of Lagrange multipliers relies on KKT conditions. For a constrained optimisation problem, we introduce a Lagrange function
+$$\begin{aligned}
+\mathcal{L}(x,\mu,\lambda) = f(x) + {\mu}^{T} h(x) + {\lambda}^{T} g(x)
+\end{aligned}$$
+<em>Stationary points are points where derivative of the function is zero.</em></p><p>The sationary points of Lagrange function satisfies all of the KKT conditions. Hence we can solve for $\nabla_x\mathcal{L} =0$ to find the optimum point of $f(x)$. $\nabla_\mu \mathcal{L}=0$ and $\nabla_\lambda \mathcal{L} =0$ gives us the constraints.</p><br><br><br><i>tags:</i>
+<a class=gray style=padding-right:5px href=/tags#optimisation>optimisation</a></section></main><hr style=margin:0><footer id=footer style=display:flex;justify-content:space-between><div>Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a></div><div><a href=/resources>::</a></div></footer></body></html>
