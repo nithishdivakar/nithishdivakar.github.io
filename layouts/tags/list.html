@@ -7,7 +7,12 @@
         <div id="{{$key}}"></div>
         {{ range $taxonomy.Pages }}
                 <span class="tiny green">[{{ .Section }}]</span>
-                <a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> 
+                <a href="{{ .Permalink}}"> 
+                    {{if .Params.draft}} 
+                        [draft]
+                    {{end}}
+                    {{ .LinkTitle }} 
+                </a> 
             <br>
         {{ end }}
     {{ end }}

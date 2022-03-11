@@ -2,8 +2,8 @@
     <big class="h2">
         <b>
             <a href="{{ .Site.BaseURL }}" class="black">
-        {{ .Site.Title }}
-        </a>
+                {{- .Site.Title -}}
+            </a>
         </b>
     </big>
     <nav>
@@ -16,7 +16,7 @@
             {{- end }}
             -->
             {{ range .Site.Sections }}
-              <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+              <li><a href="{{ .Permalink }}">{{- .Title -}}</a></li>
             {{ end }}
  <!--             <li><a href="/tags">tags</a></li> -->
               <li><a href="/about">about</a></li>

@@ -305,6 +305,10 @@ footer#footer {
     color: #000 !important;
 }
 
+.red{
+    color: #cc0000 !important;
+}
+
 .blue, a {
     color: #0000CC !important;
 }
