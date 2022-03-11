@@ -2,6 +2,13 @@
 
     <h2>Tags</h2>
 
+
+
+    All Tags: {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
+       &middot; <a href="#{{$key}}">{{- $key -}}</a>
+    {{ end }}
+    
+
     {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
         <h2 id="{{$key}}" style="margin-bottom: 1rem"> {{ $key }} </h2>
         <div id="{{$key}}"></div>
