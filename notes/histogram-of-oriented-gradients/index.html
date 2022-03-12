@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico><link rel=stylesheet href=/css/style.min.css><link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel=stylesheet type=text/css><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>Histogram of Oriented Gradients</title></head><body><header id=banner><big class=h2><b><a href=https://daxpy.xyz/ class=black>daxpy</a></b></big><nav><ul><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0><main id=content><section><h1 id=histogram-of-oriented-gradients>Histogram of Oriented Gradients</h1><p>Steps to compute HoG of an image.</p><ul><li><strong>Gradients computation:</strong> Compute image gradients $G_x$ and $G_y$ by convolving the image with $[−1,0,1]$ and $[−1,0,1]^{T}$ respectively</li><li><strong>Magnitude and direction</strong> of each pixel
+$$\begin{aligned}
+m &= \sqrt{G_x^2+G_y^2}
+&
+\theta &= \tan^{-1}\left(\frac{G_y}{G_x}\right)
+\end{aligned}$$</li><li>For each cell in the image ($8 \times 16$)<ul><li><strong>Oriented histogram</strong> The histogram is created by binning pixel orientation $\theta$</li><li>For a consecutive bin pair $(\theta_l,\theta_r)$ where a pixel $(m,\theta)$ falls, the histogram is populated as
+$$\begin{aligned}
+V(\theta_l) &= \frac{(\theta-\theta_L)}{|bin|}m
+&
+V(\theta_r) &= \frac{(\theta_r-\theta)}{|bin|}m
+\end{aligned}$$</li></ul></li><li><strong>Normalise histograms</strong>
+Combine(concatenate) histograms of neighbouring $2 \times 2$ overlapping cells blocks and $\ell_2$ normalise this histogram. This step is to prevent lighting based variations in the image on the histogram</li></ul><br><br><br><i>tags:</i>
+<a class=gray style=padding-right:5px href=/tags#computer-vision>computer-vision</a></section></main><br><br><hr style=margin:0><footer id=footer style=display:flex;justify-content:space-between><div>Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a></div><div><a href=/resources>::</a></div></footer></body></html>
