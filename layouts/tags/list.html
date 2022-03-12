@@ -1,14 +1,13 @@
 {{ define "main" }}
 
-    <h2>Tags</h2>
-
-
-
-    All Tags: {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
-       &middot; <a href="#{{$key}}">{{- $key -}}</a>
+    <br>
+    {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
+        <span class="black">&bull;</span>
+        <a href="#{{$key}}">
+            {{- $key -}} <small> ({{len $taxonomy.Pages}})</small>
+        </a>
     {{ end }}
     
-
     {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
         <h2 id="{{$key}}" style="margin-bottom: 1rem"> {{ $key }} </h2>
         <div id="{{$key}}"></div>
