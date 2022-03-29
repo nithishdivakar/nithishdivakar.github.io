@@ -68,5 +68,29 @@
 </span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
 </span></span><span style=display:flex><span>            high <span style=color:#f92672>=</span> mid
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> low
-</span></span></code></pre></div><h2 id=find-minimum-in-rotated-sorted-array-with-no-duplicates>Find Minimum in Rotated Sorted Array With No Duplicates</h2><p>\url{https://www.topcoder.com/thrive/articles/Binary%20Search}</p><h2 id=median-of-2-sorted-arrays>Median of 2 sorted arrays</h2><br><br><br><i>tags:</i>
+</span></span></code></pre></div><h2 id=find-minimum-in-rotated-sorted-array-with-no-duplicates>Find Minimum in Rotated Sorted Array With No Duplicates</h2><p>\url{https://www.topcoder.com/thrive/articles/Binary%20Search}</p><h2 id=median-of-2-sorted-arrays>Median of 2 sorted arrays</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Solution</span>:
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>findMedianSortedArrays</span>(self, A: List[int], B: List[int]) <span style=color:#f92672>-&gt;</span> float:
+</span></span><span style=display:flex><span>        m, n <span style=color:#f92672>=</span> len(A), len(B)
+</span></span><span style=display:flex><span>        length, mid <span style=color:#f92672>=</span> (m<span style=color:#f92672>+</span>n<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>), (m<span style=color:#f92672>+</span>n<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>)<span style=color:#f92672>//</span><span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>        m1 <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>find_kth(A,B, mid)
+</span></span><span style=display:flex><span>        m2 <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>find_kth(A,B, length <span style=color:#f92672>-</span> mid)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> (m1<span style=color:#f92672>+</span>m2)<span style=color:#f92672>/</span><span style=color:#ae81ff>2.0</span>
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>find_kth</span>(self, A, B, k):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> A: <span style=color:#66d9ef>return</span> B[k<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> B: <span style=color:#66d9ef>return</span> A[k<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        lo, hi <span style=color:#f92672>=</span> min(A[<span style=color:#ae81ff>0</span>], B[<span style=color:#ae81ff>0</span>]), max(A[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>], B[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> lo <span style=color:#f92672>&lt;</span> hi:
+</span></span><span style=display:flex><span>            mid <span style=color:#f92672>=</span> lo <span style=color:#f92672>+</span> (hi <span style=color:#f92672>-</span> lo)<span style=color:#f92672>//</span><span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>            a_md <span style=color:#f92672>=</span> bisect<span style=color:#f92672>.</span>bisect_right(A, mid)
+</span></span><span style=display:flex><span>            b_md <span style=color:#f92672>=</span> bisect<span style=color:#f92672>.</span>bisect_right(B, mid)
+</span></span><span style=display:flex><span>            
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> a_md <span style=color:#f92672>+</span> b_md <span style=color:#f92672>&lt;</span> k:
+</span></span><span style=display:flex><span>                lo <span style=color:#f92672>=</span> mid <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>                hi <span style=color:#f92672>=</span> mid
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> hi
+</span></span></code></pre></div><br><br><br><i>tags:</i>
 <a class=gray style=padding-right:5px href=/tags#algorithms>algorithms</a></section></main><br><br><hr style=margin:0><footer id=footer style=display:flex;justify-content:space-between><div>Ping me <a class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a></div><div><a href=/resources>::</a></div></footer></body></html>

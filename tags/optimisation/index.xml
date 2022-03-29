@@ -1,4 +1,164 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>optimisation on daxpy</title><link>https://daxpy.xyz/tags/optimisation/</link><description>Recent content in optimisation on daxpy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 11 Mar 2022 06:15:30 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/optimisation/index.xml" rel="self" type="application/rss+xml"/><item><title>Binary Search</title><link>https://daxpy.xyz/posts/binary-search-problems/</link><pubDate>Fri, 28 Jan 2022 06:59:51 +0530</pubDate><guid>https://daxpy.xyz/posts/binary-search-problems/</guid><description>&lt;h1 id="binary-search">Binary Search&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>optimisation on daxpy</title><link>https://daxpy.xyz/tags/optimisation/</link><description>Recent content in optimisation on daxpy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 11 Mar 2022 06:15:30 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/optimisation/index.xml" rel="self" type="application/rss+xml"/><item><title>Finding Median</title><link>https://daxpy.xyz/posts/finding-median/</link><pubDate>Tue, 01 Mar 2022 06:59:51 +0530</pubDate><guid>https://daxpy.xyz/posts/finding-median/</guid><description>&lt;h1 id="finding-median">Finding Median&lt;/h1>
+&lt;p>&lt;em>Here is my &lt;a href="https://www.dictionary.com/e/slang/eli5/">ELI5&lt;/a> definition of a median.&lt;/em>&lt;/p>
+&lt;blockquote>
+&lt;p>&amp;ldquo;Median is the middle number when numbers are sorted&amp;rdquo;.&lt;/p>
+&lt;/blockquote>
+&lt;p>There is only a single middle number when the size list is odd. But if the size is even, there are 2 middle numbers. Then we take an average of those 2 numbers to be the median.&lt;/p>
+&lt;p>Median is useful when your data doesn&amp;rsquo;t behave. Medians are part of &amp;ldquo;robust statistics&amp;rdquo; because they are not affected by outliers. Both $[1,2,100]$ and $[1,2,3]$ have 2 as their median while their means differ widely. You can see why medians are not affected by noise.&lt;/p>
+&lt;p>This post is all about computing medians from a list of numbers. The straightforward approach is to sort everything first and the middle element is the median. But can we do better?&lt;/p>
+&lt;h2 id="quick-select">Quick Select&lt;/h2>
+&lt;p>Quick select is similar to quicksort except that it doesn&amp;rsquo;t sort the array. It semi sorts the array.&lt;/p>
+&lt;p>Given an element &amp;lsquo;pivot&amp;rsquo;, quick select partitions the array such all the smaller elements are moved to the left of the pivot and all the larger elements are moved to the right; essentially partition the array into two. The partition procedure can be implemented using either &lt;a href="https://en.wikipedia.org/wiki/Quicksort#Lomuto_partition_scheme">Lomuto&lt;/a> or &lt;a href="https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme">Hoare&lt;/a> scheme, either run in linear time.&lt;/p>
+&lt;p>Quick select takes a number $k$ as a parameter and finds the $k^{th}$ smallest number in the array. As a side effect, the first $k$ locations of the array contains the $k$ smallest elements after the procedure.&lt;/p>
+&lt;p>For finding the median, we can use quick selection by setting $k$ to the middle location.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">quick_select&lt;/span>(A, k):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low, high &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, len(A)&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pivot &lt;span style="color:#f92672">=&lt;/span> random_index(low, high)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> index &lt;span style="color:#f92672">=&lt;/span> partition(A, low, high, A[pivot])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> index &lt;span style="color:#f92672">==&lt;/span> k:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> A[:k]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> index &lt;span style="color:#f92672">&amp;lt;&lt;/span> k:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> left &lt;span style="color:#f92672">=&lt;/span> index &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> right &lt;span style="color:#f92672">=&lt;/span> index &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>size &lt;span style="color:#f92672">=&lt;/span> len(A) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>m1 &lt;span style="color:#f92672">=&lt;/span> quick_select(A, size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>m2 &lt;span style="color:#f92672">=&lt;/span> quick_select(A, size &lt;span style="color:#f92672">-&lt;/span> size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>median &lt;span style="color:#f92672">=&lt;/span> (m1&lt;span style="color:#f92672">+&lt;/span>m2)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2.0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The best-case and average-case complexity for quick select is both $O(n)$ but in the worst case, it takes $O(n^2)$ time. The worst case occurs when all the pivots we select results in an &lt;em>unfavourable&lt;/em> partition of the array.&lt;/p>
+&lt;p>Is there any way to guarantee that the pivot we select results in a &lt;em>favourable&lt;/em> split?&lt;/p>
+&lt;h2 id="median-of-medians">Median of Medians&lt;/h2>
+&lt;p>The algorithm is easier to describe. Split the large list into smaller lists. Find medians of the smaller lists(recursively) and then find the median of those medians. Use this number as the pivot in the partition function of quick select.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">median_small&lt;/span>(A):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> size &lt;span style="color:#f92672">=&lt;/span> len(A) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> B &lt;span style="color:#f92672">=&lt;/span> sorted(A)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m1 &lt;span style="color:#f92672">=&lt;/span> B[size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m2 &lt;span style="color:#f92672">=&lt;/span> B[size &lt;span style="color:#f92672">-&lt;/span> size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> (m1&lt;span style="color:#f92672">+&lt;/span>m2)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2.0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">median_of_medians&lt;/span>(A, d &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> n &lt;span style="color:#f92672">=&lt;/span> len(A)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> n &lt;span style="color:#f92672">&amp;lt;=&lt;/span> d:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> median_small(A)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> medians &lt;span style="color:#f92672">=&lt;/span> [median_small(A[i:i&lt;span style="color:#f92672">+&lt;/span>d]) &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(&lt;span style="color:#ae81ff">0&lt;/span>, n, d)]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pivot &lt;span style="color:#f92672">=&lt;/span> median_of_medians(medians, d)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> pivot
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">quick_select&lt;/span>(A, k):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low, high &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, len(A)&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pivot &lt;span style="color:#f92672">=&lt;/span> median_of_medians(A[low:high])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> index &lt;span style="color:#f92672">=&lt;/span> partition(A, low, high, pivot)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> index &lt;span style="color:#f92672">==&lt;/span> k:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> A[:k]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> index &lt;span style="color:#f92672">&amp;lt;&lt;/span> k:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> left &lt;span style="color:#f92672">=&lt;/span> index &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> right &lt;span style="color:#f92672">=&lt;/span> index &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>size &lt;span style="color:#f92672">=&lt;/span> len(A) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>m1 &lt;span style="color:#f92672">=&lt;/span> quick_select(A, size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>m2 &lt;span style="color:#f92672">=&lt;/span> quick_select(A, size &lt;span style="color:#f92672">-&lt;/span> size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>median &lt;span style="color:#f92672">=&lt;/span> (m1&lt;span style="color:#f92672">+&lt;/span>m2)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2.0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Median of medians does not compute the real median. But it does give us something close. A guarantee that the selected pivot will always partition the array &lt;em>favourably&lt;/em>.&lt;/p>
+&lt;p>A randomly selected element may end up partitioning the array &lt;em>unfavourably&lt;/em> (i.e very little or no elements in one of the partitions). The recursion does not help reduce the running time in such a case. But what about the median of medians?&lt;/p>
+&lt;p>If $S_i$ is the $i^{th}$ segment of array $A$ with $|A|=n$, $|S_i|\geq 5$, $m_i=median(S_i)$, $m=median(m_1,m_2,\dots)$, we can infer that&lt;/p>
+&lt;ol>
+&lt;li>Atleast 2 element in $S_i$ are smaller than $m_i$&lt;/li>
+&lt;li>Atleast half of $m_i$&amp;rsquo;s are smaller than $m$&lt;/li>
+&lt;/ol>
+&lt;p>Which implies at least $\frac{n/5}{2}\cdot 2=\frac{n}{5}$ elements of $A$ are smaller than $m$. Similarly, at least $\frac{n}{5}$ elements in $A$ which are greater than $m$. So splitting the array with $m$ as pivot always results in a &lt;em>favourable&lt;/em> split of the array.&lt;/p>
+&lt;p>The run time of median of median procedure is also linear.
+$$T(n) = T(n/5)+ n/5 = O(n)$$&lt;/p>
+&lt;p>So if we use the median of medians for selecting pivot, the worst-case performance of quick select is improved to $O(n \log n)$.&lt;/p>
+&lt;p>But then why a magical segment size of $5$? Why not 3? Would a larger number work? Read more &lt;a href="https://en.wikipedia.org/wiki/Median_of_medians">here&lt;/a>&lt;/p>
+&lt;h2 id="median-of-sorted-arrays">Median of sorted arrays&lt;/h2>
+&lt;p>What if the numbers are in smaller sorted arrays and we need to find the median of the full list?&lt;/p>
+&lt;p>Here is the strategy. Given a pivot, we can count numbers smaller than the pivot in each of the sorted arrays using binary search. The smallest number for which this total count is $k$ is the $k^{th}$ smallest number in the whole collection. To find such a number, we can use binary search on the total range of numbers.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">find_kth&lt;/span>(A:List[List[int]], k:int) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> float:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> len(A)&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>: &lt;span style="color:#66d9ef">return&lt;/span> A[&lt;span style="color:#ae81ff">0&lt;/span>][k&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lo &lt;span style="color:#f92672">=&lt;/span> min(a[&lt;span style="color:#ae81ff">0&lt;/span>] &lt;span style="color:#66d9ef">for&lt;/span> a &lt;span style="color:#f92672">in&lt;/span> A)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> hi &lt;span style="color:#f92672">=&lt;/span> max(a[&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>] &lt;span style="color:#66d9ef">for&lt;/span> a &lt;span style="color:#f92672">in&lt;/span> A)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> lo &lt;span style="color:#f92672">&amp;lt;&lt;/span> hi:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> lo &lt;span style="color:#f92672">+&lt;/span> (hi &lt;span style="color:#f92672">-&lt;/span> lo)&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> a &lt;span style="color:#f92672">in&lt;/span> A:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">+=&lt;/span> bisect&lt;span style="color:#f92672">.&lt;/span>bisect_right(a, mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> count &lt;span style="color:#f92672">&amp;lt;&lt;/span> k:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lo &lt;span style="color:#f92672">=&lt;/span> mid &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> hi &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> hi
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">median_sorted&lt;/span>(A:List[List[int]]) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> float:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> A &lt;span style="color:#f92672">=&lt;/span> [a &lt;span style="color:#66d9ef">for&lt;/span> a &lt;span style="color:#f92672">in&lt;/span> A &lt;span style="color:#66d9ef">if&lt;/span> a] &lt;span style="color:#75715e"># remove all empty arrays&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> size &lt;span style="color:#f92672">=&lt;/span> sum(len(a) &lt;span style="color:#66d9ef">for&lt;/span> a &lt;span style="color:#f92672">in&lt;/span> A) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m1 &lt;span style="color:#f92672">=&lt;/span> find_kth(A, size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m2 &lt;span style="color:#f92672">=&lt;/span> find_kth(A, size &lt;span style="color:#f92672">-&lt;/span> size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> (m1&lt;span style="color:#f92672">+&lt;/span>m2)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2.0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The time complexity of this approach is $O(m\log n)$ where $m$ is no of arrays and $n$ is the size of the largest array.&lt;/p>
+&lt;p>&lt;em>To be precise, the time complexity is $O(b\cdot m \log n)$ where $b$ is the total number of bits used to represent the numbers. The difference between &lt;code>hi&lt;/code> and &lt;code>lo&lt;/code> can be as large as $2^{b}$ and we are doing a binary search in that range. So, the number of steps the while loop runs is bounded by $O(b)$. In a realistic scenario, $b$ is always a constant like 32 or 64.&lt;/em>&lt;/p>
+&lt;h2 id="median-with-updates">Median with updates&lt;/h2>
+&lt;p>So far we have been talking about arrays of fixed sizes. What if the array grows over time with insertions? How do you find the median instantaneously?&lt;/p>
+&lt;p>Essentially, we have to support 2 operations. &lt;code>insert&lt;/code> and &lt;code>find_median&lt;/code>. If insertion is a simple append operation, then finding the median would take $O(n)$ steps. If we always insert while maintaining sorted order which takes $O(n)$ steps, then finding the median would just be a lookup. Can we do better?&lt;/p>
+&lt;p>We maintain 2 heaps; a max heap and a min-heap. The max heap always maintains the smaller half of elements while the min-heap maintains the larger half. The roots of both the heaps would be the middle element(s).&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> heapq
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>L, R &lt;span style="color:#f92672">=&lt;/span> [], []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">insert&lt;/span>(num) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">None&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> heapq&lt;span style="color:#f92672">.&lt;/span>heappush(R, num)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> itm &lt;span style="color:#f92672">=&lt;/span> heapq&lt;span style="color:#f92672">.&lt;/span>heappop(R)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> heapq&lt;span style="color:#f92672">.&lt;/span>heappush(L, &lt;span style="color:#f92672">-&lt;/span>itm)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> len(R) &lt;span style="color:#f92672">&amp;lt;&lt;/span> len(L):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># invariant: |R|-|L| = 0/1 &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> itm &lt;span style="color:#f92672">=&lt;/span> heapq&lt;span style="color:#f92672">.&lt;/span>heappop(L)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> heapq&lt;span style="color:#f92672">.&lt;/span>heappush(R, &lt;span style="color:#f92672">-&lt;/span>itm)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">find_median&lt;/span>() &lt;span style="color:#f92672">-&amp;gt;&lt;/span> float:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> len(L) &lt;span style="color:#f92672">==&lt;/span> len(R):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> (&lt;span style="color:#f92672">-&lt;/span>L[&lt;span style="color:#ae81ff">0&lt;/span>] &lt;span style="color:#f92672">+&lt;/span> R[&lt;span style="color:#ae81ff">0&lt;/span>])&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> R[&lt;span style="color:#ae81ff">0&lt;/span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This scheme incurs a $O(\log n)$ steps for &lt;code>insert&lt;/code> and $O(1)$ for &lt;code>find_median&lt;/code>.
+&lt;em>We do a bit of hack by inserting the negative of an element to simulate a max heap from a min-heap&lt;/em>.&lt;/p>
+&lt;h2 id="median-of-a-distribution">Median of a distribution&lt;/h2>
+&lt;p>Let&amp;rsquo;s say we have lots of numbers. But most of them are in a small range. How do you compute the median then?&lt;/p>
+&lt;p>We can store the statistics of the numbers by maintaining their frequencies in the valid range. For the numbers beyond the range, we store only the total counts (one for each end). This allows fast inserts and fast median finding operations. Let&amp;rsquo;s see a sample implementation.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>freq &lt;span style="color:#f92672">=&lt;/span> Counter()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>low, high &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">?&lt;/span>, &lt;span style="color:#960050;background-color:#1e0010">?&lt;/span> &lt;span style="color:#75715e"># set the limits here&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>low_counter, count, high_counter &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">insert&lt;/span>(num) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">None&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> num &lt;span style="color:#f92672">&amp;lt;&lt;/span> low:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low_counter &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">elif&lt;/span> num &lt;span style="color:#f92672">&amp;gt;&lt;/span> high:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high_counter &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> freq[num] &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">find_kth&lt;/span>(k) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> float:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">=&lt;/span> low_counter
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> n &lt;span style="color:#f92672">in&lt;/span> range(low, high&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> count &lt;span style="color:#f92672">&amp;lt;=&lt;/span> k &lt;span style="color:#f92672">&amp;lt;=&lt;/span> (count &lt;span style="color:#f92672">+&lt;/span> freq[n]):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> n
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> count &lt;span style="color:#f92672">+=&lt;/span> freq[n]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> float(&lt;span style="color:#e6db74">&amp;#39;nan&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">find_median&lt;/span>() &lt;span style="color:#f92672">-&amp;gt;&lt;/span> float:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> size &lt;span style="color:#f92672">=&lt;/span> low_counter &lt;span style="color:#f92672">+&lt;/span> count &lt;span style="color:#f92672">+&lt;/span> high_counter &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m1 &lt;span style="color:#f92672">=&lt;/span> find_kth(size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m2 &lt;span style="color:#f92672">=&lt;/span> find_kth(size &lt;span style="color:#f92672">-&lt;/span> size&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> (m1 &lt;span style="color:#f92672">+&lt;/span> m2)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2.0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Do you know any other weird scenarios where you need median computed? Let me know.&lt;/p></description></item><item><title>Binary Search</title><link>https://daxpy.xyz/posts/binary-search-problems/</link><pubDate>Fri, 28 Jan 2022 06:59:51 +0530</pubDate><guid>https://daxpy.xyz/posts/binary-search-problems/</guid><description>&lt;h1 id="binary-search">Binary Search&lt;/h1>
 &lt;p>Binary search is more than just a search algorithm for sorted arrays. It&amp;rsquo;s an algorithm which keeps showing up as optimal solutions in unlikely places. This note is a very limited exploration of what binary search can do.&lt;/p>
 &lt;p>Let&amp;rsquo;s begin by talking about vanilla binary search.&lt;/p>
 &lt;h2 id="binary-search-1">Binary Search&lt;/h2>
@@ -89,7 +249,32 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> low
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="find-minimum-in-rotated-sorted-array-with-no-duplicates">Find Minimum in Rotated Sorted Array With No Duplicates&lt;/h2>
 &lt;p>\url{https://www.topcoder.com/thrive/articles/Binary%20Search}&lt;/p>
-&lt;h2 id="median-of-2-sorted-arrays">Median of 2 sorted arrays&lt;/h2></description></item><item><title>Differentiable Computations</title><link>https://daxpy.xyz/posts/differentiable-computations/</link><pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/posts/differentiable-computations/</guid><description>&lt;h1 id="differentiable-computations">Differentiable Computations&lt;/h1>
+&lt;h2 id="median-of-2-sorted-arrays">Median of 2 sorted arrays&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Solution&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">findMedianSortedArrays&lt;/span>(self, A: List[int], B: List[int]) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> float:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m, n &lt;span style="color:#f92672">=&lt;/span> len(A), len(B)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> length, mid &lt;span style="color:#f92672">=&lt;/span> (m&lt;span style="color:#f92672">+&lt;/span>n&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>), (m&lt;span style="color:#f92672">+&lt;/span>n&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m1 &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>find_kth(A,B, mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> m2 &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>find_kth(A,B, length &lt;span style="color:#f92672">-&lt;/span> mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> (m1&lt;span style="color:#f92672">+&lt;/span>m2)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2.0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">find_kth&lt;/span>(self, A, B, k):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> A: &lt;span style="color:#66d9ef">return&lt;/span> B[k&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> B: &lt;span style="color:#66d9ef">return&lt;/span> A[k&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lo, hi &lt;span style="color:#f92672">=&lt;/span> min(A[&lt;span style="color:#ae81ff">0&lt;/span>], B[&lt;span style="color:#ae81ff">0&lt;/span>]), max(A[&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>], B[&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> lo &lt;span style="color:#f92672">&amp;lt;&lt;/span> hi:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mid &lt;span style="color:#f92672">=&lt;/span> lo &lt;span style="color:#f92672">+&lt;/span> (hi &lt;span style="color:#f92672">-&lt;/span> lo)&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a_md &lt;span style="color:#f92672">=&lt;/span> bisect&lt;span style="color:#f92672">.&lt;/span>bisect_right(A, mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> b_md &lt;span style="color:#f92672">=&lt;/span> bisect&lt;span style="color:#f92672">.&lt;/span>bisect_right(B, mid)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> a_md &lt;span style="color:#f92672">+&lt;/span> b_md &lt;span style="color:#f92672">&amp;lt;&lt;/span> k:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lo &lt;span style="color:#f92672">=&lt;/span> mid &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> hi &lt;span style="color:#f92672">=&lt;/span> mid
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> hi
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Differentiable Computations</title><link>https://daxpy.xyz/posts/differentiable-computations/</link><pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/posts/differentiable-computations/</guid><description>&lt;h1 id="differentiable-computations">Differentiable Computations&lt;/h1>
 &lt;p>Auto-grad or automatic gradient computation is a nice feature found in many computational frameworks. Specify the computation in forward direction and the framework computes backward gradients. Let&amp;rsquo;s talk about the generic method to do this.&lt;/p>
 &lt;p>Let&amp;rsquo;s say we have to compute the result of &amp;lsquo;something&amp;rsquo;. It may be a
 nasty heat equation or some logic driven steps to get from input to
