@@ -1,6 +1,6 @@
 ---
 title : RankNet and LambdaRank
-tags : [ranking,search]
+tags : [ranking, search]
 date: 2021-09-25T05:04:51+05:30
 draft: false
 ---

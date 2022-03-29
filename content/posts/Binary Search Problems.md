@@ -134,4 +134,30 @@ def square_root(x, tolerance=1e-4):
 
 
 ## Median of 2 sorted arrays
+```python
+class Solution:
+    def findMedianSortedArrays(self, A: List[int], B: List[int]) -> float:
+        m, n = len(A), len(B)
+        length, mid = (m+n+1), (m+n+1)//2
+        m1 = self.find_kth(A,B, mid)
+        m2 = self.find_kth(A,B, length - mid)
+        return (m1+m2)/2.0
+        
+    def find_kth(self, A, B, k):
+        if not A: return B[k-1]
+        if not B: return A[k-1]
+        
+        lo, hi = min(A[0], B[0]), max(A[-1], B[-1])
+        
+        while lo < hi:
+            mid = lo + (hi - lo)//2
+            a_md = bisect.bisect_right(A, mid)
+            b_md = bisect.bisect_right(B, mid)
+            
+            if a_md + b_md < k:
+                lo = mid + 1
+            else:
+                hi = mid
+        return hi
+```
 
