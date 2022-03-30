@@ -1,25 +1,24 @@
-<header id="banner">
-    <big class="h2">
+<header id="banner" style="
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:flex-start;
+    align-items:baseline;"
+>
+    <big class="h2" style="flex: 0 0 80px;">
         <b>
             <a href="{{ .Site.BaseURL }}" class="black">
                 {{- .Site.Title -}}
             </a>
         </b>
     </big>
-    <nav>
-        <ul>
-            <!--
-            {{ range .Site.Menus.main.ByWeight -}}
-            <li>
-                {{ .Pre }}<a href="{{ .URL }}" title="{{ .Title }}">{{- .Name -}}</a>{{ .Post }}
-            </li>
-            {{- end }}
-            -->
-            {{ range .Site.Sections }}
-              <li><a href="{{ .Permalink }}">{{- .Title -}}</a></li>
-            {{ end }}
- <!--             <li><a href="/tags">tags</a></li> -->
-              <li><a href="/about">about</a></li>
+    <nav style="flex: 0px;">
+        <ul style="display: flex;flex-direction: row; gap:0.5rem;">
+            {{- range .Site.Sections -}}
+                <li><a href="{{ .Permalink }}">{{- .Title -}}</a></li>
+            {{- end -}}
+            <li><a href="/about">about</a></li>
+            <!-- <li><a href="/tags">tags</a></li> -->
         </ul>
     </nav>
 </header>
