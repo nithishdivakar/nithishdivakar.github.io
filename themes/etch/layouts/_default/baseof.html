@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%;">
     {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <main id="content">
-        {{- block "main" . }}{{- end }}
-        </main>
-        {{- partial "footer.html" . -}}
+    <body style="height: 100%;">
+        <div class="container" style="display: flex;flex-direction: column;min-height: 100vh;">
+            <div class="header"> 
+                {{- partial "header.html" . -}}
+            </div>
+            <div class="main" style="flex: 1;"> 
+                <main id="content">
+                    {{- block "main" . }}{{- end }}
+                </main>
+            </div>
+            <div class="footer">
+                {{- partial "footer.html" . -}}
+            </div>
+        </div>
     </body>
 </html>
