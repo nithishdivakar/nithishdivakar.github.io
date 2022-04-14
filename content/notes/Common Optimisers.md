@@ -1,11 +1,12 @@
 ---
-title : Adam and RMSProp Optimisers
+title : Common Optimisers
 tags : [machine-learning,deep-learning]
 date: 2021-10-24T05:04:51+05:30
-draft: true
+draft: false
 ---
 
-# Adam and RMSProp Optimisers
+# Common Optimisers
+$E$ is the loss function and $w$ is the model parameters;
 
 
 ## Stochastic Gradient Descent
@@ -14,9 +15,7 @@ $$\begin{aligned}
 
 ## SGD with Momentum
 
-The main idea is the following.
-
-> Use gradient to update velocity/direction of a particle instead of only updating its position
+*Use gradient to update velocity/direction of a particle instead of only updating its position*
 
 
 $$\begin{aligned}
@@ -35,11 +34,13 @@ contribution of previous gradients to the weight change.
 The observation behind nesterov momentum is that we will update the
 parameters by the momentum term anyway, why not calculate gradient at
 the updated step instead? 
+
 $$\begin{aligned}
     m_{t+1} &= \eta m_t + \alpha \boldsymbol{\nabla E(w_t-\eta m_t)}
     \\\\
     w_{t+1}&= w_t -  m_{t+1}
 \end{aligned}$$ 
+
 Since we calculate the gradient at the new location, if there is a difference in direction, the
 update will be able to correct for the difference. It increases responsiveness of the optimiser.
 
@@ -68,6 +69,3 @@ m &= \frac{m_{t+1}}{1-\beta_2} \quad v = \frac{v_{t+1}}{1-\beta_1}
 \\\\
 w_{t+1}&=w_{t} - \alpha \frac{m}{\sqrt{v}+\epsilon}
 \end{aligned}$$
-
-
-    
