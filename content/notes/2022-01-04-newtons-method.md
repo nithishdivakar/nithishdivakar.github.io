@@ -16,7 +16,7 @@ $$f(x_k+s) = f(x_k) + s\nabla f(x_k) + \frac{s^2}{2!} H(x_k) = g(s)$$
 $$\begin{aligned}
 0 &= \nabla_s g(s) = \nabla f(x_k) + s H(x_k)
 \\\\
-s &=H(x_k)^{-1} {\nabla f(x_k)}^\intercal
+s &= - H(x_k)^{-1} {\nabla f(x_k)}^\intercal
 \end{aligned}$$
 
 
