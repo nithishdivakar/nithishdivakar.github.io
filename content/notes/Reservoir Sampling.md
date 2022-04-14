@@ -1,8 +1,8 @@
 ---
 title : Reservoir Sampling
 tags : [probability,distributed-computing]
-date: 2021-10-12T05:04:51+05:30
-draft: true
+date: 2022-04-01T04:00:00+05:30
+draft: false
 ---
 
 # Reservoir Sampling
