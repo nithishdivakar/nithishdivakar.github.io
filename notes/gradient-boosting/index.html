@@ -1,0 +1,20 @@
+<!doctype html><html style=height:100%><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico><link rel=stylesheet href=/css/style.min.css><link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel=stylesheet type=text/css><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>Gradient Boosting</title></head><body style=height:100%><div class=container style=display:flex;flex-direction:column;min-height:100vh><div class=header><header id=banner style=display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:baseline><big class=h2 style="flex: 0 0 80px;"><b><a href=https://daxpy.xyz/ class=black>daxpy</a></b></big><nav style=flex:0px><ul style=display:flex;flex-direction:row;gap:.5rem><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/random/>Random</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0></div><div class=main style=flex:1><main id=content><section><h1 id=gradient-boosting>Gradient Boosting</h1><p>The general framework of Boosting is learners are added in greedy manner to minimise loss.
+$$F_t(x) = F_{t-1}(x) + f_t(x)$$
+At the $t^{th}$ step, we are interested in learning the function $f$ which minimised the loss. The value of loss function at this point is given by</p><p>$$\begin{aligned}
+L &= l(y,p+f(x))
+\\
+&=l(y,p) + \nabla_{p} l(y,p)f(x)
+\end{aligned}$$</p><p>The last step is from first order taylor series approximation of $l$.
+$$f(x) = f(a) + (x-a) f^{\prime}(a)$$</p><p>We have trying find $f$ which minimises the loss $L$. So, we should move in negative gradient direction in function space.
+\begin{align*}
+F_t & \gets F_{t-1}-\gamma_t \frac{\partial L}{\partial f}
+\\
+\frac{\partial L}{\partial f}&= \nabla_{p} l(y,p)=-r
+\end{align*}</p><p>Following this, all we need to do is at step $t$, we find the learner which best approximates the pseudo-residuals $r$</p><p><strong>Algorithm</strong>: Gradient Boosting</p><ul><li>[<strong>input</strong>] Dataset $D=\{(x_i,y_i)\}$, loss function $L$</li><li>[<strong>initialise</strong>] the model with a constant (typically mean $\mathbb{E} y_i$)
+$$F_0(x) = \operatorname*{arg\,min}_{\gamma}\sum_i L(y_i,\gamma)$$</li><li>For $t \in 1 \ldots T$<ul><li>[<strong>Compute pseudo residuals</strong>]
+$$r_{it} = -\frac{\partial L(y_i,F_{t-1}(x_i))}{\partial F_{t-1}(x_i)}$$</li><li>[<strong>Fit a weak learner on residuals</strong>]
+$$f_t \leftrightsquigarrow \{(x_i,r_{it})\}$$</li><li>[<strong>Compute multiplier</strong>] by solving the 1D optimisation problem
+$$\gamma_t = \operatorname*{arg,min}_{\gamma}\, L(y,F_{t-1}(x)+\gamma f_t(x))$$</li><li>[<strong>Update model</strong>]
+$$F_t = F_{t-1}+\gamma_t f_t$$</li></ul></li></ul><br><br><br><i>tags:</i>
+<a class=gray style=padding-right:5px href=/tags#machine-learning>machine-learning</a></section></main></div><div class=footer><br><br><hr style=margin:0><footer id=footer style=display:flex;justify-content:space-between><div>Ping me <a target=_blank class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a></div><div><a href=/resources target=_blank>::</a></div></footer></div></div></body></html>
