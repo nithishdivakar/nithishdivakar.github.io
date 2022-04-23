@@ -17,7 +17,7 @@
 	   </i>
 		{{ range .Params.tags }} <small>• {{.}}</small> {{end}}
 		{{with .Content}}
-			{{- . -}}
+			<small>{{- . -}}</small>
 		{{ else }}
 			<br><br>
 		{{ end }}
