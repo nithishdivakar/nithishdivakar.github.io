@@ -9,4 +9,4 @@ Hi there.
 [daxpy](/daxpy) is [my](/about) online notebook. You will mostly find notes on machine learning and related things here.  
 
 
-There is also a [links](/links) section with a collection of  amazing articles I've read. 
+There is also a [links](/links) section with a collection of  amazing articles I've stumbled on. 

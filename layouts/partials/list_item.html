@@ -2,19 +2,26 @@
 
     <div style="flex: 0 0 80px">
         <time style="font-family:monospace;" class="tiny green">{{ .Date.Format "02,Jan 2006" }}</time>
+        
     </div>
     <div style="flex: 0 0 300px; margin-right: 1rem;">
         <a href="{{ .Permalink }}" >
             {{if .Params.draft}} 
                 [draft]
             {{end}}
-        {{ .Title }}
+        {{ if eq (.Scratch.Get "display_section") "True" }}
+            {{ if eq .Section "links"}}
+                ⇝
+            {{ end }}
+        {{end}}
+        {{ .Title }}            
         </a>
     </div>
     <div style="flex: 0 0 200px;">
         {{ range .Params.Tags }}
             <a class="tiny black" style="padding-right: 5px" href="/tags#{{.}}">{{ . }}</a>
         {{ end }}
+        
     </div>
     <!--
     <small><time>{{ .Date.Format "Jan 2, 2006" }}</time></small>

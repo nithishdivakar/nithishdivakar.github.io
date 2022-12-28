@@ -1,0 +1,10 @@
+{{ define "main" }}
+
+<h2>Stories</h2>
+<div style="margin-top:1em" >
+{{ range (where .Site.RegularPages "Section" "stories") }}
+    {{ partial "list_item.html" . }}
+{{- end }}
+</div>
+
+{{ end }}

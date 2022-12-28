@@ -5,10 +5,15 @@
     
 
     <!-- Ranges through content/posts/*.md -->
-	<h2>Notes</h2>
+	<h2>Latest posts</h2>
     <div style="margin-top:1em" >
-    {{ range (where .Site.RegularPages "Section" "notes") }}
+    {{ $p := where .Site.RegularPages "Section" "in" (slice "notes" "posts" "stories" "links") }}
+
+    {{ range first 24 $p }}
+        <!-- {{.Section }} -->
+        {{ .Scratch.Set "display_section" "True" }}
         {{- partial "list_item.html" . -}}
+        {{ .Scratch.Set "display_section" "False" }}
     {{ end }}
     </div>
 </main>

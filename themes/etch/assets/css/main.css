@@ -16,7 +16,7 @@ body {
     
     color: #1a1a1a;
     /*width: 100%;*/
-    margin: 0 auto 0 0;
+    margin: 0 auto 0 auto;
     padding: 0 16px;
     line-height: 1.6;
     max-width: 600px;
@@ -117,7 +117,7 @@ main#content p {
     color: #000;
     margin: 16px 0;
     word-break: break-word;
-    text-align: justify;
+    text-algn: justify;
 }
 
 main#content hr {
@@ -317,10 +317,21 @@ footer#footer {
     color: #0000CC !important;
 }
 
-
 .small {
     font-size: small !important;
 }
 .tiny {
     font-size: x-small !important;
+    line-height: 120%;
+}
+
+
+.left {
+    text-align: left;
+}
+.center {
+  text-align: center;
+}
+.justify {
+  text-align: justify;
 }

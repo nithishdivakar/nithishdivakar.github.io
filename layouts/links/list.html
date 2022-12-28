@@ -6,21 +6,27 @@
 <ul>
    {{ range sort .Pages "File.Path" "desc"}} 
    	<li>
-		<a href="{{ .Params.ext_url }}" target="_blank" >
-		    <big>{{ .Title }}</big>
-		</a>
-		<br>
-		<small class="tiny green"> {{ .Params.ext_url }}</small>
-		<br>
-		<i>by 
-		{{ range .Params.authors }} <a href="">{{.}}</a> {{end}} 
-	   </i>
-		{{ range .Params.tags }} <small>• {{.}}</small> {{end}}
-		{{with .Content}}
-			<small>{{- . -}}</small>
-		{{ else }}
-			<br><br>
-		{{ end }}
+   		<div style="display:flex; flex-direction: column;">
+   			<div>
+		   		<span class="tiny green" style="display: block">⇝ {{ .Params.ext_url }}</span>
+				</div>
+				<div>
+					<a href="{{ .Params.ext_url }}" target="_blank" >
+					    <big>{{ .Title }}</big>
+					</a>
+				</div>
+				<div>
+					<i class="grey">by {{ range .Params.authors }} <a class="gray" href="">{{.}}</a> {{end}} </i>
+					{{ range .Params.tags }} <small>• {{.}}</small> {{end}}
+				</div>
+				<div>
+					{{with .Content}}
+						<small>{{- . -}}</small>
+					{{ else }}
+						<p> </p>
+					{{ end }}
+				</div>
+			</div> 
 		</li>
    {{ end }}
 </ul>
