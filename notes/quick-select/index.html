@@ -14,12 +14,12 @@
 </span></span><span style=display:flex><span>		swap(A[left], A[right])
 </span></span></code></pre></div><h2 id=lomutos-method>Lomuto&rsquo;s Method</h2><p>The procedure always select the last element in the array as pivot. For choosing any other element in the array as pivot, a preprocessing step which swaps the last element with the choosen pivot is needed.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>lomuto_partition</span>(A, low, high):
 </span></span><span style=display:flex><span>	pivot <span style=color:#f92672>=</span> A[high]
-</span></span><span style=display:flex><span>	p <span style=color:#f92672>=</span> low <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>
-</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> j <span style=color:#f92672>in</span> range(low,  high): 
+</span></span><span style=display:flex><span>	p<span style=color:#960050;background-color:#1e0010> </span><span style=color:#f92672>=</span> low <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>	<span style=color:#66d9ef>for</span> j<span style=color:#960050;background-color:#1e0010> </span><span style=color:#f92672>in</span> range(low,  high): 
 </span></span><span style=display:flex><span>	    <span style=color:#66d9ef>if</span> A[j] <span style=color:#f92672>&lt;=</span> pivot :
-</span></span><span style=display:flex><span>		      p <span style=color:#f92672>=</span> p <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>		      p<span style=color:#960050;background-color:#1e0010> </span><span style=color:#f92672>=</span> p <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
 </span></span><span style=display:flex><span>		      swap(A[p], A[j]) 
-</span></span><span style=display:flex><span>	p <span style=color:#f92672>=</span> p <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>	p<span style=color:#960050;background-color:#1e0010> </span><span style=color:#f92672>=</span> p <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
 </span></span><span style=display:flex><span>	swap(A[p], A[high])
 </span></span><span style=display:flex><span>	<span style=color:#66d9ef>return</span> p 
 </span></span></code></pre></div><h2 id=finding-k-smallest-element-in-array>Finding $k$ smallest element in array</h2><p>Also known as quick select, the procedure partially sorts the array.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>quick_select</span>(A, k):
