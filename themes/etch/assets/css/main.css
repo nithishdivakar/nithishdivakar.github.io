@@ -18,8 +18,8 @@ body {
     /*width: 100%;*/
     margin: 0 auto 0 auto;
     padding: 0 16px;
-    line-height: 1.6;
-    max-width: 600px;
+    line-height: 1.4;
+    max-width: 650px;
 }
 
 header#banner {
@@ -90,7 +90,7 @@ main#content h4,
 main#content h5,
 main#content h6 {
     margin-bottom: 0;
-    line-height: 1.15;
+    line-height: 1.2;
 }
 
 main#content h3 {

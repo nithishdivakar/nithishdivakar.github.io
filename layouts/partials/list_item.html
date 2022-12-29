@@ -9,12 +9,13 @@
             {{if .Params.draft}} 
                 [draft]
             {{end}}
-        {{ if eq (.Scratch.Get "display_section") "True" }}
-            {{ if eq .Section "links"}}
-                ⇝
-            {{ end }}
-        {{end}}
-        {{ .Title }}            
+        {{- if eq (.Scratch.Get "display_section") "True" -}}
+            {{- if eq .Section "links" -}}
+                <span class="tiny green" style="margin-left: -1em">⇗ </span>
+            {{- end -}}
+            <!-- {{- if eq .Section "notes" -}}✎{{- end -}} -->
+        {{- end -}}
+        {{- .Title -}}            
         </a>
     </div>
     <div style="flex: 0 0 200px;">
@@ -25,5 +26,6 @@
     </div>
     <!--
     <small><time>{{ .Date.Format "Jan 2, 2006" }}</time></small>
+    ⇝ ↗ ⇗ ✎
     -->
 </div>
