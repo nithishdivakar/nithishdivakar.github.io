@@ -3,9 +3,7 @@
     <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
     {{.Content}}
     
-
-    <!-- Ranges through content/posts/*.md -->
-	<h2>Latest</h2>
+    <h2>Latest</h2>
     <div style="margin-top:1em" >
     {{ $p := where .Site.RegularPages "Section" "in" (slice "notes" "posts" "stories" "links") }}
 
@@ -17,6 +15,4 @@
     {{ end }}
     </div>
 </main>
-
-<a href="/ee">ee</a>
 {{ end }}

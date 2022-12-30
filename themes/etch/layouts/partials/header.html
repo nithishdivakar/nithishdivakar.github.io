@@ -14,7 +14,7 @@
     </big>
     <nav style="flex: 0px;">
         <ul style="display: flex;flex-direction: row; gap:0.5rem;">
-            {{- range .Site.Sections -}}
+            {{- range where .Site.Sections "Title" "ne" "EE" -}}
                 <li><a href="{{ .Permalink }}">{{- .Title -}}</a></li>
             {{- end -}}
             <li><a href="/about">about</a></li>
