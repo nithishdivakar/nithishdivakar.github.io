@@ -2,10 +2,11 @@
 <html style="height: 100%;">
     {{- partial "head.html" . -}}
     <body style="height: 100%;">
-        <div class="container" style="display: flex;flex-direction: column;min-height: 100vh;">
             <div class="header"> 
                 {{- partial "header.html" . -}}
             </div>
+
+        <div class="container justify" style="display: flex;flex-direction: column;min-height: 100vh;">
             <div class="main" style="flex: 1;"> 
                 <main id="content">
                     {{- block "main" . }}{{- end }}

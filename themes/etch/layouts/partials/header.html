@@ -13,7 +13,7 @@
         </b>
     </big>
     <nav style="flex: 0px;">
-        <ul style="display: flex;flex-direction: row; gap:0.5rem;">
+        <ul style="display: flex;flex-direction: row; gap:1rem; justify-content: safe flex-end;">
             {{- range where .Site.Sections "Title" "ne" "EE" -}}
                 <li><a href="{{ .Permalink }}">{{- .Title -}}</a></li>
             {{- end -}}

@@ -7,7 +7,7 @@
   <br><br><br>
     <i>tags:</i> 
     {{ range .Params.Tags }}
-      <a class="gray" style="padding-right: 5px" href="/tags#{{.}}">{{- . -}}</a>
+      <a class="gray" style="padding-right: 5px" href="/tags#{{.}}"><i>#{{- . -}}</i></a>
     {{ end }}
   {{end}}
   </section>

@@ -4,12 +4,12 @@
     {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
         <span class="black">&bull;</span>
         <a href="#{{$key}}">
-            {{- $key -}} <small> ({{len $taxonomy.Pages}})</small>
+            #{{- $key -}}<small>({{len $taxonomy.Pages}})</small>
         </a>
     {{ end }}
     
     {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
-        <h2 id="{{$key}}" style="margin-bottom: 1rem"> {{ $key }} </h2>
+        <h2 id="{{$key}}" style="margin-bottom: 1rem"> #{{ $key }} </h2>
         <div id="{{$key}}"></div>
         {{ range $taxonomy.Pages }}
                 <span class="tiny green">[{{ .Section }}]</span>

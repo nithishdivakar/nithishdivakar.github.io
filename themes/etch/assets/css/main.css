@@ -19,7 +19,7 @@ body {
     margin: 0 auto 0 auto;
     padding: 0 16px;
     line-height: 1.4;
-    max-width: 650px;
+    /*max-width: 650px;*/
 }
 
 header#banner {
@@ -51,6 +51,11 @@ header#banner nav ul {
     text-transform: lowercase;
     margin: 0;
     padding: 0;
+}
+
+.header{
+    max-width: 800px;
+    margin: auto;
 }
 
 header#banner nav ul li {
@@ -334,4 +339,10 @@ footer#footer {
 }
 .justify {
   text-align: justify;
+}
+
+.container{
+    max-width: 650px;
+    margin: auto;
+    margin-top: 2rem;
 }
