@@ -2,7 +2,7 @@
 
 {{ .Content }}
 <h2>EE</h2>
-<div style="margin-top:1em" >
+<div style="margin-top:1em;text-align: left;" >
 
     {{ range (where .Site.RegularPages "Section" "in" (slice "notes" "posts" "stories" "links")) }}
         <!-- {{.Section }} -->

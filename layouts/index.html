@@ -4,7 +4,7 @@
     {{.Content}}
     
     <h2>Latest</h2>
-    <div style="margin-top:1em" >
+    <div style="margin-top:1em;text-align: left;" >
     {{ $p := where .Site.RegularPages "Section" "in" (slice "notes" "posts" "stories") }}
 
     {{ range first 24 $p }}

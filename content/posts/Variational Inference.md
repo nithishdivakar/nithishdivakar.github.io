@@ -44,98 +44,126 @@ $$ \log p(x) =\int_z q_v(z) \log \frac{p(x,z)}{q_v(z)} - \int_z q_v(z) \log \fra
 
 Thus we have the following system.
 
-$$\log p(x)    = L(q) - D_{KL}(q,p)$$
+$$\log p(x)    = L(q,p) - D_{KL}(q,p)$$
 
-$\log p(x)$ is constant and KL divergence is always $\geq 0$. The $L(q)$ is thus lower bound on the approximation between $p$ and $q$. It is hence called *[Evidence Lower Bound]* or ELBO. 
+$\log p(x)$ is constant and KL divergence is always $\geq 0$. The $L(q,p)$ is thus lower bound on the approximation between $p$ and $q$. It is hence called *[Evidence Lower Bound]* or ELBO. 
 
 Since a constant is equal to difference between 2 variables, maximising ELBO decreases the KL divergence making approximation of $q$ to $p$ better. Now we have an alternate way to find the best approximation.
 
----
 
 ## Evidence Lower Bound
-The evidence lower bound is a combination of 2 entropies. 
-$$L(q) = H(q) - H(q,p)$$
-While maximizing $L$, the entropy term is pushing $q$ to spread everywhere while the negative cross entropy term is pushing $q$ to concentrate on regions where  $p$ has high density. Thus, maximizing $L$ is a good training objective. 
-
-For this however, we need its gradient. There are 2 main approaches.
-
-We can also write the ELBO in a equivalent form 
-$$L(q) = \mathbb{E}_{q_v(x)} \left [ \log p(x,z) - \log q_v(z) \right ]$$
+One easy way to understand effect of optimising evidence lower bound is to think of it as a combination of 2 entropies. 
+$$L(q,p) = H(q) - H(q,p)$$
+While maximizing $L$, the entropy term is pushing $q$ to spread everywhere while the negative cross entropy term is pushing $q$ to concentrate on regions where  $p$ has high density.
+However, for using as a training objective, we need its gradient. 
 
 
-## Score Gradient and Black box VI
-Score Gradient. Also called the likelihood ratio
+## Black Box Variational Inference
 
-$$\nabla_v L(v) = \mathbb{E}_{q_v(x)} \left [ \nabla_v \log q_v(z)\, (\log p(x,z) - \log q_v(z) )\right ]$$
+ELBO has the following equivalent form.
+
+$$L(q,p) = \mathbb{E}\_{q_v(z)} \left [ \log p(x,z) - \log q_v(z) \right ]$$
 
 
-- Black box VI has 3 criteria. 
-1. Sample from $q_v(z)$ 
-2.  Evaluate $\nabla_v \log q_v(z)$
-3.  Evaluate $\log p(x,z)$ and $\log q_v(z)$
-When black box criteria are met, we can optimize $v$ by sampling some data from $q$, evaluate the score gradient and then update $v = v+ \alpha \nabla_v L(v)$. Basic black box inference.
+[Ranganath et al. (2014)] gives the following form of gradient.
+$$\nabla_v L(v) = \mathbb{E}\_{q_v(z)} \left [ \nabla_v \log q_v(z)\\, (\log p(x,z) - \log q_v(z) )\right ]$$
 
-- The gradient has high variance. So it doesn't work that well
+Gradient of the log of probability distribution is called score function and this gradient is known as **score gradient**. When the gradient is in form of an expectation of a random variable, we take monte-carlo samples and to get [approximate gradient][stochastic approximation].
+
+Also note that the gradient assumes no knowledge of the model except that we can evaluate the quantities in the equation. More of less, a *Black Box Variational Inference*.
+
+Unfortunately, the approximation of the gradient has high variance. Fortunately, [Ranganath et al. (2014)] also describes a few variance reduction techniques.
 
 ## Reprameterisation gradient
 
-$\epsilon \sim s(\epsilon) $
- $   z = t(\epsilon, v)$
-    $\implies z \sim q_v(z)$
-Then, 
-$$\nabla_v L(v) = \mathbb{E}_{s(\epsilon)}\big[  \nabla_z \left[ \log p(x,z) - \log q_v(z) \right]  \; \nabla_v t(\epsilon, v) \big ]$$
-The $\nabla_z$ is the definition of the model and can be simply auto-differentiated.
-Take samples from $s(\epsilon)$, compute $z = t()$ and then evaluate the reparameterization gradient. This is the idea behind the variational autoencoder. 
+Score gradient allows us to use complex distributions to approximate posterior distribution. But it is difficult to sample from complex distributions. [Reparametrisation trick][Kingma et al. (2013)] allows us to create complex distributions from simple ones.
 
-stochastic variational inference
+Say we are able to write $z = t(\epsilon, v)$ with
+ $\epsilon \sim s(\epsilon)$, a simple distribution which can be sampled from (think isotropic gaussian).
+What we have done is to bound all "randomness" to $s(\epsilon)$ and made $q_v(z)$ "non-random".
 
-This is addressed through black-box variational inference (BBVI), which uses Monte Carlo estimates to replace the manual derivation
+With this, we have a simpler gradient for elbo.
 
-When BBVI is combined with SVI by using mini-batches for the gradient estimation, we speak of doubly stochastic estimation.
+$$\nabla_v L(v) = \mathbb{E}\_{s(\epsilon)}\big[  \nabla_z \left[ \log p(x,z) - \log q_v(z) \right] \nabla_v t(\epsilon, v) \big]$$
 
 
-## Variational Auto-encoders
-[Kingma et al. (2013)] Generative models are those which can generate samples from data distribution $ p(x)$. If we model the data distribution as having latent variables, then generating samples similar to $x$ has 2 steps.
+To compute approximate gradient, take samples $\epsilon \sim s(\epsilon)$, compute $z = t(\epsilon, v)$ and then evaluate the reparameterization gradient. 
+$\log p(x,z) - \log q_v(z)$ is the model and $\nabla_z(\cdots)$ can be evaluated using auto-differentiation. See [Ruiz et al. (2016)] for more discussion on reprameterisation gradient.
 
-- **[encode]** $z\sim  p_\theta(z|x)$ 
-- **[decode]** $\hat{x} =  p_\theta(x|z)$
+---
 
-Now, computing the encoder distribution, 
-$$ p(z|x) = \frac{ p(x|z) p(z)}{\int_z  p(x|z) p(z)}$$ 
-which is intractable. But we can apply variational inference  to approximate the posterior with a simpler distribution $q_{\phi}(z|x)$. Evidence Lower bound of this approximation is
+## Amortised Variational Inference
+[WIP]
+Amortisation: (maybe for variational autoencoder.): Saying variational parameters are a function of input.
+
+$$v = v(x)$$
+
+then $x = f(z) + \epsilon$
+
+REparemeterisation trick?
+
+## Variational Auto Encoders
+
+[Variational auto encoders][kingma et al. (2013)] are a generative model which learns to generate data from its true distribution. It has an architecture simlar to a [denoising auto encoder][Vincent et al. (2010)] and uses variational inference to learn the distribution. 
 
 
-$$\mathcal{E} = \mathbb{E}\_{q_{\phi}(z|x)}\log \frac{ p_\theta(z, x)}{q_{\phi}(z|x) }$$
+Variational auto encoders  make a constraint that the posterior is approximated by an gaussian distribution with diagonal covariances. As a result, the latent representation will have linearly independent dimensions. 
 
-$$= \mathbb{E}\_{q_{\phi}(z|x)}\log  p_\theta(x|z) +\mathbb{E}\_{q_{\phi}(z)}\log \frac{ p(z)}{q(z|x)}$$
+The encoder is a differentiable network which is used to approximate posterior distribution $p(z|x)$. The network is trained to predict the parameters of the approximating distribution from a data point. 
 
-$$= \mathbb{E}\_{q_{phi}(z|x)}\log  p_{\theta}(x|z) -D_{KL}(q_{\phi}(z|x)\| p_\theta(z))$$
+$$\mu, \sigma = g_{\phi}(x)$$
 
-Using $q_\phi$ as the encoder network and $ p_\theta$ as the decoder, we have constructed an auto-encoder that can generate samples. This auto-encoder is called Variational Auto-encoder with $\phi$ and $\theta$ as its parameters. 
+then, the posterior is approximated by the distribution 
+$$ q_{\mu, \sigma}(z)= \mathcal{N}(z; \mu, diag(\sigma^2))$$
 
-We can generate samples from a VAE as
+ The latent vector is obtained by sampling from $q_{\mu, \sigma}(z)$.
 
-- **[compute posterior]** Given a sample $x$, we first compute the posterior distribution
-$$x \mapsto q_\phi(z|x)$$
-- **[sampling]** From this posterior, we sample a point $z$
-$$z\sim q_\phi(z|x)$$
-- **[generation]** Now we can generate a sample point by using a completely deterministic network at this point
-$$\hat{x} = p_\theta(x|z)$$
+The decoder is also a differentiable network which is trained to predict a sample from the latent vector.
+$$\hat{x} = f_{\theta}(z)$$
 
-Following the variational inference, to train the VAE we have to maximize $\mathcal{E}$.
-$$\mathcal{E} =\mathbb{E}\_{q_{\phi}(z|x)}\log  p_\theta(x|z) -D_{KL}(q_{\phi}(z|x)\| p_\theta(z))$$
-The first term is maximized when $ p(x|z)$ assigns a high probability to $x$. The second term gives the divergence between $q(z|x)$ and $p(z)$. We can assume a unit normal prior to the latent variables which give  $ p(z)\sim N(0, \mathrm{I})$. We will also assume a gaussian distribution for $q(z|x) \sim \mathcal{N}(\mu,\sigma^2 \mathrm{I})$. 
+Different samples generate different predictions thus generating samples from $p(x|z)$. Some designs explicitly adds "intelligent noise" to aid in directed distribution. $\hat{x} = f_{\theta}(z+\epsilon)$
+
+
+The forward inference of variational auto encoder defined in the [Kingma et al. (2013)] has the following form. 
+
+$$(\mu, \log \sigma) = g_\phi(x) $$
+$$q_{\mu,\sigma}(z|x) = \mathcal{N} (z; \mu, diag(\sigma^2))$$
+$$z \sim q_{\mu,\sigma}(z|x)$$
+$$ \hat{x} = f_{\theta}(z)$$
+
+
+Both the encoder and decoder are neural networks and $\phi$ and $\theta$ are their parameters. Both the networks are trained end to end to miniminse the following loss. 
+$$L
+ = C\\|x - f(z) \\|^2 + D_{KL}(\mathcal{N}(\mu, diag(\sigma^2), \mathcal{N}(0,I))$$
 
 ## References
 
-- [Kingma et al. (2013)]- Kingma, Diederik P., and Max Welling. "**Auto-encoding variational bayes.**" arXiv preprint arXiv:1312.6114 (2013).
-- [Blei et al. (2017)]- Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "**Variational inference: A review for statisticians.**" Journal of the American statistical Association 112.518 (2017): 859-877.
+- Kingma, Diederik P., and Max Welling. [\"Auto-encoding variational bayes.\"][Kingma et al. (2013)] arXiv preprint arXiv:1312.6114 (2013)."
+
+- Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. [\"Variational inference: A review for statisticians.\"][Blei et al. (2017)] Journal of the American statistical Association 112.518 (2017): 859-877.
+
+- Rajesh Ranganath, Sean Gerrish, and David Blei. [\"Black box variational inference.\"][Ranganath et al. (2014)] Artificial intelligence and statistics. PMLR, 2014."
+
+- Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). [\"Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion\"][[Vincent et al. (2010)]. Journal of machine learning research, 11(12)."
+- <https://ermongroup.github.io/cs228-notes/inference/variational>
+- <https://ermongroup.github.io/cs228-notes/extras/vae>
+- https://www.depthfirstlearning.com/2021/VI-with-NFs#3-doubly-stochastic-estimation-vi-by-monte-carlo-mini-batch-gradient-estimation
+
 
 [Kingma et al. (2013)]: <https://arxiv.org/abs/1312.6114> 
    "Kingma, Diederik P., and Max Welling. \"Auto-encoding variational bayes.\" arXiv preprint arXiv:1312.6114 (2013)."
 [Blei et al. (2017)]:   <https://arxiv.org/abs/1601.00670>
    "Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. \"Variational inference: A review for statisticians.\" Journal of the American statistical Association 112.518 (2017): 859-877."
+[Ranganath et al. (2014)]:  <http://www.cs.columbia.edu/~blei/papers/RanganathGerrishBlei2014.pdf>
+   "Rajesh Ranganath, Sean Gerrish, and David Blei. \"Black box variational inference.\" Artificial intelligence and statistics. PMLR, 2014."
+[Vincent et al. (2010)]: <https://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf>
+   "Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). \"Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion\". Journal of machine learning research, 11(12)."
+
+[Ruiz et al. (2016)]: <http://www.cs.columbia.edu/~blei/papers/RuizTitsiasBlei2016b.pdf>
+   "Ruiz, Francisco R., Titsias RC AUEB, and David Blei. \"The generalized reparameterization gradient.\" Advances in neural information processing systems 29 (2016)."
 
 [divergence]:           <https://en.wikipedia.org/wiki/Divergence_(statistics)>
 [kl divergence]:        <https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence>
 [Evidence Lower Bound]: <https://en.wikipedia.org/wiki/Evidence_lower_bound>
+[stochastic approximation]: <https://en.wikipedia.org/wiki/Stochastic_approximation>
+

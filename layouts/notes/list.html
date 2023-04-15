@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <h2>Notes</h2>
-<div style="margin-top:1em" >
+<div style="margin-top:1em;text-align: left;" >
 {{ range (where .Site.RegularPages "Section" "notes") }}
     {{ partial "list_item.html" . }}
 {{- end }}

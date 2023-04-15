@@ -7,13 +7,13 @@
    {{ range sort .Pages "File.Path" "desc"}} 
    	<li>
    		<div style="display:flex; flex-direction: column;">
-   			<div>
-		   		<span class="tiny green" style="display: block">⇝ {{ .Params.ext_url }}</span>
-				</div>
-				<div>
-					<a href="{{ .Params.ext_url }}" target="_blank" >
+				<div style="text-align: left;">
+					<a href="{{ .Params.ext_url }}" target="_blank">
 					    <big>{{ .Title }}</big>
 					</a>
+				</div>
+				<div>
+		   		<span class="tiny green" style="display: block;word-break: break-all;">⇝ {{ .Params.ext_url }}</span>
 				</div>
 				<div>
 					<i class="grey">by {{ range .Params.authors }} <a class="gray" href="">{{.}}</a> {{end}} </i>
