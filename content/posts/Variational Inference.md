@@ -1,8 +1,8 @@
 ---
 title: Variational Inference
 tags : [machine-learning, optimisation, probability]
-date: 2023-03-23T08:00:00+05:30
-draft: true
+date: 2023-04-16T12:15:00+05:30
+draft: false
 ---
 
 # Variational Inference
@@ -24,7 +24,7 @@ $q_v$ is a family of distribution and a specific member is selected by $v$. In t
 
 There are many difference [divergences] measures. But we are going to stick with [KL divergence] as it has a straight forward definition. Note that it is asymmetric.
 
-$$D_{KL}(p,q) = \int_{\Omega} p(x) \log\frac{p(x)}{q(x)}$$
+$$D_{KL}(p,q) = \int_{\Omega} p \log\frac{p}{q}$$
 
 Although this sounds promising and simple in theory, in practise we run into some difficulties. Optimising [KL divergence] is practically difficult. The gradient is readily available for simpler distributions and in practise $p$ can be very complex. This will force us to use very simple $q$ and have a bad approximations.
 
@@ -79,7 +79,7 @@ Unfortunately, the approximation of the gradient has high variance. Fortunately,
 Score gradient allows us to use complex distributions to approximate posterior distribution. But it is difficult to sample from complex distributions. [Reparametrisation trick][Kingma et al. (2013)] allows us to create complex distributions from simple ones.
 
 Say we are able to write $z = t(\epsilon, v)$ with
- $\epsilon \sim s(\epsilon)$, a simple distribution which can be sampled from (think isotropic gaussian).
+ $\epsilon \sim s(\epsilon)$, a simple distribution which we can  sample from.
 What we have done is to bound all "randomness" to $s(\epsilon)$ and made $q_v(z)$ "non-random".
 
 With this, we have a simpler gradient for elbo.
@@ -90,17 +90,18 @@ $$\nabla_v L(v) = \mathbb{E}\_{s(\epsilon)}\big[  \nabla_z \left[ \log p(x,z) - 
 To compute approximate gradient, take samples $\epsilon \sim s(\epsilon)$, compute $z = t(\epsilon, v)$ and then evaluate the reparameterization gradient. 
 $\log p(x,z) - \log q_v(z)$ is the model and $\nabla_z(\cdots)$ can be evaluated using auto-differentiation. See [Ruiz et al. (2016)] for more discussion on reprameterisation gradient.
 
----
 
 ## Amortised Variational Inference
-[WIP]
-Amortisation: (maybe for variational autoencoder.): Saying variational parameters are a function of input.
 
-$$v = v(x)$$
+Variational Inference is still not scalable. We still have to fit the variational parameter for each observations essentially minimising KL divergence between each $q_v(z)$ and $p(z|x_i)$. This is not scalable and will lead to over fitting.
 
-then $x = f(z) + \epsilon$
+We can get around this by constrianing the variational parameters to be a function of the observations; a learnable function. 
 
-REparemeterisation trick?
+$$v = g_\phi(x)$$
+
+In [Amortised Inference][Anh Le (2017)], the variational parameters are output of a network which takes the samples from true distribution as input. The parameters of the network can be learned by optimising reparameterisation gradient.
+
+$$\nabla_\phi L(\phi) = \mathbb{E}\_{s(\epsilon)}\big[  \nabla_z \left[ \log p(x,z) - \log q_v(z) \right] \nabla_\phi t(\epsilon, g_\phi(x)) \big]$$
 
 ## Variational Auto Encoders
 
@@ -136,24 +137,40 @@ Both the encoder and decoder are neural networks and $\phi$ and $\theta$ are the
 $$L
  = C\\|x - f(z) \\|^2 + D_{KL}(\mathcal{N}(\mu, diag(\sigma^2), \mathcal{N}(0,I))$$
 
+
 ## References
 
-- Kingma, Diederik P., and Max Welling. [\"Auto-encoding variational bayes.\"][Kingma et al. (2013)] arXiv preprint arXiv:1312.6114 (2013)."
+- Kingma, Diederik P., and Max Welling. "[Auto-encoding variational bayes.][Kingma et al. (2013)]" arXiv preprint arXiv:1312.6114 (2013).
 
-- Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. [\"Variational inference: A review for statisticians.\"][Blei et al. (2017)] Journal of the American statistical Association 112.518 (2017): 859-877.
+- Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "[Variational inference: A review for statisticians.][Blei et al. (2017)]" Journal of the American statistical Association 112.518 (2017): 859-877.
 
-- Rajesh Ranganath, Sean Gerrish, and David Blei. [\"Black box variational inference.\"][Ranganath et al. (2014)] Artificial intelligence and statistics. PMLR, 2014."
+- Rajesh Ranganath, Sean Gerrish, and David Blei. "[Black box variational inference.][Ranganath et al. (2014)]" Artificial intelligence and statistics. PMLR, 2014.
 
-- Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). [\"Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion\"][[Vincent et al. (2010)]. Journal of machine learning research, 11(12)."
-- <https://ermongroup.github.io/cs228-notes/inference/variational>
-- <https://ermongroup.github.io/cs228-notes/extras/vae>
-- https://www.depthfirstlearning.com/2021/VI-with-NFs#3-doubly-stochastic-estimation-vi-by-monte-carlo-mini-batch-gradient-estimation
+- Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). "[Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion][Vincent et al. (2010)]". Journal of machine learning research, 11(12).
+
+- Rezende, Danilo Jimenez, Shakir Mohamed, and Daan Wierstra. "[Stochastic Backpropagation and Approximate Inference in Deep Generative Models][Rezende et al. (2014)]." International conference on machine learning. PMLR, 2014.
+
+- Diederik P. Kingma and Max Welling (2019), "[An Introduction to Variational Autoencoders][Kingma et al. (2013)]", Foundations and Trends in Machine Learning: Vol. xx, No.xx, pp 1–18. DOI: 10.1561/XXXXXXXXX.
+
+- "Variational inference" <https://ermongroup.github.io/cs228-notes/inference/variational>
+
+- "The variational auto-encoder" <https://ermongroup.github.io/cs228-notes/extras/vae>
+
+- "Variational Inference with Normalizing Flows" <https://www.depthfirstlearning.com/2021/VI-with-NFs>
+
+- "Amortized Inference and Variational Auto Encoders" <https://erdogdu.github.io/csc412/notes/lec11-1.pdf>
+
+- "Amortized Inference" <https://www.tuananhle.co.uk/notes/amortized-inference.html>
+
+- "Variational Inference: Foundations and Innovations" <https://www.youtube.com/watch?v=Dv86zdWjJKQ>
 
 
 [Kingma et al. (2013)]: <https://arxiv.org/abs/1312.6114> 
    "Kingma, Diederik P., and Max Welling. \"Auto-encoding variational bayes.\" arXiv preprint arXiv:1312.6114 (2013)."
+
 [Blei et al. (2017)]:   <https://arxiv.org/abs/1601.00670>
    "Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. \"Variational inference: A review for statisticians.\" Journal of the American statistical Association 112.518 (2017): 859-877."
+
 [Ranganath et al. (2014)]:  <http://www.cs.columbia.edu/~blei/papers/RanganathGerrishBlei2014.pdf>
    "Rajesh Ranganath, Sean Gerrish, and David Blei. \"Black box variational inference.\" Artificial intelligence and statistics. PMLR, 2014."
 [Vincent et al. (2010)]: <https://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf>
@@ -162,8 +179,21 @@ $$L
 [Ruiz et al. (2016)]: <http://www.cs.columbia.edu/~blei/papers/RuizTitsiasBlei2016b.pdf>
    "Ruiz, Francisco R., Titsias RC AUEB, and David Blei. \"The generalized reparameterization gradient.\" Advances in neural information processing systems 29 (2016)."
 
-[divergence]:           <https://en.wikipedia.org/wiki/Divergence_(statistics)>
-[kl divergence]:        <https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence>
-[Evidence Lower Bound]: <https://en.wikipedia.org/wiki/Evidence_lower_bound>
-[stochastic approximation]: <https://en.wikipedia.org/wiki/Stochastic_approximation>
+[Rezende et al. (2014)]: <https://arxiv.org/pdf/1401.4082.pdf>
+    "Rezende, Danilo Jimenez, Shakir Mohamed, and Daan Wierstra. \"Stochastic backpropagation and approximate inference in deep generative models.\" International conference on machine learning. PMLR, 2014."
 
+
+[Kingma et al. (2013)]: <https://arxiv.org/pdf/1906.02691.pdf>
+    "Diederik P. Kingma and Max Welling (2019), \"An Introduction to Variational Autoencoders\", Foundations and Trends in Machine Learning: Vol. xx, No.xx, pp 1–18. DOI: 10.1561/XXXXXXXXX."
+
+[divergence]:           <https://en.wikipedia.org/wiki/Divergence_(statistics)>
+   "Divergence (statistics)"
+[kl divergence]:        <https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence>
+   "Kullback–Leibler divergence"   
+[Evidence Lower Bound]: <https://en.wikipedia.org/wiki/Evidence_lower_bound>
+   "Evidence lower bound"
+[stochastic approximation]: <https://en.wikipedia.org/wiki/Stochastic_approximation>
+   "Stochastic approximation"
+
+[Anh Le (2017)]: <https://www.tuananhle.co.uk/notes/amortized-inference.html>
+   "Amortized Inference"

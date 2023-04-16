@@ -302,6 +302,21 @@ footer#footer {
     margin: 10px 0;
 }
 
+article a {
+    color: #111 !important;
+    box-shadow: 0 1px #000;
+    text-decoration: none !important ;
+    /* text-decoration: underline !important ;
+    text-decoration-color: #000;*/
+    word-break: break-all;
+}
+article a:hover {
+    color: #777 !important;
+    box-shadow: 0 1px #ddd;
+    /*text-decoration: underline !important ;
+    text-decoration-color: #fff;*/
+}
+
 .green{
     color: #006633 !important;
 }

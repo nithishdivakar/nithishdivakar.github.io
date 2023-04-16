@@ -5,7 +5,9 @@ publishdate: 2017-03-24
 ---
 
 Hi there.  
-[daxpy](/daxpy) is [my](/about) online notebook. You will mostly things I used to scribble on to a notebook, albeit a bit more organised and polished. Only a bit though.
+[daxpy](/daxpy) is [my](/about) online notebook. You will mostly find things I used to scribble on to a notebook, maybe a bit more organised and polished. Only a bit though. 
+
+[Posts](/posts) are long form notes while [notes](/notes) are, well, small notes; one pagers. 
 
 
-There is also a [links](/links) section with a collection of  amazing articles I've stumbled on. 
+I also like to read about random things. There are no themes of what I generally read about. I've curated a slowly growing collection of amazing articles I've come across in the  [links](/links) section. 

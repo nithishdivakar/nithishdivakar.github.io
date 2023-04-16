@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main>
+<section>
     <!-- "{{.Content}}" pulls from the markdown content of the corresponding _index.md -->
     {{.Content}}
     
@@ -14,5 +14,5 @@
         {{ .Scratch.Set "display_section" "False" }}
     {{ end }}
     </div>
-</main>
+</section>
 {{ end }}
