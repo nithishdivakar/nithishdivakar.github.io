@@ -139,58 +139,44 @@ $$L
 
 
 ## References
+<small>
+
+- _[Blei et al. (2017)]_:  Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "_Variational inference: A review for statisticians._" Journal of the American statistical Association 112.518 (2017): 859-877.
+
+- _[Kingma et al. (2013)]_:  Kingma, Diederik P., and Max Welling. "_Auto-encoding variational bayes._" arXiv preprint arXiv:1312.6114 (2013).
+
+- _[Kingma et al. (2019)]_:  Diederik P. Kingma and Max Welling (2019), "_An Introduction to Variational Autoencoders_", Foundations and Trends in Machine Learning: Vol. xx, No.xx, pp 1–18. DOI: 10.1561/XXXXXXXXX.
+
+- _[Ranganath et al. (2014)]_:  Rajesh Ranganath, Sean Gerrish, and David Blei. "_Black box variational inference._" Artificial intelligence and statistics. PMLR, 2014.
+
+- _[Rezende et al. (2014)]_:  Rezende, Danilo Jimenez, Shakir Mohamed, and Daan Wierstra. "_Stochastic backpropagation and approximate inference in deep generative models._" International conference on machine learning. PMLR, 2014.
+
+- _[Ruiz et al. (2016)]_:  Ruiz, Francisco R., Titsias RC AUEB, and David Blei. "_The generalized reparameterization gradient._" Advances in neural information processing systems 29 (2016).
+
+- _[Vincent et al. (2010)]_:  Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). "_Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion_". Journal of machine learning research, 11(12).
 
 - _[Amortized Inference and Variational Auto Encoders]_
 
-- _[Anh Le (2017)]_:  "Amortized Inference"
+- _[Amortized Inference][Anh Le (2017)]_
 
-- _[Blei et al. (2017)]_:  Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "Variational inference: A review for statisticians." Journal of the American statistical Association 112.518 (2017): 859-877.
+- _[Divergence (statistics)][Divergence]_
 
-- _[Divergence]_:  "Divergence (statistics)"
+- _[Evidence lower bound][Evidence Lower Bound]_
 
-- _[Evidence Lower Bound]_:  "Evidence lower bound"
+- _[KL Divergence]_:  "_Kullback-Leibler divergence_"
 
-- _[KL Divergence]_:  "Kullback-Leibler divergence"
-
-- _[Kingma et al. (2013)]_:  Kingma, Diederik P., and Max Welling. "Auto-encoding variational bayes." arXiv preprint arXiv:1312.6114 (2013).
-
-- _[Kingma et al. (2019)]_:  Diederik P. Kingma and Max Welling (2019), "An Introduction to Variational Autoencoders", Foundations and Trends in Machine Learning: Vol. xx, No.xx, pp 1–18. DOI: 10.1561/XXXXXXXXX.
-
-- _[Ranganath et al. (2014)]_:  Rajesh Ranganath, Sean Gerrish, and David Blei. "Black box variational inference." Artificial intelligence and statistics. PMLR, 2014.
-
-- _[Rezende et al. (2014)]_:  Rezende, Danilo Jimenez, Shakir Mohamed, and Daan Wierstra. "Stochastic backpropagation and approximate inference in deep generative models." International conference on machine learning. PMLR, 2014.
-
-- _[Ruiz et al. (2016)]_:  Ruiz, Francisco R., Titsias RC AUEB, and David Blei. "The generalized reparameterization gradient." Advances in neural information processing systems 29 (2016).
-
-- _[Stochastic Approximation]_:  "Stochastic approximation"
+- _[Stochastic Approximation]_:  "_Stochastic approximation_"
 
 - _[The variational auto-encoder]_
 
 - _[Variational Inference with Normalizing Flows]_
 
-- _[Variational Inference: Foundations and Innovations]_
-
 - _[Variational inference]_
 
-- _[Vincent et al. (2010)]_:  Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). "Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion". Journal of machine learning research, 11(12).
+- _[Variational Inference: Foundations and Innovations]_:  by David Blei
 
-[Amortized Inference and Variational Auto Encoders]:    <https://erdogdu.github.io/csc412/notes/lec11-1.pdf>
-    "Amortized Inference and Variational Auto Encoders"
-    
-[Anh Le (2017)]:    <https://www.tuananhle.co.uk/notes/amortized-inference.html>
-    "\"Amortized Inference\""
-    
 [Blei et al. (2017)]:    <https://arxiv.org/abs/1601.00670>
     "Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. \"Variational inference: A review for statisticians.\" Journal of the American statistical Association 112.518 (2017): 859-877."
-    
-[Divergence]:    <https://en.wikipedia.org/wiki/Divergence_(statistics)>
-    "\"Divergence (statistics)\""
-    
-[Evidence Lower Bound]:    <https://en.wikipedia.org/wiki/Evidence_lower_bound>
-    "\"Evidence lower bound\""
-    
-[KL Divergence]:    <https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence>
-    "\"Kullback-Leibler divergence\""
     
 [Kingma et al. (2013)]:    <https://arxiv.org/abs/1312.6114>
     "Kingma, Diederik P., and Max Welling. \"Auto-encoding variational bayes.\" arXiv preprint arXiv:1312.6114 (2013)."
@@ -207,6 +193,24 @@ $$L
 [Ruiz et al. (2016)]:    <http://www.cs.columbia.edu/~blei/papers/RuizTitsiasBlei2016b.pdf>
     "Ruiz, Francisco R., Titsias RC AUEB, and David Blei. \"The generalized reparameterization gradient.\" Advances in neural information processing systems 29 (2016)."
     
+[Vincent et al. (2010)]:    <https://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf>
+    "Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). \"Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion\". Journal of machine learning research, 11(12)."
+    
+[Amortized Inference and Variational Auto Encoders]:    <https://erdogdu.github.io/csc412/notes/lec11-1.pdf>
+    "Amortized Inference and Variational Auto Encoders"
+    
+[Anh Le (2017)]:    <https://www.tuananhle.co.uk/notes/amortized-inference.html>
+    "Amortized Inference"
+    
+[Divergence]:    <https://en.wikipedia.org/wiki/Divergence_(statistics)>
+    "Divergence (statistics)"
+    
+[Evidence Lower Bound]:    <https://en.wikipedia.org/wiki/Evidence_lower_bound>
+    "Evidence lower bound"
+    
+[KL Divergence]:    <https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence>
+    "\"Kullback-Leibler divergence\""
+    
 [Stochastic Approximation]:    <https://en.wikipedia.org/wiki/Stochastic_approximation>
     "\"Stochastic approximation\""
     
@@ -216,12 +220,11 @@ $$L
 [Variational Inference with Normalizing Flows]:    <https://www.depthfirstlearning.com/2021/VI-with-NFs>
     "Variational Inference with Normalizing Flows"
     
-[Variational Inference: Foundations and Innovations]:    <https://www.youtube.com/watch?v=Dv86zdWjJKQ>
-    "Variational Inference: Foundations and Innovations"
-    
 [Variational inference]:    <https://ermongroup.github.io/cs228-notes/inference/variational>
     "Variational inference"
     
-[Vincent et al. (2010)]:    <https://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf>
-    "Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). \"Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion\". Journal of machine learning research, 11(12)."
+[Variational Inference: Foundations and Innovations]:    <https://www.youtube.com/watch?v=Dv86zdWjJKQ>
+    "by David Blei"
     
+
+</small>
