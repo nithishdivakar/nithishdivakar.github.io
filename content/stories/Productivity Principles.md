@@ -7,7 +7,7 @@ draft: false
 ---
 # Productivity Principles
 
-> These are not correct, but these are mine, adopted and refined from somewhere. I also want to begin every sentence with  "[Your milage may vary](https://dictionary.cambridge.org/dictionary/english/your-mileage-may-vary), but".
+> These are not correct, but these are mine, adopted and refined from somewhere. I begin by saying "**[Your milage may vary](https://dictionary.cambridge.org/dictionary/english/your-mileage-may-vary), but**".
 
 ## Barely working systems
 I define system as a sequence of steps you do one after the other which allows you to accomplish a goal. It can be as simple as the order you walk in a grocery shop to the way you start your day. Overtime, systems become habits.
