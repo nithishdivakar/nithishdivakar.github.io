@@ -1,7 +1,8 @@
 ---
 title: Productivity Principles
 tags : [stories]
-date: 2023-04-28
+date: 2023-04-30
+startdate: 2023-04-28
 draft: false
 ---
 # Productivity Principles
