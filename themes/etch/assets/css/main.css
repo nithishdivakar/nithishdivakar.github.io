@@ -361,3 +361,15 @@ article a:hover {
     margin: auto;
     margin-top: 2rem;
 }
+
+comment{
+    color: green;
+    font-size: small;
+    line-height: 1.4em;
+    display: inline-block;
+}
+
+h1{
+    text-align: center;
+    padding-bottom: 1rem;
+}
