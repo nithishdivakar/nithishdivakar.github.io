@@ -1,0 +1,279 @@
+paper
+cite key
+title
+scholar key
+https://link_of_paper.com/link.pdf
+==end==
+
+link
+title/citekey
+link
+==end==
+
+article
+citekey
+title
+url
+authors
+==end==
+
+paper
+Miyato et al. (2018)
+Spectral normalization for generative adversarial networks.
+Miyato, Takeru, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. "Spectral normalization for generative adversarial networks." arXiv preprint arXiv:1802.05957 (2018).
+https://arxiv.org/pdf/1802.05957.pdf
+==end==
+
+link
+Matrix Norm
+https://en.wikipedia.org/wiki/Matrix_norm
+==end==
+
+link
+Markov kernel
+https://en.wikipedia.org/wiki/Markov_kernel
+==end==
+
+paper
+Salimans et al. (2016)
+Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks
+Salimans, Tim, and Durk P. Kingma. "Weight normalization: A simple reparameterization to accelerate training of deep neural networks." Advances in neural information processing systems 29 (2016).
+https://arxiv.org/pdf/1602.07868.pdf
+==end==
+
+paper
+Luo at al. (2018)
+Differentiable learning-to-normalize via switchable normalization
+Ping Luo, Jiamin Ren, Zhanglin Peng, Ruimao Zhang, and Jingyu Li. "Differentiable learning-to-normalize via switchable normalization." arXiv preprint arXiv:1806.10779 (2018).
+https://arxiv.org/abs/1806.10779
+==end==
+
+paper
+Yang et al. (2019)
+A mean field theory of batch normalization.
+Greg Yang , Jeffrey Pennington, Vinay Rao, Jascha Sohl-Dickstein, and Samuel S. Schoenholz. "A mean field theory of batch normalization." arXiv preprint arXiv:1902.08129 (2019).
+https://arxiv.org/pdf/1902.08129
+==end==
+
+paper
+Zhang et al. (2019)
+Root mean square layer normalization.
+Biao Zhang and Rico Sennrich. "Root mean square layer normalization." Advances in Neural Information Processing Systems 32 (2019).
+https://arxiv.org/pdf/1910.07467.pdf
+==end==
+
+paper
+Miyato et al. (2018)
+Spectral normalization for generative adversarial networks.
+Takeru Miyato, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. "Spectral normalization for generative adversarial networks." arXiv preprint arXiv:1802.05957 (2018).
+https://arxiv.org/abs/1802.05957
+==end==
+
+paper
+Wu et al. (2018)
+Group normalization.
+Yuxin Wu, and Kaiming He. "Group normalization." In Proceedings of the European conference on computer vision (ECCV), pp. 3-19. 2018.
+https://arxiv.org/abs/1803.08494
+==end==
+
+
+paper
+Wu et al. (2018)2
+Group normalization.
+Yuxin Wu, and Kaiming He. "Group normalization." In Proceedings of the European conference on computer vision (ECCV), pp. 3-19. 2018.
+https://arxiv.org/abs/1803.08494
+==end==
+
+paper
+Ulyanov et al. (2016)
+Instance normalization: The missing ingredient for fast stylization.
+Dmitry Ulyanov,, Andrea Vedaldi, and Victor Lempitsky. "Instance normalization: The missing ingredient for fast stylization." arXiv preprint arXiv:1607.08022 (2016).
+https://arxiv.org/abs/1607.08022
+==end==
+
+paper
+Lei Ba et al. (2016)
+Layer normalization.
+Ba, Jimmy Lei, Jamie Ryan Kiros, and Geoffrey E. Hinton. "Layer normalization." arXiv preprint arXiv:1607.06450 (2016).
+https://arxiv.org/abs/1607.06450
+==end==
+
+paper
+Ioffe et al. (2015)
+Batch normalization: Accelerating deep network training by reducing internal covariate shift.
+Sergey Ioffe and Christian Szegedy. "Batch normalization: Accelerating deep network training by reducing internal covariate shift." In International conference on machine learning, pp. 448-456. pmlr, 2015.
+http://proceedings.mlr.press/v37/ioffe15.pdf
+==end==
+
+paper
+Blei et al. (2017)
+Variational inference: A review for statisticians.
+Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "Variational inference: A review for statisticians." Journal of the American statistical Association 112.518 (2017): 859-877.
+https://arxiv.org/abs/1601.00670
+==end==
+
+paper
+Ho et al. (2020)
+Denoising diffusion probabilistic models
+Ho, Jonathan, Ajay Jain, and Pieter Abbeel. "Denoising diffusion probabilistic models". Advances in Neural Information Processing Systems 33 (2020): 6840-6851.
+https://arxiv.org/pdf/2006.11239.pdf
+==end==
+
+paper
+Kingma et al. (2013)
+Auto-encoding variational bayes.
+Kingma, Diederik P., and Max Welling. "Auto-encoding variational bayes." arXiv preprint arXiv:1312.6114 (2013).
+https://arxiv.org/abs/1312.6114
+==end==
+
+paper
+Kingma et al. (2019)
+An Introduction to Variational Autoencoders
+Diederik P. Kingma and Max Welling (2019), "An Introduction to Variational Autoencoders", Foundations and Trends in Machine Learning: Vol. xx, No.xx, pp 1–18. DOI: 10.1561/XXXXXXXXX.
+https://arxiv.org/pdf/1906.02691.pdf
+==end==
+
+paper
+Ranganath et al. (2014)
+Black box variational inference.
+Rajesh Ranganath, Sean Gerrish, and David Blei. "Black box variational inference." Artificial intelligence and statistics. PMLR, 2014.
+http://www.cs.columbia.edu/~blei/papers/RanganathGerrishBlei2014.pdf
+==end==
+
+paper
+Rezende et al. (2014)
+Stochastic backpropagation and approximate inference in deep generative models.
+Rezende, Danilo Jimenez, Shakir Mohamed, and Daan Wierstra. "Stochastic backpropagation and approximate inference in deep generative models." International conference on machine learning. PMLR, 2014.
+https://arxiv.org/pdf/1401.4082.pdf
+==end==
+
+paper
+Ruiz et al. (2016)
+The generalized reparameterization gradient.
+Ruiz, Francisco R., Titsias RC AUEB, and David Blei. "The generalized reparameterization gradient." Advances in neural information processing systems 29 (2016).
+http://www.cs.columbia.edu/~blei/papers/RuizTitsiasBlei2016b.pdf
+==end==
+
+paper
+Sohl-Dickstein et al. (2015)
+Deep unsupervised learning using nonequilibrium thermodynamics.
+Sohl-Dickstein, Jascha, Eric Weiss, Niru Maheswaranathan, and Surya Ganguli. "Deep unsupervised learning using nonequilibrium thermodynamics." In International Conference on Machine Learning, pp. 2256-2265. PMLR, 2015.
+https://arxiv.org/pdf/1503.03585.pdf
+==end==
+
+paper
+Song et al. (2019)
+Generative Modeling by Estimating Gradients of the Data Distribution.
+Song, Yang, and Stefano Ermon. "Generative Modeling by Estimating Gradients of the Data Distribution." Advances in neural information processing systems 32 (2019).
+https://arxiv.org/abs/1907.05600
+==end==
+
+paper
+Song et al. 2023
+Consistency models.
+Song, Yang, Prafulla Dhariwal, Mark Chen, and Ilya Sutskever. "Consistency models." arXiv preprint arXiv:2303.01469 (2023).
+https://arxiv.org/abs/2303.01469
+==end==
+
+paper
+Vincent et al. (2010)
+Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion
+Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). "Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion". Journal of machine learning research, 11(12).
+https://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf
+==end==
+
+paper
+Welling et al. (2011)
+Bayesian learning via stochastic gradient Langevin dynamics.
+Welling, Max, and Yee W. Teh. "Bayesian learning via stochastic gradient Langevin dynamics." Proceedings of the 28th international conference on machine learning (ICML-11). 2011.
+https://www.stats.ox.ac.uk/~teh/research/compstats/WelTeh2011a.pdf
+==end==
+
+link
+Amortized Inference and Variational Auto Encoders
+https://erdogdu.github.io/csc412/notes/lec11-1.pdf
+==end==
+
+article
+Anh Le (2017)
+Amortized Inference
+https://www.tuananhle.co.uk/notes/amortized-inference.html
+Tuan Anh Le
+==end==
+
+link
+Divergence
+https://en.wikipedia.org/wiki/Divergence_(statistics)
+==end==
+
+link
+Evidence Lower Bound
+https://en.wikipedia.org/wiki/Evidence_lower_bound
+==end==
+
+link
+KL Divergence
+https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence
+==end==
+
+link
+Stochastic Approximation
+https://en.wikipedia.org/wiki/Stochastic_approximation
+==end==
+
+link
+The variational auto-encoder
+https://ermongroup.github.io/cs228-notes/extras/vae
+==end==
+
+link
+Variational Inference with Normalizing Flows
+https://www.depthfirstlearning.com/2021/VI-with-NFs
+==end==
+
+link
+Variational inference
+https://ermongroup.github.io/cs228-notes/inference/variational
+==end==
+
+article
+Yang Song 2021 score
+Generative Modeling by Estimating Gradients of the Data Distribution
+https://yang-song.net/blog/2021/score
+Yang Song
+==end==
+
+video
+Ari Seff Diffusion Models youtube
+What are Diffusion Models? by Ari Seff
+https://www.youtube.com/watch?v=fbLgFrlTnGU
+==end==
+
+video
+Variational Inference: Foundations and Innovations 
+Variational Inference: Foundations and Innovations by David Blei
+https://www.youtube.com/watch?v=Dv86zdWjJKQ
+==end==
+
+
+Group 1: Basic Math Operations and Symbols
++, -, ×, ÷, =, <, >, ∓, ±, ≈, ≉, ≂, ≃, ≅, ≆, ≇, ≈, ≉, ≊, ≋, ≌, ≍, ≎, ≏, ≐, ≑, ≒, ≓, ≔, ≕, ≖, ≗, ≘, ≙, ≚, ≛, ≜, ≝, ≞, ≟, ≠, ≡, ≢, ≣, ≦, ≧, ≨, ≩, ≪, ≫, ≬, ≭, ≮, ≯, ≰, ≱, ≲, ≳, ≴, ≵, ≶, ≷, ≸, ≹, ≺, ≻, ≼, ≽, ≾, ≿, ⊀, ⊁, ⊂, ⊃, ⊄, ⊅, ⊆, ⊇, ⊈, ⊉, ⊊, ⊋, ⊏, ⊐, ⊑, ⊒, ⊓, ⊔, ⊕, ⊖, ⊗, ⊘, ⊙, ⊚, ⊛, ⊜, ⊝, ⊞, ⊟, ⊠, ⊡, ⊢, ⊣, ⊤, ⊥, ⊦, ⊧, ⊨, ⊩, ⊪, ⊫, ⊬, ⊭, ⊮, ⊯, ⊰, ⊱, ⊲, ⊳, ⊴, ⊵, ⊶, ⊷, ⊸, ⊹, ⊺, ⊻, ⊼, ⊽, ⊾, ⊿, ⋀, ⋁, ⋂, ⋃, ⋄, ⋅, ⋆, ⋇, ⋈, ⋉, ⋊, ⋋, ⋌, ⋍, ⋎, ⋏, ⋐, ⋑, ⋒, ⋓, ⋔, ⋕, ⋖, ⋗, ⋘, ⋙, ⋚, ⋛, ⋜, ⋝, ⋞, ⋟, ⋠, ⋡, ⋢, ⋣, ⋤, ⋥, ⋦, ⋧, ⋨, ⋩, ⋪, ⋫, ⋬, ⋭, ⋮, ⋯, ⋰, ⋱
+
+Group 2: Greek Letters
+α, β, γ, δ, ε, ζ, η, θ, ι, κ, λ, μ, ν, ξ, ο, π, ρ, σ, τ, υ, φ, χ, ψ, ω, Α, Β, Γ, Δ, Ε, Ζ, Η, Θ, Ι, Κ, Λ, Μ, Ν, Ξ, Ο, Π, Ρ, Σ, Τ, Υ, Φ, Χ, Ψ, Ω, Ϝ, ϝ, Ϛ, ϛ, Ϙ, ϙ, Ϟ
+
+
+Group 3: Logic and Set Theory Symbols
+∀, ∃, ∄, ∈, ∉, ∅, ∪, ∩, ⊂, ⊆, ⊇, ⊃, ∧, ∨, ≈, ≠, ≡, ≢, ≜, ≝, ≐, ≑, ∝, ∠, ⊥, ∥, ⌊, ⌋, ⌈, ⌉, ∈, ∉, ∇, ∂, ∁, ∂, ∃, ∄, ∅, ∇, ∗, √, ∛, ∜, ∝, ∞, ∠, ∡, ∢, ∣, ∤, ∥, ∦, ∧, ∨, ∩, ∪, ∫, ∬, ∭, ∮, ∯, ∰, ∱, ∲, ∳, ∴, ∵, ∶, ∷, ∸, ∹, ∺, ∻, ∼, ∽, ∾, ∿, ≀, ≁, ≂, ≃, ≄, ≅, ≆, ≇, ≈, ≉, ≊, ≋, ≌, ≍, ≎, ≏, ≐, ≑, ≒, ≓, ≔, ≕, ≖, ≗, ≘, ≙, ≚, ≛, ≜, ≝, ≞, ≟, ≠, ≡, ≢, ≣, ≤, ≥, ≦, ≧, ≨, ≩, ≪, ≫, ≬, ≭, ≮, ≯, ≰, ≱, ≲, ≳, ≴, ≵, ≶, ≷, ≸, ≹, ≺, ≻, ≼, ≽, ≾, ≿, ⊀, ⊁, ⊂, ⊃, ⊄, ⊅, ⊆, ⊇, ⊈, ⊉, ⊊, ⊋, ⊌, ⊍, ⊎, ⊏, ⊐, ⊑, ⊒, ⊓, ⊔, ⊕, ⊖, ⊗, ⊘, ⊙, ⊚, ⊛, ⊜, ⊝, ⊞, ⊟, ⊠, ⊡, ⊢, ⊣, ⊤, ⊥, ⊦, ⊧, ⊨, ⊩, ⊪, ⊫, ⊬, ⊭, ⊮, ⊯, ⊰, ⊱, ⊲, ⊳, ⊴, ⊵, ⊶, ⊷, ⊸, ⊹, ⊺, ⊻, ⊼, ⊽, ⊾, ⊿, ⋀, ⋁, ⋂, ⋃, ⋄, ⋅, ⋆, ⋇, ⋈, ⋉, ⋊, ⋋, ⋌, ⋍, ⋎, ⋏, ⋐, ⋑, ⋒, ⋓, ⋔, ⋕, ⋖, ⋗, ⋘, ⋙, ⋚, ⋛, ⋜, ⋝, ⋞, ⋟, ⋠, ⋡, ⋢, ⋣, ⋤, ⋥, ⋦, ⋧, ⋨, ⋩, ⋪, ⋫, ⋬, ⋭, ⋮, ⋯, ⋰, ⋱.
+
+
+Group 4: Limits and Calculus Symbols
+∑, ∏, ∫, √, ∞, θ, π, ∞, ∫, ∬, ∭, ∮, ∯, ∰, ∱, ∲, ∳
+
+Group 5: Miscellaneous Symbols
+±, &, |, ~, ′, ″, ‴, º, °, ‰, ℕ, ℤ, ℚ, ℝ, ℂ, ≡, ≢, ≍, ≐, ≑, ≓, ∣, ∤, ∣∣, ∥, ∡, ∞, μ, φ, ω, ϵ, γ, δ, ϑ, π, ζ, σ, τ, ρ, λ, χ, ξ
+
+Group 6: Arrows
+⇒, ⇐, ↑, ↓, ↔, ↟, ↡, ←, →, ↑, ↓, ↔, ↕, ↖, ↗, ↘, ↙, ⇑, ⇓, ⇐, ⇒, ⇔, ⇕, ⇖, ⇗, ⇘, ⇙ → ← ↔ ↕ ↖ ↗ ↘ ↙ ↚ ↛ ↜ ↝ ↞ ↟ ↠ ↡ ↢ ↣ ↤ ↥ ↦ ↧ ↨ ↩ ↪ ↫ ↬ ↭ ↮ ↯ ↰ ↱ ↲ ↳ ↴ ↵ ↶ ↷ ↸ ↹ ↺ ↻ ↼ ↽ ↾ ↿ ⇀ ⇁ ⇂ ⇃ ⇄ ⇅ ⇆ ⇇ ⇈ ⇉ ⇊ ⇋ ⇌ ⇍ ⇎ ⇏ ⇐ ⇑ ⇒ ⇓ ⇔ ⇕ ⇖ ⇗ ⇘ ⇙ ⇚ ⇛ ⇜ ⇝ ⇞ ⇟ ⇠ ⇡ ⇢ ⇣ ⇤ ⇥ ⇦ ⇧ ⇨ ⇩ ⇪ ⬅ ⬆ ➡ ⬇ ⤴ ⤵ ⬮ ⬯ ⬰ ⬱ ⬲ ⬳ ⬴ ⬵ ⬶ ⬷ ⬸ ⬹ ⬺ ⬻ ⬼ ⬽ ⬾ ⬿ ⭀ ⭁ ⭂ ⭃ ⭄ ⭅ ⭆ ⭇ ⭈ ⭉ ⭊ ⭋ ⭌  ⮐ ⮑  ⮕ 
+
+
