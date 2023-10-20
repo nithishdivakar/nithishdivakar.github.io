@@ -1,8 +1,9 @@
 ---
 title: Knapsack
+layout: post
 tags : [algorithms]
-date: 2022-01-28T06:59:51+05:30
-draft: true
+date: 2023-10-20T05:52:32+05:30
+draft: false
 ---
 
 
@@ -98,10 +99,3 @@ for i range(n):
 	x[i] = min((T-C)/w[i],1.0)
 	C += w[i] * x[i]
 ```
-
-
-
-References
-- [[Coin Change]]
-- [[Knapsack_01]]
-- 

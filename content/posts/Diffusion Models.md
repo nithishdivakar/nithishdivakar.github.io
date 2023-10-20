@@ -2,6 +2,7 @@
 title: Diffusion Models
 tags : []
 date: 2023-04-22T10:21:00+05:30
+startdate: 2023-04-22T10:21:00+05:30
 draft: true
 ---
 
@@ -9,12 +10,67 @@ draft: true
 
 
 # Diffusion Models
+
+## Transitions and markov kernels
+
+
+
+## Two trajectories of diffusion
+
+Diffusion is a process when a distribution $q(x_0)$ is gradually converted to a (well behaved) distribution $\pi(y)$ by repeated application of a [markov diffusion kernel][Markov kernel] $K_\pi(y|y^\prime;\beta)$ where $\beta$ is the diffusion rate. Definition taken from [Sohl-Dickstein et al. (2015)]
+
+We can pictorically represent the diffusion process as follows.
+$$x_0 \rightsquigarrow \cdots \rightsquigarrow x_t \to x_{t-1} \rightsquigarrow \cdots \rightsquigarrow x_T$$
+
+Each transition in the process above is given by 
+
+$$q(x_t|x_{t-1}) = K_\pi(x_t|x_{t-1};\beta_t)$$
+
+<comment>A sequence of points forms trajectory. But how do we represent a specific type of trajectory? We use joint probability distribution. </comment>
+
+The **forward trajectory** is starting with $q(x_0)$ and performing T steps of diffusion
+
+$$q(x_{0:T}) = q(x_0)\prod_{t=1}^{T}q(x_t|x_{t-1})$$
+
+
+We can similarly define a **reverse trajectory** where we start out with distribution $\pi(y)$ and end up with $p(x_0)=q(x_0)$.
+
+$$p(x_T) = \pi(x_T)$$
+$$p(x_{0:T}) = p(x_T)\prod_{t=1}^{T}p(x_{t-1}|x_{t})$$
+
+## Diffusion based generative models
+If the target distribution of the diffusion process $\pi(y)$ is a simple distribution like $N(0,I)$ then we can use this to design a generative model. 
+
+If we start with data keep adding noise to it in small increment, over iterations, we can end up with just noise. If we can controll the variance schedule of the noise, we will end up with a sample from $N(0,I)$. We just described a forward trajectory of a diffusion. The following equation describes such a variance schedule. $\beta_t$ is slowly increased from 0 to 1.
+
+$$q(x_t|x_{t-1}) = N(x_t; \left(\sqrt{1-\beta_t}\right)x_{t-1}, \beta_t I)$$
+
+Now there is no value in adding noise. But the reverse trajectory would create an image from noise. If we learn the reverse transitions, we have a generative model. A diffusion based generative model.
+
+$$p(x_T) = N(0,I)$$
+$$p(x_{0:T}) = p(x_T)\prod_{t=1}^{T}p_\theta(x_{t-1}|x_{t})$$
+
+---
+q(x_T|x) \sim N(0,I) when T \to \infty
+
+* p(x_0) is the data we get back from the generative model. We can train the reverse process by maximsing the probablity of p(x_0) being data. 
+
+$$\log p(x) \geq E_ {q(z|x)}[\log p(x|z)] - D_ {KL}(q(z|x), p(z))$$
+
+
+-
 [Sohl-Dickstein et al. (2015)]
 
+$$x_t \mathop{\longrightarrow}^{q(x_t|x_{t-1})} x_{t-1}$$
+$$x_t \mathop{\longleftarrow}_ {p(x_{t-1}|x_t)} x_{t-1}$$
 
 
-???
 
+$$p(x) = \int_z p(x,z) dz$$
+$$= \int_z p(x,z) \frac{q(z|x)}{q(z|x)} dz$$
+$$= \int_z q(z|x) \frac{p(x,z)}{q(z|x)} dz$$
+$$= \int_z q(z|x) \frac{p(x|z)p(z)}{q(z|x)} dz$$
+$$= \int_z q(z|x) p(z) \frac{p(x|z)}{q(z|x)} dz$$
 
 
 ## Denoising diffusion probabilistic models
@@ -91,12 +147,10 @@ ref: [Yang Song 2021 score]
 
 ## References
 <small>
-    
+
 - [Ho et al. (2020)]: Ho, Jonathan, Ajay Jain, and Pieter Abbeel. "_[Denoising diffusion probabilistic models][Ho et al. (2020)]_". Advances in Neural Information Processing Systems 33 (2020): 6840-6851.
 
 - [Sohl-Dickstein et al. (2015)]: Sohl-Dickstein, Jascha, Eric Weiss, Niru Maheswaranathan, and Surya Ganguli. "_[Deep unsupervised learning using nonequilibrium thermodynamics.][Sohl-Dickstein et al. (2015)]_" In International Conference on Machine Learning, pp. 2256-2265. PMLR, 2015.
-
-- [Song et al. (2019)]: Song, Yang, and Stefano Ermon. "_[Generative Modeling by Estimating Gradients of the Data Distribution.][Song et al. (2019)]_" Advances in neural information processing systems 32 (2019).
 
 - [Song et al. 2023]: Song, Yang, Prafulla Dhariwal, Mark Chen, and Ilya Sutskever. "_[Consistency models.][Song et al. 2023]_" arXiv preprint arXiv:2303.01469 (2023).
 
@@ -104,26 +158,24 @@ ref: [Yang Song 2021 score]
 
 - _[Generative Modeling by Estimating Gradients of the Data Distribution][Yang Song 2021 score]_ by Yang Song
 
-- _[What are Diffusion Models? by Ari Seff][Ari Seff Diffusion Models youtube]_
+- _Markov kernel_ : [https://en.wikipedia.org/wiki/Markov_kernel][Markov kernel]
 
 [Ho et al. (2020)]:    <https://arxiv.org/pdf/2006.11239.pdf>
     "Ho, Jonathan, Ajay Jain, and Pieter Abbeel. \"Denoising diffusion probabilistic models\". Advances in Neural Information Processing Systems 33 (2020): 6840-6851."
-
+    
 [Sohl-Dickstein et al. (2015)]:    <https://arxiv.org/pdf/1503.03585.pdf>
     "Sohl-Dickstein, Jascha, Eric Weiss, Niru Maheswaranathan, and Surya Ganguli. \"Deep unsupervised learning using nonequilibrium thermodynamics.\" In International Conference on Machine Learning, pp. 2256-2265. PMLR, 2015."
-
-[Song et al. (2019)]:    <https://arxiv.org/abs/1907.05600>
-    "Song, Yang, and Stefano Ermon. \"Generative Modeling by Estimating Gradients of the Data Distribution.\" Advances in neural information processing systems 32 (2019)."
-
+    
 [Song et al. 2023]:    <https://arxiv.org/abs/2303.01469>
     "Song, Yang, Prafulla Dhariwal, Mark Chen, and Ilya Sutskever. \"Consistency models.\" arXiv preprint arXiv:2303.01469 (2023)."
-
+    
 [Welling et al. (2011)]:    <https://www.stats.ox.ac.uk/~teh/research/compstats/WelTeh2011a.pdf>
     "Welling, Max, and Yee W. Teh. \"Bayesian learning via stochastic gradient Langevin dynamics.\" Proceedings of the 28th international conference on machine learning (ICML-11). 2011."
-
+    
 [Yang Song 2021 score]:    <https://yang-song.net/blog/2021/score>
     "Generative Modeling by Estimating Gradients of the Data Distribution by Yang Song"
-
-[Ari Seff Diffusion Models youtube]:    <https://www.youtube.com/watch?v=fbLgFrlTnGU>
-        "What are Diffusion Models? by Ari Seff"
+    
+[Markov kernel]:    <https://en.wikipedia.org/wiki/Markov_kernel>
+        "Markov kernel"
+    
 </small>

@@ -139,92 +139,111 @@ $$L
 
 
 ## References
-<small>
+<reference>
+ <small>
 
-- _[Blei et al. (2017)]_:  Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "_Variational inference: A review for statisticians._" Journal of the American statistical Association 112.518 (2017): 859-877.
+- [Blei et al. (2017)]: Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. "_Variational inference: A review for statisticians._" Journal of the American statistical Association 112.518 (2017): 859-877.
 
-- _[Kingma et al. (2013)]_:  Kingma, Diederik P., and Max Welling. "_Auto-encoding variational bayes._" arXiv preprint arXiv:1312.6114 (2013).
+- [Kingma et al. (2013)]: Kingma, Diederik P., and Max Welling. "_Auto-encoding variational bayes._" arXiv preprint arXiv:1312.6114 (2013).
 
-- _[Kingma et al. (2019)]_:  Diederik P. Kingma and Max Welling (2019), "_An Introduction to Variational Autoencoders_", Foundations and Trends in Machine Learning: Vol. xx, No.xx, pp 1–18. DOI: 10.1561/XXXXXXXXX.
+- [Kingma et al. (2019)]: Diederik P. Kingma and Max Welling (2019), "_An Introduction to Variational Autoencoders_", Foundations and Trends in Machine Learning: Vol. xx, No.xx, pp 1–18. DOI: 10.1561/XXXXXXXXX.
 
-- _[Ranganath et al. (2014)]_:  Rajesh Ranganath, Sean Gerrish, and David Blei. "_Black box variational inference._" Artificial intelligence and statistics. PMLR, 2014.
+- [Ranganath et al. (2014)]: Rajesh Ranganath, Sean Gerrish, and David Blei. "_Black box variational inference._" Artificial intelligence and statistics. PMLR, 2014.
 
-- _[Rezende et al. (2014)]_:  Rezende, Danilo Jimenez, Shakir Mohamed, and Daan Wierstra. "_Stochastic backpropagation and approximate inference in deep generative models._" International conference on machine learning. PMLR, 2014.
+- [Rezende et al. (2014)]: Rezende, Danilo Jimenez, Shakir Mohamed, and Daan Wierstra. "_Stochastic backpropagation and approximate inference in deep generative models._" International conference on machine learning. PMLR, 2014.
 
-- _[Ruiz et al. (2016)]_:  Ruiz, Francisco R., Titsias RC AUEB, and David Blei. "_The generalized reparameterization gradient._" Advances in neural information processing systems 29 (2016).
+- [Ruiz et al. (2016)]: Ruiz, Francisco R., Titsias RC AUEB, and David Blei. "_The generalized reparameterization gradient._" Advances in neural information processing systems 29 (2016).
 
-- _[Vincent et al. (2010)]_:  Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). "_Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion_". Journal of machine learning research, 11(12).
+- [Vincent et al. (2010)]: Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). "_Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion_". Journal of machine learning research, 11(12).
 
-- _[Amortized Inference and Variational Auto Encoders]_
+- _[Amortized Inference][Anh Le (2017)]_ by Tuan Anh Le<br><small>_`https://www.tuananhle.co.uk/notes/amortized-inference.html`_</small>
 
-- _[Amortized Inference][Anh Le (2017)]_
+- _[Amortized Inference and Variational Auto Encoders]_<br><small>_`https://erdogdu.github.io/csc412/notes/lec11-1.pdf`_</small>
 
-- _[Divergence (statistics)][Divergence]_
+- _[Divergence]_<br><small>_`https://en.wikipedia.org/wiki/Divergence_(statistics)`_</small>
 
-- _[Evidence lower bound][Evidence Lower Bound]_
+- _[Evidence Lower Bound]_<br><small>_`https://en.wikipedia.org/wiki/Evidence_lower_bound`_</small>
 
-- _[KL Divergence]_:  "_Kullback-Leibler divergence_"
+- _[KL Divergence]_<br><small>_`https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence`_</small>
 
-- _[Stochastic Approximation]_:  "_Stochastic approximation_"
+- _[Stochastic Approximation]_<br><small>_`https://en.wikipedia.org/wiki/Stochastic_approximation`_</small>
 
-- _[The variational auto-encoder]_
+- _[The variational auto-encoder]_<br><small>_`https://ermongroup.github.io/cs228-notes/extras/vae`_</small>
 
-- _[Variational Inference with Normalizing Flows]_
+- _[Variational Inference with Normalizing Flows]_<br><small>_`https://www.depthfirstlearning.com/2021/VI-with-NFs`_</small>
 
-- _[Variational inference]_
+- _[Variational inference]_<br><small>_`https://ermongroup.github.io/cs228-notes/inference/variational`_</small>
 
-- _[Variational Inference: Foundations and Innovations]_:  by David Blei
+- _[Variational Inference: Foundations and Innovations by David Blei][Variational Inference: Foundations and Innovations]_
 
 [Blei et al. (2017)]:    <https://arxiv.org/abs/1601.00670>
     "Blei, David M., Alp Kucukelbir, and Jon D. McAuliffe. \"Variational inference: A review for statisticians.\" Journal of the American statistical Association 112.518 (2017): 859-877."
     
+
 [Kingma et al. (2013)]:    <https://arxiv.org/abs/1312.6114>
     "Kingma, Diederik P., and Max Welling. \"Auto-encoding variational bayes.\" arXiv preprint arXiv:1312.6114 (2013)."
     
+
 [Kingma et al. (2019)]:    <https://arxiv.org/pdf/1906.02691.pdf>
     "Diederik P. Kingma and Max Welling (2019), \"An Introduction to Variational Autoencoders\", Foundations and Trends in Machine Learning: Vol. xx, No.xx, pp 1–18. DOI: 10.1561/XXXXXXXXX."
     
+
 [Ranganath et al. (2014)]:    <http://www.cs.columbia.edu/~blei/papers/RanganathGerrishBlei2014.pdf>
     "Rajesh Ranganath, Sean Gerrish, and David Blei. \"Black box variational inference.\" Artificial intelligence and statistics. PMLR, 2014."
     
+
 [Rezende et al. (2014)]:    <https://arxiv.org/pdf/1401.4082.pdf>
     "Rezende, Danilo Jimenez, Shakir Mohamed, and Daan Wierstra. \"Stochastic backpropagation and approximate inference in deep generative models.\" International conference on machine learning. PMLR, 2014."
     
+
 [Ruiz et al. (2016)]:    <http://www.cs.columbia.edu/~blei/papers/RuizTitsiasBlei2016b.pdf>
     "Ruiz, Francisco R., Titsias RC AUEB, and David Blei. \"The generalized reparameterization gradient.\" Advances in neural information processing systems 29 (2016)."
     
+
 [Vincent et al. (2010)]:    <https://www.jmlr.org/papers/volume11/vincent10a/vincent10a.pdf>
     "Vincent, P., Larochelle, H., Lajoie, I., Bengio, Y., Manzagol, P. A., & Bottou, L. (2010). \"Stacked denoising autoencoders: Learning useful representations in a deep network with a local denoising criterion\". Journal of machine learning research, 11(12)."
     
-[Amortized Inference and Variational Auto Encoders]:    <https://erdogdu.github.io/csc412/notes/lec11-1.pdf>
-    "Amortized Inference and Variational Auto Encoders"
-    
+
 [Anh Le (2017)]:    <https://www.tuananhle.co.uk/notes/amortized-inference.html>
-    "Amortized Inference"
+    "Amortized Inference by Tuan Anh Le"
     
+
+[Amortized Inference and Variational Auto Encoders]:    <https://erdogdu.github.io/csc412/notes/lec11-1.pdf>
+        "Amortized Inference and Variational Auto Encoders"
+    
+
 [Divergence]:    <https://en.wikipedia.org/wiki/Divergence_(statistics)>
-    "Divergence (statistics)"
+        "Divergence"
     
+
 [Evidence Lower Bound]:    <https://en.wikipedia.org/wiki/Evidence_lower_bound>
-    "Evidence lower bound"
+        "Evidence Lower Bound"
     
+
 [KL Divergence]:    <https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence>
-    "\"Kullback-Leibler divergence\""
+        "KL Divergence"
     
+
 [Stochastic Approximation]:    <https://en.wikipedia.org/wiki/Stochastic_approximation>
-    "\"Stochastic approximation\""
+        "Stochastic Approximation"
     
+
 [The variational auto-encoder]:    <https://ermongroup.github.io/cs228-notes/extras/vae>
-    "The variational auto-encoder"
+        "The variational auto-encoder"
     
+
 [Variational Inference with Normalizing Flows]:    <https://www.depthfirstlearning.com/2021/VI-with-NFs>
-    "Variational Inference with Normalizing Flows"
+        "Variational Inference with Normalizing Flows"
     
+
 [Variational inference]:    <https://ermongroup.github.io/cs228-notes/inference/variational>
-    "Variational inference"
+        "Variational inference"
     
+
 [Variational Inference: Foundations and Innovations]:    <https://www.youtube.com/watch?v=Dv86zdWjJKQ>
-    "by David Blei"
+        "Variational Inference: Foundations and Innovations by David Blei"
     
 
 </small>
+</reference>
+

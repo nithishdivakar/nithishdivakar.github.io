@@ -4,15 +4,7 @@ tags : [clustering,representation-learning]
 date: 2021-05-03T05:04:51+05:30
 draft: true
 ---
-
-<!--<embed src="{{site.dev-images}}/2021-05-03-arcface-loss.pdf" width="500" height="500"  type="application/pdf" frameborder="0" allowfullscreen>-->
-<embed src="https://daxpy-website.s3.ap-southeast-1.amazonaws.com/2021-05-03-arcface-loss.pdf" width="500" height="500"  type="application/pdf" frameborder="0" allowfullscreen>
-
----
-title: Arcface Loss
----
-
-` Machine Learning notes by Nithish Divakar. More at daxpy.xyz `
+# Arcface Loss
 
 ArcFace is a loss function used to solve similarity problem in an alebit
 unconventional way.
@@ -47,8 +39,7 @@ $$loss = \operatorname{softmax}(target, [\cos \theta_i])$$
 All well and good. Now comes the problem in implementing. The following
 graph will be very useful for discussions.
 
-Ensuring the norm
-=================
+## Ensuring the norm
 
 If you update the parameter while ensuring its norm is 1, then the
 gradient update will have a loop. ie,
@@ -79,8 +70,7 @@ normalised copy of the parameter. That means the actual parameter is
 free to grow to any norm, but what is used in computation is always a
 normed copy.
 
-Adding angles
-=============
+## Adding angles
 
 To add $m$ to $\theta_y$, we first have to do the following.
 $$\begin{aligned}
@@ -93,7 +83,7 @@ the loss and the embedding just ends subtending larger and larger angles
 to the class center. The soution is to never use $\cos^{-1}$ in the
 first place. Instead we do
 
-$$\cos (\theta + m) =  \cos\theta \cos m - \sin\theta \sin m$$
+$$\cos (\theta + m) =  \cos\theta \cdot \cos m - \sin\theta \cdot \sin m$$
 
 Now everything is inside bounds.
 
