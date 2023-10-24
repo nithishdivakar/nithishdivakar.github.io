@@ -1,4 +1,107 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>algorithms on daxpy</title><link>https://daxpy.xyz/tags/algorithms/</link><description>Recent content in algorithms on daxpy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 20 Oct 2023 05:52:32 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/algorithms/index.xml" rel="self" type="application/rss+xml"/><item><title>Variational Inference</title><link>https://daxpy.xyz/posts/variational-inference/</link><pubDate>Sun, 16 Apr 2023 12:15:00 +0530</pubDate><guid>https://daxpy.xyz/posts/variational-inference/</guid><description>&lt;h1 id="variational-inference">Variational Inference&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>algorithms on daxpy</title><link>https://daxpy.xyz/tags/algorithms/</link><description>Recent content in algorithms on daxpy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 20 Oct 2023 05:52:32 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/algorithms/index.xml" rel="self" type="application/rss+xml"/><item><title>Normalisation Layers</title><link>https://daxpy.xyz/posts/normalisation/</link><pubDate>Tue, 24 Oct 2023 18:33:10 +0530</pubDate><guid>https://daxpy.xyz/posts/normalisation/</guid><description>&lt;h1 id="normalisation">Normalisation&lt;/h1>
+&lt;p>Regulating the magnitude of activations inside a neural network is crucial for an effective training regime. We may get stuck in local minima or worse yet, the training may diverge otherwise. For this, we make use of normalisation.&lt;/p>
+&lt;p>Normalisation comes in two flavours. Weight normalisation and Layer normalisation. We briefly touch on some fundamental techniques in both.&lt;/p>
+&lt;h2 id="weight-normalisation">Weight normalisation&lt;/h2>
+&lt;p>In weight normalisation, we focus on the magnitude of the parameters of the network; preventing them from uncontrollable growth or collapse. The basic technique appeared in &lt;a href="https://arxiv.org/pdf/1602.07868.pdf" title="Salimans, Tim and Kingma, Durk P &amp;quot;Weight normalization: A simple reparameterization to accelerate training of deep neural networks&amp;quot; In Advances in neural information processing systems 29, (2016)">Salimans et al. (2016)&lt;/a> which describes a simple scenario.&lt;/p>
+&lt;p>Given a network layer&lt;/p>
+&lt;p>$$y = \phi(w \cdot x+b)$$&lt;/p>
+&lt;p>We constrain the weight by reparameterising it as&lt;/p>
+&lt;p>$$w = g\frac{v}{\|v\|}$$&lt;/p>
+&lt;p>This constraints the norm of $w$ to be always $g$, the growth parameter.&lt;/p>
+&lt;h3 id="spectral-normalization">Spectral Normalization&lt;/h3>
+&lt;p>If we consider the parameter of the layer/network as matrix, then we can device normalisation schemes using matrix norms. One such technique is spectral norm. It was first described in &lt;a href="https://arxiv.org/pdf/1802.05957.pdf" title="Miyato, Takeru and Kataoka, Toshiki and Koyama, Masanori and Yoshida, Yuichi &amp;quot;Spectral normalization for generative adversarial networks&amp;quot; In arXiv preprint arXiv:1802.05957 , (2018)">Miyato et al. (2018)&lt;/a>.&lt;/p>
+&lt;p>Given the weight matrix, we normalise it by its spectral norm&lt;/p>
+&lt;p>$$W \gets \frac{W}{\sigma(W)}$$&lt;/p>
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Matrix_norm" title="Matrix Norm">Spectral norm&lt;/a> is an induced vector norm defined as&lt;/p>
+&lt;p>$$\sigma(A) = max_{h \neq 0}\frac{\|Ah\|_ 2}{\|h\|_ 2}$$&lt;/p>
+&lt;p>To recall, this is the formulation of the largest singular value of $A$ and hence, spectral norm stabilizes the &lt;a href="https://en.wikipedia.org/wiki/Lipschitz_continuity" title="Lipschitz Continuity">Lipschitz constant&lt;/a> of the weight matrix.&lt;/p>
+&lt;p>Spectral norm had found its initial use in &lt;a href="https://arxiv.org/pdf/1802.05957.pdf" title="Miyato, Takeru and Kataoka, Toshiki and Koyama, Masanori and Yoshida, Yuichi &amp;quot;Spectral normalization for generative adversarial networks&amp;quot; In arXiv preprint arXiv:1802.05957 , (2018)">Generative Adversarial Networks (GANs)&lt;/a> for stabilising training by preventing mode collapse.&lt;/p>
+&lt;h2 id="normalisation-layers">Normalisation Layers&lt;/h2>
+&lt;p>Normalisation layers are like any other layers in a neural network which takes applied transformations on its input. But their primary purpose is to stablise the activations. They are places in the computational graph such that the further layers recieve a more stable inputs due to their action.&lt;/p>
+&lt;h3 id="batch-normalisation">Batch Normalisation&lt;/h3>
+&lt;p>The key idea behind batch norm is to normalise each feature of a sample. Ideally, if $x$ is the input feature, then the best normalisation is achieved if we do
+$$x_f = \frac{x_f - \mathbb{E}[x_f]}{\sqrt{\operatorname{Var}[x_f]}}$$&lt;/p>
+&lt;p>But we don&amp;rsquo;t have access to the exact population mean and variance. So we approximate it at run time with the mean and variance of the features in the mini-batch. Hence the name &amp;ldquo;batch norm&amp;rdquo;.&lt;/p>
+&lt;p>Batch norm was introduced by &lt;a href="http://proceedings.mlr.press/v37/ioffe15.pdf" title="Ioffe, Sergey and Szegedy, Christian &amp;quot;Batch normalization: Accelerating deep network training by reducing internal covariate shift&amp;quot; In , (2015)">Ioffe et al. (2015)&lt;/a> and it has has 4 learnable parameters, each of size $F$, the number of features.&lt;/p>
+&lt;p>$$y \gets \operatorname{BatchNorm}(x; \{\bar{\mu}, \bar{\sigma}^2, \gamma, \beta \})$$
+After (and during) training, the layer converges its output to $\mathcal{N}(\beta, \gamma^2I)$. The layer does the following transforms during the forward pass of the training.&lt;/p>
+&lt;p>$$y_{b,f} = \gamma_{f}\left( \frac{x_{b,f}-\mu_{f}}{\sqrt{\sigma^2_{f}-\epsilon}} \right) + \beta_{f}$$
+$$\mu_{f} \gets \frac{1}{B}\sum_b x_{b,f}$$
+$$\sigma^2_{f} \gets \frac{1}{B} \sum_t (x_{b,f}-\mu_{f})^2$$&lt;/p>
+&lt;p>During inference batch statistics are not available. So batch norm keeps track of running average of the batch statistics during training in $\bar{\mu}$ and $\bar{\sigma}^2$. These are used during inference as mean and variance.&lt;/p>
+&lt;p>$$\bar{\mu}_{f} \gets \operatorname{running-mean}(\mu_{f})$$
+$$\bar{\sigma}_{f}^2 \gets \operatorname{running-mean}(\sigma^2_{f})$$&lt;/p>
+&lt;p>Each of the features are normalised independently using batch statistics. The $\epsilon$ is constant added for numerical stability.&lt;/p>
+&lt;p>&lt;strong>Why does batch norm work?&lt;/strong>&lt;/p>
+&lt;p>&lt;em>Internal co-variate shift&lt;/em> was the original reasoning for batch norm discussed in &lt;a href="http://proceedings.mlr.press/v37/ioffe15.pdf" title="Ioffe, Sergey and Szegedy, Christian &amp;quot;Batch normalization: Accelerating deep network training by reducing internal covariate shift&amp;quot; In , (2015)">Ioffe et al. (2015)&lt;/a>. During training, when the lower layer&amp;rsquo;s parameter changes, the output distribution changes. This leads to the following layers needing to constantly readjust its parameters.&lt;/p>
+&lt;p>There has been some evidence against the internal covariate shift theory. See &lt;a href="https://arxiv.org/pdf/1805.11604.pdf" title="Santurkar, Shibani and Tsipras, Dimitris and Ilyas, Andrew and Madry, Aleksander &amp;quot;How does batch normalization help optimization?&amp;quot; In Advances in neural information processing systems 31, (2018)">Santurkar et al. (2018)&lt;/a>&lt;/p>
+&lt;h3 id="layer-normalisation">Layer Normalisation&lt;/h3>
+&lt;p>While batch norm normalises each features independently, Layer norm normalises the total activation of a sample. Since we do not need to keep track of batch statistics, it only has 2 scalar parameters.&lt;/p>
+&lt;p>$$y \gets \operatorname{LayerNorm}(x; \{\gamma, \beta \})$$&lt;/p>
+&lt;p>Layer norm was introduces in &lt;a href="https://arxiv.org/abs/1607.06450" title="Ba, Jimmy Lei and Kiros, Jamie Ryan and Hinton, Geoffrey E &amp;quot;Layer normalization&amp;quot; In arXiv preprint arXiv:1607.06450 , (2016)">Lei Ba et al. (2016)&lt;/a> with the following definitions.&lt;/p>
+&lt;p>$$y_{b,f} = \gamma \left(\frac{x_{b,f}-\mu_{b}}{\sqrt{\sigma^2_{b}-\epsilon}}\right) + \beta$$&lt;/p>
+&lt;p>$$\mu_{b} = \frac{1}{F}\sum_f x_{b,f}$$
+$$\sigma^2_{b} = \frac{1}{F} \sum_f (x_{b,f}-\mu_f)^2$$&lt;/p>
+&lt;p>Layer normalization is used in recurrent neural networks (RNNs) like architectures to address vanishing gradient problems.&lt;/p>
+&lt;blockquote>
+&lt;p>In a standard RNN, there is a tendency for the average magnitude of the summed inputs to the recurrent units to either grow or shrink at every time-step, leading to exploding or vanishing gradients. In a layer normalized RNN, the normalization terms make it invariant to re-scaling all of the summed inputs to a layer, which results in much more stable hidden-to-hidden dynamics. ~ &lt;em>from &lt;a href="https://arxiv.org/abs/1607.06450" title="Ba, Jimmy Lei and Kiros, Jamie Ryan and Hinton, Geoffrey E &amp;quot;Layer normalization&amp;quot; In arXiv preprint arXiv:1607.06450 , (2016)">Lei Ba et al. (2016)&lt;/a>&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;p>Since layer norm does not have any contribution from different samples of a same batch, it does the same computation during inference as well. For the same reason, it is also distributed training friendly as gradients depend only on the single sample.&lt;/p>
+&lt;h2 id="rmsnorm">RMSNorm&lt;/h2>
+&lt;p>&lt;a href="https://arxiv.org/pdf/1910.07467.pdf" title="Zhang, Biao and Sennrich, Rico &amp;quot;Root mean square layer normalization&amp;quot; In Advances in Neural Information Processing Systems 32, (2019)">Root Mean Square Layer Normalization&lt;/a> is a variant of Layer norm. The difference is that instead of normalising the data by mean centering and dividing by variance, the data is simply divided by RMS.&lt;/p>
+&lt;p>$$y \gets \operatorname{RMSNorm}(x; \{\gamma\})$$&lt;/p>
+&lt;p>RMS measures the quadratic mean of inputs.&lt;/p>
+&lt;p>$$\operatorname{RMS}(x_b) = \sqrt{\frac{1}{F}\sum_f x_{b,f}^2}$$&lt;/p>
+&lt;p>Then RMS norm is computed as&lt;/p>
+&lt;p>$$y_{b,f} = \gamma_f \frac{x_{b,f}}{\operatorname{RMS}(x_b)}$$&lt;/p>
+&lt;p>The main difference to LayerNorm is that RMSNorm is not re-centered and thus does not show similar linearity property for variable shifting.&lt;/p>
+&lt;p>RMSNorm forces the summed inputs into a √n-scaled unit sphere. By doing so, the output distribution remains same regardless of the scaling of input. RMSNorm is invariant to the scaling of its inputs. It is not invariant to all re-centering operations.&lt;/p>
+&lt;h2 id="normalisation-layers-for-data-with-channels">Normalisation Layers for data with channels&lt;/h2>
+&lt;h3 id="instance-normalization">Instance Normalization&lt;/h3>
+&lt;p>For data with multiple channels, applying a normalisation technique like layer normalisation might result in one of the channels being saturated. For such scenario, we use &lt;a href="https://arxiv.org/abs/1607.08022" title="Ulyanov, Dmitry and Vedaldi, Andrea and Lempitsky, Victor &amp;quot;Instance normalization: The missing ingredient for fast stylization&amp;quot; In arXiv preprint arXiv:1607.08022 , (2016)">Instance Normalization&lt;/a>.&lt;/p>
+&lt;p>The technique is similar to layer normalization, but the mean and variance statistics are calculated for each channels and instance independently. Instance normalization is commonly used in style transfer and image generation tasks.&lt;/p>
+&lt;h3 id="group-normalization">Group Normalization&lt;/h3>
+&lt;p>&lt;a href="https://arxiv.org/abs/1803.08494" title="Wu, Yuxin and He, Kaiming &amp;quot;Group normalization&amp;quot; In Proceedings of the European conference on computer vision (ECCV) pp.3--19, (2018)">Group Normalization&lt;/a> is a variant of Instance normalisation which attempts to strike a balance between Layer norm and Instance norm. The channels of a layer are divided into groups, and mean and variance statistics are computed for each group separately.&lt;/p>
+&lt;h2 id="references">References&lt;/h2>
+&lt;reference>
+&lt;small>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="http://proceedings.mlr.press/v37/ioffe15.pdf" title="Ioffe, Sergey and Szegedy, Christian &amp;quot;Batch normalization: Accelerating deep network training by reducing internal covariate shift&amp;quot; In , (2015)">Ioffe et al. (2015)&lt;/a>: Ioffe, Sergey and Szegedy, Christian &amp;ldquo;&lt;em>Batch normalization: Accelerating deep network training by reducing internal covariate shift&lt;/em>&amp;rdquo; In , (2015)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://arxiv.org/abs/1607.06450" title="Ba, Jimmy Lei and Kiros, Jamie Ryan and Hinton, Geoffrey E &amp;quot;Layer normalization&amp;quot; In arXiv preprint arXiv:1607.06450 , (2016)">Lei Ba et al. (2016)&lt;/a>: Ba, Jimmy Lei and Kiros, Jamie Ryan and Hinton, Geoffrey E &amp;ldquo;&lt;em>Layer normalization&lt;/em>&amp;rdquo; In arXiv preprint arXiv:1607.06450 , (2016)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://arxiv.org/pdf/1802.05957.pdf" title="Miyato, Takeru and Kataoka, Toshiki and Koyama, Masanori and Yoshida, Yuichi &amp;quot;Spectral normalization for generative adversarial networks&amp;quot; In arXiv preprint arXiv:1802.05957 , (2018)">Miyato et al. (2018)&lt;/a>: Miyato, Takeru and Kataoka, Toshiki and Koyama, Masanori and Yoshida, Yuichi &amp;ldquo;&lt;em>Spectral normalization for generative adversarial networks&lt;/em>&amp;rdquo; In arXiv preprint arXiv:1802.05957 , (2018)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://arxiv.org/pdf/1602.07868.pdf" title="Salimans, Tim and Kingma, Durk P &amp;quot;Weight normalization: A simple reparameterization to accelerate training of deep neural networks&amp;quot; In Advances in neural information processing systems 29, (2016)">Salimans et al. (2016)&lt;/a>: Salimans, Tim and Kingma, Durk P &amp;ldquo;&lt;em>Weight normalization: A simple reparameterization to accelerate training of deep neural networks&lt;/em>&amp;rdquo; In Advances in neural information processing systems 29, (2016)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://arxiv.org/pdf/1805.11604.pdf" title="Santurkar, Shibani and Tsipras, Dimitris and Ilyas, Andrew and Madry, Aleksander &amp;quot;How does batch normalization help optimization?&amp;quot; In Advances in neural information processing systems 31, (2018)">Santurkar et al. (2018)&lt;/a>: Santurkar, Shibani and Tsipras, Dimitris and Ilyas, Andrew and Madry, Aleksander &amp;ldquo;&lt;em>How does batch normalization help optimization?&lt;/em>&amp;rdquo; In Advances in neural information processing systems 31, (2018)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://arxiv.org/abs/1607.08022" title="Ulyanov, Dmitry and Vedaldi, Andrea and Lempitsky, Victor &amp;quot;Instance normalization: The missing ingredient for fast stylization&amp;quot; In arXiv preprint arXiv:1607.08022 , (2016)">Ulyanov et al. (2016)&lt;/a>: Ulyanov, Dmitry and Vedaldi, Andrea and Lempitsky, Victor &amp;ldquo;&lt;em>Instance normalization: The missing ingredient for fast stylization&lt;/em>&amp;rdquo; In arXiv preprint arXiv:1607.08022 , (2016)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://arxiv.org/pdf/1902.08129" title="Yang, Greg and Pennington, Jeffrey and Rao, Vinay and Sohl-Dickstein, Jascha and Schoenholz, Samuel S &amp;quot;A mean field theory of batch normalization&amp;quot; In arXiv preprint arXiv:1902.08129 , (2019)">Yang et al. (2019)&lt;/a>: Yang, Greg and Pennington, Jeffrey and Rao, Vinay and Sohl-Dickstein, Jascha and Schoenholz, Samuel S &amp;ldquo;&lt;em>A mean field theory of batch normalization&lt;/em>&amp;rdquo; In arXiv preprint arXiv:1902.08129 , (2019)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://arxiv.org/pdf/1910.07467.pdf" title="Zhang, Biao and Sennrich, Rico &amp;quot;Root mean square layer normalization&amp;quot; In Advances in Neural Information Processing Systems 32, (2019)">Zhang et al. (2019)&lt;/a>: Zhang, Biao and Sennrich, Rico &amp;ldquo;&lt;em>Root mean square layer normalization&lt;/em>&amp;rdquo; In Advances in Neural Information Processing Systems 32, (2019)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://arxiv.org/abs/1803.08494" title="Wu, Yuxin and He, Kaiming &amp;quot;Group normalization&amp;quot; In Proceedings of the European conference on computer vision (ECCV) pp.3--19, (2018)">Wu et al. (2018)&lt;/a>: Wu, Yuxin and He, Kaiming &amp;ldquo;&lt;em>Group normalization&lt;/em>&amp;rdquo; In Proceedings of the European conference on computer vision (ECCV) pp. 3&amp;ndash;19, (2018)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Lipschitz_continuity" title="Lipschitz Continuity">Lipschitz Continuity&lt;/a>&lt;/em>&lt;br>&lt;small>&lt;em>&lt;code>https://en.wikipedia.org/wiki/Lipschitz_continuity&lt;/code>&lt;/em> [accessed - Oct 2023]&lt;/small>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Matrix_norm" title="Matrix Norm">Matrix Norm&lt;/a>&lt;/em>&lt;br>&lt;small>&lt;em>&lt;code>https://en.wikipedia.org/wiki/Matrix_norm&lt;/code>&lt;/em> [accessed - Oct 2023]&lt;/small>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/small>
+&lt;/reference></description></item><item><title>Variational Inference</title><link>https://daxpy.xyz/posts/variational-inference/</link><pubDate>Sun, 16 Apr 2023 12:15:00 +0530</pubDate><guid>https://daxpy.xyz/posts/variational-inference/</guid><description>&lt;h1 id="variational-inference">Variational Inference&lt;/h1>
 &lt;p>We have some data from a population and we suspect that the it is generated by some underlying process. Estimating the process which generates the data allows us to understand its fundamental properties.&lt;/p>
 &lt;p>Concretely, $p(x)$ is the distribution of the data and $z$ are its latent variables, the process which generates the data is $p(x|z)$.
 Estimating the generation process is computing the true posterior $p(z|x)$. This is the (posterior) inference problem.&lt;/p>
