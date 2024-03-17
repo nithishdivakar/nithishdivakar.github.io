@@ -6,14 +6,12 @@ type: page
 ---
 
 
-
-```java
+```
 {
   "name": "Nithish Divakar",
-  "twitter_username": "nithishdivakar",
-  "topics": ["machine learning","http://daxpy.xyz/stories"],
+  "twitter": "nithishdivakar",
+  "topics": ["machine learning","optimisation", "probability"],
   "email":["inbox",".","nithish","@","gmail",".","com"],
   "blog": "http://daxpy.xyz"
 }
-
 ```
