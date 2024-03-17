@@ -7,10 +7,9 @@ draft: false
 ---
 
 # Sampling in a Sphere
+Understanding how to generate a uniform sample of points inside a sphere takes us through a few interesting topics. So let begin with the end in mind. 
 
-Generating a uniformly sampling points is easy. But what they should also lie in a sphere?
-
-Let begin with the end. This algorithm generates a uniformly sampling of points inside sphere in n dimensions.
+The following algorithm generates a uniform sample of points inside sphere in n dimensions.
 
 $$u_1, \ldots, u_{n+2} \sim \mathcal{N}(0,1)$$
 $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
