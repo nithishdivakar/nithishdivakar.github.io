@@ -5,7 +5,9 @@ import argparse
 import re,json
 from bs4 import BeautifulSoup
 
-parser = argparse.ArgumentParser(description="bib file processor for markdown")
+parser = argparse.ArgumentParser(description="bib file processor for markdown. Usage: python3 refs_bib.py --input XGboost.md")
+
+# debug: python3 refs_bib.py --debug --silent
 
 # Add arguments
 parser.add_argument("--input", type=str, help="")
@@ -22,7 +24,7 @@ LIBRARY = bibtexparser.parse_file(args.bib_file)
 print(f"Parsed {len(LIBRARY.blocks)} blocks, including: {len(LIBRARY.entries)} entries, {len(LIBRARY.comments)} comments, {len(LIBRARY.strings)} strings, {len(LIBRARY.preambles)} preambles, {len(LIBRARY.failed_blocks)} failed entries", file=sys.stderr)
 if LIBRARY.failed_blocks:
   for blk in LIBRARY.failed_blocks:
-    print(blk.error, f"at line no {blk.start_line}"  file=sys.stderr)
+    print(blk.error, f"at line no {blk.start_line}", file=sys.stderr)
 
 debug_file_content = """
 ---

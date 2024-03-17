@@ -24,6 +24,15 @@ Miyato, Takeru, Toshiki Kataoka, Masanori Koyama, and Yuichi Yoshida. "Spectral 
 https://arxiv.org/pdf/1802.05957.pdf
 ==end==
 
+
+paper
+Santurkar et al. (2018)
+How does batch normalization help optimization?
+Shibani Santurkar, Dimitris Tsipras, Andrew Ilyas, and Aleksander Madry. "How does batch normalization help optimization?." Advances in neural information processing systems 31 (2018).
+https://arxiv.org/pdf/1805.11604.pdf
+==end==
+
+
 link
 Matrix Norm
 https://en.wikipedia.org/wiki/Matrix_norm
@@ -32,6 +41,11 @@ https://en.wikipedia.org/wiki/Matrix_norm
 link
 Markov kernel
 https://en.wikipedia.org/wiki/Markov_kernel
+==end==
+
+link
+Lipschitz Continuity
+https://en.wikipedia.org/wiki/Lipschitz_continuity
 ==end==
 
 paper
