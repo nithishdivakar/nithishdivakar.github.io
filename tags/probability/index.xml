@@ -1,4 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Probability on daxpy</title><link>https://daxpy.xyz/tags/probability/</link><description>Recent content in Probability on daxpy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 16 Apr 2023 12:15:00 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/probability/index.xml" rel="self" type="application/rss+xml"/><item><title>Normalisation Layers</title><link>https://daxpy.xyz/posts/normalisation/</link><pubDate>Tue, 24 Oct 2023 18:33:10 +0530</pubDate><guid>https://daxpy.xyz/posts/normalisation/</guid><description>&lt;h1 id="normalisation">Normalisation&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Probability on daxpy</title><link>https://daxpy.xyz/tags/probability/</link><description>Recent content in Probability on daxpy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 17 Mar 2024 21:44:15 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/probability/index.xml" rel="self" type="application/rss+xml"/><item><title>Sampling in a Sphere</title><link>https://daxpy.xyz/posts/sampling-in-a-sphere/</link><pubDate>Sun, 17 Mar 2024 21:44:15 +0530</pubDate><guid>https://daxpy.xyz/posts/sampling-in-a-sphere/</guid><description>&lt;h1 id="sampling-in-a-sphere">Sampling in a Sphere&lt;/h1>
+&lt;p>Generating a uniformly sampling points is easy. But what they should also lie in a sphere?&lt;/p>
+&lt;p>Let begin with the end. This algorithm generates a uniformly sampling of points inside sphere in n dimensions.&lt;/p>
+&lt;p>$$u_1, \ldots, u_{n+2} \sim \mathcal{N}(0,1)$$
+$$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$&lt;/p>
+&lt;p>There is a lot to unpack here.&lt;/p>
+&lt;ul>
+&lt;li>Why are we sampling from a normal distribution to get a uniform distribution?&lt;/li>
+&lt;li>Why $n+2$ ?&lt;/li>
+&lt;li>Why are we dropping 2 coordinates?&lt;/li>
+&lt;/ul>
+&lt;h2 id="what-is-inside-a-sphere">What is inside a Sphere?&lt;/h2>
+&lt;p>A sphere is defined as a set of points which are equidistant from a point known as center. For this article, we mostly deal with unit spheres. A unit n-sphere with center at origin can be defined as
+$$ S^n = \{x \in \mathbb{R}^{n} ~:~ \|x\| = 1\} $$&lt;/p>
+&lt;p>This includes only the periphery of the region. Or the circumference. An n-ball however is the whole region inside the n-sphere.
+$$ B^n = \{x \in \mathbb{R}^{n} ~:~ \|x\| \leq 1 \}$$
+Note that the $B^n$ is a closed ball so $S^n \subset B^n$.&lt;/p>
+&lt;p>Some quick facts about the unit n-ball and n-sphere&lt;/p>
+&lt;ul>
+&lt;li>Both can be completely inscribed in the region $[-1,1]^n$&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Volume_of_an_n-ball" title="Volume of an n ball">Volume of an n-ball&lt;/a> is given by $$\operatorname{vol}[B^n] = \frac{\pi^{n/2}}{\Gamma(\frac{n}{2}+1)}$$
+This fomula simplyfies to $\pi r^2$ and $\frac{4}{3}\pi r^2$ for a circle and 3d sphere.&lt;/li>
+&lt;/ul>
+&lt;h2 id="when-spheres-are-circles">When Spheres are Circles&lt;/h2>
+&lt;p>In 2 dimensions, there is simple technique get uniformly sampling points within a circle. Rejection sampling. Generate unifom random samples inside $[-1,1]^2$ and reject all the samples which are outside the circle.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">~&lt;/span> U[&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y &lt;span style="color:#f92672">~&lt;/span> U[&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> x&lt;span style="color:#f92672">^&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">+&lt;/span> y&lt;span style="color:#f92672">^&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> (x,y)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>However, efficiency of rejection sampling depends on how many samples are accepted; which is ratio of area of the circle to the area of the $2 \times 2$ square. and that about
+$$\frac{\pi 1^2}{4} \approx 78.5\%$$&lt;/p>
+&lt;p>We can extend the technique for higher dimensions but it has a critical flaw. The curse of dimensionality. The efficiency of rejection sampling for generating uniform sampling of points for n-sphere is&lt;/p>
+&lt;p>$$\frac{\operatorname{vol}[B^n]}{2^{n}}$$&lt;/p>
+&lt;p>In 3 dimensions the efficiency drops to $\approx 52.33\%$ and by the time we get to 10 dimensions, its $ \frac{\pi^5/5!}{2^{10}} \approx 0.249\% $. i.e we end up rejecting $99.7\%$ of the generated points. It worse further up.&lt;/p>
+&lt;h2 id="on-the-circumference">On the circumference&lt;/h2>
+&lt;p>If we restrict ourselves to get uniform sampling of point on the circumference of the circle, there is an easier techqnique. The technique is an inversion of &lt;a href="https://en.wikipedia.org/wiki/Marsaglia_polar_method" title="Marsaglia's polar method">Marsaglia&amp;rsquo;s polar method&lt;/a> for generating standard normal random numbers.&lt;/p>
+&lt;p>In 2D the technique is&lt;/p>
+&lt;p>$$u,v \sim \mathcal{N}(0,1)$$
+$$x,y = \frac{u,v}{\sqrt{u^2+v^2}}$$&lt;/p>
+&lt;p>It seems a bit strange why this would generate random uniform points on the circle&amp;rsquo;s circumference. Especially since we begin sampling from a normal distribution. But the proof is simple. Let take a look at the join distribution of $(u,v)$. Since both are normally distributed and independent of each other, we have&lt;/p>
+&lt;p>$$f(u,v) = \left(\frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}u^2}\right) \left(\frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}v^2}\right)$$
+$$= \frac{1}{2\pi} e^{\frac{1}{2} (u^2+v^2)}$$&lt;/p>
+&lt;p>The joint distribution of $(u,v)$ only depends on its distance from origin ($u^2+v^2$) and is invariant to direction. The last step in the algorithm where we normalise both point by this distance projects all $(u,v)$&amp;rsquo;s to the circle&amp;rsquo;s circumference without any rotation. So they are uniformly distributed on the circle.&lt;/p>
+&lt;p>We can extend the proof to n-dimensions&lt;/p>
+&lt;p>$$f(u_1,\ldots, u_n) = \prod_i \left(\frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}u_i^2}\right) = \frac{1}{(2\pi)^{n/2}} e^{\frac{1}{2}\|u\|^2} $$
+and so does the technique. Generating random uniform points on n-sphere is
+$$u_i \sim \mathcal{N}(0,1) $$
+$$ x = \frac{u}{\|u\|} $$&lt;/p>
+&lt;p>But what about generating uniformly sampled points inside the circle?&lt;/p>
+&lt;h2 id="from-circumference-to-the-center">From circumference to the center&lt;/h2>
+&lt;blockquote>
+&lt;p>Uniformly distributed points on an $S^{n+2}$ are uniformly distributed on $B^{n}$.&lt;/p>
+&lt;/blockquote>
+&lt;p>This elegant results first observed by &lt;a href="https://www.sciencedirect.com/science/article/pii/S0047259X10001211" title="Harman, Radoslav and Lacko, Vladim{'\i}r &amp;quot;On decompositional algorithms for uniform sampling from n-spheres and n-balls&amp;quot; In Journal of Multivariate Analysis 101, (2010)">Harman and Lacko&lt;/a> and later proved by &lt;a href="https://compneuro.uwaterloo.ca/files/publications/voelker.2017.pdf" title="Voelker, Aaron R and Gosmann, Jan and Stewart, Terrence C &amp;quot;Efficiently sampling vectors and coordinates from the n-sphere and n-ball&amp;quot; In Centre for Theoretical Neuroscience-Technical Report 1, (2017)">Voelker et al. (2017)&lt;/a>. Following this result, we can generate uniform sampling of points in $B^n$ by first generating uniform sampling of points in $S^{n+2}$ and dropping (any) 2 coordinates.&lt;/p>
+&lt;p>$$u_1, \ldots, u_{n+2} \sim \mathcal{N}(0,1)$$
+$$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$&lt;/p>
+&lt;h2 id="-but-one-last-thing">&amp;hellip; but one last thing&lt;/h2>
+&lt;p>There is one more technique which uses projection from n-sphere to get uniform sampling on points on n-ball. The key obsevation is that an n-ball is a collection of n-spheres of different radius
+i.e $$ B^n[1] = \bigcup_{x=0}^{1} S^n[x]$$&lt;/p>
+&lt;p>So first we sample a point in $S^n[1]$ and then move the point somewhere between origin and circumference. But there is a catch. The area of $S^n[x]$ is proportional to $x^n$, so we have to normalize accordingly. So&lt;/p>
+&lt;p>$$u_1, \ldots, u_{n} \sim \mathcal{N}(0,1)$$
+$$r \sim \operatorname{U}[0,1]$$
+$$x = r^{1/n} \frac{u}{\|u\|}$$&lt;/p>
+&lt;h2 id="references">References&lt;/h2>
+&lt;reference>
+&lt;small>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://www.sciencedirect.com/science/article/pii/S0047259X10001211" title="Harman, Radoslav and Lacko, Vladim{'\i}r &amp;quot;On decompositional algorithms for uniform sampling from n-spheres and n-balls&amp;quot; In Journal of Multivariate Analysis 101, (2010)">Harman and Lacko (2010)&lt;/a>: Harman, Radoslav and Lacko, Vladim{'\i}r &amp;ldquo;&lt;em>On decompositional algorithms for uniform sampling from n-spheres and n-balls&lt;/em>&amp;rdquo; In Journal of Multivariate Analysis 101, (2010)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://compneuro.uwaterloo.ca/files/publications/voelker.2017.pdf" title="Voelker, Aaron R and Gosmann, Jan and Stewart, Terrence C &amp;quot;Efficiently sampling vectors and coordinates from the n-sphere and n-ball&amp;quot; In Centre for Theoretical Neuroscience-Technical Report 1, (2017)">Voelker et al. (2017)&lt;/a>: Voelker, Aaron R and Gosmann, Jan and Stewart, Terrence C &amp;ldquo;&lt;em>Efficiently sampling vectors and coordinates from the n-sphere and n-ball&lt;/em>&amp;rdquo; In Centre for Theoretical Neuroscience-Technical Report 1, (2017)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Marsaglia_polar_method" title="Marsaglia's polar method">Marsaglia polar method&lt;/a>&lt;/em>&lt;br>&lt;small>&lt;em>&lt;code>https://en.wikipedia.org/wiki/Marsaglia_polar_method&lt;/code>&lt;/em> &lt;/small>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Volume_of_an_n-ball" title="Volume of an n ball">Volume of an n ball&lt;/a>&lt;/em>&lt;br>&lt;small>&lt;em>&lt;code>https://en.wikipedia.org/wiki/Volume_of_an_n-ball&lt;/code>&lt;/em> &lt;/small>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/small>
+&lt;/reference></description></item><item><title>Normalisation Layers</title><link>https://daxpy.xyz/posts/normalisation/</link><pubDate>Tue, 24 Oct 2023 18:33:10 +0530</pubDate><guid>https://daxpy.xyz/posts/normalisation/</guid><description>&lt;h1 id="normalisation">Normalisation&lt;/h1>
 &lt;p>Regulating the magnitude of activations inside a neural network is crucial for an effective training regime. We may get stuck in local minima or worse yet, the training may diverge otherwise. For this, we make use of normalisation.&lt;/p>
 &lt;p>Normalisation comes in two flavours. Weight normalisation and Layer normalisation. We briefly touch on some fundamental techniques in both.&lt;/p>
 &lt;h2 id="weight-normalisation">Weight normalisation&lt;/h2>
