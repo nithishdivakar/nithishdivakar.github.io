@@ -5,7 +5,15 @@
 :root {
 /*font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit;*/
     --font-primary: normal normal 400 1.1rem/1.4 "Palatino", serif;
-    --font-secondary: normal normal 800 1.1rem/1.2 Helvetica, Arial, sans-serif;
+    --font-secondary-heading: normal normal 800 1.1rem/1.2 Helvetica, Arial, sans-serif;
+    --font-secondary: normal normal 400 1.1rem/1.4 Helvetica, Arial, sans-serif;
+    --BLACK: #000;
+    --RED : #cc0000;
+    --GRAY: #424242;
+    --GREY: #9c9c9c;
+    --BLUE: #0000cc;
+    --GREEN: #006633;
+    --YELLOW: #faebd8;
 
 }
 
@@ -96,8 +104,8 @@ h5,.h5{font-size:.875rem !important}
 h6,.h6{font-size:.75rem !important}
 
 h1,h2,h3,h4,h5,h6 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font:  var(--font-secondary);
+    /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+    font:  var(--font-secondary-heading);
 }
 
 main#content h1,
@@ -331,23 +339,23 @@ article a:hover {
 }
 
 .green{
-    color: #006633 !important;
+    color: var(--GREEN) !important;
 }
 
 .black{
-    color: #000 !important;
+    color: var(--BLACK) !important;
 }
 
 .red{
-    color: #cc0000 !important;
+    color: var(--RED) !important;
 }
 
 .gray{
-    color: #424242 !important;
+    color: var(--GRAY) !important;
 }
 
 .blue, a {
-    color: #0000CC !important;
+    color: var(--BLUE) !important;
 }
 
 .small {
@@ -376,7 +384,7 @@ article a:hover {
 }
 
 comment{
-    color: green;
+    color: var(--GREEN);
     font-size: small;
     line-height: 1.4em;
     display: inline-block;

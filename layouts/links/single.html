@@ -1,21 +1,12 @@
 {{ define "main" }}
-<section>
-  <!--<h2>{{ .Title }}</h2>-->
-<ul>
-  <li>
-      <div style="display:flex; flex-direction: column;">
-        <div>
-          <span class="tiny green" style="display: block">⇝ {{ .Params.ext_url }}</span>
-        </div>
-        <div>
-          <a href="{{ .Params.ext_url }}" target="_blank" >
-              <big>{{ .Title }}</big>
-          </a>
-        </div>
+<h2>{{ .Title }}</h2>
+
         <div>
           <i class="grey">by {{ range .Params.authors }} <a class="gray" href="">{{.}}</a> {{end}} </i>
           {{ range .Params.tags }} <small>• {{.}}</small> {{end}}
         </div>
+<span class="tiny green" style="display: block">⇝ {{ .Params.ext_url }}</span>
+        <a href="{{ .Params.ext_url }}" target="_blank" > click here to read the article </a>
         <div>
           {{with .Content}}
             <small>{{- . -}}</small>
@@ -23,8 +14,4 @@
             <p> </p>
           {{ end }}
         </div>
-      </div>
-  </li>
-</ul>
-</section>
 {{ end }}

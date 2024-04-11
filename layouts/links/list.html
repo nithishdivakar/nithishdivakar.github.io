@@ -3,32 +3,42 @@
 {{.Content}}
 
 {{ range (where .Site.Pages.Reverse "Section" "links") }}
-<ul>
-   {{ range sort .Pages "File.Path" "desc"}} 
-   	<li>
-   		<div style="display:flex; flex-direction: column;">
-				<div style="text-align: left;">
-					<a href="{{ .Params.ext_url }}" target="_blank">
-					    <big>{{ .Title }}</big>
-					</a>
-				</div>
-				<div>
-		   		<span class="tiny green" style="display: block;word-break: break-all;">⇝ {{ .Params.ext_url }}</span>
-				</div>
-				<div>
-					<i class="grey">by {{ range .Params.authors }} <a class="gray" href="">{{.}}</a> {{end}} </i>
-					{{ range .Params.tags }} <small>• {{.}}</small> {{end}}
-				</div>
-				<div>
-					{{with .Content}}
-						<small>{{- . -}}</small>
-					{{ else }}
-						<p> </p>
-					{{ end }}
-				</div>
-			</div> 
-		</li>
-   {{ end }}
+<ul style="padding-inline-start:0">
+    {{ range sort .Pages "File.Path" "desc"}} 
+        <li style="display: block">
+            <div style="display:flex; flex-direction: row;" class="ext_link_container">
+                <div style="flex: 0 0 80px">
+                    <time style="font-family:monospace" class="tiny green">{{ time.Format "02,Jan 2006" .Params.date }}</time>
+                </div>
+                <div style="flex: 0 0 500px; margin-left:1em; text-align:left;">
+                    <div>
+                         <a href="{{ .Permalink }}">
+                         {{ .Title }}
+                         </a>
+                        <i class="grey"><small>by {{ range .Params.authors }} {{.}} {{ end }}</small></i>
+                    </div>
+                </div>
+                <div style="flex: 0 0 30px; margin-left:1em;text-align:center">
+                  {{ if .Params.favorite }}
+                    <a href="{{ .Params.ext_url }}" target="_blank" class="small red">❤︎ </a>
+                  {{ else }}
+                    <a href="{{ .Params.ext_url }}" target="_blank" class="small green">Σ</a>
+                  {{ end }}
+                </div>
+                    <br>
+                <!--
+                <div>
+                     <span class="tiny green" style="display: block;word-break: break-all;">⇝ {{ .Params.ext_url }}</span>
+                </div>
+                {{ with .Content }}
+                    <small>{{- . -}}</small>
+                {{ else }}
+                    <p> </p>
+                {{ end }}
+                -->
+            </div> 
+        </li>
+    {{ end }}
 </ul>
 {{ end }}
 {{ end }}
