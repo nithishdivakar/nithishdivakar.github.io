@@ -12,11 +12,12 @@
             <div style="flex: 0 0 80px"> <span class="small grey"> Posted on </span> </div>
             <div style="flex: 0 0 520px"> </div>
             <div style="flex: 0 0 50px;padding-left:0px">
-                <a href="/links_fav" class="small green"> only <span class="red">❤︎ </span></a>
-             </div>
+                <a href="/links" class="small green"> show <span class="red">all</span></a>
+            </div>
         </div>
      </li>
     {{ range sort $p "Params.date" "asc" | collections.Reverse }}
+        {{ if .Params.favorite }}
         <li style="display: block">
             <div style="display:flex; flex-direction: row;" class="ext_link_container">
                 <div style="flex: 0 0 80px">
@@ -39,6 +40,7 @@
                 </div>
             </div> 
         </li>
+        {{ end }}
     {{ end }}
 </ul>
 {{ end }}

@@ -4,6 +4,7 @@ title: Blowing up - How Nassim Taleb turned the inevitability of disaster into a
 authors: [Malcom Gladwell]
 tags: []
 date: 2022-12-27T00:00:00+05:30
+favorite: true
 ---
 How Nassim Taleb turned the inevitability of disaster
 into an investment strategy.

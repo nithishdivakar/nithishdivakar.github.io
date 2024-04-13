@@ -354,6 +354,11 @@ article a:hover {
     color: var(--GRAY) !important;
 }
 
+.grey{
+    color: var(--GREY) !important;
+}
+
+
 .blue, a {
     color: var(--BLUE) !important;
 }
