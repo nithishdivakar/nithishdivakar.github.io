@@ -12,12 +12,10 @@
     {{ $resources := slice -}}
 
     {{ $resources = $resources | append (resources.Get "css/main.css") -}}
-
     {{ $resources = $resources | append (resources.Get "css/min770px.css") -}}
-
     {{ $resources = $resources | append (resources.Get "css/responsive.css") -}}
-
-
+    {{ $resources = $resources | append (resources.Get "css/typography.css") -}}
+    {{ $resources = $resources | append (resources.Get "css/elements.css") -}}
 
     {{ $dark := .Site.Params.dark | default "auto" -}}
 
@@ -25,7 +23,7 @@
         {{ $resources = $resources | append (resources.Get "css/syntax.css") -}}
     {{ end -}}
 
-    {{ $css := $resources | resources.Concat "css/style.css" | minify }}
+    {{ $css := $resources | resources.Concat "css/style.css" }}
     {{ printf `<link rel="stylesheet" href="%s">` $css.RelPermalink | safeHTML }}
 
     <link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel="stylesheet" type="text/css">

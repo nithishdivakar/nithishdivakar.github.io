@@ -1,0 +1,14 @@
+a {
+    color: var(--BLUE) !important;
+}
+a.link, a.link:hover {
+  text-decoration: none !important;
+}
+
+.hover-highlight:hover{
+  background-color:var(--YELLOW);
+}
+
+.p0{
+  padding:5px;
+}

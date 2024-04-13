@@ -1,17 +1,29 @@
 {{ define "main" }}
-<h2>{{ .Title }}</h2>
+<div class="row pt2-l"  style="font:var(--font-secondary);">
+  <div class="col-2"></div>
+  <div class="col-8 text-left">
+    <b>{{ .Title }}</b>
+    <br>
+    <i class="gray">by {{ range .Params.authors }} <a class="gray" href="">{{.}}</a> {{end}} </i>
+    {{ range .Params.tags }} <small>• {{.}}</small> {{end}}
+  </div>
+</div>
+<div class="row" style="font:var(--font-secondary);">
+  <div class="col-2"></div>
+  <div class="col-8 text-justify">
+    {{with .Content}}
+      <small>{{- . -}}</small>
+    {{ else }}
+    {{ end }}
+  </div>
+</div>
 
-        <div>
-          <i class="grey">by {{ range .Params.authors }} <a class="gray" href="">{{.}}</a> {{end}} </i>
-          {{ range .Params.tags }} <small>• {{.}}</small> {{end}}
-        </div>
-<span class="tiny green" style="display: block">⇝ {{ .Params.ext_url }}</span>
-        <a href="{{ .Params.ext_url }}" target="_blank" > click here to read the article </a>
-        <div>
-          {{with .Content}}
-            <small>{{- . -}}</small>
-          {{ else }}
-            <p> </p>
-          {{ end }}
-        </div>
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8 hover-highlight p0" style="line-height:15px;">
+    <a class="link small green monospace" href="{{ .Params.ext_url }}" target="_blank" style="word-break: break-all;">
+      {{ .Params.ext_url }}
+    </a>
+  </div>
+</div>
 {{ end }}

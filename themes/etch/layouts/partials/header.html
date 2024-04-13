@@ -1,4 +1,4 @@
-<header id="banner" style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content:flex-start; align-items:baseline;" >
+<header id="banner" style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content:flex-start; align-items:baseline; font:var(--font-secondary);" >
     <big class="h2" style="flex: 0 0 80px;">
         <b>
             <a href="{{ .Site.BaseURL }}" class="black">
@@ -17,9 +17,3 @@
     </nav>
 </header>
 <hr style="margin:0">
-
-<!--
-{{ range .Site.Sections }}
-  <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-{{ end }}
--->

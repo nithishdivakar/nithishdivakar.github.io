@@ -14,6 +14,7 @@
     --BLUE: #0000cc;
     --GREEN: #006633;
     --YELLOW: #faebd8;
+    
 
 }
 
@@ -23,18 +24,12 @@ html {
 }
 
 body {
-    /*font-size: 16px;*/
     font-size: 1.1rem;
-    /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    */
-/*    font-family: "Iowan Old Style", "Palatino", "Georgia", Times New Roman, Times, serif;
-*/    font: var(--font-primary);    
+    font: var(--font-primary);    
     color: #1a1a1a;
-    /*width: 100%;*/
     margin: 0 auto 0 auto;
     padding: 0 16px;
     line-height: 1.4;
-    /*max-width: 650px;*/
 }
 
 header#banner {
@@ -104,7 +99,6 @@ h5,.h5{font-size:.875rem !important}
 h6,.h6{font-size:.75rem !important}
 
 h1,h2,h3,h4,h5,h6 {
-    /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
     font:  var(--font-secondary-heading);
 }
 
@@ -338,49 +332,6 @@ article a:hover {
     text-decoration-color: #fff;*/
 }
 
-.green{
-    color: var(--GREEN) !important;
-}
-
-.black{
-    color: var(--BLACK) !important;
-}
-
-.red{
-    color: var(--RED) !important;
-}
-
-.gray{
-    color: var(--GRAY) !important;
-}
-
-.grey{
-    color: var(--GREY) !important;
-}
-
-
-.blue, a {
-    color: var(--BLUE) !important;
-}
-
-.small {
-    font-size: small !important;
-}
-.tiny {
-    font-size: x-small !important;
-    line-height: 120%;
-}
-
-
-.left {
-    text-align: left;
-}
-.center {
-  text-align: center;
-}
-.justify {
-  text-align: justify;
-}
 
 .container{
     max-width: 650px;
@@ -388,14 +339,8 @@ article a:hover {
     margin-top: 2rem;
 }
 
-comment{
-    color: var(--GREEN);
-    font-size: small;
-    line-height: 1.4em;
-    display: inline-block;
-}
-
 h1{
     text-align: center;
     padding-bottom: 1rem;
+}
 }
