@@ -1,10 +1,4 @@
-<header id="banner" style="
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content:flex-start;
-    align-items:baseline;"
->
+<header id="banner" style=" display: flex; flex-direction: row; flex-wrap: nowrap; justify-content:flex-start; align-items:baseline;" >
     <big class="h2" style="flex: 0 0 80px;">
         <b>
             <a href="{{ .Site.BaseURL }}" class="black">
@@ -14,7 +8,7 @@
     </big>
     <nav style="flex: 0px;">
         <ul style="display: flex;flex-direction: row; gap:1rem; justify-content: safe flex-end;">
-            {{- range where .Site.Sections "Title" "ne" "EE" -}}
+            {{- range where .Site.Sections "RelPermalink" "not in" (slice "/ee/" "/links_fav/") -}}
                 <li><a href="{{ .Permalink }}">{{- .Title -}}</a></li>
             {{- end -}}
             <li><a href="/about">about</a></li>

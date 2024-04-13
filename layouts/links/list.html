@@ -8,36 +8,18 @@
 
 <ul style="padding-inline-start:0">
     <li style="display: block">
-        <div style="display:flex; flex-direction: row;" class="ext_link_container">
-            <div style="flex: 0 0 80px"> <span class="small grey"> Posted on </span> </div>
-            <div style="flex: 0 0 520px"> </div>
-            <div style="flex: 0 0 50px;padding-left:0px">
+        <div class="row">
+            <div class="col-2"> <span class="small grey">  </span> </div>
+            <div class="col-8" style="text-align:center">
                 <a href="/links_fav" class="small green"> only <span class="red">❤︎ </span></a>
+            </div>
+            <div class="col-1">
              </div>
         </div>
      </li>
     {{ range sort $p "Params.date" "asc" | collections.Reverse }}
         <li style="display: block">
-            <div style="display:flex; flex-direction: row;" class="ext_link_container">
-                <div style="flex: 0 0 80px">
-                    <time style="font-family:monospace" class="tiny green">{{ time.Format "02,Jan 2006" .Params.date }}</time>
-                </div>
-                <div style="flex: 0 0 520px; padding-left:20px; text-align:left;">
-                    <div>
-                         <a href="{{ .Permalink }}">
-                         {{ .Title }}
-                         </a>
-                        <i class="gray"><small>by {{ range .Params.authors }} {{.}} {{ end }}</small></i>
-                    </div>
-                </div>
-                <div style="flex: 0 0 50px; padding-left:20px;text-align:center">
-                  {{ if .Params.favorite }}
-                    <a href="{{ .Params.ext_url }}" target="_blank" class="small red">❤︎ </a>
-                  {{ else }}
-                    <a href="{{ .Params.ext_url }}" target="_blank" class="small green">Σ</a>
-                  {{ end }}
-                </div>
-            </div> 
+            {{- partial "link_item.html" . -}}
         </li>
     {{ end }}
 </ul>

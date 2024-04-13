@@ -1,0 +1,19 @@
+ <div class="row" style="font: var(--font-secondary); padding-bottom: 5px;">
+     <div class="col-2">
+         <time style="font-family:monospace" class="tiny green">{{ time.Format "02,Jan 2006" .Params.date }}</time>
+     </div>
+     <div class="col-8" style="text-align:left;line-height:22px;">
+          <a href="{{ .Permalink }}">
+              {{ .Title }}
+          </a>
+          <i class="gray"><small>by {{ range .Params.authors }} {{.}} {{ end }}</small></i>
+     </div>
+     <div class="col-1" style="text-align:left">
+       {{ if .Params.favorite }}
+         <a href="{{ .Params.ext_url }}" target="_blank" class="small red">❤︎ </a>
+       {{ else }}
+         <a href="{{ .Params.ext_url }}" target="_blank" class="small green"></a>
+       {{ end }}
+     </div>
+ </div> 
+

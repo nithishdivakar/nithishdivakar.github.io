@@ -50,22 +50,4 @@ main#content pre {
     margin-left: -3.8%;
     padding: 1.5rem 2.2rem;*/
 }
-
-
-.ext_link_container {
-    /* border: 1px solid var(--GREY); */
-    padding: 0;
-    margin: 0px;
-    border-radius: 2px;
-    font: var(--font-secondary);
-    /*background-color: var(--YELLOW);*/
-    margin-bottom:10px;
-}
-
-.ext_link_container:hover {
-    /*background-color: #f3f4f6;*/
-}
-.ext_link_container p {
-  margin:0 !important;
-}
 }

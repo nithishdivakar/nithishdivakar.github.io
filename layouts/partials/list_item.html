@@ -1,10 +1,8 @@
-<div style="display:flex; padding-bottom:5px">
-
-    <div style="flex: 0 0 80px">
+ <div class="row" style="font: var(--font-secondary); padding-bottom: 5px;">
+    <div class="col-2">
         <time style="font-family:monospace;" class="tiny green">{{ .Date.Format "02,Jan 2006" }}</time>
-        
     </div>
-    <div style="flex: 0 0 300px; margin-right: 1rem;">
+    <div class="col-6" style="line-height:22px;">
         <a href="{{ .Permalink }}" >
             {{if .Params.draft}} 
                 [draft]
@@ -13,19 +11,13 @@
             {{- if eq .Section "links" -}}
                 <span class="tiny green" style="margin-left: -1em">⇗ </span>
             {{- end -}}
-            <!-- {{- if eq .Section "notes" -}}✎{{- end -}} -->
         {{- end -}}
         {{- .Title -}}            
         </a>
     </div>
-    <div style="flex: 0 0 200px;line-height: 10px;">
+    <div class="col-4" style="padding-left:20px;line-height: 10px;">
         {{ range .Params.Tags }}
             <a class="tiny black" style="padding-right: 5px" href="/tags#{{.}}">{{ . }}</a>
         {{ end }}
-        
     </div>
-    <!--
-    <small><time>{{ .Date.Format "Jan 2, 2006" }}</time></small>
-    ⇝ ↗ ⇗ ✎
-    -->
 </div>
