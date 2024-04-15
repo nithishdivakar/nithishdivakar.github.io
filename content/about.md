@@ -6,7 +6,7 @@ type: page
 ---
 
 
-```
+```python
 {
   "name": "Nithish Divakar",
   "twitter": "nithishdivakar",

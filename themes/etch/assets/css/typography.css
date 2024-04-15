@@ -47,6 +47,12 @@
 .text-justify {
     text-align: justify !important;
 }
+.font1 {
+  font: var(--font-primary) !important;
+}
+.font2 {
+  font: var(--font-secondary) !important;
+}
 
 comment{
     color: var(--GREEN);

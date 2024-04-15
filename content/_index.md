@@ -6,7 +6,8 @@ publishdate: 2017-03-24
 
 Hi there,
 
-*daxpy* is [my](/about) online notebook. [Posts](/posts) are long form notes while [notes](/notes) are short, quick notes; usually about a single focused topic. 
+Welcome to daxpy. This is [my](/about) online notebook. 
+- [[posts](/posts)] are long form notes
+- [[notes](/notes)] are short notes; usually about one focused topic. 
+- [[links](/links)] is a slow growing curated section of amazing articles I've come across.
 
-
-I also like to read about random things. In process, I've curated a slowly growing list of amazing articles I've come across. See the [links](/links) section for those. 
