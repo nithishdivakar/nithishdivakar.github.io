@@ -4,4 +4,5 @@ title: Diffusion Models
 authors: [Lilian Weng]
 tags: [probability-theory]
 date: 2022-09-20T00:00:00+05:30
+favorite: true
 ---

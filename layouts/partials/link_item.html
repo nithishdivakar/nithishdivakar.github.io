@@ -6,7 +6,7 @@
           <a href="{{ .Permalink }}">
               {{ .Title }}
           </a>
-          <i class="gray"><small>by {{ range .Params.authors }} {{.}} {{ end }}</small></i>
+          <span class="gray"><small>by {{ range .Params.authors }} {{.}} {{ end }}</small></span>
      </div>
      <div class="col-1" style="text-align:left">
        {{ if .Params.favorite }}
