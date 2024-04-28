@@ -1,7 +1,7 @@
 ---
 title: XGBoost
 tags : [machine-learning]
-date: 2024-04-28T21:35:00+05:30
+date: 2024-04-28T21:30:00+05:30
 start_date: 2023-10-25T06:17:00+05:30
 draft: false
 ---
