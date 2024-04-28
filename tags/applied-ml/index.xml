@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Applied-Ml on daxpy</title><link>https://daxpy.xyz/tags/applied-ml/</link><description>Recent content in Applied-Ml on daxpy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 13 Apr 2021 05:04:51 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/applied-ml/index.xml" rel="self" type="application/rss+xml"/><item><title>Sampling in a Sphere</title><link>https://daxpy.xyz/posts/sampling-in-a-sphere/</link><pubDate>Sun, 17 Mar 2024 21:44:15 +0530</pubDate><guid>https://daxpy.xyz/posts/sampling-in-a-sphere/</guid><description>&lt;h1 id="sampling-in-a-sphere">Sampling in a Sphere&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Applied-Ml on daxpy</title><link>https://daxpy.xyz/tags/applied-ml/</link><description>Recent content in Applied-Ml on daxpy</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 13 Apr 2021 05:04:51 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/applied-ml/index.xml" rel="self" type="application/rss+xml"/><item><title>XGBoost</title><link>https://daxpy.xyz/posts/xgboost/</link><pubDate>Sun, 28 Apr 2024 21:30:00 +0530</pubDate><guid>https://daxpy.xyz/posts/xgboost/</guid><description>&lt;h1 id="xgboost">XGBoost&lt;/h1>
+&lt;p>&lt;strong>Extreme Gradient Boosting&lt;/strong> or XGBoost is a technique that has become quite useful for solving prediction problems. XGBoost is also quite interesting academically; for it combines quite few techniques together to give us one robust method. The technique is composed from gradient boosting, decision trees, matching pursuit and gradient descent in function space among others. In this post, we will explore and derive the inner workings of XGBoost.&lt;/p>
+&lt;h2 id="the-regression-problem">The Regression Problem&lt;/h2>
+&lt;p>We are given a set of samples from population $\{(y_i,x_i)\}_{i=1}^{N}$ which we call a dataset. $y$&amp;rsquo;s are scalars and $x$ are vectors.&lt;/p>
+&lt;p>There is also some function $F^{\ast}$ on the population which perfectly determines the entire population i.e. $y = F^{\ast}(x)$. However, this function is unknown and all we have is the dataset.&lt;/p>
+&lt;p>Regression problem is computing some $\hat{F}$ which is the best approximation of $F^{\ast}$ that minimises some loss function $L(y,F(x))$ over all values of $(y,x)$.&lt;/p>
+&lt;p>Different choices of $L$ and restriction on the structrue of $F$ leads to different algorithms. For example; mean squared error and linear function on $x$ gives &lt;a href="https://en.wikipedia.org/wiki/Linear_regression" title="Linear Regression">linear regession&lt;/a>.&lt;/p>
+&lt;h2 id="the-family-of-functions">T.H.E family of functions&lt;/h2>
+&lt;p>Let assume (to make things easier) that $F$ has a simpler structure. The all powerful $F$ is from the family of functions which are weighted combination of simpler functions.&lt;/p>
+&lt;p>$$F(x) = \sum \beta_m h_m(x)$$&lt;/p>
+&lt;p>We do such approximations all the time. See &lt;a href="https://www.cs.cmu.edu/~epxing/Class/10708-17/notes-17/10708-scribe-lecture13.pdf">mean field approximation for variational inference&lt;/a> for a family which is &lt;em>product&lt;/em> of simpler functions.&lt;/p>
+&lt;p>This makes our &lt;em>learning&lt;/em> easier. It&amp;rsquo;s easier to see if we look at the explict structure of $F$.&lt;/p>
+&lt;p>$$F(x;\{\beta_t,\alpha_t\}) = \sum_t \beta_t h_t(x;\alpha_t)$$&lt;/p>
+&lt;p>All we need to do now is compute values of parameters $\beta$&amp;rsquo;s and $\alpha$&amp;rsquo;s which minimised $L$.&lt;/p>
+&lt;p>By the way, did we just sneak in a constraint on structure of $F$ ??? Are all the $h$&amp;rsquo;s same or different?&lt;/p>
+&lt;p>Well the structure allows everything. B.U.T, for XGBoost, all $h$&amp;rsquo;s are &lt;a href="https://en.wikipedia.org/wiki/Decision_tree_learning" title="Decision Tree">decision trees&lt;/a>.&lt;/p>
+&lt;h2 id="gradient-boosting">Gradient Boosting&lt;/h2>
+&lt;blockquote>
+&lt;p>All we need to do is compute $\beta$&amp;rsquo;s and $\alpha$&amp;rsquo;s&lt;/p>
+&lt;/blockquote>
+&lt;p>This is easier said than done.&lt;/p>
+&lt;p>Joint optimisation will lead to a situation where adjusting $\alpha$ of one tree would require us to adjust $\alpha$ of another. And $\alpha$ of a decision tree determines where to add a split. This is not productive at all as we will have to throw away the existing tree and construct a whole new tree. In optimisation land this is classif case of a dis-continous objective.&lt;/p>
+&lt;p>So lets fix that problem by fixing things. We first find the best parameters for $h_1$ and then never change it. Then find best parameters for $h_2$ and so on. This idea is called &amp;ldquo;Gradient Boosting&amp;rdquo; where we restrict $F$ to the family of &lt;em>additive expansion&lt;/em> is from the paper &lt;a href="https://projecteuclid.org/journals/annals-of-statistics/volume-29/issue-5/Greedy-function-approximation-A-gradient-boosting-machine/10.1214/aos/1013203451.pdf" title="Friedman, Jerome H. &amp;quot;Greedy function approximation: a gradient boosting machine&amp;quot; In Annals of statistics , (2001)">Greedy Function Approximation: A Gradient Boosting Machine&lt;/a>. This stage wise stratergy is also very similar to &lt;a href="http://www.iro.umontreal.ca/~pift6080/H09/documents/papers/sparse/mallat_zhang_matching_pursuit.pdf" title="Mallat, Stephane G and Zhang, Zhifeng &amp;quot;Matching pursuits with time-frequency dictionaries&amp;quot; In IEEE Transactions on signal processing 41, (1993)">matching pursuit algorithm&lt;/a> in signal processing.&lt;/p>
+&lt;blockquote>
+&lt;p>Given an loss function $l$ and parameterised objective function $f(x;\theta)$, we can find best $\theta$ which minimises $l$ using &lt;a href="https://en.wikipedia.org/wiki/Gradient_descent" title="Gradient Descent">Gradient Descent&lt;/a>. $$\theta \gets \theta - \gamma \nabla_l f$$&lt;/p>
+&lt;/blockquote>
+&lt;p>Let say we are following the approach of fixing things as listed above. We are in some intermediate step $m$. We have already found and fixed the parameters of $\beta_{1:m-1}$ and $\alpha_{1:m-1}$ and the current best regressor we have is&lt;/p>
+&lt;p>$$F_{t-1}(x) = \sum_{i=1}^{t-1} \beta_i h_i(x; \alpha_i)$$&lt;/p>
+&lt;p>We want to add to this a $p_t(x) = \beta_t h_t(x;\alpha_t)$ and reduce the error further.&lt;/p>
+&lt;p>$$ l_t = \operatorname{arg min} \sum_{i=1}^{N} \operatorname{L}(y_i, F_{t-1}(x)+f_t(x))$$&lt;/p>
+&lt;p>In this situation we can find best parameters for $f_t$ using gradient descent on function space. But we need $\frac{\partial l_t}{\partial f_t}$.
+Let ignore a few things a write this situation simply as&lt;/p>
+&lt;p>$$l = \operatorname{L}(y, p+f(x))$$&lt;/p>
+&lt;p>If we squint our eyes, r.h.s looks like a function with a fixed point $p$ and a small delta $f(x)$. We can expand it around the fix point using second order &lt;a href="https://en.wikipedia.org/wiki/Taylor_series" title="Taylor's Series">taylor&amp;rsquo;s series&lt;/a> approximation.&lt;/p>
+&lt;p>$$l = \operatorname{L}(y, p) + \nabla_p \operatorname{L}(y,p) f(x) + \nabla_p^2 \operatorname{L}(y,p) \frac{f(x)^2}{2} $$&lt;/p>
+&lt;p>This immediatly gives us an opening to get the derivative of loss w.r.to $f(x)$.&lt;/p>
+&lt;p>$$\frac{\partial l}{\partial f} =0 + \nabla_p \operatorname{L}(y,p) + \nabla_p^2 \operatorname{L}(y,p) f(x) = \nabla_p^2 \left( \frac{\nabla_p}{\nabla_p^2} + f(x)\right)$$&lt;/p>
+&lt;p>Since optimum occurs at the saddle point, the optimum $f(x)$ is the one which makes the derivative zero. So at $\frac{\partial l}{\partial f} =0$ we have
+$$f(x) = - \frac{\nabla_p}{\nabla_p^2}$$&lt;/p>
+&lt;p>Ultimately, to find the best additive function to the model at stage $t$, we simply have to fit $h_t(x)$ to predict the residuals $\{-{\nabla_p}/{\nabla_p^2} \}$. This again is another regression problem.&lt;/p>
+&lt;p>$$h_t \leftrightsquigarrow \left\{\left(x_i,-{\nabla_{F_{t-1}(x_i)}}\middle/{\nabla^2_{F_{t-1}(x_i)} }\right)\right\}_{i=1}^{n}$$&lt;/p>
+&lt;p>&lt;strong>Addendum&lt;/strong>: What if we use first order taylor&amp;rsquo;s series approximation instead on the loss function? What will be the residuals in the last step?&lt;/p>
+&lt;h2 id="xgboost-algorithm">XGBoost Algorithm&lt;/h2>
+&lt;ul>
+&lt;li>We begin by setting $h_0$ to simply predict $\mathbb{E}(y)$.&lt;/li>
+&lt;li>At each step we first compute the residuals
+$$ r_i = -\frac{\nabla_{\bar{y}_i}\operatorname{L}(y_i, \bar{y}_i)}{\nabla^2_{\bar{y}_i}\operatorname{L}(y_i, \bar{y}_i)} ; with~\bar{y}_i = F_{t-1}(x_i)$$
+&lt;em>Note:&lt;/em> Most loss functions have easy analytical form of first and second derivatives e.g. mse loss.&lt;/li>
+&lt;li>Fit $h_t$ to predict $r_i$ given $x_i$.&lt;/li>
+&lt;li>Compute $\beta_t$ using line search which will optimise
+$$\operatorname{arg min}_{\beta_t}\operatorname{L}(y, F_{t-1} + \beta_t h_t)$$&lt;/li>
+&lt;li>Update the model as
+$$F_t = F_{t-1} + \beta_t h_t$$&lt;/li>
+&lt;/ul>
+&lt;h2 id="addendum">Addendum&lt;/h2>
+&lt;p>There is a lot more to implementing XGBoost. Most of it is centered around the &amp;ldquo;fitting a new tree to residuals&amp;rdquo; part. A few scenarios that arise in this step are&lt;/p>
+&lt;ul>
+&lt;li>How to prevent overfitting of the intermediate tree on residuals?&lt;/li>
+&lt;li>How to let user direct/control some part of the tree construction so that the complexity vs performance tradeoff can be tunable?&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://arxiv.org/pdf/1603.02754.pdf" title="Chen, Tianqi and Guestrin, Carlos &amp;quot;Xgboost: A scalable tree boosting system&amp;quot; In Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining pp.785--794, (2016)">Chen et al. (2016)&lt;/a> gives an excellet account of these issues among other, but the official &lt;a href="https://xgboost.readthedocs.io/en/latest/tutorials/model.html">XGBoost library&amp;rsquo; documentation&lt;/a> is also a great source for discussion on these topics.&lt;/p>
+&lt;h2 id="references">References&lt;/h2>
+&lt;reference>
+&lt;small>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://projecteuclid.org/journals/annals-of-statistics/volume-29/issue-5/Greedy-function-approximation-A-gradient-boosting-machine/10.1214/aos/1013203451.pdf" title="Friedman, Jerome H. &amp;quot;Greedy function approximation: a gradient boosting machine&amp;quot; In Annals of statistics , (2001)">Friedman (2001)&lt;/a>: Friedman, Jerome H. &amp;ldquo;&lt;em>Greedy function approximation: a gradient boosting machine&lt;/em>&amp;rdquo; In Annals of statistics , (2001)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="http://www.iro.umontreal.ca/~pift6080/H09/documents/papers/sparse/mallat_zhang_matching_pursuit.pdf" title="Mallat, Stephane G and Zhang, Zhifeng &amp;quot;Matching pursuits with time-frequency dictionaries&amp;quot; In IEEE Transactions on signal processing 41, (1993)">Mallat and Zhang (1993)&lt;/a>: Mallat, Stephane G and Zhang, Zhifeng &amp;ldquo;&lt;em>Matching pursuits with time-frequency dictionaries&lt;/em>&amp;rdquo; In IEEE Transactions on signal processing 41, (1993)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://arxiv.org/pdf/1603.02754.pdf" title="Chen, Tianqi and Guestrin, Carlos &amp;quot;Xgboost: A scalable tree boosting system&amp;quot; In Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining pp.785--794, (2016)">Chen et al. (2016)&lt;/a>: Chen, Tianqi and Guestrin, Carlos &amp;ldquo;&lt;em>Xgboost: A scalable tree boosting system&lt;/em>&amp;rdquo; In Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining pp. 785&amp;ndash;794, (2016)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Decision_tree_learning" title="Decision Tree">Decision Tree&lt;/a>&lt;/em>&lt;br>&lt;small>&lt;em>&lt;code>https://en.wikipedia.org/wiki/Decision_tree_learning&lt;/code>&lt;/em> &lt;/small>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Gradient_descent" title="Gradient Descent">Gradient Descent&lt;/a>&lt;/em>&lt;br>&lt;small>&lt;em>&lt;code>https://en.wikipedia.org/wiki/Gradient_descent&lt;/code>&lt;/em> &lt;/small>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Linear_regression" title="Linear Regression">Linear Regression&lt;/a>&lt;/em>&lt;br>&lt;small>&lt;em>&lt;code>https://en.wikipedia.org/wiki/Linear_regression&lt;/code>&lt;/em> &lt;/small>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Taylor_series" title="Taylor's Series">Taylor series&lt;/a>&lt;/em>&lt;br>&lt;small>&lt;em>&lt;code>https://en.wikipedia.org/wiki/Taylor_series&lt;/code>&lt;/em> &lt;/small>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;/small>
+&lt;/reference></description></item><item><title>Sampling in a Sphere</title><link>https://daxpy.xyz/posts/sampling-in-a-sphere/</link><pubDate>Sun, 17 Mar 2024 21:44:15 +0530</pubDate><guid>https://daxpy.xyz/posts/sampling-in-a-sphere/</guid><description>&lt;h1 id="sampling-in-a-sphere">Sampling in a Sphere&lt;/h1>
 &lt;p>Understanding how to generate a uniform sample of points inside a sphere takes us through a few interesting topics. So let begin with the end in mind.&lt;/p>
 &lt;p>The following algorithm generates a uniform sample of points inside sphere in n dimensions.&lt;/p>
 &lt;p>$$u_1, \ldots, u_{n+2} \sim \mathcal{N}(0,1)$$
