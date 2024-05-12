@@ -1,20 +1,13 @@
 ---
 title : Softmax Classifier
 tags : [machine-learning]
-date: 2018-03-28T05:04:51+05:30
-draft: true
+start_date: 2018-03-28T05:04:51+05:30
+date: 2020-01-13T00:00:51+05:30
+draft: false
 ---
+# Softmax Classifier
 
-<!--<embed src="{{site.dev-images}}/2018-03-28-softmax_classifier.pdf" width="500" height="500"  type="application/pdf" frameborder="0" allowfullscreen>-->
-<embed src="https://daxpy-website.s3.ap-southeast-1.amazonaws.com/2018-03-28-softmax_classifier.pdf" width="500" height="500"  type="application/pdf" frameborder="0" allowfullscreen>
-
----
-title: Softmax Classifier
----
-
-` Machine Learning notes by Nithish Divakar. More at daxpy.xyz `
-
-Imagine we have a dataset $\{x,y\}_{i=0}^m$ where $x$ is a data point
+Imagine we have a dataset $\\{x,y\\}_{i=0}^m$ where $x$ is a data point
 and $y$ indicates the class $x$ belongs to. For deriving LDA classifier,
 we had modeled the class conditional density $P(x|y)$ as a Gaussian and
 derived the posterior probabilities $P(y|x)$. Here, we will directly
@@ -46,8 +39,7 @@ So our classifier is
 
 $$P(y|x) = \operatorname{softmax}(w^Tx)$$
 
-Derivative of the Softmax function {#derivative-of-the-softmax-function .unnumbered}
-==================================
+## Derivative of the Softmax function {#derivative-of-the-softmax-function .unnumbered}
 
 We will need the derivative of softmax function later on. So let's
 figure out what it is. We can begin by writing softmax in a concise
@@ -67,8 +59,7 @@ $$\frac{\partial s_k}{\partial x_p} = s_k(\delta_{kp} - s_p)$$
 $\delta_{kp}$ is dirac delta function which is $1$ only when $k=p$ and
 $0$ otherwise.
 
-Estimating Model Parameter using Likelihood {#estimating-model-parameter-using-likelihood .unnumbered}
-===========================================
+## Estimating Model Parameter using Likelihood {#estimating-model-parameter-using-likelihood .unnumbered}
 
 Now that we have a complete model of the classifier,
 $P(y|x) = \operatorname{softmax}(w^Tx)$, all that is remaining is to
@@ -94,22 +85,20 @@ entropy between the two distributions.
 For computing $w_{opt}$, we simply have to find derivative of $E(w)$
 w.r.to $w$ and equate it to 0. But finding derivative over then entire
 $w$ is difficult and non-intuitive. So let's break it down and find
-derivatives over each the columns $w_p$ separately. $$\begin{aligned}
-\nabla_{w_p} E(w) 
-&= -\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial w_p}
-\\
-&= -\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial z_p} \frac{\partial z_p}{\partial w_p} 
-\\
-&= -\sum_x \sum_k y_k \frac{1}{s_k} s_k(\delta_{kp} - s_p) x
-\\
-&= -\sum_x \sum_k y_k (\delta_{kp} - s_p) x\end{aligned}$$
+derivatives over each the columns $w_p$ separately. 
+$$ \nabla_{w_p} E(w) = -\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial w_p} $$
+$$  = -\sum_x \sum_k y_k \frac{1}{s_k} \frac{\partial s_k}{\partial z_p} \frac{\partial z_p}{\partial w_p}  $$
+$$  = -\sum_x \sum_k y_k \frac{1}{s_k} s_k(\delta_{kp} - s_p) x $$
+$$  = -\sum_x \sum_k y_k (\delta_{kp} - s_p) x $$
+
 $\sum_k y_k (\delta_{kp} - s_p)$ can be expanded as
 $\sum_k y_k \delta_{kp} - s_p\sum_k y_k$. Only $\delta_{pp}=1$ and
 $\sum y_k =1$. Thus the original term evaluates to $y_p - s_p$.
-$$\begin{aligned}
-\nabla_{w_p} E(w) &= \sum_x (s_p - y_p) x
-\\
-\nabla_{w} E(w) &= \sum_x (s - y) x\end{aligned}$$ Now we have a problem
+
+$$\nabla_{w_p} E(w) = \sum_x (s_p - y_p) x$$
+$$\nabla_{w} E(w) = \sum_x (s - y) x$$
+
+Now we have a problem
 here. Setting $\nabla_w E(w)=0$ does not give any information about $w$.
 However, what the gradient do tells is that in space of $w$, which is
 the direction to move (change $w$) so that the change in $E$ is the
@@ -119,8 +108,7 @@ the difference between model's prediction and the true labels,
 decreasing $E$ would mean our model is getting better. Enter
 \*\*Gradient Descent\*\*.
 
-Gradient Descent Algorithm {#gradient-descent-algorithm .unnumbered}
-==========================
+## Gradient Descent Algorithm {#gradient-descent-algorithm .unnumbered}
 
 Gradient descent is exactly that; gradient-descent. If you want to
 minimize a function, keep moving in negative direction of its gradient
@@ -162,16 +150,15 @@ frequently than pure gradient descent and is more stable than vanilla
 SGD. In fact, batched SGD is so commonly used that now it has become the
 vanilla. SGD now refers to batched SGD.
 
-This is how you implement SGD. $$\begin{aligned}
-idx &\gets 1
-\\W &= initialise\_weights()
-\\x_b,y_b &= next(get\_batch)
-\\s_b  &= model(x_b;W)
-\\g_b  &= \nabla_W s_b
-\\W  &\gets W - \alpha g_b \end{aligned}$$
+This is how you implement SGD.
+$$ idx \gets 1 $$
+$$ W = \text{initialise_weights()} $$
+$$ x_b,y_b = \text{next(get batch)} $$
+$$ s_b  = model(x_b;W) $$
+$$ g_b  = \nabla_W s_b $$
+$$ W  \gets W - \alpha g_b $$
 
-Implementing Softmax classifier and its gradients {#implementing-softmax-classifier-and-its-gradients .unnumbered}
-=================================================
+## Implementing Softmax classifier and its gradients {#implementing-softmax-classifier-and-its-gradients .unnumbered}
 
 Implementing the forward prediction of the classifier is pretty straight
 forward. First we have to do a matrix vector multiplication to implement
@@ -192,7 +179,7 @@ Following code sample shows how the model's prediction is implemented.
 The code has been vectorized so that it can predict for a batch of $x$
 at once.
 
-``` {.python language="Python"}
+```python
 def get_predictions(x,W):
   z = np.matmul(x,W.T)
   M = np.max(
@@ -217,21 +204,17 @@ outer product between two vectors $s-y$ and $x$. But, when we implement
 it for a batch of samples and it's predictions, the outer product can be
 implemented as a matrix multiplication. See the code sample below.
 
-``` {.python language="Python"}
+```python
 def get_batch_gradient(
   x_b, # input
   y_b, # target
   s_b  # prediction
 ):
-  g_b = np.matmul(
-          (s_b-y_b).T,
-          x_b
-        )
+  g_b = np.matmul((s_b-y_b).T, x_b)
   return g_b/batch_size
 ```
 
-Model Performance {#model-performance .unnumbered}
-=================
+## Model Performance {#model-performance .unnumbered}
 
 Cifar 10 is an image dataset having 10 image classes. In this section,
 we test our simple softmax classifier's performance on it.
@@ -247,29 +230,29 @@ So we train the model for relative shorter duration (10000 gradient
 updates) and see its performance on validation set for different choices
 of hyper parameters. The following table list model performances for
 different hyper parameter combinations.
-
-                   4      8      16     32
-  -------------- ------ ------ ------ ------
-  $10^{-1}$       0.20   0.16   0.28   0.31
-  $10^{-2   }$    0.22   0.29   0.35   0.38
-  $10^{-3  }$     0.33   0.34   0.36   0.36
-  $10^{-4 }$      0.29   0.30   0.30   0.30
-  $10^{-5}$       0.18   0.19   0.18   0.19
-                                      
-                   64    128    256    512
-  $10^{-1}$       0.26   0.29   0.22   0.28
-  $10^{-2   }$    0.38   0.39   0.40   0.40
-  $10^{-3  }$     0.37   0.37   0.37   0.37
-  $10^{-4 }$      0.31   0.30   0.30   0.30
-  $10^{-5}$       0.19   0.19   0.19   0.17
+```text
+               4      8      16     32
+  ---------- ------ ------ ------ ------
+  $10^{-1}$   0.20   0.16   0.28   0.31
+  $10^{-2}$   0.22   0.29   0.35   0.38
+  $10^{-3}$   0.33   0.34   0.36   0.36
+  $10^{-4}$   0.29   0.30   0.30   0.30
+  $10^{-5}$   0.18   0.19   0.18   0.19
+                                  
+               64    128    256    512
+  $10^{-1}$   0.26   0.29   0.22   0.28
+  $10^{-2}$   0.38   0.39   0.40   0.40
+  $10^{-3}$   0.37   0.37   0.37   0.37
+  $10^{-4}$   0.31   0.30   0.30   0.30
+  $10^{-5}$   0.19   0.19   0.19   0.17
+```
 
 Batch size $256$ and learning rate $0.01$ gave the best performance. So
 we will train the model for longer duration(1000000 gradient updates)
 with these parameters. The following plot shows validation loss during
 training progress. We get a final test accuracy of 38.05
 
-Conclusion {#conclusion .unnumbered}
-==========
+## Conclusion {#conclusion .unnumbered}
 
 LDA model gave us 37.85% accuracy on Cifar 10 dataset. The softmax
 classifier is giving us 38% accuracy. It appears to be a close tie
@@ -284,11 +267,9 @@ teach some very valuable lessons about data modeling. They are also very
 good to test implementing optimizer algorithms like SGD we have
 implemented for this post. Do test them out on some other problems.
 
-Code {#code .unnumbered}
-====
+## Code
 
-The code is
-\[here\](https://github.com/nithishdivakar/blog-post-codes/tree/master/softmax-classifiers).
+The code is [here](https://github.com/nithishdivakar/blog-post-codes/tree/master/softmax-classifiers).
 
 
     
