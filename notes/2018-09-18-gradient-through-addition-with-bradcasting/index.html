@@ -1,0 +1,33 @@
+<!doctype html><html style=height:100%><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico><link rel=stylesheet href=/css/style.css><link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel=stylesheet type=text/css><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>Gradient Through Addition with Broadcasting</title></head><body style=height:100%><div class=header><header id=banner style=display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:baseline;font:var(--font-secondary)><big class=h2 style="flex:0 0 80px"><b><a href=https://daxpy.xyz/ class=black>daxpy</a></b></big><nav style=flex:0px><ul style="display:flex;flex-direction:row;gap:1rem;justify-content:safe flex-end"><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/stories/>Stories</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0></div><div class="container text-justify" style=display:flex;flex-direction:column;min-height:100vh><div class=main style=flex:1><main id=content><section><article><h1 id=gradient-through-addition-with-broadcasting>Gradient Through Addition with Broadcasting</h1><p>Calculating gradient across an addition is a simple
+algebra trick. But this gets complicated when we look at addition of tensors which allows
+broadcasting. In this post, we examine how to compute gradients in such situations.</p><h2 id=gradient-of-addition>Gradient of Addition</h2><p>Consider a simple sequence of operations. $A$ and $B$ are inputs which
+ultimately leads to computation of a scalar loss/error term $l$.</p><p>$$ z = A+B $$
+$$ l \twoheadleftarrow z $$</p><p>We are interested in the gradient of both the inputs
+w.r.to $l$. Apply chain rule and we get</p><p>$$ \frac{\partial l}{\partial A} = \frac{\partial l}{\partial z} $$
+$$ \frac{\partial l}{\partial B} = \frac{\partial l}{\partial z} $$</p><h2 id=addition-in-neural-networks class=unnumbered>Addition in Neural Networks</h2><p>Consider a simple feed forward layer with $x$ as input. We will ignore the activation function to keep things cimple. The transformation of the layer is given by</p><p>$$ z = W^Tx+b $$
+$$ l \twoheadleftarrow z $$</p><p>The gradients of the parameters w.r.to the loss terms are
+$$ \frac{\partial l}{\partial b} =\frac{\partial l}{\partial z} $$
+$$ \frac{\partial l}{\partial W} = x \frac{\partial l}{\partial z}^T $$</p><p>$W^Tx$ is a vector which is of same size dimensions as $b$ if $x$ is
+also a vector. But in practise, networks are always trained with
+min-batches of samples at a time. Which makes $x$ a 2 dimensional tensor
+and suddenly the quantities $W^Tx$ and $b$ have different dimensions.</p><h2 id=addition-with-broadcasting class=unnumbered>Addition with broadcasting</h2><p>An implicit assumption we make while adding two multi dimensional
+quantities is that their dimensions always match. But numerical
+frameworks allow addition even when the dimensions of the operands are
+not the same. This is called addition with broadcasting.</p><p>Addition is allowed if the arrays are broadcast compatible with each
+other. Numpy&rsquo;s docs describes two arrays are broadcast compatible if
+their dimensions are compatible. Two dimensions are compatible if they
+are</p><ol><li>Equal</li><li>One of them is 1</li></ol><p>When arrays do not have same number of dimensions, the arrays are
+compatible if the smaller array&rsquo;s dimensions can be stretched to both
+sides by simply adding dimensions of 1 and then the dimensions of both
+arrays become compatible.</p><h2 id=gradient-through-broadcasting class=unnumbered>Gradient through Broadcasting</h2><p>Lets unwrap what actually happens during a broadcast operation. For
+simplicity, lets say we are trying to add two tensors $A$ and $B$. $A$
+and $B$ agree on all dimensions except the last where A has a dimension
+of size $3$ while $B$ is dimensionless.</p><p>In this case, $B$ would be broadcast over $A$ to facilitate the addition
+as follows.
+$$ A+B = \begin{bmatrix} A_{:,0} & A_{:,1} & A_{:,2} \end{bmatrix}+B $$
+$$ =\begin{bmatrix} A_{:,0}+B & A_{:,1}+B & A_{:,2}+B \end{bmatrix} $$</p><p>This allows us to visualise the computations better. For the following
+computation,</p><p>$$ z = A+B $$
+$$ l \dashleftarrow z $$</p><p>we know that $\frac{\partial l}{\partial A}$ remains
+the same. But $\frac{\partial l}{\partial B}$ is for the tensor that was broadcasted. The gradient for original B needs to be
+amplified by the factor of the broadcasting. Hence $$\frac{\partial l}{\partial B} = \mathbf{n}\frac{\partial l}{\partial z}$$ A curious case to note here that, the gradient of parameter $B$ has a dimension of $A$ in it and hence is dependent on size of $A$. This might be the reason for differing behaviour of neural networks when they are trained with different batch sizes.</p></article><br><br><br><i>tags:</i>
+<a class=gray style=padding-right:5px href=/tags#computational-graph><i>#computational-graph</i></a></section></main></div><div class=footer><br><br><hr style=margin:0><footer id=footer style=display:flex;justify-content:space-between><div>Ping me <a target=_blank class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a></div><div><a href=/resources target=_blank>::</a></div></footer></div></div></body></html>
