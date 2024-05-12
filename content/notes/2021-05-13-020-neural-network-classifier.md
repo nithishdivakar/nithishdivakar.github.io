@@ -12,10 +12,9 @@ with which. Then keeping track of them through differentiation is worse.
 So
 
 ## Everything is a scalar 
-$$\begin{aligned}
-Z^{(L)}_{ti} &= W^{(L)}_{ij}P^{(L-1)}_{tj}+B^{(L)}_{i}
-\\
-P^{(L)}_{ti} &= act(Z^{(L)}_{ti})\end{aligned}$$
+
+$$Z^{(L)}\_{ti} = W^{(L)}\_{ij}P^{(L-1)}\_{tj}+B^{(L)}\_{i}$$
+$$P^{(L)}\_{ti} = act(Z^{(L)}\_{ti})$$
 
 It's very easy to implement the forward computation using 'einsum' in
 numpy now.
@@ -37,7 +36,7 @@ $$\frac{\partial Z_{ab}}{\partial W_{cd}} = P_{ad} ~~when~ b=c$$
 
 Also,
 
-$$\frac{\partial l}{\partial W_{cd}} = \frac{\partial l}{\partial Z_{ab}}\frac{\partial Z_{ab}}{\partial W_{cd}} = [\nabla Z]_{ab}P_{ad}= [\nabla Z]_{ac}P_{ad}$$
+$$\frac{\partial l}{\partial W_{cd}} = \frac{\partial l}{\partial Z_{ab}}\frac{\partial Z_{ab}}{\partial W_{cd}} = [\nabla Z]\_{ab}P_{ad}= [\nabla Z]\_{ac}P_{ad}$$
 
 ```python
 grad_W2 = np.einsum('ac,ad->cd',grad_Z2,P1)
