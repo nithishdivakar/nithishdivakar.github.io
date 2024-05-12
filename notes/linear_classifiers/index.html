@@ -1,0 +1,121 @@
+<!doctype html><html style=height:100%><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://daxpy.xyz/favicon.ico><link rel=stylesheet href=/css/style.css><link href="//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic" rel=stylesheet type=text/css><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>Linear Classifiers</title></head><body style=height:100%><div class=header><header id=banner style=display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:flex-start;align-items:baseline;font:var(--font-secondary)><big class=h2 style="flex:0 0 80px"><b><a href=https://daxpy.xyz/ class=black>daxpy</a></b></big><nav style=flex:0px><ul style="display:flex;flex-direction:row;gap:1rem;justify-content:safe flex-end"><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/stories/>Stories</a></li><li><a href=/about>about</a></li></ul></nav></header><hr style=margin:0></div><div class="container text-justify" style=display:flex;flex-direction:column;min-height:100vh><div class=main style=flex:1><main id=content><section><article><h1 id=linear-classifiers>Linear Classifiers</h1><p>In the post on bayes error, we discussed what is the best classifier if
+the features are not enough to tell the class apart. We also derived
+that in such situation, the best classifier is
+$$h(x) = sign \left( n(x) - \frac{1}{2} \right)$$</p><p>This formulation cannot be used in general situations as there is no easy way
+to estimate $n(x) = P(y=+1|x)$ for a general distribution. But what if
+$x$ has a simple distribution?</p><p>Lets assume that the data is a gaussian for each class
+$$
+P(x|y) = \mathop{\mathrm{\mathcal{N}}}(\mu_y,\Sigma_y) = f_y$$
+The parametric form of $P(x|y)$ immediately give us a closed form for
+$n(x)$ by a simple application of bayes rule
+$$
+n(x) = \frac{pf_{+1}}{p f_{+1}+(1-p)f_{-1}}$$ which in
+turn gives us a simple classifier
+$$
+n(x) - \frac{1}{2} = \frac{pf_{+1}}{pf_{+1}+(1-p)f_{-1}} - \frac{1}{2} $$</p><p>$$
+= \frac{f_{+1}}{f_{-1}} - \frac{1-p}{p} $$ To further
+simplify, we use a strictly increasing property of $\log$ function and
+write
+$$
+h(x) = \operatorname{sign} \left( \log \frac{f_{+1}}{f_{-1}}- \log\frac{1-p}{p} \right)$$
+This gives us simpler form of the classifier
+$$
+h(x) = sign(x^TAx + b^Tx+c)$$ where
+$A = \Sigma_{-1}^{-1}-\Sigma_{+1}^{-1}$.</p><p>If we further assume that class covariances are the same(
+$\Sigma_{-1}=\Sigma_{+1}$), then what we get a linear classifier.</p><p>$$
+h(x) = \operatorname{sign}(b^Tx+c)$$</p><h2 id=lda-for-multi-class-classification>LDA for multi-class classification</h2><p><a href=bayes-error>Bayes error</a> tell us that in general case,
+the classifier that has least error is
+$$ h(x) = \operatorname{arg max}_y~~n_y(x) $$</p><p>where
+$n_y(x) = P(y=k|x)$ is the class-wise densities. In general, the data
+need not follow any distribution and hence, the class-wise densities
+need not have a closed form. To mitigate this, we first assume that the
+data does follow a parametric distribution.</p><p>We will assume that the class conditional densities $p(x|y)$ are
+Gaussian distributed. This means that each class of the data is centred
+around some point in the data space(class-wise mean), the density of the
+data belonging to this class decreases as we go further away from this
+mean point. We will further assume that all these class-wise
+distributions have same covariance. Although this assumption is
+restrictive, this helps in keeping our classifier simple. Deriving a
+variant of classifier which accommodates for different covariances is
+fairly straightforward from the following steps. Thus, we have</p><p>$$
+p(x|y) = f_y(x) \sim \mathop{\mathrm{\mathcal{N}}}(\mu_y, \Sigma) $$
+$$ \mu_y = \frac{1}{m_y} \sum_{x\in class[y]}x$$
+$$ \Sigma = \frac{1}{m} \sum_{(x,y)} (x-\mu_y)(x-\mu_y)^T$$</p><p>With these analytic forms, it is easy to get a closed form for $n_y$ by
+a straight forward application of Bayes rule with $p_y=p(y=k)$ and we
+get
+$$ n_y(x) = \frac{p_y f_y(x)}{\sum_yp_y f_y(x)}$$</p><p>From here, getting our classifier in only a matter of simplifying the equations. So
+we have
+$$ h(x) = \operatorname{arg max} p_yf_y(x) $$
+$$ = \operatorname{arg max} w_y^Tx + b_y$$
+Where $w_y = \Sigma^{-1}\mu_y$ and $b_y = \log p_y - \frac{1}{2} \mu_y^{T}\Sigma^{-1}\mu_y$. See <em>Appendix 1</em> for full derivation.</p><h2 id=how-to-build-one>How to build one</h2><p>To make the classifier, we first need to estimate the class-wise mean
+and common covariance from the training data. Computing class-wise mean
+is can be done simply by.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>mu[y] <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>mean(X[Y<span style=color:#f92672>==</span>y],axis<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>)
+</span></span></code></pre></div><p>The common covariance can then be calculated as</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>M <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>empty_like(X)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>for</span> y <span style=color:#f92672>in</span> cls:
+</span></span><span style=display:flex><span>  M[Y<span style=color:#f92672>==</span>y,:] <span style=color:#f92672>=</span> mu[y]
+</span></span><span style=display:flex><span>S  <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>cov((X<span style=color:#f92672>-</span>M)<span style=color:#f92672>.</span>T)<span style=color:#f92672>/</span>X<span style=color:#f92672>.</span>shape[<span style=color:#ae81ff>0</span>]
+</span></span></code></pre></div><p>The classifier parameters can then be computed as</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>for</span> y <span style=color:#f92672>in</span> cls:
+</span></span><span style=display:flex><span>  w[y] <span style=color:#f92672>=</span> S_inv<span style=color:#f92672>.</span>dot(mu[y])
+</span></span><span style=display:flex><span>  b[y] <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>log(p[y]) <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.5</span><span style=color:#f92672>*</span> mu[y]<span style=color:#f92672>.</span>T<span style=color:#f92672>.</span>dot(S_inv)<span style=color:#f92672>.</span>dot(mu[y]) 
+</span></span></code></pre></div><p>Predicting class of a new data is simply</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>for</span> y <span style=color:#f92672>in</span> w:
+</span></span><span style=display:flex><span>  W[:,y] <span style=color:#f92672>=</span> w[y]
+</span></span><span style=display:flex><span>  B[y]   <span style=color:#f92672>=</span> b[y]
+</span></span><span style=display:flex><span>pred <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>argmax(X<span style=color:#f92672>.</span>dot(W)<span style=color:#f92672>+</span>B,axis<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span></code></pre></div><p>That is it! A complete classifier in 20 lines of code. See <em>Appendix 2</em>
+for full code.</p><h2 id=how-good-are-they>How good are they</h2><p>Here are the accuracies I got for different datasets on using our
+classifier. All Accuracies are computed for test sets of the
+corresponding datasets which are not used in computing the parameters.</p><ul><li>83.90% for MNIST</li><li>76.51% for Fashion-MNIST</li><li>37.85% for cifar 10</li><li>16.67% for cifar 100</li></ul><p>The classifier does well for MNIST and Fashion MNIST, But not so well
+for both the cifars. All these accuracies are in no way close to the
+state of the art, which is in high 90 for both MNISTs and cifar 10 and
+high 70 for cifar 100
+(<a href=http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html>link</a>)
+. Regardless, these are good baselines considering how cheap the
+computation and effort is required to build them.</p><h2 id=appendix-0>Appendix 0</h2><p>$$
+\log \frac{f_{+1}}{f_{-1}} =
+\log
+\frac{|\Sigma_{-1}|}{|\Sigma_{+1}|}
+\ -
+\frac{1}{2}
+\begin{bmatrix}
+(x-\mu_{+1})^T\Sigma_{+1}^{-1}(x-\mu_{+1}) \\
+- \\
+(x-\mu_{-1})^T\Sigma_{-1}^{-1}(x-\mu_{-1}) \\
+\end{bmatrix}
+$$</p><h2 id=appendix-1>Appendix 1</h2><p>$$ h(x) = \operatorname{arg max} \left( p_yf_y(x) \right) $$
+$$ = \operatorname{arg max} \left( \log p_y + \log f_y(x) \right) $$
+$$ = \operatorname{arg max} \left( \log p_y -\frac{1}{2} \log |\Sigma| + \frac{x^T\Sigma^{-1}x}{2} - \frac{\mu_y^T\Sigma^{-1}\mu_y}{2} + \frac{2(\mu_y^T\Sigma^{-1})x}{2} \right)$$
+$$ = \operatorname{arg max} \left( \log p_y - \frac{\mu_y^T\Sigma^{-1}\mu_y}{2} + (\mu_y^T\Sigma^{-1})x \right)$$</p><h2 id=appendix-2>Appendix 2</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_linear_classifier</span>(X,Y,cls):
+</span></span><span style=display:flex><span>  mu <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>  p  <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>  w  <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>  b  <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>  <span style=color:#75715e># class-wise mean and probabilities</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> cls:
+</span></span><span style=display:flex><span>    mu[c] <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>mean(X[Y<span style=color:#f92672>==</span>c],axis<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>)
+</span></span><span style=display:flex><span>    p[c] <span style=color:#f92672>=</span> (Y<span style=color:#f92672>==</span>c)<span style=color:#f92672>.</span>sum()<span style=color:#f92672>/</span>X<span style=color:#f92672>.</span>shape[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># common covariance matrix and its inverse</span>
+</span></span><span style=display:flex><span>  M <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>empty_like(X)
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> cls:
+</span></span><span style=display:flex><span>    M[Y<span style=color:#f92672>==</span>c,:] <span style=color:#f92672>=</span> mu[c]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  S  <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>cov((X<span style=color:#f92672>-</span>M)<span style=color:#f92672>.</span>T)<span style=color:#f92672>/</span>X<span style=color:#f92672>.</span>shape[<span style=color:#ae81ff>0</span>] 
+</span></span><span style=display:flex><span>  S_inv <span style=color:#f92672>=</span> linalg<span style=color:#f92672>.</span>pinv(S)
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#75715e># classifier parameters</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> cls:
+</span></span><span style=display:flex><span>    w[c] <span style=color:#f92672>=</span> S_inv<span style=color:#f92672>.</span>dot(mu[c])
+</span></span><span style=display:flex><span>    b[c] <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>log(p[c]) <span style=color:#f92672>-</span> <span style=color:#ae81ff>0.5</span><span style=color:#f92672>*</span> mu[c]<span style=color:#f92672>.</span>T<span style=color:#f92672>.</span>dot(S_inv)<span style=color:#f92672>.</span>dot(mu[c]) 
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> w,b
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>test_model</span>(w,b,X,Y):
+</span></span><span style=display:flex><span>  W <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>zeros((X<span style=color:#f92672>.</span>shape[<span style=color:#ae81ff>1</span>],len(w)))
+</span></span><span style=display:flex><span>  B <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>zeros((len(b),))
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>for</span> c <span style=color:#f92672>in</span> w:
+</span></span><span style=display:flex><span>    W[:,c] <span style=color:#f92672>=</span> w[c]
+</span></span><span style=display:flex><span>    B[c]   <span style=color:#f92672>=</span> b[c]
+</span></span><span style=display:flex><span>  pred <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>argmax(X<span style=color:#f92672>.</span>dot(W)<span style=color:#f92672>+</span>B,axis<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>) 
+</span></span><span style=display:flex><span>  acc  <span style=color:#f92672>=</span> sum(pred<span style=color:#f92672>==</span>Y)<span style=color:#f92672>/</span>Y<span style=color:#f92672>.</span>shape[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> acc
+</span></span></code></pre></div></article><br><br><br><i>tags:</i>
+<a class=gray style=padding-right:5px href=/tags#machine-learning><i>#machine-learning</i></a></section></main></div><div class=footer><br><br><hr style=margin:0><footer id=footer style=display:flex;justify-content:space-between><div>Ping me <a target=_blank class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a></div><div><a href=/resources target=_blank>::</a></div></footer></div></div></body></html>
