@@ -9,93 +9,121 @@ draft: false
 
 # Knapsack
 
+Knapsack problems are probably the first introduction to many on problems where you are trying to optimize a dimension while constrained by another. Let's look at it in depth.
 
-The following is the description of knapsack problem.
 
-We are given a set of items each with its own weight ($w_i$) and value ($v_i$). We are also given a limit or maximum capacity $T$. 
-How do we select a subset of items such that the total weight is within the limit, but the total value is maximum?
+You are given a metaphorical knapsack which atmost can carry $W$ weight items. You are also given $n$ items, each with its own weight $w_i$ and value $v_i$. We are asked to select a few items from this set so that the total weight is atmost $W$ while maximising the total value. 
+
+
+If we say $x_i \in \\{0,1\\}$ represents wether item $i$ is selected or not in a possible solution, then the problem is 
+
 
 $$\begin{align} 
-&\max\; \sum x_i v_i 
-\\
-&s.t. \quad \sum x_i w_i \leq T
+&\max \sum_i x_i v_i 
+\\\\
+&s.t. \quad \sum_i x_i w_i \leq T
 \end{align}$$
 
-Recurrence relation solving the problem
-$$S_{k,t} = \max \{S_{k-1,t}, v_k + S_{k-1,t-w_k}\}$$
 
-$S_{k,t}$ represents maximum value that can be achieved which has a maximum weight of $t$ with some subset of first $k$ items. 
+There are 3 broad classifications of knapsack problems:
 
-
-Can we select more that one of the same item? 
-
-Restricted cases of knapsack are more interesting. Minimising counts of items (value of each item is 1) while constraining on overall sum amounts to a selection problem. And the question we are solving for essentially is what is the minimum number of items we can select which gives us the aspired value. 
+1. Bounded knapsack: We can select an item only once.
+2. Unbounded knapsack: We have an infinite copies of each item.
+3. Fractional knapsack: We can select a fraction of any item.
 
 
+What if we have at most $c$ copies of each item. This is trivially reducible to Bounded knapsack  if we assume they are $c$ distinct items which happen to have same weight and value. This reduction applies to any case where the number of copies of each item is finite. For this reason, Bounded knapsack is also called 0/1 knapsack.
 
-## Bounded knapsacks
-Bounded knapsacks is when we have at most $c$ copies of  each item. We need to only consider the case  when we have only a single copy of each item or **0/1 knapsack**. We can extending 0/1 knapsack to bounded knapsack by creating copies of items which occur more than one. 
 
-### 0/1 knapsack
+## 0/1 knapsack
+So we can either select an item or not while maximizing the values.
+
+The solution is quite easy to describe. Try all possible combinations of items; all $2^n$ of them, and see which one is the best. However, we can do better than enumerating all possible combinations by exploiting the [optimal substructure](https://en.wikipedia.org/wiki/Optimal_substructure) of the problem.
+
+Concretely, the impact of choosing or not choosing item $i$ on the solution can be depicted as 
+
+$S(i,w) = \max \{v_i + S(i-1, w-w_i), S(i-1,w)\}$
+
+where $S(i,w)$ represents the maximum value that can be achieved with a maximum weight of $w$ using some subset of the first $i$ items.
+
+
 ```python
-# O(nT) time, O(T) space
-def knapsack_01(nums,T) -> int:
-    nums.sort()                           
-    dp = [0 for _ in range(T+1)]     
-    for num in nums:                      
-        if num > T: break
-        for slack in range(T-num,-1,-1):
-            if dp[slack] > 0:
-                dp[slack + num] = max(
-                              dp[slack + num], 
-                              dp[slack]+1)
-        dp[num] = max(dp[num], 1)
-    return dp[T]
+def knapsack_01(
+    weights: List[int], 
+    values: List[int], 
+    capacity: int
+) -> int:
+
+    max_value = [0 for _ in range(capacity + 1)]
+    
+    for weight, value in zip(weights, values):
+        if weight > capacity:
+            continue
+        for slack in range(capacity - weight, -1, -1):
+            max_value[slack + weight] = max(
+                max_value[slack + weight], 
+                max_value[slack] + value
+            )
+    
+    return max_value[capacity]
+
 ```
 
-A few things to unpack here on what the algorithm is doing. 
-
-First we are sorting all the 
-
-Time complexity is $O(n\log n)$ for sorting the items and $O(nT)$
-for computing the optimal answer. The algorithm also uses a $O(T)$ sized array for storing solutions of sub-problems.
+This algorithm takes $O(nW)$ time and  $O(W)$ space to run. The time complexity is called sublinear as $W$ can be a bit unbounded. _W = capacity_
 
 
 ## Unbounded knapsack
 
-When we have infinite copies of each items, we have **unbounded knapsack** problem. $x_i > 0$ and $x_i\in \mathbb{Z}$
-
-A classic example of unbounded knapsack is coin change problem. 
+When we have infinite copies of each items, we have **unbounded knapsack** problem. $x_i > 0$ and $x_i\in \mathbb{Z}$. Let talk about this using an example; the coin change problem. 
 
 ### Coin Change
 Given a set of coins denomination find the smallest collection of coins that add up to a given amount.
 
-The problem is an instance of unbounded [knapsack](app://obsidian.md/Knapsack).
 
 ```python
-def coin_change(coins, amount):
-    dp = [float('inf') for _ in range(amount+1)]
-    dp[0] = 0
+def coin_change(coins: List[int], amount: int) -> int:
+    min_coins = [float('inf')] * (amount + 1)
+    min_coins[0] = 0
+    
     for coin in coins:
-        for i in range(coin, amount+1):
-            dp[i] = min(dp[i], dp[i-coin]+1)
-    return dp[-1] if dp[-1] != float('inf') else -1
+        for i in range(coin, amount + 1):
+            min_coins[i] = min(min_coins[i], min_coins[i - coin] + 1)
+    
+    return min_coins[amount] if min_coins[amount] != float('inf') else -1
+
 ```
 
 
 ## Fractional Knapsack
-$x_i \in [0,1]$ $$\begin{align}
-&\max \sum x_iv_i
-\\
-& s.t. \quad \sum x_iw_i \leq T\end{align}$$
-Can be solved using greedy algorithm in $O(n \log n)$. 
 
-```python # Sort all the items by their value per unit weight.
-v,w = unzip(sorted(zip(v,w),key= lambda r:r[0]/r[1]))
-x = [0.0 for i in range(n)]
-C = 0.0
+The fractional knapsack problem allows us to pick and add a fraction of an item. It is easier to solve than the 0/1 knapsack problem. The solution employs a greedy approach, where we continuously add items based on their value-to-weight ratio until the knapsack's capacity is reached.
 
-for i range(n):
-	x[i] = min((T-C)/w[i],1.0)
-	C += w[i] * x[i]
+```python
+def fractional_knapsack(
+    values: List[float], 
+    weights: List[float], 
+    capacity: float
+) -> List[float]:
+
+    ratio_sorted = sorted(
+        zip(values, weights), 
+        key=lambda item: item[0] / item[1], 
+        reverse=True
+    )
+
+    fractions = [0.0] * len(values)
+    current_weight = 0.0
+
+    for i, (value, weight) in enumerate(ratio_sorted):
+        if current_weight >= capacity:
+            break
+        fractions[i] = min(
+            (capacity - current_weight) / weight, 
+            1.0
+        )
+        current_weight += weight * fractions[i]
+
+    return fractions
 ```
+
+Although the algorithm makes only a single pass, it takes $O(n \log n)$ time due to the sorting at the beginning.
