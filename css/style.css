@@ -4,7 +4,7 @@
 
 :root {
 /*font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit;*/
-    --font-primary: normal normal 400 1.1rem/1.4 "Palatino", serif;
+    --font-primary: normal normal 400 1.1rem/1.45 "Georgia", serif;
     --font-secondary-heading: normal normal 800 1.1rem/1.2 Helvetica, Arial, sans-serif;
     --font-secondary: normal normal 400 1.1rem/1.4 Helvetica, Arial, sans-serif;
     --BLACK: #000;
@@ -29,7 +29,6 @@ body {
     color: #1a1a1a;
     margin: 0 auto 0 auto;
     padding: 0 16px;
-    line-height: 1.4;
 }
 
 header#banner {

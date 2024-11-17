@@ -20,9 +20,9 @@ $$\begin{aligned}
 \end{aligned}$$</p><p>If we randomly select a document pair $(d_i,d_j)$, the gradients would
 be</p><p>$$\begin{aligned}
 \frac{\partial C_i}{\partial s_j} &=
-\begin{cases} \alpha(\hat{y}_{ij}-1) &amp;d_i>d_j~or~h_{ij}=1
+\begin{cases} \alpha(\hat{y}_{ij}-1) &amp;d_i>d_j<del>or</del>h_{ij}=1
 \\
--\alpha\hat{y}_{ij}&amp;d_j>d_i~or~h_{ij}=-1\end{cases}
+-\alpha\hat{y}_{ij}&amp;d_j>d_i<del>or</del>h_{ij}=-1\end{cases}
 \end{aligned}$$</p><p>Now if we define the quantities
 $$\lambda_{ij} \mathop{\mathrm{\triangleq}}\alpha\left[\frac{(1-h_{ij})}{2}-(1-\hat{y}_{ij})\right]$$
 we can write the individual gradient as $$\begin{aligned}
