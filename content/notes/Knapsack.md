@@ -42,7 +42,7 @@ The solution is quite easy to describe. Try all possible combinations of items; 
 
 Concretely, the impact of choosing or not choosing item $i$ on the solution can be depicted as 
 
-$S(i,w) = \max \{v_i + S(i-1, w-w_i), S(i-1,w)\}$
+$S(i,w) = \max \\{v_i + S(i-1, w-w_i), S(i-1,w)\\}$
 
 where $S(i,w)$ represents the maximum value that can be achieved with a maximum weight of $w$ using some subset of the first $i$ items.
 
