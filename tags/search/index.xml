@@ -16,14 +16,12 @@
 &lt;p>Well the structure allows everything. B.U.T, for XGBoost, all $h$&amp;rsquo;s are &lt;a href="https://en.wikipedia.org/wiki/Decision_tree_learning" title="Decision Tree">decision trees&lt;/a>.&lt;/p>
 &lt;h2 id="gradient-boosting">Gradient Boosting&lt;/h2>
 &lt;blockquote>
-&lt;p>All we need to do is compute $\beta$&amp;rsquo;s and $\alpha$&amp;rsquo;s&lt;/p>
-&lt;/blockquote>
+&lt;p>All we need to do is compute $\beta$&amp;rsquo;s and $\alpha$&amp;rsquo;s&lt;/p>&lt;/blockquote>
 &lt;p>This is easier said than done.&lt;/p>
 &lt;p>Joint optimisation will lead to a situation where adjusting $\alpha$ of one tree would require us to adjust $\alpha$ of another. And $\alpha$ of a decision tree determines where to add a split. This is not productive at all as we will have to throw away the existing tree and construct a whole new tree. In optimisation land this is classif case of a dis-continous objective.&lt;/p>
 &lt;p>So lets fix that problem by fixing things. We first find the best parameters for $h_1$ and then never change it. Then find best parameters for $h_2$ and so on. This idea is called &amp;ldquo;Gradient Boosting&amp;rdquo; where we restrict $F$ to the family of &lt;em>additive expansion&lt;/em> is from the paper &lt;a href="https://projecteuclid.org/journals/annals-of-statistics/volume-29/issue-5/Greedy-function-approximation-A-gradient-boosting-machine/10.1214/aos/1013203451.pdf" title="Friedman, Jerome H. &amp;quot;Greedy function approximation: a gradient boosting machine&amp;quot; In Annals of statistics , (2001)">Greedy Function Approximation: A Gradient Boosting Machine&lt;/a>. This stage wise stratergy is also very similar to &lt;a href="http://www.iro.umontreal.ca/~pift6080/H09/documents/papers/sparse/mallat_zhang_matching_pursuit.pdf" title="Mallat, Stephane G and Zhang, Zhifeng &amp;quot;Matching pursuits with time-frequency dictionaries&amp;quot; In IEEE Transactions on signal processing 41, (1993)">matching pursuit algorithm&lt;/a> in signal processing.&lt;/p>
 &lt;blockquote>
-&lt;p>Given an loss function $l$ and parameterised objective function $f(x;\theta)$, we can find best $\theta$ which minimises $l$ using &lt;a href="https://en.wikipedia.org/wiki/Gradient_descent" title="Gradient Descent">Gradient Descent&lt;/a>. $$\theta \gets \theta - \gamma \nabla_l f$$&lt;/p>
-&lt;/blockquote>
+&lt;p>Given an loss function $l$ and parameterised objective function $f(x;\theta)$, we can find best $\theta$ which minimises $l$ using &lt;a href="https://en.wikipedia.org/wiki/Gradient_descent" title="Gradient Descent">Gradient Descent&lt;/a>. $$\theta \gets \theta - \gamma \nabla_l f$$&lt;/p>&lt;/blockquote>
 &lt;p>Let say we are following the approach of fixing things as listed above. We are in some intermediate step $m$. We have already found and fixed the parameters of $\beta_{1:m-1}$ and $\alpha_{1:m-1}$ and the current best regressor we have is&lt;/p>
 &lt;p>$$F_{t-1}(x) = \sum_{i=1}^{t-1} \beta_i h_i(x; \alpha_i)$$&lt;/p>
 &lt;p>We want to add to this a $p_t(x) = \beta_t h_t(x;\alpha_t)$ and reduce the error further.&lt;/p>
@@ -138,8 +136,7 @@ $$ x = \frac{u}{\|u\|} $$&lt;/p>
 &lt;p>But what about generating uniformly sampled points inside the circle?&lt;/p>
 &lt;h2 id="from-circumference-to-the-center">From circumference to the center&lt;/h2>
 &lt;blockquote>
-&lt;p>Uniformly distributed points on an $S^{n+2}$ are uniformly distributed on $B^{n}$.&lt;/p>
-&lt;/blockquote>
+&lt;p>Uniformly distributed points on an $S^{n+2}$ are uniformly distributed on $B^{n}$.&lt;/p>&lt;/blockquote>
 &lt;p>This elegant results first observed by &lt;a href="https://www.sciencedirect.com/science/article/pii/S0047259X10001211" title="Harman, Radoslav and Lacko, Vladim{'\i}r &amp;quot;On decompositional algorithms for uniform sampling from n-spheres and n-balls&amp;quot; In Journal of Multivariate Analysis 101, (2010)">Harman and Lacko&lt;/a> and later proved by &lt;a href="https://compneuro.uwaterloo.ca/files/publications/voelker.2017.pdf" title="Voelker, Aaron R and Gosmann, Jan and Stewart, Terrence C &amp;quot;Efficiently sampling vectors and coordinates from the n-sphere and n-ball&amp;quot; In Centre for Theoretical Neuroscience-Technical Report 1, (2017)">Voelker et al. (2017)&lt;/a>. Following this result, we can generate uniform sampling of points in $B^n$ by first generating uniform sampling of points in $S^{n+2}$ and dropping (any) 2 coordinates.&lt;/p>
 &lt;p>$$u_1, \ldots, u_{n+2} \sim \mathcal{N}(0,1)$$
 $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$&lt;/p>
@@ -214,8 +211,7 @@ $$\bar{\sigma}_{f}^2 \gets \operatorname{running-mean}(\sigma^2_{f})$$&lt;/p>
 $$\sigma^2_{b} = \frac{1}{F} \sum_f (x_{b,f}-\mu_f)^2$$&lt;/p>
 &lt;p>Layer normalization is used in recurrent neural networks (RNNs) like architectures to address vanishing gradient problems.&lt;/p>
 &lt;blockquote>
-&lt;p>In a standard RNN, there is a tendency for the average magnitude of the summed inputs to the recurrent units to either grow or shrink at every time-step, leading to exploding or vanishing gradients. In a layer normalized RNN, the normalization terms make it invariant to re-scaling all of the summed inputs to a layer, which results in much more stable hidden-to-hidden dynamics. ~ &lt;em>from &lt;a href="https://arxiv.org/abs/1607.06450" title="Ba, Jimmy Lei and Kiros, Jamie Ryan and Hinton, Geoffrey E &amp;quot;Layer normalization&amp;quot; In arXiv preprint arXiv:1607.06450 , (2016)">Lei Ba et al. (2016)&lt;/a>&lt;/em>&lt;/p>
-&lt;/blockquote>
+&lt;p>In a standard RNN, there is a tendency for the average magnitude of the summed inputs to the recurrent units to either grow or shrink at every time-step, leading to exploding or vanishing gradients. In a layer normalized RNN, the normalization terms make it invariant to re-scaling all of the summed inputs to a layer, which results in much more stable hidden-to-hidden dynamics. ~ &lt;em>from &lt;a href="https://arxiv.org/abs/1607.06450" title="Ba, Jimmy Lei and Kiros, Jamie Ryan and Hinton, Geoffrey E &amp;quot;Layer normalization&amp;quot; In arXiv preprint arXiv:1607.06450 , (2016)">Lei Ba et al. (2016)&lt;/a>&lt;/em>&lt;/p>&lt;/blockquote>
 &lt;p>Since layer norm does not have any contribution from different samples of a same batch, it does the same computation during inference as well. For the same reason, it is also distributed training friendly as gradients depend only on the single sample.&lt;/p>
 &lt;h2 id="rmsnorm">RMSNorm&lt;/h2>
 &lt;p>&lt;a href="https://arxiv.org/pdf/1910.07467.pdf" title="Zhang, Biao and Sennrich, Rico &amp;quot;Root mean square layer normalization&amp;quot; In Advances in Neural Information Processing Systems 32, (2019)">Root Mean Square Layer Normalization&lt;/a> is a variant of Layer norm. The difference is that instead of normalising the data by mean centering and dividing by variance, the data is simply divided by RMS.&lt;/p>
@@ -402,8 +398,7 @@ $$L
 &lt;/reference></description></item><item><title>Finding Median</title><link>https://daxpy.xyz/posts/finding-median/</link><pubDate>Tue, 01 Mar 2022 06:59:51 +0530</pubDate><guid>https://daxpy.xyz/posts/finding-median/</guid><description>&lt;h1 id="finding-median">Finding Median&lt;/h1>
 &lt;p>&lt;em>Here is my &lt;a href="https://www.dictionary.com/e/slang/eli5/">ELI5&lt;/a> definition of a median.&lt;/em>&lt;/p>
 &lt;blockquote>
-&lt;p>&amp;ldquo;Median is the middle number when numbers are sorted&amp;rdquo;.&lt;/p>
-&lt;/blockquote>
+&lt;p>&amp;ldquo;Median is the middle number when numbers are sorted&amp;rdquo;.&lt;/p>&lt;/blockquote>
 &lt;p>There is only a single middle number when the size list is odd. But if the size is even, there are 2 middle numbers. Then we take an average of those 2 numbers to be the median.&lt;/p>
 &lt;p>Median is useful when your data doesn&amp;rsquo;t behave. Medians are part of &amp;ldquo;robust statistics&amp;rdquo; because they are not affected by outliers. Both $[1,2,100]$ and $[1,2,3]$ have 2 as their median while their means differ widely. You can see why medians are not affected by noise.&lt;/p>
 &lt;p>This post is all about computing medians from a list of numbers. The straightforward approach is to sort everything first and the middle element is the median. But can we do better?&lt;/p>
@@ -579,8 +574,7 @@ $$T(n) = T(n/5)+ n/5 = O(n)$$&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The basic structure of binary search can be used to solve many other seemingly different problems. A one line abstraction of such problems is&lt;/p>
 &lt;blockquote>
-&lt;p>Find a lowest value in a range which is feasible&lt;/p>
-&lt;/blockquote>
+&lt;p>Find a lowest value in a range which is feasible&lt;/p>&lt;/blockquote>
 &lt;p>Lets describe the search in sorted array problem in this framework.&lt;/p>
 &lt;p>Instead of trying to find the location of target, let us recast the problem as the smallest index in the which contains elements which are larger than or equal to target. Note that this is no longer solving the search problem exactly. The difference in when target is not present in the array.&lt;/p>
 &lt;p>In this description, an index in the array is feasible if the element at the index is larger than or equal to target&lt;/p>
@@ -843,6 +837,5 @@ computation in Yann LeCunn&amp;rsquo;s 1988 paper&lt;/em>&lt;/p>
 &lt;blockquote>
 &lt;p>&amp;ldquo;&lt;em>A Theoretical Framework for
 back propagation&lt;/em>&amp;rdquo;
-&lt;a href="http://yann.lecun.com/exdb/publis/pdf/lecun-88.pdf">http://yann.lecun.com/exdb/publis/pdf/lecun-88.pdf&lt;/a>.&lt;/p>
-&lt;/blockquote>
+&lt;a href="http://yann.lecun.com/exdb/publis/pdf/lecun-88.pdf">http://yann.lecun.com/exdb/publis/pdf/lecun-88.pdf&lt;/a>.&lt;/p>&lt;/blockquote>
 &lt;p>&lt;em>Incidentally, this is the first paper made me understand the connection between optimisation theory and deep learning.&lt;/em>&lt;/p></description></item></channel></rss>

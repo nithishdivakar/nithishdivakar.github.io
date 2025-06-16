@@ -54,5 +54,17 @@
 </span></span><span style=display:flex><span>        current_weight <span style=color:#f92672>+=</span> weight <span style=color:#f92672>*</span> fractions[i]
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> fractions
-</span></span></code></pre></div><p>Although the algorithm makes only a single pass, it takes $O(n \log n)$ time due to the sorting at the beginning.</p></article><br><br><br><i>tags:</i>
+</span></span></code></pre></div><p>Although the algorithm makes only a single pass, it takes $O(n \log n)$ time due to the sorting at the beginning.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>subset_sum</span>(nums: List[int], target: int) <span style=color:#f92672>-&gt;</span> bool:
+</span></span><span style=display:flex><span>    max_value <span style=color:#f92672>=</span> knapsack_01(nums, nums, target)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> max_value <span style=color:#f92672>==</span> target
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>knapsack_01</span>(weights: List[int], values: List[int], capacity: int) <span style=color:#f92672>-&gt;</span> int:
+</span></span><span style=display:flex><span>    max_value <span style=color:#f92672>=</span> [<span style=color:#ae81ff>0</span>] <span style=color:#f92672>*</span> (capacity <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> weight, value <span style=color:#f92672>in</span> zip(weights, values):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>for</span> slack <span style=color:#f92672>in</span> range(capacity, weight <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>):
+</span></span><span style=display:flex><span>            max_value[slack] <span style=color:#f92672>=</span> max(max_value[slack], max_value[slack <span style=color:#f92672>-</span> weight] <span style=color:#f92672>+</span> value)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> max_value[capacity]
+</span></span></code></pre></div></article><br><br><br><i>tags:</i>
 <a class=gray style=padding-right:5px href=/tags#algorithms><i>#algorithms</i></a></section></main></div><div class=footer><br><br><hr style=margin:0><footer id=footer style=display:flex;justify-content:space-between><div>Ping me <a target=_blank class=green href=https://twitter.com/nithishdivakar>@nithishdivakar</a></div><div><a href=/resources target=_blank>::</a></div></footer></div></div></body></html>
