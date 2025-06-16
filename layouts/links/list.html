@@ -10,11 +10,9 @@
     <li style="display: block">
         <div class="row">
             <div class="col-2"> <span class="small grey">  </span> </div>
-            <div class="col-8" style="text-align:center">
-            </div>
-            <div class="col-1">
+            <div class="col-8" style="text-align:center">                
                 <a href="/links_fav" class="small green"> only <span class="red">❤︎ </span></a>
-             </div>
+            </div>
         </div>
      </li>
     {{ range sort $p "Params.date" "asc" | collections.Reverse }}
