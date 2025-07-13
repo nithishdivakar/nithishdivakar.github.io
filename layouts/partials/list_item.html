@@ -1,23 +1,25 @@
- <div class="row" style="font: var(--font-secondary); padding-bottom: 5px;">
-    <div class="col-2">
-        <time style="font-family:monospace;" class="tiny green">{{ .Date.Format "02,Jan 2006" }}</time>
-    </div>
-    <div class="col-6" style="line-height:22px;">
-        <a href="{{ .Permalink }}" >
+<ul class="list_item">
+    <li>
+        <time class="small black">{{ .Date.Format "(02 Jan 2006)" }}</time>
+    </li>
+    <li>
+        <a class="blue" href="{{ .Permalink }}" >
             {{if .Params.draft}} 
                 [draft]
             {{end}}
-        {{- if eq (.Scratch.Get "display_section") "True" -}}
-            {{- if eq .Section "links" -}}
-                <span class="tiny green" style="margin-left: -1em">⇗ </span>
+            {{- if eq (.Scratch.Get "display_section") "True" -}}
+                {{- if eq .Section "links" -}}
+                    <span class="green">⇗ </span>
+                {{- end -}}
             {{- end -}}
-        {{- end -}}
-        {{- .Title -}}            
+            {{- .Title -}}            
         </a>
-    </div>
-    <div class="col-4 pl1-l" style="line-height: 10px;">
-        {{ range .Params.Tags }}
-            <a class="tiny black" style="padding-right: 5px" href="/tags#{{.}}">{{ . }}</a>
+    </li>
+    {{ if .Params.Tags }}
+        <li>
+        {{ range $index, $tag := .Params.Tags }}
+            <a class="black small" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }}, {{ end }}
         {{ end }}
-    </div>
-</div>
+        </li>
+    {{ end }}
+</ul>

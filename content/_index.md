@@ -4,10 +4,4 @@ date: 2017-03-23
 publishdate: 2017-03-24
 ---
 
-Hi there.
-
-Welcome to daxpy; [My](/about) online notebook. 
-- [[posts](/posts)] are long form notes
-- [[notes](/notes)] are short notes; usually about one focused topic. 
-- [[links](/links)] is a slow growing curated section of amazing articles I've come across.
-
+Welcome to daxpy, [my](/about) online notebook. This is where I share my thoughts, ranging from [**posts**](/posts) that are longer-form notes to concise [**notes**](/notes) usually focused on a single topic. You'll also find a curated collection of exceptional [**links**](/links) I've come across, which I'm continually building.

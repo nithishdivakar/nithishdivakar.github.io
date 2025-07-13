@@ -4,28 +4,53 @@
 
 :root {
 /*font: font-style font-variant font-weight font-size/line-height font-family|caption|icon|menu|message-box|small-caption|status-bar|initial|inherit;*/
-    --font-primary: normal normal 400 1.1rem/1.45 "Georgia", serif;
-    --font-secondary-heading: normal normal 800 1.1rem/1.2 Helvetica, Arial, sans-serif;
-    --font-secondary: normal normal 400 1.1rem/1.4 Helvetica, Arial, sans-serif;
-    --BLACK: #000;
-    --RED : #cc0000;
-    --GRAY: #424242;
-    --GREY: #9c9c9c;
-    --BLUE: #0000cc;
-    --GREEN: #006633;
-    --YELLOW: #faebd8;
-    
+
+  --font-family-primary: "Times", serif;
+  --font-family-secondary: Arial, sans-serif;
+  --font-family-monospace: 'Menlo', monospace;
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700; 
+
+  --font-size-base: 16px; 
+
+  --line-height-primary: 1.2;
+  --line-height-secondary: 1.0;
+  --line-height-heading: 1.0;
+  --line-height-monospace: 1.0;
+
+  /* Combined Font Variables */
+  --font-primary: normal normal var(--font-weight-normal) var(--font-size-base)/var(--line-height-primary) var(--font-family-primary);
+  --font-secondary: normal normal var(--font-weight-normal) var(--font-size-base)/var(--line-height-secondary) var(--font-family-secondary);
+  --font-heading: normal normal var(--font-weight-bold) var(--font-size-base)/var(--line-height-heading) var(--font-family-secondary);
+  --font-monospace: normal normal var(--font-weight-normal) var(--font-size-base)/var(--line-height-monospace) var(--font-family-monospace);
+
+  --BLACK: #000;
+  --WHITE: #fff;
+  --GRAY: #424242;
+  --GREY: #9c9c9c;
+  --RED : #cc0000;
+  --BLUE: #0000cc;
+  --GREEN: #006633;
+  --YELLOW: #faebd8;
 
 }
+
 
 html {
-    /*font-size: 62.5%;*/
-    font-size: 100%;
+  font-size: var(--font-size-base); /* Default root font size */
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font: var(--font-heading);
+}
+h1 {font-size: 2.0rem;}
+h2 {font-size: 1.5rem;}
+h3 {font-size: 1.17rem;}
+
+
 body {
-    font-size: 1.1rem;
-    font: var(--font-primary);    
+    font: var(--font-primary);   
     color: #1a1a1a;
     margin: 0 auto 0 auto;
     padding: 0 16px;
@@ -98,7 +123,7 @@ h5,.h5{font-size:.875rem !important}
 h6,.h6{font-size:.75rem !important}
 
 h1,h2,h3,h4,h5,h6 {
-    font:  var(--font-secondary-heading);
+    font:  var(--font-heading);
 }
 
 main#content h1,
@@ -283,7 +308,7 @@ main#content blockquote {
 
 main#content code,
 main#content pre {
-    font-family: 'Menlo', monospace;
+    font: var(--font-monospace);
 }
 
 main#content code {

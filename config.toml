@@ -1,7 +1,7 @@
 baseURL = 'https://daxpy.xyz/'
 languageCode = 'en-us'
-title = 'daxpy'
-theme = 'etch'
+title = 'DAXPY'
+theme = 'epsilon'
 
 
 

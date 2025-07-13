@@ -1,10 +1,13 @@
 {{ define "main" }}
 
 <h2>Stories</h2>
-<div style="margin-top:1em" >
+<ul>
 {{ range (where .Site.RegularPages "Section" "stories") }}
-    {{ partial "list_item.html" . }}
+        <li>
+        {{ .Scratch.Set "display_section" "True" }}
+        {{- partial "list_item.html" . -}}
+        {{ .Scratch.Set "display_section" "False" }}
+        </li>
 {{- end }}
-</div>
-
+</ul>
 {{ end }}

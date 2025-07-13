@@ -1,0 +1,15 @@
+<nav >
+    <ul>
+    	<li>
+    		<a class="text_secondary" href="{{ .Site.BaseURL }}">
+		        {{- .Site.Title -}}
+		    </a>
+		</li>
+		<li>|</li>
+        {{- range where .Site.Sections "RelPermalink" "not in" (slice "/ee/" "/links_fav/") -}}
+            <li><a class="text_secondary" href="{{ .Permalink }}">{{- lower .Title -}}</a></li>
+        {{- end -}}
+        <li><a class="text_secondary" href="/about">about</a></li>
+        <!-- <li><a href="/tags">tags</a></li> -->
+    </ul>
+</nav>
