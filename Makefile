@@ -1,7 +1,7 @@
 
 
 run:
-	hugo serve --buildDrafts
+	hugo serve --buildDrafts --port 60000
 
 prod:
 	hugo serve

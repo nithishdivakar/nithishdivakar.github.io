@@ -1,25 +1,23 @@
-<ul class="list_item">
+<li class="list_item">
+  <a href="{{ .Permalink }}" >
+    {{if .Params.draft}} 
+      [draft]
+    {{end}}
+    {{- if eq (.Scratch.Get "display_section") "True" -}}
+      {{- if eq .Section "links" -}}
+        <span class="green">⇗ </span>
+      {{- end -}}
+    {{- end -}}
+    {{- .Title -}}
+  </a>
+  <ul>
     <li>
-        <time class="small black">{{ .Date.Format "(02 Jan 2006)" }}</time>
-    </li>
-    <li>
-        <a class="blue" href="{{ .Permalink }}" >
-            {{if .Params.draft}} 
-                [draft]
-            {{end}}
-            {{- if eq (.Scratch.Get "display_section") "True" -}}
-                {{- if eq .Section "links" -}}
-                    <span class="green">⇗ </span>
-                {{- end -}}
-            {{- end -}}
-            {{- .Title -}}            
-        </a>
-    </li>
-    {{ if .Params.Tags }}
-        <li>
-        {{ range $index, $tag := .Params.Tags }}
-            <a class="black small" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }}, {{ end }}
-        {{ end }}
-        </li>
-    {{ end }}
-</ul>
+    <time class="black small">{{- .Date.Format "Posted: 2006 Jan 02" -}}</time>
+    {{- if .Params.Tags -}}
+      <span class="black small">, Tags:</span>
+      {{ range $index, $tag := .Params.Tags }}
+        <a class="small" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }}, {{ end }}
+      {{ end }}
+    {{- end -}}
+  </ul>
+</li>

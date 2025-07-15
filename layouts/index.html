@@ -1,20 +1,18 @@
 {{ define "main" }}
 <section>
-    <div>
+  <div>
     {{.Content}}
-    </div>
-    <h2>Latest</h2>
-    <ul>
+  </div>
+  <h2>Latest</h2>
+  <ul>
     {{ $p := where .Site.RegularPages "Section" "in" (slice "posts" "stories") }}
 
     {{ range first 24 $p }}
-        <!-- {{.Section }} -->
-        <li>
-        {{ .Scratch.Set "display_section" "True" }}
-        {{- partial "list_item.html" . -}}
-        {{ .Scratch.Set "display_section" "False" }}
-        </li>
+      <!-- {{.Section }} -->
+      {{ .Scratch.Set "display_section" "True" }}
+      {{- partial "list_item.html" . -}}
+      {{ .Scratch.Set "display_section" "False" }}
     {{ end }}
-    </ul>
+  </ul>
 </section>
 {{ end }}

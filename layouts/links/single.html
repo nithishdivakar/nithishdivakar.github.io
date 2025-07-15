@@ -1,40 +1,31 @@
 {{ define "main" }}
-<div class="row" style="font:var(--font-secondary);">
-  <div class="col-2"></div>
-  <div class="col-8 text-left p0 small">
-    [<a class="blue" href="/links/">show all</a>]
-  </div>
-</div>
-<div class="row pt2-l"  style="font:var(--font-secondary);">
-  <div class="col-2"></div>
-  <div class="col-8 text-left p0">
-    <b>{{ .Title }}</b>
-    <br>
-    <span class="gray">by {{ range .Params.authors }} <a class="gray" href="">{{.}}</a> {{end}} </span>
-    {{ range .Params.tags }} <small>• {{.}}</small> {{end}}
-  </div>
-  <div class="col-2 p0">
-    {{ if .Params.favorite }}
-      <a href="{{ .Params.ext_url }}" target="_blank" class="red">❤︎ </a>
-    {{ end }}
-  </div>
-</div>
-<div class="row" style="font:var(--font-secondary);">
-  <div class="col-2"></div>
-  <div class="col-8 text-justify p0">
-    {{with .Content}}
-      <small>{{- . -}}</small>
-    {{ else }}
-    {{ end }}
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-2"></div>
-  <div class="col-8 hover-highlight p0" style="line-height:15px;">
-    <a class="link small green monospace" href="{{ .Params.ext_url }}" target="_blank" style="word-break: break-all;">
-      {{ .Params.ext_url }}
-    </a>
-  </div>
-</div>
+  
+<h1>{{ .Title }}</h1>
+<ul> 
+  <li>Author(s): {{ range .Params.authors }} <a href="">{{.}}</a> {{end}}</li>
+  <li>Tags: {{ range .Params.tags }} {{.}} {{end}}</li>
+  <li>Categorisation: 
+    {{ if .Params.favorite }}
+      <span class="small red">[❤︎]</span>
+    {{ else }}
+      <span class="small green">[♣]</span>
+    {{ end }}
+  </li>
+  {{with .Content}}
+  <li>Excerpt:
+    <p>
+      {{- . -}}
+    </p>
+  </li>
+  {{ else }}
+  {{ end }}
+  
+  <li>Link: <a class="link small green monospace" href="{{ .Params.ext_url }}" target="_blank" style="word-break: break-all;">
+    {{ .Params.ext_url }}
+  </a>
+  </li>
+</ul>
+[<a class="blue" href="/links/">go back</a>]
+
 {{ end }}

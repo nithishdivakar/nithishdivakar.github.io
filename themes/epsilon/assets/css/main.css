@@ -6,7 +6,7 @@
   --font-weight-normal: 400;
   --font-weight-bold: 700; 
 
-  --font-size-base: 20px; 
+  --font-size-base: 17px; 
 
   --line-height-primary: 1.2;
   --line-height-secondary: 1.0;
@@ -16,20 +16,22 @@
   /* Combined Font Variables */
   --font-primary:   normal normal var(--font-weight-normal) var(--font-size-base)/var(--line-height-primary)   var(--font-family-primary);
   --font-secondary: normal normal var(--font-weight-normal) var(--font-size-base)/var(--line-height-secondary) var(--font-family-secondary);
-  --font-heading:   normal normal var(--font-weight-bold)   var(--font-size-base)/var(--line-height-heading)   var(--font-family-secondary);
+  --font-heading:   normal normal var(--font-weight-bold)   var(--font-size-base)/var(--line-height-heading)   var(--font-family-primary);
   --font-monospace: normal normal var(--font-weight-normal) calc(var(--font-size-base) * 0.8)/var(--line-height-monospace) var(--font-family-monospace);
 
+  --RED: #DB4437;
+  --BLUE: #0000cc;
+  --YELLOW: #F4B400;
+  --GREEN: #0F9D58;
+  
   --BLACK: #000;
   --WHITE: #fff;
-  --GRAY: #424242;
-  --GREY: #9c9c9c;
-  --RED : #cc0000;
-  --BLUE: #0000cc;
-  --GREEN: #006633;
-  --YELLOW: #FFEB3B;
-
-  --site-max-wdth: 700px;
-
+  --GRAY: #AAA;
+  --GRBY: #BBB;
+  --GRCY: #CCC;
+  --GRDY: #DDD;
+  --GREY: #EEE;
+  --site-max-wdth: 500px;
 }
 
 
@@ -40,7 +42,6 @@ html {
 body {
   font: var(--font-primary);
   max-width: var(--site-max-wdth);
-  margin: auto;
   padding: 5px;
 }
 
@@ -79,8 +80,7 @@ small, .small {
 
 /* <nav> */
 
-nav {
-  padding: 5px;
+header {
   border-bottom: 1px dashed var(--BLACK);
 }
 
@@ -94,18 +94,19 @@ nav li {
   display: inline-block;
   padding:5px;
 }
+nav ul li:first-child {
+  padding-left:0px;
+}
 
 nav li a {
   display: block;
   text-align: center;
-  text-decoration: none;
-  color: var(--BLACK);
+  color: var(--BLUE);
 }
 
-nav li:hover {
-  background-color: var(--YELLOW);
-}
 /* </nav> */
+
+/* <global_styles> */
 
 code, pre {
   font: var(--font-monospace);
@@ -115,29 +116,49 @@ pre {
   background-color: var(--GREY);
 }
 
-
+body {
+  text-align: justify;
+}
+li, h1, h2, h3, h4 {
+  text-align: left;
+}
 a {
-    text-decoration: none;
-}
-
-ul.list_item {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-ul.list_item li {
-    display: inline;
-    padding-right:5px;
+  color: var(--BLUE);
 }
 
 ul.link_item {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 ul.link_item li {
-    display: inline;
-    padding-right:5px;
+  display: inline;
+  padding-right:5px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* </global_styles> */
+
+div.highlight {
+  overflow: hidden;
+}
+
+div.highlight pre {
+  padding: 1rem;
+  overflow: scroll;
+}
+
+:not(pre, em) > code {
+  background-color: var(--GREY);
+  padding:  0.05rem 0.3rem;
+  border-radius: 0.3rem;
+}
+
+footer {
+  border-top: 1px dashed;
+  margin: 4rem 0 2rem;
+  padding: 2rem 0;
 }

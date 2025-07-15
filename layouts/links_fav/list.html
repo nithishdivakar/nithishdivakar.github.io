@@ -2,18 +2,16 @@
 <h2>Links</h2>
 {{.Content}}
 
-
 {{ $p := where .Site.RegularPages.Reverse "Section" "in" (slice "links") }}
 
-
 <ul>
-    <li>
-        <a href="/links" class="small green"> show <span class="red">all</span></a>
-     </li>
-    {{ range sort $p "Params.date" "asc" | collections.Reverse }}
-        {{ if .Params.favorite }}
-            <li>{{- partial "link_item.html" . -}}</li>
-        {{ end }}
+  <li>
+    <a href="/links" class="green"> show <span class="red">all</span></a>
+   </li>
+  {{ range sort $p "Params.date" "asc" | collections.Reverse }}
+    {{ if .Params.favorite }}
+      {{- partial "link_item.html" . -}}
     {{ end }}
+  {{ end }}
 </ul>
 {{ end }}

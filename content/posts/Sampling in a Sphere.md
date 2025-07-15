@@ -21,10 +21,13 @@ There is a lot to unpack here.
 
 ## What is inside a Sphere?
 A sphere is defined as a set of points which are equidistant from a point known as center. For this article, we mostly deal with unit spheres. A unit n-sphere with center at origin can be defined as
-$$ S^n = \\{x \in \mathbb{R}^{n} ~:~ \\\|x\\\| = 1\\} $$
+
+$$S^n = \\{x \in \mathbb{R}^{n} : \\\|x\\\| = 1\\}$$
 
 This includes only the periphery of the region. Or the circumference. An n-ball however is the whole region inside the n-sphere. 
-$$ B^n = \\{x \in \mathbb{R}^{n} ~:~ \\|x\\| \leq 1 \\}$$
+
+$$B^n = \\{x \in \mathbb{R}^{n} : \\|x\\| \leq 1 \\}$$
+
 Note that the $B^n$ is a closed ball so $S^n \subset B^n$. 
 
 Some quick facts about the unit n-ball and n-sphere

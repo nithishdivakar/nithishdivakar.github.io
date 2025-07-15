@@ -2,12 +2,10 @@
 
 <h2>Notes</h2>
 <ul>
-{{ range (where .Site.RegularPages "Section" "notes") }}
-        <li>
-        {{ .Scratch.Set "display_section" "True" }}
-        {{- partial "list_item.html" . -}}
-        {{ .Scratch.Set "display_section" "False" }}
-        </li>
-{{- end }}
+  {{ range (where .Site.RegularPages "Section" "notes") }}
+    {{ .Scratch.Set "display_section" "True" }}
+    {{- partial "list_item.html" . -}}
+    {{ .Scratch.Set "display_section" "False" }}
+  {{- end }}
 </ul>
 {{ end }}

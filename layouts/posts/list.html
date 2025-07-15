@@ -2,12 +2,10 @@
 
 <h2>Posts</h2>
 <ul>
-{{ range (where .Site.RegularPages "Section" "posts") }}
-        <li>
-        {{ .Scratch.Set "display_section" "True" }}
-        {{- partial "list_item.html" . -}}
-        {{ .Scratch.Set "display_section" "False" }}
-        </li>
-{{- end }}
+  {{ range (where .Site.RegularPages "Section" "posts") }}
+    {{ .Scratch.Set "display_section" "True" }}
+    {{- partial "list_item.html" . -}}
+    {{ .Scratch.Set "display_section" "False" }}
+  {{- end }}
 </ul>
 {{ end }}
