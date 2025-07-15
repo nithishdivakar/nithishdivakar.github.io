@@ -10,5 +10,4 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;li>Why are we dropping 2 coordinates?&lt;/li>
 &lt;/ul>
 &lt;h2 id="what-is-inside-a-sphere">What is inside a Sphere?&lt;/h2>
-&lt;p>A sphere is defined as a set of points which are equidistant from a point known as center. For this article, we mostly deal with unit spheres. A unit n-sphere with center at origin can be defined as
-$$ S^n = \{x \in \mathbb{R}^{n} &lt;del>:&lt;/del> \|x\| = 1\} $$&lt;/p></description></item></channel></rss>
+&lt;p>A sphere is defined as a set of points which are equidistant from a point known as center. For this article, we mostly deal with unit spheres. A unit n-sphere with center at origin can be defined as&lt;/p></description></item></channel></rss>

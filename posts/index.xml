@@ -13,8 +13,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;li>Why are we dropping 2 coordinates?&lt;/li>
 &lt;/ul>
 &lt;h2 id="what-is-inside-a-sphere">What is inside a Sphere?&lt;/h2>
-&lt;p>A sphere is defined as a set of points which are equidistant from a point known as center. For this article, we mostly deal with unit spheres. A unit n-sphere with center at origin can be defined as
-$$ S^n = \{x \in \mathbb{R}^{n} &lt;del>:&lt;/del> \|x\| = 1\} $$&lt;/p></description></item><item><title>Normalisation Layers</title><link>https://daxpy.xyz/posts/normalisation/</link><pubDate>Tue, 24 Oct 2023 18:33:10 +0530</pubDate><guid>https://daxpy.xyz/posts/normalisation/</guid><description>&lt;h1 id="normalisation">Normalisation&lt;/h1>
+&lt;p>A sphere is defined as a set of points which are equidistant from a point known as center. For this article, we mostly deal with unit spheres. A unit n-sphere with center at origin can be defined as&lt;/p></description></item><item><title>Normalisation Layers</title><link>https://daxpy.xyz/posts/normalisation/</link><pubDate>Tue, 24 Oct 2023 18:33:10 +0530</pubDate><guid>https://daxpy.xyz/posts/normalisation/</guid><description>&lt;h1 id="normalisation">Normalisation&lt;/h1>
 &lt;p>Regulating the magnitude of activations inside a neural network is crucial for an effective training regime. We may get stuck in local minima or worse yet, the training may diverge otherwise. For this, we make use of normalisation.&lt;/p>
 &lt;p>Normalisation comes in two flavours. Weight normalisation and Layer normalisation. We briefly touch on some fundamental techniques in both.&lt;/p>
 &lt;h2 id="weight-normalisation">Weight normalisation&lt;/h2>
