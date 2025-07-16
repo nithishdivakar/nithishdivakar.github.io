@@ -1,5 +1,5 @@
 ---
-ext_url: url
+ext_url: https://www.jofreeman.com/joreen/tyranny.htm
 title: "The Tyranny of Structurelessness"
 authors: [Jo Freeman]
 tags: []

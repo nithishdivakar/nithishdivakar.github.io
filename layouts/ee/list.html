@@ -2,13 +2,12 @@
 
 {{ .Content }}
 <h2>EE</h2>
-<div style="margin-top:1em;text-align: left;" >
-
-    {{ range (where .Site.RegularPages "Section" "in" (slice "notes" "posts" "stories" "links")) }}
-        <!-- {{.Section }} -->
-        {{ .Scratch.Set "display_section" "True" }}
-        {{- partial "list_item.html" . -}}
-        {{ .Scratch.Set "display_section" "False" }}
-    {{ end }}
-</div>
+<ul>
+  {{ range (where .Site.RegularPages "Section" "in" (slice "notes" "posts" "stories" "links")) }}
+    <!-- {{.Section }} -->
+    {{ .Scratch.Set "display_section" "True" }}
+    {{- partial "list_item.html" . -}}
+    {{ .Scratch.Set "display_section" "False" }}
+  {{ end }}
+<ul>
 {{ end }}
