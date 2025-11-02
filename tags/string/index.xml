@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>String on DAXPY</title><link>https://daxpy.xyz/tags/string/</link><description>Recent content in String on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/string/index.xml" rel="self" type="application/rss+xml"/><item><title>Distinct Subsequences</title><link>https://daxpy.xyz/notes_collection/lc_notes/80d/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/80d/</guid><description>&lt;h2 id="distinct-subsequences-lc115"&gt;Distinct Subsequences [LC#115]&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>String on DAXPY</title><link>https://daxpy.xyz/tags/string/</link><description>Recent content in String on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/string/index.xml" rel="self" type="application/rss+xml"/><item><title>Distinct Subsequences</title><link>https://daxpy.xyz/collections/lc_notes/80d/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/80d/</guid><description>&lt;h2 id="distinct-subsequences-lc115"&gt;Distinct Subsequences [LC#115]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given two strings &lt;code&gt;s&lt;/code&gt; and &lt;code&gt;t&lt;/code&gt;, return the number of distinct subsequences of &lt;code&gt;s&lt;/code&gt; which equals &lt;code&gt;t&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -37,7 +37,7 @@
 &lt;ul&gt;
 &lt;li&gt;$T(n) = O(mn)$&lt;/li&gt;
 &lt;li&gt;$S(n) = O(mn)$ but optimised to $O(\min\{m,n\})$&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Edit Distances</title><link>https://daxpy.xyz/notes_collection/lc_notes/80b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/80b/</guid><description>&lt;h2 id="edit-distance-lc72"&gt;Edit Distance [LC#72]&lt;/h2&gt;
+&lt;/ul&gt;</description></item><item><title>Edit Distances</title><link>https://daxpy.xyz/collections/lc_notes/80b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/80b/</guid><description>&lt;h2 id="edit-distance-lc72"&gt;Edit Distance [LC#72]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2. You have the following three operations permitted on a word:&lt;/p&gt;
 &lt;ul&gt;
@@ -47,7 +47,7 @@
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
-&lt;p&gt;Let &lt;code&gt;cost[i][j]&lt;/code&gt; is the minimum edit distance (or the minimum number of operations) required to transform the first &lt;code&gt;i&lt;/code&gt; characters of word1 into the first &lt;code&gt;j&lt;/code&gt; characters of word2.&lt;/p&gt;</description></item><item><title>Interleaving String</title><link>https://daxpy.xyz/notes_collection/lc_notes/80c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/80c/</guid><description>&lt;h2 id="interleaving-string-lc97"&gt;Interleaving String [LC#97]&lt;/h2&gt;
+&lt;p&gt;Let &lt;code&gt;cost[i][j]&lt;/code&gt; is the minimum edit distance (or the minimum number of operations) required to transform the first &lt;code&gt;i&lt;/code&gt; characters of word1 into the first &lt;code&gt;j&lt;/code&gt; characters of word2.&lt;/p&gt;</description></item><item><title>Interleaving String</title><link>https://daxpy.xyz/collections/lc_notes/80c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/80c/</guid><description>&lt;h2 id="interleaving-string-lc97"&gt;Interleaving String [LC#97]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given strings &lt;code&gt;u&lt;/code&gt;, &lt;code&gt;v&lt;/code&gt;, and &lt;code&gt;t&lt;/code&gt;, find whether &lt;code&gt;t&lt;/code&gt; can formed by an interleaving of &lt;code&gt;u&lt;/code&gt; and &lt;code&gt;v&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -79,7 +79,7 @@
 &lt;ul&gt;
 &lt;li&gt;$T(n) = O(mn)$&lt;/li&gt;
 &lt;li&gt;$S(n) = O(mn)$ but optimised to $O(\min\{m,n\})$&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Reorganize String</title><link>https://daxpy.xyz/notes_collection/lc_notes/02h01/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/02h01/</guid><description>&lt;h2 id="reorganize-string-lc767"&gt;Reorganize String [LC#767]&lt;/h2&gt;
+&lt;/ul&gt;</description></item><item><title>Reorganize String</title><link>https://daxpy.xyz/collections/lc_notes/02h01/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/02h01/</guid><description>&lt;h2 id="reorganize-string-lc767"&gt;Reorganize String [LC#767]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given a string &lt;code&gt;s&lt;/code&gt;, rearrange the characters of s so that any two adjacent characters are not the same. Return any possible rearrangement of s or return &amp;quot;&amp;quot; if not possible.&lt;/p&gt;
 &lt;/blockquote&gt;

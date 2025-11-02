@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dp on DAXPY</title><link>https://daxpy.xyz/tags/dp/</link><description>Recent content in Dp on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/dp/index.xml" rel="self" type="application/rss+xml"/><item><title>Distinct Subsequences</title><link>https://daxpy.xyz/notes_collection/lc_notes/80d/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/80d/</guid><description>&lt;h2 id="distinct-subsequences-lc115"&gt;Distinct Subsequences [LC#115]&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dp on DAXPY</title><link>https://daxpy.xyz/tags/dp/</link><description>Recent content in Dp on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/dp/index.xml" rel="self" type="application/rss+xml"/><item><title>Distinct Subsequences</title><link>https://daxpy.xyz/collections/lc_notes/80d/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/80d/</guid><description>&lt;h2 id="distinct-subsequences-lc115"&gt;Distinct Subsequences [LC#115]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given two strings &lt;code&gt;s&lt;/code&gt; and &lt;code&gt;t&lt;/code&gt;, return the number of distinct subsequences of &lt;code&gt;s&lt;/code&gt; which equals &lt;code&gt;t&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -37,7 +37,7 @@
 &lt;ul&gt;
 &lt;li&gt;$T(n) = O(mn)$&lt;/li&gt;
 &lt;li&gt;$S(n) = O(mn)$ but optimised to $O(\min\{m,n\})$&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Edit Distances</title><link>https://daxpy.xyz/notes_collection/lc_notes/80b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/80b/</guid><description>&lt;h2 id="edit-distance-lc72"&gt;Edit Distance [LC#72]&lt;/h2&gt;
+&lt;/ul&gt;</description></item><item><title>Edit Distances</title><link>https://daxpy.xyz/collections/lc_notes/80b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/80b/</guid><description>&lt;h2 id="edit-distance-lc72"&gt;Edit Distance [LC#72]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2. You have the following three operations permitted on a word:&lt;/p&gt;
 &lt;ul&gt;
@@ -47,7 +47,7 @@
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
-&lt;p&gt;Let &lt;code&gt;cost[i][j]&lt;/code&gt; is the minimum edit distance (or the minimum number of operations) required to transform the first &lt;code&gt;i&lt;/code&gt; characters of word1 into the first &lt;code&gt;j&lt;/code&gt; characters of word2.&lt;/p&gt;</description></item><item><title>Interleaving String</title><link>https://daxpy.xyz/notes_collection/lc_notes/80c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/80c/</guid><description>&lt;h2 id="interleaving-string-lc97"&gt;Interleaving String [LC#97]&lt;/h2&gt;
+&lt;p&gt;Let &lt;code&gt;cost[i][j]&lt;/code&gt; is the minimum edit distance (or the minimum number of operations) required to transform the first &lt;code&gt;i&lt;/code&gt; characters of word1 into the first &lt;code&gt;j&lt;/code&gt; characters of word2.&lt;/p&gt;</description></item><item><title>Interleaving String</title><link>https://daxpy.xyz/collections/lc_notes/80c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/80c/</guid><description>&lt;h2 id="interleaving-string-lc97"&gt;Interleaving String [LC#97]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given strings &lt;code&gt;u&lt;/code&gt;, &lt;code&gt;v&lt;/code&gt;, and &lt;code&gt;t&lt;/code&gt;, find whether &lt;code&gt;t&lt;/code&gt; can formed by an interleaving of &lt;code&gt;u&lt;/code&gt; and &lt;code&gt;v&lt;/code&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -79,7 +79,7 @@
 &lt;ul&gt;
 &lt;li&gt;$T(n) = O(mn)$&lt;/li&gt;
 &lt;li&gt;$S(n) = O(mn)$ but optimised to $O(\min\{m,n\})$&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Sum of Good Subsequences</title><link>https://daxpy.xyz/notes_collection/lc_notes/20e/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/20e/</guid><description>&lt;h2 id="sum-of-good-subsequences-lc3351"&gt;Sum of Good Subsequences [LC#3351]&lt;/h2&gt;
+&lt;/ul&gt;</description></item><item><title>Sum of Good Subsequences</title><link>https://daxpy.xyz/collections/lc_notes/20e/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/20e/</guid><description>&lt;h2 id="sum-of-good-subsequences-lc3351"&gt;Sum of Good Subsequences [LC#3351]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You are given an integer array nums. A good subsequence is defined as a subsequence of nums where the absolute difference between any two consecutive elements in the subsequence is exactly 1. Return the sum of all possible good subsequences of nums (modulo $10^9 + 7$). Note that a subsequence of size 1 is considered good by definition.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -101,10 +101,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time Complexity&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;$T(n) = O(n)$; $S(n) = O(n)$&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Target Sum</title><link>https://daxpy.xyz/notes_collection/lc_notes/80a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/80a/</guid><description>&lt;h2 id="target-sum-lc494"&gt;Target Sum [LC#494]&lt;/h2&gt;
+&lt;/ul&gt;</description></item><item><title>Target Sum</title><link>https://daxpy.xyz/collections/lc_notes/80a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/80a/</guid><description>&lt;h2 id="target-sum-lc494"&gt;Target Sum [LC#494]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You are given an integer array &lt;code&gt;nums&lt;/code&gt; and an integer &lt;code&gt;target&lt;/code&gt;. You want to build an expression out of nums by adding one of the symbols &lt;code&gt;+&lt;/code&gt; and &lt;code&gt;-&lt;/code&gt; before each integer in nums and then concatenate all the integers. For example, if &lt;code&gt;nums = [2, 1]&lt;/code&gt;, you can add a &lt;code&gt;+&lt;/code&gt; before 2 and a &lt;code&gt;-&lt;/code&gt; before 1 and concatenate them to build the expression &lt;code&gt;&amp;quot;+2-1&amp;quot;&lt;/code&gt;.
-Return the number of different expressions that you can build, which evaluates to target.&lt;/p&gt;</description></item><item><title>Word break</title><link>https://daxpy.xyz/notes_collection/lc_notes/65a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/65a/</guid><description>&lt;h2 id="word-break-lc139"&gt;Word break [LC#139]&lt;/h2&gt;
+Return the number of different expressions that you can build, which evaluates to target.&lt;/p&gt;</description></item><item><title>Word break</title><link>https://daxpy.xyz/collections/lc_notes/65a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/65a/</guid><description>&lt;h2 id="word-break-lc139"&gt;Word break [LC#139]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given a string and a vocabulary, return true if the string can be segmented into a space-separated sequence of one or more words from the vocabulary. Note that the same word in the vocabulary may be reused multiple times in the segmentation.&lt;/p&gt;
 &lt;/blockquote&gt;

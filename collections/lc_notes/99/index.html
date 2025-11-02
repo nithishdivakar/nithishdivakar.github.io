@@ -1,0 +1,41 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>KMP | DAXPY</title><link rel=stylesheet href=/css/main.min.94a2540136d9a839e3ae21136b6ed35c457b231d8bd1a157c7089710a8682c84.css integrity="sha256-lKJUATbZqDnjriETa27TXEV7Ix2L0aFXxwiXEKhoLIQ=" crossorigin=anonymous><script src=/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js integrity="sha256-I80MfYNyY7nq65buLZzPopadqj+gD6HB/ocBqbhyUaE=" crossorigin=anonymous></script></head><body><header><nav><ul><li><a class=text_secondary href=https://daxpy.xyz/>DAXPY</a></li><li>|</li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/collections/>Collections</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/stories/>Stories</a></li><li><a href=/about>About</a></li></ul></nav></header><main><section><article><h2 id=kmp-lcxxx>KMP [LC#xxx]</h2><blockquote><p>Question Description</p></blockquote><p>REF: <a href="https://www.youtube.com/watch?v=EL4ZbRF587g">https://www.youtube.com/watch?v=EL4ZbRF587g</a></p><h3 id=intuition>Intuition</h3><h3 id=code>Code</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>KMP</span>:
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>__init__</span>(self, pattern):
+</span></span><span style=display:flex><span>        <span style=color:#75715e># longest prefix suffix (LPS) array</span>
+</span></span><span style=display:flex><span>        m <span style=color:#f92672>=</span> len(pattern)
+</span></span><span style=display:flex><span>        lps <span style=color:#f92672>=</span> [<span style=color:#ae81ff>0</span>]<span style=color:#f92672>*</span>m
+</span></span><span style=display:flex><span>        length <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>        i <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> i <span style=color:#f92672>&lt;</span> m:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> pattern[length] <span style=color:#f92672>==</span> pattern[i]:
+</span></span><span style=display:flex><span>                length <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>                lps[i] <span style=color:#f92672>=</span> length
+</span></span><span style=display:flex><span>                i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> length <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>                    length <span style=color:#f92672>=</span> lps[length <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>] 
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>                    lps[i] <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>                    i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>lps <span style=color:#f92672>=</span> lps
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>pattern <span style=color:#f92672>=</span> pattern
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>match</span>(self, text):
+</span></span><span style=display:flex><span>        n <span style=color:#f92672>=</span> len(text)
+</span></span><span style=display:flex><span>        m <span style=color:#f92672>=</span> len(self<span style=color:#f92672>.</span>pattern)
+</span></span><span style=display:flex><span>        matches <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>        i <span style=color:#f92672>=</span> j <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>while</span> i <span style=color:#f92672>&lt;</span> n:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> self<span style=color:#f92672>.</span>pattern[j] <span style=color:#f92672>==</span> text[i]:
+</span></span><span style=display:flex><span>                i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>                j <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>if</span> j <span style=color:#f92672>==</span> m:
+</span></span><span style=display:flex><span>                matches<span style=color:#f92672>.</span>append(i <span style=color:#f92672>-</span> j)
+</span></span><span style=display:flex><span>                j <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>lps[j <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>elif</span> i <span style=color:#f92672>&lt;</span> len(text) <span style=color:#f92672>and</span> self<span style=color:#f92672>.</span>pattern[j] <span style=color:#f92672>!=</span> text[i]:
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>if</span> j <span style=color:#f92672>!=</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>                    j <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>lps[j <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>]
+</span></span><span style=display:flex><span>                <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>                    i <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> matches
+</span></span></code></pre></div><h3 id=time-complexity>Time complexity</h3><ul><li>$T(n) = $</li><li>$S(n) = $</li></ul></article></section></main><footer><p>Found something useful here? pass it on; or tell me about it!<nav><ul><li><a href="https://drive.google.com/drive/folders/18LU6PKnxy8rDrAXhpiPXV2yOYlO_I8cF?usp=sharing">Resume</a></li><li><a href=https://daxpy.xyz/collections/>Collections</a></li><li><a href=https://www.linkedin.com/in/ndivakar/>Linkedin</a></li></ul></nav><small><a href=#top>↑ Top of page</a></small></p></footer></body></html>

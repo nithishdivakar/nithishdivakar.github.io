@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linked List on DAXPY</title><link>https://daxpy.xyz/tags/linked-list/</link><description>Recent content in Linked List on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/linked-list/index.xml" rel="self" type="application/rss+xml"/><item><title>Detecting a Cycle in Linked List</title><link>https://daxpy.xyz/notes_collection/lc_notes/18f/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/18f/</guid><description>&lt;h2 id="linked-list-cycle-lc141"&gt;Linked List Cycle [LC#141]&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linked List on DAXPY</title><link>https://daxpy.xyz/tags/linked-list/</link><description>Recent content in Linked List on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/linked-list/index.xml" rel="self" type="application/rss+xml"/><item><title>Detecting a Cycle in Linked List</title><link>https://daxpy.xyz/collections/lc_notes/18f/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/18f/</guid><description>&lt;h2 id="linked-list-cycle-lc141"&gt;Linked List Cycle [LC#141]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given head, the head of a linked list, determine if the linked list has a cycle in it. Return true if there is a cycle in the linked list. Otherwise, return false.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="floyds-turtle-and-hare-algorithm"&gt;Floyd&amp;rsquo;s Turtle and hare algorithm&lt;/h3&gt;
-&lt;p&gt;It relies on the fact that if two pointers are moving at different speeds within a cycle, their distances will reach a max length before being reset to zero at which point they will point to the same element.&lt;/p&gt;</description></item><item><title>Implementing LRU Cache</title><link>https://daxpy.xyz/notes_collection/lc_notes/18g/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/18g/</guid><description>&lt;h2 id="implementing-lru-cache-lc146"&gt;Implementing LRU Cache [LC#146]&lt;/h2&gt;
+&lt;p&gt;It relies on the fact that if two pointers are moving at different speeds within a cycle, their distances will reach a max length before being reset to zero at which point they will point to the same element.&lt;/p&gt;</description></item><item><title>Implementing LRU Cache</title><link>https://daxpy.xyz/collections/lc_notes/18g/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/18g/</guid><description>&lt;h2 id="implementing-lru-cache-lc146"&gt;Implementing LRU Cache [LC#146]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.&lt;/p&gt;
 &lt;p&gt;Implement the LRUCache class:&lt;/p&gt;
@@ -77,7 +77,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;ul&gt;
 &lt;li&gt;$O(1)$ for get and put&lt;/li&gt;
 &lt;li&gt;$O(n)$ storage for dictionary and linkeidnlist&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Merge K Sorted Lists</title><link>https://daxpy.xyz/notes_collection/lc_notes/18e/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/18e/</guid><description>&lt;h2 id="merge-k-sorted-lists-lc23"&gt;Merge k Sorted Lists [LC#23]&lt;/h2&gt;
+&lt;/ul&gt;</description></item><item><title>Merge K Sorted Lists</title><link>https://daxpy.xyz/collections/lc_notes/18e/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/18e/</guid><description>&lt;h2 id="merge-k-sorted-lists-lc23"&gt;Merge k Sorted Lists [LC#23]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You are given an array of &lt;code&gt;k&lt;/code&gt; linked-lists lists, each linked-list is sorted in ascending order. Merge all the linked-lists into one sorted linked-list and return it.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -114,7 +114,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappush(heap, HeapNode(node&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next))
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; dummy&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Iterative Mergesort on sorted lists&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Merging Two Sorted Linked Lists</title><link>https://daxpy.xyz/notes_collection/lc_notes/18c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/18c/</guid><description>&lt;h2 id="merge-two-sorted-lists-lc21"&gt;Merge Two Sorted Lists [LC#21]&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Iterative Mergesort on sorted lists&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Merging Two Sorted Linked Lists</title><link>https://daxpy.xyz/collections/lc_notes/18c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/18c/</guid><description>&lt;h2 id="merge-two-sorted-lists-lc21"&gt;Merge Two Sorted Lists [LC#21]&lt;/h2&gt;
 &lt;p&gt;You are given the heads of two sorted linked lists list1 and list2. Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
 Return the head of the merged linked list.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Definition for singly-linked list.&lt;/span&gt;
@@ -141,7 +141,7 @@ Return the head of the merged linked list.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; current&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next &lt;span style="color:#f92672"&gt;=&lt;/span&gt; list1 &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; list1 &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt; list2
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; fake_head&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Remove Nodes From Linked List</title><link>https://daxpy.xyz/notes_collection/lc_notes/18h/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/18h/</guid><description>&lt;h2 id="remove-nodes-from-linked-list-lc2487"&gt;Remove Nodes From Linked List [LC#2487]&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Remove Nodes From Linked List</title><link>https://daxpy.xyz/collections/lc_notes/18h/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/18h/</guid><description>&lt;h2 id="remove-nodes-from-linked-list-lc2487"&gt;Remove Nodes From Linked List [LC#2487]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You are given the head of a linked list. Remove every node which has a node with a greater value anywhere to the right side of it. Return the head of the modified linked list.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -168,7 +168,7 @@ Return the head of the merged linked list.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$T(n) = O(n)$&lt;/li&gt;
 &lt;li&gt;$S(n) = O(n)$&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>Remove Nth Node From End of List</title><link>https://daxpy.xyz/notes_collection/lc_notes/18b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/18b/</guid><description>&lt;h2 id="remove-nth-node-from-end-of-list-lc19"&gt;Remove Nth Node From End of List [LC#19]&lt;/h2&gt;
+&lt;/ul&gt;</description></item><item><title>Remove Nth Node From End of List</title><link>https://daxpy.xyz/collections/lc_notes/18b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/18b/</guid><description>&lt;h2 id="remove-nth-node-from-end-of-list-lc19"&gt;Remove Nth Node From End of List [LC#19]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given the head of a linked list, remove the nth node from the end of the list and return its head.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -187,7 +187,7 @@ Return the head of the merged linked list.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Q &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Q&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Q&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Q&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; fake_head&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Reverse Linked List</title><link>https://daxpy.xyz/notes_collection/lc_notes/18a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/18a/</guid><description>&lt;h2 id="reverse-linked-list-lc206"&gt;Reverse Linked List [LC#206]&lt;/h2&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Reverse Linked List</title><link>https://daxpy.xyz/collections/lc_notes/18a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/18a/</guid><description>&lt;h2 id="reverse-linked-list-lc206"&gt;Reverse Linked List [LC#206]&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Given the head of a singly linked list, reverse the list, and return the reversed list.&lt;/p&gt;
 &lt;/blockquote&gt;
