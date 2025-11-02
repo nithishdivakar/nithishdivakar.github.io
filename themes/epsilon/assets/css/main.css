@@ -187,3 +187,18 @@ blockquote {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+
+
+.breadcrumbs {
+  list-style: none;
+  display: flex;
+  gap: .5rem;
+}
+.breadcrumbs li::after {
+  content: ">";
+  padding-left: .5rem;
+}
+.breadcrumbs li:last-child::after {
+  content: "";
+}
+.breadcrumbs a {display: inline;}

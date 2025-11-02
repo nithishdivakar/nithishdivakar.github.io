@@ -6,7 +6,7 @@
       </a>
     </li>
     <li>|</li>
-    {{- range where .Site.Sections "RelPermalink" "not in" (slice "/ee/" "/links_fav/" "/notes_collection/") -}}
+    {{- range where .Site.Sections "RelPermalink" "not in" (slice "/ee/" "/links_fav/") -}}
       <li><a href="{{ .Permalink }}">{{- .Title -}}</a></li>
     {{- end -}}
     <li><a href="/about">About</a></li>

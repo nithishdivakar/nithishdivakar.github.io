@@ -1,0 +1,13 @@
+<li class="list_item">
+    <a href="{{ .Permalink }}" >
+      {{if .Params.draft}} 
+        [draft]
+      {{end}}
+      {{- if eq (.Scratch.Get "display_section") "True" -}}
+        {{- if eq .Section "links" -}}
+          <span class="green">⇗ </span>
+        {{- end -}}
+      {{- end -}}
+      {{- .Title -}}
+    </a>
+  </li>
