@@ -1,0 +1,34 @@
+<!-- <div style="text-align: right;height:5px; margin-top:10px;" class="italics"> 
+  Back to <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+</div> -->
+
+{{ $parents := slice }}
+{{ $current := . }}
+
+{{/* Walk up the tree (max 20 levels) */}}
+{{ range seq 1 20 }}
+  {{ with $current.Parent }}
+    {{ $parents = $parents | append . }}
+    {{ $current = . }}
+  {{ else }}
+    {{ break }}
+  {{ end }}
+{{ end }}
+
+{{/* Reverse parents to correct order */}}
+<!-- {{ $parents = collections.Reverse $parents }} -->
+
+{{/* Reverse parents manually */}}
+{{ $rev := slice }}
+{{ range seq (sub (len $parents) 1) -1 0 }}
+  {{ $rev = $rev | append (index $parents .) }}
+{{ end }}
+{{ $parents = $rev }}
+
+<div style="text-align: right;height:5px; margin-top:10px;" class="italic"> 
+    this page 
+    {{ range $parents }}
+      ⟩ <a href="{{ .RelPermalink }}">{{lower .Title }}</a>
+    {{ end }}
+    <!-- <a href="{{ .Site.BaseURL }}">home</a> -->
+</div>

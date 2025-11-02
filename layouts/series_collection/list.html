@@ -1,0 +1,36 @@
+{{ define "main" }}
+<a name="top"></a>
+{{- partial "breadcrumbs.html" . -}}
+<h1>{{.Title}}</h1>
+
+{{ .Content }}
+
+{{ $.Scratch.Set "pages" (slice) }}
+
+{{ range .Pages }}
+  {{ $.Scratch.Set "key" (printf "%s~~~~~~~~~~" .Params.slug) }}
+  {{ $.Scratch.Add "pages" (dict "page" . "key" ($.Scratch.Get "key")) }}
+{{ end }}
+
+<ul>
+  {{ range sort ($.Scratch.Get "pages") "key" }}
+    {{ $p := .page }}
+    {{ $level := $p.Params.level }}
+    
+    <li>
+      {{ if eq $p.Params.status "done" }}
+
+      <a href="{{ $p.RelPermalink }}">    
+          {{ $p.Title }}
+      </a>
+      {{ else }}
+        <span>
+          [wip] {{ $p.Title }}
+        </span>
+      {{ end }}
+    </li>
+
+  {{ end }}
+</ul>
+
+{{ end }}

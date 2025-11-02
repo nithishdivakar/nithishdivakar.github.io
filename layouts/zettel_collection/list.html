@@ -1,9 +1,7 @@
 {{ define "main" }}
 <a name="top"></a>
+{{- partial "breadcrumbs.html" . -}}
 <h1>Collection: {{.Title}}</h1>
-<div style="text-align: right;height:5px" class="italics"> 
-Back to <a href="{{.Parent.RelPermalink}}">all collections</a>
-</div>
 
 <p><b>Table of Content</b></p>
 {{ $.Scratch.Set "pages" (slice) }}
