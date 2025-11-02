@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bfs on DAXPY</title><link>https://daxpy.xyz/tags/bfs/</link><description>Recent content in Bfs on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/bfs/index.xml" rel="self" type="application/rss+xml"/><item><title>01 Matrix</title><link>https://daxpy.xyz/notes_collection/lc_notes/35b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/35b/</guid><description>&lt;h2 id="01-matrix-lc542"&gt;01 Matrix [LC#542]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell. The distance between two cells sharing a common edge is 1.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;p&gt;BFS starting at all 0. BFS for binary graph give shortest path.&lt;/p&gt;
+&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;neares_zero&lt;/span&gt;(matrix: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[List[int]]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; m &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(matrix)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(matrix[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;neighbors&lt;/span&gt;(x, y):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; dx, dy &lt;span style="color:#f92672"&gt;in&lt;/span&gt; [(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;), (&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;), (&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;), (&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;)]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; nx, ny &lt;span style="color:#f92672"&gt;=&lt;/span&gt; x &lt;span style="color:#f92672"&gt;+&lt;/span&gt; dx, y &lt;span style="color:#f92672"&gt;+&lt;/span&gt; dy
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; nx &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; m &lt;span style="color:#f92672"&gt;and&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; ny &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; n:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;yield&lt;/span&gt; nx, ny
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; deque()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen &lt;span style="color:#f92672"&gt;=&lt;/span&gt; set()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; x &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(m):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; y &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; matrix[x][y] &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append((x, y, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add((x, y))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; queue:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; row, col, steps &lt;span style="color:#f92672"&gt;=&lt;/span&gt; queue&lt;span style="color:#f92672"&gt;.&lt;/span&gt;popleft()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; nx, ny &lt;span style="color:#f92672"&gt;in&lt;/span&gt; neighbors(row, col):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; (nx, ny) &lt;span style="color:#f92672"&gt;not&lt;/span&gt; &lt;span style="color:#f92672"&gt;in&lt;/span&gt; seen:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; matrix[nx][ny] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; steps &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append((nx, ny, steps &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add((nx, ny))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; matrix
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$T(n) = O(mn)$&lt;/li&gt;
+&lt;li&gt;$S(n) = O(mn)$&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>All Nodes Distance K in Binary Tree</title><link>https://daxpy.xyz/notes_collection/lc_notes/35c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/35c/</guid><description>&lt;h2 id="all-nodes-distance-k-in-binary-tree-lc863"&gt;All Nodes Distance K in Binary Tree [LC#863]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given the root of a binary tree, the value of a target node target, and an integer k, return an array of the values of all nodes that have a distance k from the target node. You can return the answer in any order.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;p&gt;Nodes at distance &lt;code&gt;k&lt;/code&gt; can be children of the node or can be be children of one of the ancestors of the node. But without parent pointers searching for children on ancestors is very inefficient. So we create auxillary struture to maintain parent pointers and then perform BFS on the induced graph.&lt;/p&gt;</description></item><item><title>Cheapest Flights Within K Stops</title><link>https://daxpy.xyz/notes_collection/lc_notes/40a01/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/40a01/</guid><description>&lt;h2 id="cheapest-flights-within-k-stops-lc787"&gt;Cheapest Flights Within K Stops [LC#787]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There are &lt;code&gt;n&lt;/code&gt; cities connected by some number of flights. You are given an array flights where &lt;code&gt;flights[i] = [from_i, to_i, price_i]&lt;/code&gt; indicates that there is a flight from city from_i to city to_i with cost price_i. You are also given three integers &lt;code&gt;src&lt;/code&gt;, &lt;code&gt;dst&lt;/code&gt;, and &lt;code&gt;k&lt;/code&gt;, return the cheapest price from &lt;code&gt;src&lt;/code&gt; to &lt;code&gt;dst&lt;/code&gt; with at most &lt;code&gt;k&lt;/code&gt; stops. If there is no such route, return -1.&lt;/p&gt;</description></item><item><title>Jump Game III</title><link>https://daxpy.xyz/notes_collection/lc_notes/84a03b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/84a03b/</guid><description>&lt;h2 id="jump-game-iii-lc1306"&gt;Jump Game III [LC#1306]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given an array of non-negative integers arr, you are initially positioned at start index of the array. When you are at index &lt;code&gt;i&lt;/code&gt;, you can jump to &lt;code&gt;i + arr[i]&lt;/code&gt; or &lt;code&gt;i - arr[i]&lt;/code&gt;, check if you can reach any index with value 0. Notice that you can not jump outside of the array at any time.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;BFS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;jump&lt;/span&gt;(arr: List[int], start: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen &lt;span style="color:#f92672"&gt;=&lt;/span&gt; set([start])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; deque([start])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(arr)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; queue:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node &lt;span style="color:#f92672"&gt;=&lt;/span&gt; queue&lt;span style="color:#f92672"&gt;.&lt;/span&gt;popleft()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; arr[node]&lt;span style="color:#f92672"&gt;==&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; idx &lt;span style="color:#f92672"&gt;in&lt;/span&gt; [node&lt;span style="color:#f92672"&gt;+&lt;/span&gt;arr[node], node&lt;span style="color:#f92672"&gt;-&lt;/span&gt;arr[node]]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; idx &lt;span style="color:#f92672"&gt;not&lt;/span&gt; &lt;span style="color:#f92672"&gt;in&lt;/span&gt; seen &lt;span style="color:#f92672"&gt;and&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; idx &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; n:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(idx)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add(idx)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;False&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$T(n) = O(n)$&lt;/li&gt;
+&lt;li&gt;$S(n) = O(n)$. We can use original array to maintain seen nodes by making them negative.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Shortest Path in Binary Matrix</title><link>https://daxpy.xyz/notes_collection/lc_notes/35a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/35a/</guid><description>&lt;h2 id="shortest-path-in-binary-matrix-lc1091"&gt;Shortest Path in Binary Matrix [LC#1091]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given an &lt;code&gt;n x n&lt;/code&gt; binary matrix grid, return the length of the shortest clear path in the matrix from top left to bottom right. If there is no clear path, return -1. The matrix is 8 connected and you can only move in cells marked 0.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;p&gt;BFS gives the shortest path in binary matrix&lt;/p&gt;
+&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;shortest_path_in_binary_matrix&lt;/span&gt;(grid: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(grid[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;neighbours&lt;/span&gt;(x, y):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; dx, dy &lt;span style="color:#f92672"&gt;in&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; (&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;), (&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;), (&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; (&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;), (&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; (&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;), (&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;), (&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; nx, ny &lt;span style="color:#f92672"&gt;=&lt;/span&gt; x &lt;span style="color:#f92672"&gt;+&lt;/span&gt; dx, y &lt;span style="color:#f92672"&gt;+&lt;/span&gt; dy
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; nx &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; n &lt;span style="color:#f92672"&gt;and&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; ny &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; n:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;yield&lt;/span&gt; nx, ny
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; grid[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;][&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#f92672"&gt;or&lt;/span&gt; grid[n &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;][n &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; deque()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen &lt;span style="color:#f92672"&gt;=&lt;/span&gt; set()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append((&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add((&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; queue:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; x, y, d &lt;span style="color:#f92672"&gt;=&lt;/span&gt; queue&lt;span style="color:#f92672"&gt;.&lt;/span&gt;popleft()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; x &lt;span style="color:#f92672"&gt;==&lt;/span&gt; n &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#f92672"&gt;and&lt;/span&gt; y &lt;span style="color:#f92672"&gt;==&lt;/span&gt; n &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; d
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; nx, ny &lt;span style="color:#f92672"&gt;in&lt;/span&gt; neighbours(x, y):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; grid[nx][ny] &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;and&lt;/span&gt; (nx, ny) &lt;span style="color:#f92672"&gt;not&lt;/span&gt; &lt;span style="color:#f92672"&gt;in&lt;/span&gt; seen:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append((nx, ny, d &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add((nx, ny))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$T(n) = O(mn)$&lt;/li&gt;
+&lt;li&gt;$S(n) = O(mn)$&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Swim in Rising Water</title><link>https://daxpy.xyz/notes_collection/lc_notes/75e/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/75e/</guid><description>&lt;h2 id="swim-in-rising-water-lc778"&gt;Swim in Rising Water [LC#778]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You are given an &lt;code&gt;n x n&lt;/code&gt; integer matrix grid where each value &lt;code&gt;grid[i][j]&lt;/code&gt; represents the elevation at that point &lt;code&gt;(i, j)&lt;/code&gt;. The rain starts to fall. At time &lt;code&gt;t&lt;/code&gt;, the depth of the water everywhere is &lt;code&gt;t&lt;/code&gt;. You can swim from a square to another 4-directionally adjacent square if and only if the elevation of both squares individually are at most t. You can swim infinite distances in zero time. Of course, you must stay within the boundaries of the grid during your swim.&lt;/p&gt;</description></item></channel></rss>

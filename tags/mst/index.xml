@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mst on DAXPY</title><link>https://daxpy.xyz/tags/mst/</link><description>Recent content in Mst on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/mst/index.xml" rel="self" type="application/rss+xml"/><item><title>Kruskals algorithm</title><link>https://daxpy.xyz/notes_collection/lc_notes/42a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/42a/</guid><description>&lt;h2 id="kruskals-algorithm-for-minimum-spanning-tree"&gt;Kruskal&amp;rsquo;s algorithm for Minimum spanning tree&lt;/h2&gt;
+&lt;p&gt;Kruskal&amp;rsquo;s algorithm is as follows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go in order of lowest to highest weighted edges.&lt;/li&gt;
+&lt;li&gt;Add edge to the graph if it doesn&amp;rsquo;t create a cycle.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@dataclass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Edge&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; u: int
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; v: int
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; w: float
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;kruskal_mst&lt;/span&gt;(num_edges: int, edges: List[Edge]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Tuple[List[Edge], float]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; edges&lt;span style="color:#f92672"&gt;.&lt;/span&gt;sort(key&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;lambda&lt;/span&gt; x: x&lt;span style="color:#f92672"&gt;.&lt;/span&gt;w)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dsu &lt;span style="color:#f92672"&gt;=&lt;/span&gt; DisjointSetUnion(num_edges)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mst &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; total_weight &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; edge &lt;span style="color:#f92672"&gt;in&lt;/span&gt; edges:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; dsu&lt;span style="color:#f92672"&gt;.&lt;/span&gt;find(edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;u) &lt;span style="color:#f92672"&gt;!=&lt;/span&gt; dsu&lt;span style="color:#f92672"&gt;.&lt;/span&gt;find(edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;v):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dsu&lt;span style="color:#f92672"&gt;.&lt;/span&gt;union(edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;u, edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;v) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mst&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(edge)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; total_weight &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;w
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; mst, total_weight
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Time Complexity: $O(m \log m + n + m) = O(m \log n)$
+&lt;ul&gt;
+&lt;li&gt;$O(m \log m)$ for sorting all edges&lt;/li&gt;
+&lt;li&gt;$O(n)$ for make set on each edges&lt;/li&gt;
+&lt;li&gt;$O(m)$ for find and union on all nodes in edges&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Space Complexity: Extra space to maintaint the DSU datastructure ~ $O(n)$&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Min Cost to Connect All Points</title><link>https://daxpy.xyz/notes_collection/lc_notes/42a01/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/42a01/</guid><description>&lt;h2 id="min-cost-to-connect-all-points-lc1584"&gt;Min Cost to Connect All Points [LC#1584]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You are given an array points representing integer coordinates of some points on a 2D-plane, where &lt;code&gt;points[i] = [xi, yi]&lt;/code&gt;. The cost of connecting two points &lt;code&gt;[xi, yi]&lt;/code&gt; and &lt;code&gt;[xj, yj]&lt;/code&gt; is the manhattan distance between them: &lt;code&gt;|xi - xj| + |yi - yj|&lt;/code&gt;. Return the minimum cost to make all points connected. All points are connected if there is exactly one simple path between any two points.&lt;/p&gt;</description></item><item><title>Prims Algorithm</title><link>https://daxpy.xyz/notes_collection/lc_notes/42b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/42b/</guid><description>&lt;h2 id="prims-algorithm-for-minimum-spanning-tree"&gt;Prim&amp;rsquo;s Algorithm for Minimum spanning tree&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Start with adding a randomly choosen vertex to mst&lt;/li&gt;
+&lt;li&gt;Find an edge such that one vertex is in the constructed mst, the other is not and the weight is smallest. Add this edge and vertex to mst&lt;/li&gt;
+&lt;li&gt;repeat untill mst has all vertices.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@dataclass&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Edge&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; u: int
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; v: int
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; w: float
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;prims_mst&lt;/span&gt;(num_vertices: int, edges: List[Edge]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Tuple[List[Edge], float]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; graph &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {u: [] &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; u &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(num_vertices)}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; edge &lt;span style="color:#f92672"&gt;in&lt;/span&gt; edges:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; graph[edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;u]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append((edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;v, edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;w))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; graph[edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;v]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append((edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;u, edge&lt;span style="color:#f92672"&gt;.&lt;/span&gt;w))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; visited &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#66d9ef"&gt;False&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; num_vertices
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; min_heap &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [(&lt;span style="color:#ae81ff"&gt;0.0&lt;/span&gt;, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;)] &lt;span style="color:#75715e"&gt;# (weight, vertex)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; total_cost &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mst_edges &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; min_heap:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weight, u &lt;span style="color:#f92672"&gt;=&lt;/span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappop(min_heap)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; visited[u]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;continue&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; visited[u] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; total_cost &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; weight
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; weight &lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;: &lt;span style="color:#75715e"&gt;# Skip the initial vertex&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mst_edges&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(Edge(prev_vertex, u, weight))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; v, edge_weight &lt;span style="color:#f92672"&gt;in&lt;/span&gt; graph[u]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#f92672"&gt;not&lt;/span&gt; visited[v]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappush(min_heap, (edge_weight, v))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; prev_vertex &lt;span style="color:#f92672"&gt;=&lt;/span&gt; u &lt;span style="color:#75715e"&gt;# Track the previous vertex for the edge&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; mst_edges, total_cost, all(visited)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Time Complexity&lt;/p&gt;</description></item></channel></rss>

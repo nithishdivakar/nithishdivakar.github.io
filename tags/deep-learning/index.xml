@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Deep-Learning on DAXPY</title><link>https://daxpy.xyz/tags/deep-learning/</link><description>Recent content in Deep-Learning on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 24 Oct 2021 05:04:51 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/deep-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Common Optimisers</title><link>https://daxpy.xyz/notes/common-optimisers/</link><pubDate>Sun, 24 Oct 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/common-optimisers/</guid><description>&lt;h1 id="common-optimisers">Common Optimisers&lt;/h1>
-&lt;p>$E$ is the loss function and $w$ is the model parameters;&lt;/p>
-&lt;h2 id="stochastic-gradient-descent">Stochastic Gradient Descent&lt;/h2>
-&lt;p>$$\begin{aligned}
-w_{t+1}&amp;amp;= w_t - \alpha \nabla E(w_t)\end{aligned}$$&lt;/p>
-&lt;h2 id="sgd-with-momentum">SGD with Momentum&lt;/h2>
-&lt;p>&lt;em>Use gradient to update velocity/direction of a particle instead of only updating its position&lt;/em>&lt;/p>
-&lt;p>$$\begin{aligned}
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Deep-Learning on DAXPY</title><link>https://daxpy.xyz/tags/deep-learning/</link><description>Recent content in Deep-Learning on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 24 Oct 2021 05:04:51 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/deep-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Common Optimisers</title><link>https://daxpy.xyz/notes/common-optimisers/</link><pubDate>Sun, 24 Oct 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/common-optimisers/</guid><description>&lt;h1 id="common-optimisers"&gt;Common Optimisers&lt;/h1&gt;
+&lt;p&gt;$E$ is the loss function and $w$ is the model parameters;&lt;/p&gt;
+&lt;h2 id="stochastic-gradient-descent"&gt;Stochastic Gradient Descent&lt;/h2&gt;
+&lt;p&gt;$$\begin{aligned}
+w_{t+1}&amp;amp;= w_t - \alpha \nabla E(w_t)\end{aligned}$$&lt;/p&gt;
+&lt;h2 id="sgd-with-momentum"&gt;SGD with Momentum&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Use gradient to update velocity/direction of a particle instead of only updating its position&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;$$\begin{aligned}
 m_{t+1} &amp;amp;= \eta m_t + \alpha \nabla E(w_t)
 \\
 w_{t+1}&amp;amp;= w_t - m_{t+1}
 \end{aligned}$$
 This results in equivalent single update as
-$$w_{t+1}= w_t - \alpha \nabla E(w_t) - \eta m_{t}$$&lt;/p></description></item><item><title>Focal Loss</title><link>https://daxpy.xyz/notes/2021-10-10-focal-loss/</link><pubDate>Sun, 10 Oct 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2021-10-10-focal-loss/</guid><description>&lt;h1 id="focal-loss">Focal Loss&lt;/h1>
-&lt;p>For binary classification problem, the standard cross entropy loss is given by&lt;/p>
-&lt;p>$$CE(p,y_t)=\begin{cases}-\log(p)&amp;amp;y_t=1
+$$w_{t+1}= w_t - \alpha \nabla E(w_t) - \eta m_{t}$$&lt;/p&gt;</description></item><item><title>Focal Loss</title><link>https://daxpy.xyz/notes/2021-10-10-focal-loss/</link><pubDate>Sun, 10 Oct 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2021-10-10-focal-loss/</guid><description>&lt;h1 id="focal-loss"&gt;Focal Loss&lt;/h1&gt;
+&lt;p&gt;For binary classification problem, the standard cross entropy loss is given by&lt;/p&gt;
+&lt;p&gt;$$CE(p,y_t)=\begin{cases}-\log(p)&amp;amp;y_t=1
 \\
--\log(1-p)&amp;amp;else\end{cases}$$&lt;/p>
-&lt;p>We can simplify this to $CE(p_t) = -\log(p_t)$ if we define
+-\log(1-p)&amp;amp;else\end{cases}$$&lt;/p&gt;
+&lt;p&gt;We can simplify this to $CE(p_t) = -\log(p_t)$ if we define
 $$p_t \mathop{\mathrm{\triangleq}}
 \begin{cases}p&amp;amp;y_t=1
 \\
-1-p&amp;amp;else\end{cases}$$&lt;/p>
-&lt;p>What if there is a huge imbalance between no of positive and negative samples? The standard way of fixing this would be to add a balancing term $\alpha$ which is derived from inverse class frequencies. Let&lt;/p>
-&lt;p>$$\alpha_t \mathop{\mathrm{\triangleq}}\begin{cases}\alpha&amp;amp;y_t=1\\1-\alpha&amp;amp;else\end{cases}$$&lt;/p></description></item></channel></rss>
+1-p&amp;amp;else\end{cases}$$&lt;/p&gt;
+&lt;p&gt;What if there is a huge imbalance between no of positive and negative samples? The standard way of fixing this would be to add a balancing term $\alpha$ which is derived from inverse class frequencies. Let&lt;/p&gt;
+&lt;p&gt;$$\alpha_t \mathop{\mathrm{\triangleq}}\begin{cases}\alpha&amp;amp;y_t=1\\1-\alpha&amp;amp;else\end{cases}$$&lt;/p&gt;</description></item></channel></rss>

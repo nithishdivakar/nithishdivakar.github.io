@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Stack on DAXPY</title><link>https://daxpy.xyz/tags/stack/</link><description>Recent content in Stack on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/stack/index.xml" rel="self" type="application/rss+xml"/><item><title>Asteroid Collision</title><link>https://daxpy.xyz/notes_collection/lc_notes/16a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/16a/</guid><description>&lt;h2 id="asteroid-collision-lc735"&gt;Asteroid Collision [LC#735]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We are given an array asteroids of integers representing asteroids in a row. The indices of the asteriod in the array represent their relative position in space. For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.&lt;/p&gt;
+&lt;p&gt;Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.&lt;/p&gt;</description></item><item><title>Longest Valid Parentheses</title><link>https://daxpy.xyz/notes_collection/lc_notes/23a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/23a/</guid><description>&lt;h2 id="longest-valid-parentheses-lc32"&gt;Longest Valid Parentheses [LC32]&lt;/h2&gt;
+&lt;p&gt;Given a string containing just the characters &amp;lsquo;(&amp;rsquo; and &amp;lsquo;)&amp;rsquo;, return the length of the longest valid (well-formed) parentheses
+substring&lt;/p&gt;
+&lt;h3 id="using-stack"&gt;Using stack&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;longest_valid_parentheses&lt;/span&gt;(self, s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(len(s)):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; s[i] &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;(&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(i)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pop()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; stack:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(ans, i &lt;span style="color:#f92672"&gt;-&lt;/span&gt; stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(i)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; ans
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time Complexity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$T(n) = O(n)$ and $S(n) = O(n)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="using-2-pointers"&gt;Using 2 pointers&lt;/h3&gt;
+&lt;p&gt;One of the passes will catch all the longest substring. Check the counter comparison condition and order of the comparisons.&lt;/p&gt;</description></item><item><title>Valid Parenthesis String</title><link>https://daxpy.xyz/notes_collection/lc_notes/23b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/23b/</guid><description>&lt;h2 id="valid-parenthesis-string-lc678"&gt;Valid Parenthesis String [LC#678]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given a string s containing only three types of characters: &lt;code&gt;'('&lt;/code&gt;, &lt;code&gt;')'&lt;/code&gt; and &lt;code&gt;'*'&lt;/code&gt;, return true if s is valid. The string is valid if it is a valid paranthesised string where any &lt;code&gt;'*'&lt;/code&gt; could be treated as &lt;code&gt;'('&lt;/code&gt; or &lt;code&gt;')'&lt;/code&gt; or empty string.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;there is a 2 stacks approach where one stack is used to store indices of &lt;code&gt;'('&lt;/code&gt; and match with the corresponding &lt;code&gt;')'&lt;/code&gt; while the other maintains indices of &lt;code&gt;'*'&lt;/code&gt;.&lt;/p&gt;</description></item></channel></rss>

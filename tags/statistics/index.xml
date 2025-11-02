@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Statistics on DAXPY</title><link>https://daxpy.xyz/tags/statistics/</link><description>Recent content in Statistics on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 17 Mar 2024 21:44:15 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/statistics/index.xml" rel="self" type="application/rss+xml"/><item><title>Sampling in a Sphere</title><link>https://daxpy.xyz/posts/sampling-in-a-sphere/</link><pubDate>Sun, 17 Mar 2024 21:44:15 +0530</pubDate><guid>https://daxpy.xyz/posts/sampling-in-a-sphere/</guid><description>&lt;h1 id="sampling-in-a-sphere">Sampling in a Sphere&lt;/h1>
-&lt;p>Understanding how to generate a uniform sample of points inside a sphere takes us through a few interesting topics. So let begin with the end in mind.&lt;/p>
-&lt;p>The following algorithm generates a uniform sample of points inside sphere in n dimensions.&lt;/p>
-&lt;p>$$u_1, \ldots, u_{n+2} \sim \mathcal{N}(0,1)$$
-$$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$&lt;/p>
-&lt;p>There is a lot to unpack here.&lt;/p>
-&lt;ul>
-&lt;li>Why are we sampling from a normal distribution to get a uniform distribution?&lt;/li>
-&lt;li>Why $n+2$ ?&lt;/li>
-&lt;li>Why are we dropping 2 coordinates?&lt;/li>
-&lt;/ul>
-&lt;h2 id="what-is-inside-a-sphere">What is inside a Sphere?&lt;/h2>
-&lt;p>A sphere is defined as a set of points which are equidistant from a point known as center. For this article, we mostly deal with unit spheres. A unit n-sphere with center at origin can be defined as&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Statistics on DAXPY</title><link>https://daxpy.xyz/tags/statistics/</link><description>Recent content in Statistics on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sun, 17 Mar 2024 21:44:15 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/statistics/index.xml" rel="self" type="application/rss+xml"/><item><title>Sampling in a Sphere</title><link>https://daxpy.xyz/posts/sampling-in-a-sphere/</link><pubDate>Sun, 17 Mar 2024 21:44:15 +0530</pubDate><guid>https://daxpy.xyz/posts/sampling-in-a-sphere/</guid><description>&lt;h1 id="sampling-in-a-sphere"&gt;Sampling in a Sphere&lt;/h1&gt;
+&lt;p&gt;Understanding how to generate a uniform sample of points inside a sphere takes us through a few interesting topics. So let begin with the end in mind.&lt;/p&gt;
+&lt;p&gt;The following algorithm generates a uniform sample of points inside sphere in n dimensions.&lt;/p&gt;
+&lt;p&gt;$$u_1, \ldots, u_{n+2} \sim \mathcal{N}(0,1)$$
+$$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$&lt;/p&gt;
+&lt;p&gt;There is a lot to unpack here.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Why are we sampling from a normal distribution to get a uniform distribution?&lt;/li&gt;
+&lt;li&gt;Why $n+2$ ?&lt;/li&gt;
+&lt;li&gt;Why are we dropping 2 coordinates?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="what-is-inside-a-sphere"&gt;What is inside a Sphere?&lt;/h2&gt;
+&lt;p&gt;A sphere is defined as a set of points which are equidistant from a point known as center. For this article, we mostly deal with unit spheres. A unit n-sphere with center at origin can be defined as&lt;/p&gt;</description></item></channel></rss>

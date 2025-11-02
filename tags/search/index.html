@@ -1,7 +1,13 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>Search | DAXPY</title><link rel=stylesheet href=/css/main.min.893c9340c957513598581780adb1395d937fd4885954ab6c67536bd4c77301a6.css integrity="sha256-iTyTQMlXUTWYWBeArbE5XZN/1IhZVKtsZ1Nr1MdzAaY=" crossorigin=anonymous><script src=/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js integrity="sha256-I80MfYNyY7nq65buLZzPopadqj+gD6HB/ocBqbhyUaE=" crossorigin=anonymous></script></head><body><header><nav><ul><li><a class=text_secondary href=https://daxpy.xyz/>DAXPY</a></li><li>|</li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/stories/>Stories</a></li><li><a href=/about>About</a></li></ul></nav></header><main><br><span class=black>&bull;</span>
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>Search | DAXPY</title><link rel=stylesheet href=/css/main.min.09b566cf287e6fb5c0477b301eeb6144854b92718d35549d0fa0f150a67136eb.css integrity="sha256-CbVmzyh+b7XAR3swHuthRIVLknGNNVSdD6DxUKZxNus=" crossorigin=anonymous><script src=/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js integrity="sha256-I80MfYNyY7nq65buLZzPopadqj+gD6HB/ocBqbhyUaE=" crossorigin=anonymous></script></head><body><header><nav><ul><li><a class=text_secondary href=https://daxpy.xyz/>DAXPY</a></li><li>|</li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/stories/>Stories</a></li><li><a href=/about>About</a></li></ul></nav></header><main><br><span class=black>&bull;</span>
 <a href=#algorithms>#algorithms<small>(4)</small>
 </a><span class=black>&bull;</span>
 <a href=#applied-ml>#applied-ml<small>(1)</small>
+</a><span class=black>&bull;</span>
+<a href=#bfs>#bfs<small>(6)</small>
+</a><span class=black>&bull;</span>
+<a href=#binary%20search>#binary search<small>(7)</small>
+</a><span class=black>&bull;</span>
+<a href=#binary%20tree>#binary tree<small>(2)</small>
 </a><span class=black>&bull;</span>
 <a href=#computational-graph>#computational-graph<small>(3)</small>
 </a><span class=black>&bull;</span>
@@ -9,13 +15,47 @@
 </a><span class=black>&bull;</span>
 <a href=#deep-learning>#deep-learning<small>(2)</small>
 </a><span class=black>&bull;</span>
+<a href=#dfs>#dfs<small>(1)</small>
+</a><span class=black>&bull;</span>
+<a href=#dijkstra%20sssp>#dijkstra sssp<small>(2)</small>
+</a><span class=black>&bull;</span>
 <a href=#distributed-computing>#distributed-computing<small>(1)</small>
 </a><span class=black>&bull;</span>
 <a href=#distributed-systems>#distributed-systems<small>(1)</small>
 </a><span class=black>&bull;</span>
+<a href=#dp>#dp<small>(6)</small>
+</a><span class=black>&bull;</span>
+<a href=#dsu>#dsu<small>(2)</small>
+</a><span class=black>&bull;</span>
+<a href=#eulerian%20path>#eulerian path<small>(1)</small>
+</a><span class=black>&bull;</span>
+<a href=#fenwick%20trees>#fenwick trees<small>(1)</small>
+</a><span class=black>&bull;</span>
+<a href=#greedy>#greedy<small>(8)</small>
+</a><span class=black>&bull;</span>
+<a href=#heap>#heap<small>(1)</small>
+</a><span class=black>&bull;</span>
+<a href=#intervals>#intervals<small>(5)</small>
+</a><span class=black>&bull;</span>
+<a href=#knapsack>#knapsack<small>(2)</small>
+</a><span class=black>&bull;</span>
+<a href=#line%20sweep>#line sweep<small>(4)</small>
+</a><span class=black>&bull;</span>
+<a href=#linked%20list>#linked list<small>(7)</small>
+</a><span class=black>&bull;</span>
 <a href=#machine-learning>#machine-learning<small>(11)</small>
 </a><span class=black>&bull;</span>
+<a href=#monotonic%20stack>#monotonic stack<small>(5)</small>
+</a><span class=black>&bull;</span>
+<a href=#mst>#mst<small>(3)</small>
+</a><span class=black>&bull;</span>
 <a href=#optimisation>#optimisation<small>(4)</small>
+</a><span class=black>&bull;</span>
+<a href=#palindromes>#palindromes<small>(4)</small>
+</a><span class=black>&bull;</span>
+<a href=#permutation>#permutation<small>(2)</small>
+</a><span class=black>&bull;</span>
+<a href=#prefix%20sum>#prefix sum<small>(1)</small>
 </a><span class=black>&bull;</span>
 <a href=#probability>#probability<small>(3)</small>
 </a><span class=black>&bull;</span>
@@ -23,25 +63,98 @@
 </a><span class=black>&bull;</span>
 <a href=#ranking>#ranking<small>(1)</small>
 </a><span class=black>&bull;</span>
+<a href=#rmq>#rmq<small>(2)</small>
+</a><span class=black>&bull;</span>
 <a href=#search>#search<small>(1)</small>
+</a><span class=black>&bull;</span>
+<a href=#segment%20trees>#segment trees<small>(1)</small>
+</a><span class=black>&bull;</span>
+<a href=#sliding%20window>#sliding window<small>(4)</small>
+</a><span class=black>&bull;</span>
+<a href=#stack>#stack<small>(3)</small>
 </a><span class=black>&bull;</span>
 <a href=#statistics>#statistics<small>(1)</small>
 </a><span class=black>&bull;</span>
-<a href=#stories>#stories<small>(2)</small></a><h2 id=algorithms style=margin-bottom:1rem>#algorithms</h2><div id=algorithms></div><span class="tiny green">[notes]</span>
+<a href=#stories>#stories<small>(2)</small>
+</a><span class=black>&bull;</span>
+<a href=#string>#string<small>(4)</small>
+</a><span class=black>&bull;</span>
+<a href=#sub%20sequence>#sub sequence<small>(2)</small>
+</a><span class=black>&bull;</span>
+<a href=#topological%20sort>#topological sort<small>(2)</small>
+</a><span class=black>&bull;</span>
+<a href=#trie>#trie<small>(1)</small>
+</a><span class=black>&bull;</span>
+<a href=#two%20pointers>#two pointers<small>(3)</small></a><h2 id=algorithms style=margin-bottom:1rem>#algorithms</h2><div id=algorithms></div><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/knapsack/>Knapsack</a><br><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/quick-select/>Quick Select</a><br><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/finding-median/>Finding Median</a><br><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/binary-search-problems/>Binary Search</a><br><h2 id=applied-ml style=margin-bottom:1rem>#applied-ml</h2><div id=applied-ml></div><span class="tiny green">[notes]</span>
-<a href=https://daxpy.xyz/notes/2021-04-13-014-movie-reviews-and-gradient-descent/>Movie Reviews and Gradient Descent</a><br><h2 id=computational-graph style=margin-bottom:1rem>#computational-graph</h2><div id=computational-graph></div><span class="tiny green">[notes]</span>
+<a href=https://daxpy.xyz/notes/2021-04-13-014-movie-reviews-and-gradient-descent/>Movie Reviews and Gradient Descent</a><br><h2 id=bfs style=margin-bottom:1rem>#bfs</h2><div id=bfs></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/35b/>01 Matrix</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/35c/>All Nodes Distance K in Binary Tree</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/40a01/>Cheapest Flights Within K Stops</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/84a03b/>Jump Game III</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/35a/>Shortest Path in Binary Matrix</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/75e/>Swim in Rising Water</a><br><h2 id="binary search" style=margin-bottom:1rem>#binary search</h2><div id="binary search"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/75a01/>Binary Search in Sorted Array</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/75a03/>Find Minimum in Rotated Sorted Array</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/75a02/>First and Last Position in a Sorted Array</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/75b/>Minimum Limit of Balls in a Bag</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/75d/>Split Array Largest Sum</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/75e/>Swim in Rising Water</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50d02/>Zero Array Transformation II</a><br><h2 id="binary tree" style=margin-bottom:1rem>#binary tree</h2><div id="binary tree"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/35c/>All Nodes Distance K in Binary Tree</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/30e01/>Check Completeness of a Binary Tree</a><br><h2 id=computational-graph style=margin-bottom:1rem>#computational-graph</h2><div id=computational-graph></div><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/gradient-through-concatenation/>Gradient Through Concatenation</a><br><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/2018-09-18-gradient-through-addition-with-bradcasting/>Gradient Through Addition with Broadcasting</a><br><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/differentiable-computations/>Differentiable Computations</a><br><h2 id=computer-vision style=margin-bottom:1rem>#computer-vision</h2><div id=computer-vision></div><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/canny-edge-detector/>Canny Edge detector</a><br><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/histogram-of-oriented-gradients/>Histogram of Oriented Gradients</a><br><h2 id=deep-learning style=margin-bottom:1rem>#deep-learning</h2><div id=deep-learning></div><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/common-optimisers/>Common Optimisers</a><br><span class="tiny green">[notes]</span>
-<a href=https://daxpy.xyz/notes/2021-10-10-focal-loss/>Focal Loss</a><br><h2 id=distributed-computing style=margin-bottom:1rem>#distributed-computing</h2><div id=distributed-computing></div><span class="tiny green">[notes]</span>
+<a href=https://daxpy.xyz/notes/2021-10-10-focal-loss/>Focal Loss</a><br><h2 id=dfs style=margin-bottom:1rem>#dfs</h2><div id=dfs></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/37c/>Reconstruct Itinerary</a><br><h2 id="dijkstra sssp" style=margin-bottom:1rem>#dijkstra sssp</h2><div id="dijkstra sssp"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/40a01/>Cheapest Flights Within K Stops</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/40a/>Dijkstra Algorithm</a><br><h2 id=distributed-computing style=margin-bottom:1rem>#distributed-computing</h2><div id=distributed-computing></div><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/reservoir-sampling/>Reservoir Sampling</a><br><h2 id=distributed-systems style=margin-bottom:1rem>#distributed-systems</h2><div id=distributed-systems></div><span class="tiny green">[links]</span>
-<a href=https://daxpy.xyz/links/2021-09-21-evolution-of-seach-engines/>Evolution of Search Engines</a><br><h2 id=machine-learning style=margin-bottom:1rem>#machine-learning</h2><div id=machine-learning></div><span class="tiny green">[posts]</span>
+<a href=https://daxpy.xyz/links/2021-09-21-evolution-of-seach-engines/>Evolution of Search Engines</a><br><h2 id=dp style=margin-bottom:1rem>#dp</h2><div id=dp></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/80d/>Distinct Subsequences</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/80b/>Edit Distances</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/80c/>Interleaving String</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/20e/>Sum of Good Subsequences</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/80a/>Target Sum</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/65a/>Word break</a><br><h2 id=dsu style=margin-bottom:1rem>#dsu</h2><div id=dsu></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/73c/>Making A Large Island</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/73a/>Number of Connected Components in an Undirected Graph</a><br><h2 id="eulerian path" style=margin-bottom:1rem>#eulerian path</h2><div id="eulerian path"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/37c/>Reconstruct Itinerary</a><br><h2 id="fenwick trees" style=margin-bottom:1rem>#fenwick trees</h2><div id="fenwick trees"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/90a/>Fenwick Trees and Prefix Sums</a><br><h2 id=greedy style=margin-bottom:1rem>#greedy</h2><div id=greedy></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/14b/>Best Time to Buy and Sell Stock</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/14b01/>Best Time to Buy and Sell Stock II</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/84a01/>Gas Station</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/84a03/>Jump Game</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/84a03a/>Jump Game II</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/84a02/>Max Chunks To Make Sorted</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50c/>Min Meeting Rooms</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50e/>Minimum Number of Arrows to Burst Balloons</a><br><h2 id=heap style=margin-bottom:1rem>#heap</h2><div id=heap></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/32a/>Median in a Stream</a><br><h2 id=intervals style=margin-bottom:1rem>#intervals</h2><div id=intervals></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50b/>Insert Interval</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50a/>Merge Intervals</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50c/>Min Meeting Rooms</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50e/>Minimum Number of Arrows to Burst Balloons</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50d03/>Smallest Range Covering Elements from K Lists</a><br><h2 id=knapsack style=margin-bottom:1rem>#knapsack</h2><div id=knapsack></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/87e01/>Coin Change</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/87e02/>Coin Change II</a><br><h2 id="line sweep" style=margin-bottom:1rem>#line sweep</h2><div id="line sweep"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50d/>Line Sweep Technique</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50d03/>Smallest Range Covering Elements from K Lists</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50d01/>Zero Array Transformation I</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/50d02/>Zero Array Transformation II</a><br><h2 id="linked list" style=margin-bottom:1rem>#linked list</h2><div id="linked list"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/18f/>Detecting a Cycle in Linked List</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/18g/>Implementing LRU Cache</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/18e/>Merge K Sorted Lists</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/18c/>Merging Two Sorted Linked Lists</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/18h/>Remove Nodes From Linked List</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/18b/>Remove Nth Node From End of List</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/18a/>Reverse Linked List</a><br><h2 id=machine-learning style=margin-bottom:1rem>#machine-learning</h2><div id=machine-learning></div><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/xgboost/>XGBoost</a><br><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/normalisation/>Normalisation Layers</a><br><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/variational-inference/>Variational Inference</a><br><span class="tiny green">[notes]</span>
@@ -52,17 +165,54 @@
 <a href=https://daxpy.xyz/notes/2021-10-10-focal-loss/>Focal Loss</a><br><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/softmax_classifier/>Softmax Classifier</a><br><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/linear_classifiers/>Linear Classifiers</a><br><span class="tiny green">[notes]</span>
-<a href=https://daxpy.xyz/notes/bayes_error/>Bayes Error</a><br><h2 id=optimisation style=margin-bottom:1rem>#optimisation</h2><div id=optimisation></div><span class="tiny green">[posts]</span>
+<a href=https://daxpy.xyz/notes/bayes_error/>Bayes Error</a><br><h2 id="monotonic stack" style=margin-bottom:1rem>#monotonic stack</h2><div id="monotonic stack"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/60c/>Daily Temperatures</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/60a/>Largest Rectangle in Histogram</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/60/>Monotonic Stack</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/18h/>Remove Nodes From Linked List</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/60b/>Sum of Subarray Minimums</a><br><h2 id=mst style=margin-bottom:1rem>#mst</h2><div id=mst></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/42a/>Kruskals algorithm</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/42a01/>Min Cost to Connect All Points</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/42b/>Prims Algorithm</a><br><h2 id=optimisation style=margin-bottom:1rem>#optimisation</h2><div id=optimisation></div><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/variational-inference/>Variational Inference</a><br><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/kkt-conditions/>KKT conditions and Lagrange multipliers</a><br><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/bfgs/>BFGS</a><br><span class="tiny green">[notes]</span>
-<a href=https://daxpy.xyz/notes/2022-01-04-newtons-method/>Newton's Method</a><br><h2 id=probability style=margin-bottom:1rem>#probability</h2><div id=probability></div><span class="tiny green">[posts]</span>
+<a href=https://daxpy.xyz/notes/2022-01-04-newtons-method/>Newton's Method</a><br><h2 id=palindromes style=margin-bottom:1rem>#palindromes</h2><div id=palindromes></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/22b/>Count Palindromic Substrings</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/22a/>Longest Palindromic Substring</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/22c/>Manacher Algorithm</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/22d/>Palindromic Partition</a><br><h2 id=permutation style=margin-bottom:1rem>#permutation</h2><div id=permutation></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/70a/>Next Permutation</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/70b/>Permutation Sequence</a><br><h2 id="prefix sum" style=margin-bottom:1rem>#prefix sum</h2><div id="prefix sum"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/90a/>Fenwick Trees and Prefix Sums</a><br><h2 id=probability style=margin-bottom:1rem>#probability</h2><div id=probability></div><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/sampling-in-a-sphere/>Sampling in a Sphere</a><br><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/variational-inference/>Variational Inference</a><br><span class="tiny green">[notes]</span>
 <a href=https://daxpy.xyz/notes/reservoir-sampling/>Reservoir Sampling</a><br><h2 id=probability-theory style=margin-bottom:1rem>#probability-theory</h2><div id=probability-theory></div><span class="tiny green">[links]</span>
 <a href=https://daxpy.xyz/links/2021-09-20-diffusion-models/>Diffusion Models</a><br><h2 id=ranking style=margin-bottom:1rem>#ranking</h2><div id=ranking></div><span class="tiny green">[notes]</span>
-<a href=https://daxpy.xyz/notes/2021-09-25-ranknet-and-lambdarank/>RankNet and LambdaRank</a><br><h2 id=search style=margin-bottom:1rem>#search</h2><div id=search></div><span class="tiny green">[notes]</span>
-<a href=https://daxpy.xyz/notes/2021-09-25-ranknet-and-lambdarank/>RankNet and LambdaRank</a><br><h2 id=statistics style=margin-bottom:1rem>#statistics</h2><div id=statistics></div><span class="tiny green">[posts]</span>
+<a href=https://daxpy.xyz/notes/2021-09-25-ranknet-and-lambdarank/>RankNet and LambdaRank</a><br><h2 id=rmq style=margin-bottom:1rem>#rmq</h2><div id=rmq></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/90a/>Fenwick Trees and Prefix Sums</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/90b/>Segment Trees</a><br><h2 id=search style=margin-bottom:1rem>#search</h2><div id=search></div><span class="tiny green">[notes]</span>
+<a href=https://daxpy.xyz/notes/2021-09-25-ranknet-and-lambdarank/>RankNet and LambdaRank</a><br><h2 id="segment trees" style=margin-bottom:1rem>#segment trees</h2><div id="segment trees"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/90b/>Segment Trees</a><br><h2 id="sliding window" style=margin-bottom:1rem>#sliding window</h2><div id="sliding window"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/27a/>Longest Substring Without Repeating Characters</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/27d/>Partition Labels</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/27b/>String Compression</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/27c/>Take K of Each Character From Left and Right</a><br><h2 id=stack style=margin-bottom:1rem>#stack</h2><div id=stack></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/16a/>Asteroid Collision</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/23a/>Longest Valid Parentheses</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/23b/>Valid Parenthesis String</a><br><h2 id=statistics style=margin-bottom:1rem>#statistics</h2><div id=statistics></div><span class="tiny green">[posts]</span>
 <a href=https://daxpy.xyz/posts/sampling-in-a-sphere/>Sampling in a Sphere</a><br><h2 id=stories style=margin-bottom:1rem>#stories</h2><div id=stories></div><span class="tiny green">[stories]</span>
 <a href=https://daxpy.xyz/stories/productivity-principles/>Productivity Principles</a><br><span class="tiny green">[stories]</span>
-<a href=https://daxpy.xyz/stories/logic-bulling/>Logic Bulling</a><br></main><footer><p>Found something useful here? pass it on; or tell me about it!<nav><ul><li><a href="https://drive.google.com/drive/folders/18LU6PKnxy8rDrAXhpiPXV2yOYlO_I8cF?usp=sharing">Resume</a></li><li><a href=https://daxpy.xyz/omnia_mea>Coding notes</a></li><li><a href=https://www.linkedin.com/in/ndivakar/>Linkedin</a></li></ul></nav><small><a href=#top>↑ Top of page</a></small></p></footer></body></html>
+<a href=https://daxpy.xyz/stories/logic-bulling/>Logic Bulling</a><br><h2 id=string style=margin-bottom:1rem>#string</h2><div id=string></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/80d/>Distinct Subsequences</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/80b/>Edit Distances</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/80c/>Interleaving String</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/02h01/>Reorganize String</a><br><h2 id="sub sequence" style=margin-bottom:1rem>#sub sequence</h2><div id="sub sequence"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/80d/>Distinct Subsequences</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/20e/>Sum of Good Subsequences</a><br><h2 id="topological sort" style=margin-bottom:1rem>#topological sort</h2><div id="topological sort"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/44a/>Find Eventual Safe States</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/44/>Topological Sort</a><br><h2 id=trie style=margin-bottom:1rem>#trie</h2><div id=trie></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/65a/>Word break</a><br><h2 id="two pointers" style=margin-bottom:1rem>#two pointers</h2><div id="two pointers"></div><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/25a/>Containers with Most Water</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/27a/>Longest Substring Without Repeating Characters</a><br><span class="tiny green">[notes_collection]</span>
+<a href=https://daxpy.xyz/notes_collection/lc_notes/27b/>String Compression</a><br></main><footer><p>Found something useful here? pass it on; or tell me about it!<nav><ul><li><a href="https://drive.google.com/drive/folders/18LU6PKnxy8rDrAXhpiPXV2yOYlO_I8cF?usp=sharing">Resume</a></li><li><a href=https://daxpy.xyz/omnia_mea>Coding notes</a></li><li><a href=https://www.linkedin.com/in/ndivakar/>Linkedin</a></li></ul></nav><small><a href=#top>↑ Top of page</a></small></p></footer></body></html>

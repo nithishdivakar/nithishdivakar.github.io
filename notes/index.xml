@@ -1,95 +1,95 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes on DAXPY</title><link>https://daxpy.xyz/notes/</link><description>Recent content in Notes on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 20 Oct 2023 05:52:32 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/notes/index.xml" rel="self" type="application/rss+xml"/><item><title>Knapsack</title><link>https://daxpy.xyz/notes/knapsack/</link><pubDate>Fri, 20 Oct 2023 05:52:32 +0530</pubDate><guid>https://daxpy.xyz/notes/knapsack/</guid><description>&lt;h1 id="knapsack">Knapsack&lt;/h1>
-&lt;p>Knapsack problems are probably the first introduction to many on problems where you are trying to optimize a dimension while constrained by another. Let&amp;rsquo;s look at it in depth.&lt;/p>
-&lt;p>You are given a metaphorical knapsack which atmost can carry $W$ weight items. You are also given $n$ items, each with its own weight $w_i$ and value $v_i$. We are asked to select a few items from this set so that the total weight is atmost $W$ while maximising the total value.&lt;/p></description></item><item><title>Gradient Through Concatenation</title><link>https://daxpy.xyz/notes/gradient-through-concatenation/</link><pubDate>Mon, 02 Oct 2023 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/gradient-through-concatenation/</guid><description>&lt;h1 id="gradient-through-concatenation">Gradient Through Concatenation&lt;/h1>
-&lt;p>Concatenation of vectors is a common operation in Deep Learning Networks. How can we compute derivative of the
-output in the computational graph?&lt;/p>
-&lt;p>We can write the operation as&lt;/p>
-&lt;p>$$z = x|y$$&lt;/p>
-&lt;p>Where $|$ is concat operator. We are interested in computing ${\partial z}/{\partial x}$ and ${\partial z}/{\partial y}$&lt;/p>
-&lt;p>Assuming $x\in \mathbb{R}^m$ and $x\in \mathbb{R}^n$. We can rewrite the concat operation as&lt;/p>
-&lt;p>$$z = \begin{bmatrix}I_m &amp;amp; 0\end{bmatrix}x+\begin{bmatrix}0 &amp;amp; I_n\end{bmatrix}y$$&lt;/p></description></item><item><title>Gradient Boosting</title><link>https://daxpy.xyz/notes/gradient-boosting/</link><pubDate>Thu, 14 Apr 2022 04:00:00 +0530</pubDate><guid>https://daxpy.xyz/notes/gradient-boosting/</guid><description>&lt;h1 id="gradient-boosting">Gradient Boosting&lt;/h1>
-&lt;p>The general framework of Boosting is learners are added in greedy manner to minimise loss.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes on DAXPY</title><link>https://daxpy.xyz/notes/</link><description>Recent content in Notes on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Fri, 20 Oct 2023 05:52:32 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/notes/index.xml" rel="self" type="application/rss+xml"/><item><title>Knapsack</title><link>https://daxpy.xyz/notes/knapsack/</link><pubDate>Fri, 20 Oct 2023 05:52:32 +0530</pubDate><guid>https://daxpy.xyz/notes/knapsack/</guid><description>&lt;h1 id="knapsack"&gt;Knapsack&lt;/h1&gt;
+&lt;p&gt;Knapsack problems are probably the first introduction to many on problems where you are trying to optimize a dimension while constrained by another. Let&amp;rsquo;s look at it in depth.&lt;/p&gt;
+&lt;p&gt;You are given a metaphorical knapsack which atmost can carry $W$ weight items. You are also given $n$ items, each with its own weight $w_i$ and value $v_i$. We are asked to select a few items from this set so that the total weight is atmost $W$ while maximising the total value.&lt;/p&gt;</description></item><item><title>Gradient Through Concatenation</title><link>https://daxpy.xyz/notes/gradient-through-concatenation/</link><pubDate>Mon, 02 Oct 2023 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/gradient-through-concatenation/</guid><description>&lt;h1 id="gradient-through-concatenation"&gt;Gradient Through Concatenation&lt;/h1&gt;
+&lt;p&gt;Concatenation of vectors is a common operation in Deep Learning Networks. How can we compute derivative of the
+output in the computational graph?&lt;/p&gt;
+&lt;p&gt;We can write the operation as&lt;/p&gt;
+&lt;p&gt;$$z = x|y$$&lt;/p&gt;
+&lt;p&gt;Where $|$ is concat operator. We are interested in computing ${\partial z}/{\partial x}$ and ${\partial z}/{\partial y}$&lt;/p&gt;
+&lt;p&gt;Assuming $x\in \mathbb{R}^m$ and $x\in \mathbb{R}^n$. We can rewrite the concat operation as&lt;/p&gt;
+&lt;p&gt;$$z = \begin{bmatrix}I_m &amp;amp; 0\end{bmatrix}x+\begin{bmatrix}0 &amp;amp; I_n\end{bmatrix}y$$&lt;/p&gt;</description></item><item><title>Gradient Boosting</title><link>https://daxpy.xyz/notes/gradient-boosting/</link><pubDate>Thu, 14 Apr 2022 04:00:00 +0530</pubDate><guid>https://daxpy.xyz/notes/gradient-boosting/</guid><description>&lt;h1 id="gradient-boosting"&gt;Gradient Boosting&lt;/h1&gt;
+&lt;p&gt;The general framework of Boosting is learners are added in greedy manner to minimise loss.
 $$F_t(x) = F_{t-1}(x) + f_t(x)$$
-At the $t^{th}$ step, we are interested in learning the function $f$ which minimised the loss. The value of loss function at this point is given by&lt;/p>
-&lt;p>$$\begin{aligned}
+At the $t^{th}$ step, we are interested in learning the function $f$ which minimised the loss. The value of loss function at this point is given by&lt;/p&gt;
+&lt;p&gt;$$\begin{aligned}
 L &amp;amp;= l(y,p+f(x))
 \\
 &amp;amp;=l(y,p) + \nabla_{p} l(y,p)f(x)
-\end{aligned}$$&lt;/p>
-&lt;p>The last step is from first order taylor series approximation of $l$.
-$$f(x) = f(a) + (x-a) f^{\prime}(a)$$&lt;/p></description></item><item><title>Attribute Selection in Decision Trees</title><link>https://daxpy.xyz/notes/attribute-selection-in-decision-trees/</link><pubDate>Thu, 14 Apr 2022 00:15:30 +0530</pubDate><guid>https://daxpy.xyz/notes/attribute-selection-in-decision-trees/</guid><description>&lt;h1 id="attribute-selection-in-decision-trees">Attribute Selection in Decision Trees&lt;/h1>
-&lt;p>For constructing a new node in decision tree, choosing which attribute to partition the data on is important. Choosing a less desirable attribute to split the data on may result in lower performance. Lets look into a few important measures which helps us find the best attribute.&lt;/p>
-&lt;h2 id="information-gain">Information Gain&lt;/h2>
-&lt;p>Information Gain is defined as amount of information gained about a random variable (outcome) from observing another (attribute).
-We can quantify information gain as difference in entropy when random variable is observed.&lt;/p></description></item><item><title>Reservoir Sampling</title><link>https://daxpy.xyz/notes/reservoir-sampling/</link><pubDate>Fri, 01 Apr 2022 04:00:00 +0530</pubDate><guid>https://daxpy.xyz/notes/reservoir-sampling/</guid><description>&lt;h1 id="reservoir-sampling">Reservoir Sampling&lt;/h1>
-&lt;p>How can you uniformly sample $k$ items from a stream?&lt;/p>
-&lt;p>Reservoir Sampling is used when you want a uniform sample from a stream. The length of the stream is not known before and the stream is large enough that we cannot look back or store everything.&lt;/p>
-&lt;p>The algorithm is simple.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Reservoir Sampling&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>reservoir[&lt;span style="color:#ae81ff">1&lt;/span>:k] &lt;span style="color:#f92672">=&lt;/span> stream[&lt;span style="color:#ae81ff">1&lt;/span>:k]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i&lt;span style="color:#f92672">=&lt;/span>k&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> to n
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> j &lt;span style="color:#f92672">=&lt;/span> random(&lt;span style="color:#ae81ff">1&lt;/span>,i)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> j &lt;span style="color:#f92672">&amp;lt;&lt;/span> k:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> reservoir[j] &lt;span style="color:#f92672">=&lt;/span> stream[i]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Let prove the above process does infact gives us a uniform sample.&lt;/p></description></item><item><title>Quick Select</title><link>https://daxpy.xyz/notes/quick-select/</link><pubDate>Mon, 14 Mar 2022 08:30:00 +0530</pubDate><guid>https://daxpy.xyz/notes/quick-select/</guid><description>&lt;h1 id="quick-select">Quick Select&lt;/h1>
-&lt;p>The core technique in quick sort is partition procedure. The partition procedure partitions the array into 2 segments such that for a choosen pivot element, one segment has all element smaller or equal and the other has all element larger than pivot.&lt;/p>
-&lt;p>The procedure itself has applications beyond quick sort like selecting the smallest $k$ elements if sorted order is not required.&lt;/p>
-&lt;p>There are 2 main techniques to implement quick select.&lt;/p></description></item><item><title>Canny Edge detector</title><link>https://daxpy.xyz/notes/canny-edge-detector/</link><pubDate>Sat, 12 Mar 2022 12:00:00 +0530</pubDate><guid>https://daxpy.xyz/notes/canny-edge-detector/</guid><description>&lt;h1 id="canny-edge-detector">Canny Edge detector&lt;/h1>
-&lt;p>Steps:&lt;/p>
-&lt;ul>
-&lt;li>Apply &lt;strong>Gaussian filtering&lt;/strong> to smooth out noise in the image&lt;/li>
-&lt;li>&lt;strong>Compute gradients&lt;/strong>: Compute horizontal($G_x$) and vertical gradients ($G_y$). Magnitude and direction of gradients can then be compluted as
+\end{aligned}$$&lt;/p&gt;
+&lt;p&gt;The last step is from first order taylor series approximation of $l$.
+$$f(x) = f(a) + (x-a) f^{\prime}(a)$$&lt;/p&gt;</description></item><item><title>Attribute Selection in Decision Trees</title><link>https://daxpy.xyz/notes/attribute-selection-in-decision-trees/</link><pubDate>Thu, 14 Apr 2022 00:15:30 +0530</pubDate><guid>https://daxpy.xyz/notes/attribute-selection-in-decision-trees/</guid><description>&lt;h1 id="attribute-selection-in-decision-trees"&gt;Attribute Selection in Decision Trees&lt;/h1&gt;
+&lt;p&gt;For constructing a new node in decision tree, choosing which attribute to partition the data on is important. Choosing a less desirable attribute to split the data on may result in lower performance. Lets look into a few important measures which helps us find the best attribute.&lt;/p&gt;
+&lt;h2 id="information-gain"&gt;Information Gain&lt;/h2&gt;
+&lt;p&gt;Information Gain is defined as amount of information gained about a random variable (outcome) from observing another (attribute).
+We can quantify information gain as difference in entropy when random variable is observed.&lt;/p&gt;</description></item><item><title>Reservoir Sampling</title><link>https://daxpy.xyz/notes/reservoir-sampling/</link><pubDate>Fri, 01 Apr 2022 04:00:00 +0530</pubDate><guid>https://daxpy.xyz/notes/reservoir-sampling/</guid><description>&lt;h1 id="reservoir-sampling"&gt;Reservoir Sampling&lt;/h1&gt;
+&lt;p&gt;How can you uniformly sample $k$ items from a stream?&lt;/p&gt;
+&lt;p&gt;Reservoir Sampling is used when you want a uniform sample from a stream. The length of the stream is not known before and the stream is large enough that we cannot look back or store everything.&lt;/p&gt;
+&lt;p&gt;The algorithm is simple.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Reservoir Sampling&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;reservoir[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:k] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stream[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:k]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i&lt;span style="color:#f92672"&gt;=&lt;/span&gt;k&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; to n
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; j &lt;span style="color:#f92672"&gt;=&lt;/span&gt; random(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;,i)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; j &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; k:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; reservoir[j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stream[i]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let prove the above process does infact gives us a uniform sample.&lt;/p&gt;</description></item><item><title>Quick Select</title><link>https://daxpy.xyz/notes/quick-select/</link><pubDate>Mon, 14 Mar 2022 08:30:00 +0530</pubDate><guid>https://daxpy.xyz/notes/quick-select/</guid><description>&lt;h1 id="quick-select"&gt;Quick Select&lt;/h1&gt;
+&lt;p&gt;The core technique in quick sort is partition procedure. The partition procedure partitions the array into 2 segments such that for a choosen pivot element, one segment has all element smaller or equal and the other has all element larger than pivot.&lt;/p&gt;
+&lt;p&gt;The procedure itself has applications beyond quick sort like selecting the smallest $k$ elements if sorted order is not required.&lt;/p&gt;
+&lt;p&gt;There are 2 main techniques to implement quick select.&lt;/p&gt;</description></item><item><title>Canny Edge detector</title><link>https://daxpy.xyz/notes/canny-edge-detector/</link><pubDate>Sat, 12 Mar 2022 12:00:00 +0530</pubDate><guid>https://daxpy.xyz/notes/canny-edge-detector/</guid><description>&lt;h1 id="canny-edge-detector"&gt;Canny Edge detector&lt;/h1&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Apply &lt;strong&gt;Gaussian filtering&lt;/strong&gt; to smooth out noise in the image&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compute gradients&lt;/strong&gt;: Compute horizontal($G_x$) and vertical gradients ($G_y$). Magnitude and direction of gradients can then be compluted as
 $$\begin{aligned}
 m &amp;amp;= \sqrt{G_x^2+G_y^2}
 &amp;amp;
 \theta &amp;amp;= \tan ^{-1}\left(\frac{G_y}{G_x}\right)
 \end{aligned}$$
-The angle is then rounded off so that $\theta \in {0,45,90,135}$&lt;/li>
-&lt;li>&lt;strong>Non-maximal suppression&lt;/strong>: For each pixel $(m,\theta)$, if its gradient intensity is maximum among the pixels in negative and positive gradient direction, the value is preserved. Otherwise it is suppressed.&lt;/li>
-&lt;li>&lt;strong>Double thresholding&lt;/strong>
+The angle is then rounded off so that $\theta \in {0,45,90,135}$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Non-maximal suppression&lt;/strong&gt;: For each pixel $(m,\theta)$, if its gradient intensity is maximum among the pixels in negative and positive gradient direction, the value is preserved. Otherwise it is suppressed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Double thresholding&lt;/strong&gt;
 $$\begin{aligned}
 m \geq t_h &amp;amp;\implies \text{strong edge pixel}
 \\
 t_l &amp;lt; m &amp;lt; t_h &amp;amp;\implies \text{weak edge pixel}
 \\
 m \leq t_l &amp;amp;\implies \text{suppress}
-\end{aligned}$$&lt;/li>
-&lt;li>&lt;strong>Edge tracking by hysteresis&lt;/strong>: All strong pixels are selected as true edge pixels. All the weak pixels which has a strong pixel in its $8 \times 8$ neighbourhood are also selected as a true edge. All the others are removed.&lt;/li>
-&lt;/ul></description></item><item><title>Histogram of Oriented Gradients</title><link>https://daxpy.xyz/notes/histogram-of-oriented-gradients/</link><pubDate>Sat, 12 Mar 2022 00:00:30 +0530</pubDate><guid>https://daxpy.xyz/notes/histogram-of-oriented-gradients/</guid><description>&lt;h1 id="histogram-of-oriented-gradients">Histogram of Oriented Gradients&lt;/h1>
-&lt;p>Steps to compute HoG of an image.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Gradients computation:&lt;/strong> Compute image gradients $G_x$ and $G_y$ by convolving the image with $[−1,0,1]$ and $[−1,0,1]^{T}$ respectively&lt;/li>
-&lt;li>&lt;strong>Magnitude and direction&lt;/strong> of each pixel
+\end{aligned}$$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Edge tracking by hysteresis&lt;/strong&gt;: All strong pixels are selected as true edge pixels. All the weak pixels which has a strong pixel in its $8 \times 8$ neighbourhood are also selected as a true edge. All the others are removed.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Histogram of Oriented Gradients</title><link>https://daxpy.xyz/notes/histogram-of-oriented-gradients/</link><pubDate>Sat, 12 Mar 2022 00:00:30 +0530</pubDate><guid>https://daxpy.xyz/notes/histogram-of-oriented-gradients/</guid><description>&lt;h1 id="histogram-of-oriented-gradients"&gt;Histogram of Oriented Gradients&lt;/h1&gt;
+&lt;p&gt;Steps to compute HoG of an image.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Gradients computation:&lt;/strong&gt; Compute image gradients $G_x$ and $G_y$ by convolving the image with $[−1,0,1]$ and $[−1,0,1]^{T}$ respectively&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Magnitude and direction&lt;/strong&gt; of each pixel
 $$\begin{aligned}
 m &amp;amp;= \sqrt{G_x^2+G_y^2}
 &amp;amp;
 \theta &amp;amp;= \tan^{-1}\left(\frac{G_y}{G_x}\right)
-\end{aligned}$$&lt;/li>
-&lt;li>For each cell in the image ($8 \times 16$)
-&lt;ul>
-&lt;li>&lt;strong>Oriented histogram&lt;/strong> The histogram is created by binning pixel orientation $\theta$&lt;/li>
-&lt;li>For a consecutive bin pair $(\theta_l,\theta_r)$ where a pixel $(m,\theta)$ falls, the histogram is populated as
+\end{aligned}$$&lt;/li&gt;
+&lt;li&gt;For each cell in the image ($8 \times 16$)
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Oriented histogram&lt;/strong&gt; The histogram is created by binning pixel orientation $\theta$&lt;/li&gt;
+&lt;li&gt;For a consecutive bin pair $(\theta_l,\theta_r)$ where a pixel $(m,\theta)$ falls, the histogram is populated as
 $$\begin{aligned}
 V(\theta_l) &amp;amp;= \frac{(\theta-\theta_L)}{|bin|}m
 &amp;amp;
 V(\theta_r) &amp;amp;= \frac{(\theta_r-\theta)}{|bin|}m
-\end{aligned}$$&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Normalise histograms&lt;/strong>
-Combine(concatenate) histograms of neighbouring $2 \times 2$ overlapping cells blocks and $\ell_2$ normalise this histogram. This step is to prevent lighting based variations in the image on the histogram&lt;/li>
-&lt;/ul></description></item><item><title>KKT conditions and Lagrange multipliers</title><link>https://daxpy.xyz/notes/kkt-conditions/</link><pubDate>Fri, 11 Mar 2022 06:15:30 +0530</pubDate><guid>https://daxpy.xyz/notes/kkt-conditions/</guid><description>&lt;h1 id="karush-kuhn-tucker-conditions">Karush-Kuhn-Tucker conditions&lt;/h1>
-&lt;p>A typical constrained optimisation problem is as follows.
+\end{aligned}$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normalise histograms&lt;/strong&gt;
+Combine(concatenate) histograms of neighbouring $2 \times 2$ overlapping cells blocks and $\ell_2$ normalise this histogram. This step is to prevent lighting based variations in the image on the histogram&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>KKT conditions and Lagrange multipliers</title><link>https://daxpy.xyz/notes/kkt-conditions/</link><pubDate>Fri, 11 Mar 2022 06:15:30 +0530</pubDate><guid>https://daxpy.xyz/notes/kkt-conditions/</guid><description>&lt;h1 id="karush-kuhn-tucker-conditions"&gt;Karush-Kuhn-Tucker conditions&lt;/h1&gt;
+&lt;p&gt;A typical constrained optimisation problem is as follows.
 $$\begin{aligned}
 \min_{x\in\mathbb{R}^n}&amp;amp;f(x)
 \\
 s.t.~h_i(x) &amp;amp;= 0
 \\
 g_j(x) &amp;amp;\leq 0
-\end{aligned}$$&lt;/p>
-&lt;h2 id="karush-kuhn-tucker-conditions-1">Karush-Kuhn-Tucker conditions&lt;/h2>
-&lt;p>If the negative of the gradient (of $f$) has any component along an equality constraint $h(x)=0$, then we can take small steps along this surface to reduce $f(x)$.&lt;/p>
-&lt;p>Since $\nabla h(x)$, the gradient of the equality constraint is always perpendicular to the constraint surface $h(x)=0$, at optimum, $-\nabla f(x)$ should be either parallel or anti-parallel to $\nabla h(x)$
+\end{aligned}$$&lt;/p&gt;
+&lt;h2 id="karush-kuhn-tucker-conditions-1"&gt;Karush-Kuhn-Tucker conditions&lt;/h2&gt;
+&lt;p&gt;If the negative of the gradient (of $f$) has any component along an equality constraint $h(x)=0$, then we can take small steps along this surface to reduce $f(x)$.&lt;/p&gt;
+&lt;p&gt;Since $\nabla h(x)$, the gradient of the equality constraint is always perpendicular to the constraint surface $h(x)=0$, at optimum, $-\nabla f(x)$ should be either parallel or anti-parallel to $\nabla h(x)$
 $$-\nabla f(x) = \mu \nabla h(x)$$
 A similar argument can be made for inequality constraints. These form KKT conditions. So at an optimum point $x^\ast$ we have,
 $$\begin{aligned}
@@ -102,18 +102,18 @@ g_j(x^\ast) &amp;amp;\leq 0
 \lambda_j &amp;amp;\geq 0
 \end{aligned}$$
 $$\nabla f(x^\ast) +\sum_{i} \mu_i\nabla h(x^\ast) + \sum_j \lambda_j \nabla g_j(x^\ast)= 0$$
-These are the KKT conditions for constrained optimisation.&lt;/p></description></item><item><title>BFGS</title><link>https://daxpy.xyz/notes/bfgs/</link><pubDate>Fri, 11 Mar 2022 00:15:30 +0530</pubDate><guid>https://daxpy.xyz/notes/bfgs/</guid><description>&lt;h1 id="bfgs">BFGS&lt;/h1>
-&lt;h2 id="newtons-method">Newton&amp;rsquo;s Method&lt;/h2>
-&lt;p>$$\begin{aligned}
+These are the KKT conditions for constrained optimisation.&lt;/p&gt;</description></item><item><title>BFGS</title><link>https://daxpy.xyz/notes/bfgs/</link><pubDate>Fri, 11 Mar 2022 00:15:30 +0530</pubDate><guid>https://daxpy.xyz/notes/bfgs/</guid><description>&lt;h1 id="bfgs"&gt;BFGS&lt;/h1&gt;
+&lt;h2 id="newtons-method"&gt;Newton&amp;rsquo;s Method&lt;/h2&gt;
+&lt;p&gt;$$\begin{aligned}
 x_{k+1} &amp;amp;= x_k - [H(x_k)]^{-1}\nabla f(x_k)^\intercal
-\end{aligned}$$&lt;/p>
-&lt;h2 id="quasi-newtons-method">Quasi Newton&amp;rsquo;s Method&lt;/h2>
-&lt;p>$$\begin{aligned}
+\end{aligned}$$&lt;/p&gt;
+&lt;h2 id="quasi-newtons-method"&gt;Quasi Newton&amp;rsquo;s Method&lt;/h2&gt;
+&lt;p&gt;$$\begin{aligned}
 x_{k+1} &amp;amp;= x_k - \alpha_kS_k {\nabla f(x_k)}^{T}
-\end{aligned}$$&lt;/p>
-&lt;p>If $S_k$ is inverse of Hessian, then method is Newton&amp;rsquo;s iteration; if $S_k=I$, then it is steepest descent&lt;/p>
-&lt;h2 id="bfgs-1">BFGS&lt;/h2>
-&lt;p>BFGS is a quasi newtons method where we approximate inverse of Hessian by $B_k$. The search direction $p_k$ is determined by solving
+\end{aligned}$$&lt;/p&gt;
+&lt;p&gt;If $S_k$ is inverse of Hessian, then method is Newton&amp;rsquo;s iteration; if $S_k=I$, then it is steepest descent&lt;/p&gt;
+&lt;h2 id="bfgs-1"&gt;BFGS&lt;/h2&gt;
+&lt;p&gt;BFGS is a quasi newtons method where we approximate inverse of Hessian by $B_k$. The search direction $p_k$ is determined by solving
 $$B_kp_k = -\nabla f(x_k)$$
 A line search is performed in this search direction to find next point $x_{k+1}$ by minimising $f(x_k+\gamma p_k)$. The approximation to hessian is then updated as
 $$\begin{aligned}
@@ -126,79 +126,79 @@ u_k &amp;amp;= \nabla f(x_{k+1})-\nabla f(x_k)
 v_k &amp;amp;= B_kp_k
 \\
 \beta_k &amp;amp;= \frac{-1}{p_k^\intercal B_kp_k}
-\end{aligned}$$&lt;/p></description></item><item><title>Bias and Variance</title><link>https://daxpy.xyz/notes/bias-and-variance/</link><pubDate>Thu, 10 Mar 2022 10:15:30 +0530</pubDate><guid>https://daxpy.xyz/notes/bias-and-variance/</guid><description>&lt;h1 id="bias-and-variance">Bias and Variance&lt;/h1>
-&lt;p>A training set is only a subset of the population of data. Bias-variance trade-off talks about characteristics of predictions from the same algorithm if we use different subsets of the population as training set.&lt;/p>
-&lt;p>&lt;strong>Bias&lt;/strong> is difference between true value and average predictions from model trained on different training set.&lt;/p>
-&lt;p>&lt;strong>Variance&lt;/strong> is an estimate of how much the average prediction varies when we change the training set.&lt;/p></description></item><item><title>Newton's Method</title><link>https://daxpy.xyz/notes/2022-01-04-newtons-method/</link><pubDate>Tue, 04 Jan 2022 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2022-01-04-newtons-method/</guid><description>&lt;h1 id="newtons-method">Newton&amp;rsquo;s Method&lt;/h1>
-&lt;p>To derive newton&amp;rsquo;s method, we simply have to find the optimum point from second order Taylor series expansion of $f(x)$
+\end{aligned}$$&lt;/p&gt;</description></item><item><title>Bias and Variance</title><link>https://daxpy.xyz/notes/bias-and-variance/</link><pubDate>Thu, 10 Mar 2022 10:15:30 +0530</pubDate><guid>https://daxpy.xyz/notes/bias-and-variance/</guid><description>&lt;h1 id="bias-and-variance"&gt;Bias and Variance&lt;/h1&gt;
+&lt;p&gt;A training set is only a subset of the population of data. Bias-variance trade-off talks about characteristics of predictions from the same algorithm if we use different subsets of the population as training set.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Bias&lt;/strong&gt; is difference between true value and average predictions from model trained on different training set.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Variance&lt;/strong&gt; is an estimate of how much the average prediction varies when we change the training set.&lt;/p&gt;</description></item><item><title>Newton's Method</title><link>https://daxpy.xyz/notes/2022-01-04-newtons-method/</link><pubDate>Tue, 04 Jan 2022 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2022-01-04-newtons-method/</guid><description>&lt;h1 id="newtons-method"&gt;Newton&amp;rsquo;s Method&lt;/h1&gt;
+&lt;p&gt;To derive newton&amp;rsquo;s method, we simply have to find the optimum point from second order Taylor series expansion of $f(x)$
 $$\begin{aligned}
 x_{k+1} &amp;amp;= x_k - [H(x_k)]^{-1}\nabla f(x_k)^\intercal
 \end{aligned}$$
-&lt;em>Derivation&lt;/em>: From a point $x_k$, we want to compute the best possible move $x_k+s$ to minimise $f$. Using taylor series expansion, we have
-$$f(x_k+s) = f(x_k) + s\nabla f(x_k) + \frac{s^2}{2!} H(x_k) = g(s)$$&lt;/p>
-&lt;p>$$\begin{aligned}
+&lt;em&gt;Derivation&lt;/em&gt;: From a point $x_k$, we want to compute the best possible move $x_k+s$ to minimise $f$. Using taylor series expansion, we have
+$$f(x_k+s) = f(x_k) + s\nabla f(x_k) + \frac{s^2}{2!} H(x_k) = g(s)$$&lt;/p&gt;
+&lt;p&gt;$$\begin{aligned}
 0 &amp;amp;= \nabla_s g(s) = \nabla f(x_k) + s H(x_k)
 \\
 s &amp;amp;= - H(x_k)^{-1} {\nabla f(x_k)}^\intercal
-\end{aligned}$$&lt;/p></description></item><item><title>Common Optimisers</title><link>https://daxpy.xyz/notes/common-optimisers/</link><pubDate>Sun, 24 Oct 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/common-optimisers/</guid><description>&lt;h1 id="common-optimisers">Common Optimisers&lt;/h1>
-&lt;p>$E$ is the loss function and $w$ is the model parameters;&lt;/p>
-&lt;h2 id="stochastic-gradient-descent">Stochastic Gradient Descent&lt;/h2>
-&lt;p>$$\begin{aligned}
-w_{t+1}&amp;amp;= w_t - \alpha \nabla E(w_t)\end{aligned}$$&lt;/p>
-&lt;h2 id="sgd-with-momentum">SGD with Momentum&lt;/h2>
-&lt;p>&lt;em>Use gradient to update velocity/direction of a particle instead of only updating its position&lt;/em>&lt;/p>
-&lt;p>$$\begin{aligned}
+\end{aligned}$$&lt;/p&gt;</description></item><item><title>Common Optimisers</title><link>https://daxpy.xyz/notes/common-optimisers/</link><pubDate>Sun, 24 Oct 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/common-optimisers/</guid><description>&lt;h1 id="common-optimisers"&gt;Common Optimisers&lt;/h1&gt;
+&lt;p&gt;$E$ is the loss function and $w$ is the model parameters;&lt;/p&gt;
+&lt;h2 id="stochastic-gradient-descent"&gt;Stochastic Gradient Descent&lt;/h2&gt;
+&lt;p&gt;$$\begin{aligned}
+w_{t+1}&amp;amp;= w_t - \alpha \nabla E(w_t)\end{aligned}$$&lt;/p&gt;
+&lt;h2 id="sgd-with-momentum"&gt;SGD with Momentum&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Use gradient to update velocity/direction of a particle instead of only updating its position&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;$$\begin{aligned}
 m_{t+1} &amp;amp;= \eta m_t + \alpha \nabla E(w_t)
 \\
 w_{t+1}&amp;amp;= w_t - m_{t+1}
 \end{aligned}$$
 This results in equivalent single update as
-$$w_{t+1}= w_t - \alpha \nabla E(w_t) - \eta m_{t}$$&lt;/p></description></item><item><title>Focal Loss</title><link>https://daxpy.xyz/notes/2021-10-10-focal-loss/</link><pubDate>Sun, 10 Oct 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2021-10-10-focal-loss/</guid><description>&lt;h1 id="focal-loss">Focal Loss&lt;/h1>
-&lt;p>For binary classification problem, the standard cross entropy loss is given by&lt;/p>
-&lt;p>$$CE(p,y_t)=\begin{cases}-\log(p)&amp;amp;y_t=1
+$$w_{t+1}= w_t - \alpha \nabla E(w_t) - \eta m_{t}$$&lt;/p&gt;</description></item><item><title>Focal Loss</title><link>https://daxpy.xyz/notes/2021-10-10-focal-loss/</link><pubDate>Sun, 10 Oct 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2021-10-10-focal-loss/</guid><description>&lt;h1 id="focal-loss"&gt;Focal Loss&lt;/h1&gt;
+&lt;p&gt;For binary classification problem, the standard cross entropy loss is given by&lt;/p&gt;
+&lt;p&gt;$$CE(p,y_t)=\begin{cases}-\log(p)&amp;amp;y_t=1
 \\
--\log(1-p)&amp;amp;else\end{cases}$$&lt;/p>
-&lt;p>We can simplify this to $CE(p_t) = -\log(p_t)$ if we define
+-\log(1-p)&amp;amp;else\end{cases}$$&lt;/p&gt;
+&lt;p&gt;We can simplify this to $CE(p_t) = -\log(p_t)$ if we define
 $$p_t \mathop{\mathrm{\triangleq}}
 \begin{cases}p&amp;amp;y_t=1
 \\
-1-p&amp;amp;else\end{cases}$$&lt;/p>
-&lt;p>What if there is a huge imbalance between no of positive and negative samples? The standard way of fixing this would be to add a balancing term $\alpha$ which is derived from inverse class frequencies. Let&lt;/p>
-&lt;p>$$\alpha_t \mathop{\mathrm{\triangleq}}\begin{cases}\alpha&amp;amp;y_t=1\\1-\alpha&amp;amp;else\end{cases}$$&lt;/p></description></item><item><title>RankNet and LambdaRank</title><link>https://daxpy.xyz/notes/2021-09-25-ranknet-and-lambdarank/</link><pubDate>Sat, 25 Sep 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2021-09-25-ranknet-and-lambdarank/</guid><description>&lt;h1 id="ranknet-and-lambdarank">RankNet and LambdaRank&lt;/h1>
-&lt;p>The ranking problem is about ordering a collection of documents according to their relevance to the given query.&lt;/p>
-&lt;p>Their are multiple approaches to the problem, but in pairwise approach, we simply care about predicting order of document pairs for the query. Given 2 documents $d_i$ and $d_j$ the true relative ordering is specified as
-$$h_{ij} = \begin{cases}1&amp;amp; d_i&amp;gt;d_j\\0&amp;amp; d_i=d_j\\-1&amp;amp; d_i&amp;lt;d_j\\\end{cases}$$&lt;/p>
-&lt;p>In terms of modelling, we assume there is a base model takes in features $x_i$ corresponds to document $d_i$ and predict a score depicting relevance to the given query. $$s_i = f(x_i)$$&lt;/p></description></item><item><title>Movie Reviews and Gradient Descent</title><link>https://daxpy.xyz/notes/2021-04-13-014-movie-reviews-and-gradient-descent/</link><pubDate>Tue, 13 Apr 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2021-04-13-014-movie-reviews-and-gradient-descent/</guid><description>&lt;h1 id="movie-reviews-and-gradient-descent">Movie Reviews and Gradient Descent&lt;/h1>
-&lt;p>The problem is simple; $m$ movies, $n$ users and we have the data of rating of movies by users. Now in reality, each user might have rated a few movies while total number of users and movies are huge. We can consider the whole ratings data as a matrix $n\times m$ matrix $R$ where $R_{ij}$ is the rating of $i^{th}$ movie by $j^{th}$ user.&lt;/p>
-&lt;p>We want a model which can predict the rating a user would have given a movie. Now the modelling part is easy as a matrix factorisation problem. We can assume every user is represented by a embedding $u_i$ and similarly, every movie has a embedding $m_j$. We simply want $$R_{ij} \sim { u_i}^\intercal m_j$$ If we simply model the learning problem as
+1-p&amp;amp;else\end{cases}$$&lt;/p&gt;
+&lt;p&gt;What if there is a huge imbalance between no of positive and negative samples? The standard way of fixing this would be to add a balancing term $\alpha$ which is derived from inverse class frequencies. Let&lt;/p&gt;
+&lt;p&gt;$$\alpha_t \mathop{\mathrm{\triangleq}}\begin{cases}\alpha&amp;amp;y_t=1\\1-\alpha&amp;amp;else\end{cases}$$&lt;/p&gt;</description></item><item><title>RankNet and LambdaRank</title><link>https://daxpy.xyz/notes/2021-09-25-ranknet-and-lambdarank/</link><pubDate>Sat, 25 Sep 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2021-09-25-ranknet-and-lambdarank/</guid><description>&lt;h1 id="ranknet-and-lambdarank"&gt;RankNet and LambdaRank&lt;/h1&gt;
+&lt;p&gt;The ranking problem is about ordering a collection of documents according to their relevance to the given query.&lt;/p&gt;
+&lt;p&gt;Their are multiple approaches to the problem, but in pairwise approach, we simply care about predicting order of document pairs for the query. Given 2 documents $d_i$ and $d_j$ the true relative ordering is specified as
+$$h_{ij} = \begin{cases}1&amp;amp; d_i&amp;gt;d_j\\0&amp;amp; d_i=d_j\\-1&amp;amp; d_i&amp;lt;d_j\\\end{cases}$$&lt;/p&gt;
+&lt;p&gt;In terms of modelling, we assume there is a base model takes in features $x_i$ corresponds to document $d_i$ and predict a score depicting relevance to the given query. $$s_i = f(x_i)$$&lt;/p&gt;</description></item><item><title>Movie Reviews and Gradient Descent</title><link>https://daxpy.xyz/notes/2021-04-13-014-movie-reviews-and-gradient-descent/</link><pubDate>Tue, 13 Apr 2021 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2021-04-13-014-movie-reviews-and-gradient-descent/</guid><description>&lt;h1 id="movie-reviews-and-gradient-descent"&gt;Movie Reviews and Gradient Descent&lt;/h1&gt;
+&lt;p&gt;The problem is simple; $m$ movies, $n$ users and we have the data of rating of movies by users. Now in reality, each user might have rated a few movies while total number of users and movies are huge. We can consider the whole ratings data as a matrix $n\times m$ matrix $R$ where $R_{ij}$ is the rating of $i^{th}$ movie by $j^{th}$ user.&lt;/p&gt;
+&lt;p&gt;We want a model which can predict the rating a user would have given a movie. Now the modelling part is easy as a matrix factorisation problem. We can assume every user is represented by a embedding $u_i$ and similarly, every movie has a embedding $m_j$. We simply want $$R_{ij} \sim { u_i}^\intercal m_j$$ If we simply model the learning problem as
 $$\mathop{\mathrm{arg,min}}_{U,M} \| {U}^\intercal M - R \|_2$$
-then we are implicitly assuming that all unavailable ratings are $0$. Since we have only a few ratings compared to all possible combinations of movies and users, the model will get biased towards $0$ ratings.&lt;/p></description></item><item><title>Softmax Classifier</title><link>https://daxpy.xyz/notes/softmax_classifier/</link><pubDate>Mon, 13 Jan 2020 00:00:51 +0530</pubDate><guid>https://daxpy.xyz/notes/softmax_classifier/</guid><description>&lt;h1 id="softmax-classifier">Softmax Classifier&lt;/h1>
-&lt;p>Imagine we have a dataset $\{x,y\}_{i=0}^m$ where $x$ is a data point
+then we are implicitly assuming that all unavailable ratings are $0$. Since we have only a few ratings compared to all possible combinations of movies and users, the model will get biased towards $0$ ratings.&lt;/p&gt;</description></item><item><title>Softmax Classifier</title><link>https://daxpy.xyz/notes/softmax_classifier/</link><pubDate>Mon, 13 Jan 2020 00:00:51 +0530</pubDate><guid>https://daxpy.xyz/notes/softmax_classifier/</guid><description>&lt;h1 id="softmax-classifier"&gt;Softmax Classifier&lt;/h1&gt;
+&lt;p&gt;Imagine we have a dataset $\{x,y\}_{i=0}^m$ where $x$ is a data point
 and $y$ indicates the class $x$ belongs to. For deriving LDA classifier,
 we had modeled the class conditional density $P(x|y)$ as a Gaussian and
 derived the posterior probabilities $P(y|x)$. Here, we will directly
 model the posterior with a linear function. Since the posterior directly
 models what class a data point belongs to, we don&amp;rsquo;t have much to do
-after to get a classifier.&lt;/p></description></item><item><title>Gradient Through Addition with Broadcasting</title><link>https://daxpy.xyz/notes/2018-09-18-gradient-through-addition-with-bradcasting/</link><pubDate>Tue, 18 Sep 2018 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2018-09-18-gradient-through-addition-with-bradcasting/</guid><description>&lt;h1 id="gradient-through-addition-with-broadcasting">Gradient Through Addition with Broadcasting&lt;/h1>
-&lt;p>Calculating gradient across an addition is a simple
+after to get a classifier.&lt;/p&gt;</description></item><item><title>Gradient Through Addition with Broadcasting</title><link>https://daxpy.xyz/notes/2018-09-18-gradient-through-addition-with-bradcasting/</link><pubDate>Tue, 18 Sep 2018 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/2018-09-18-gradient-through-addition-with-bradcasting/</guid><description>&lt;h1 id="gradient-through-addition-with-broadcasting"&gt;Gradient Through Addition with Broadcasting&lt;/h1&gt;
+&lt;p&gt;Calculating gradient across an addition is a simple
 algebra trick. But this gets complicated when we look at addition of tensors which allows
-broadcasting. In this post, we examine how to compute gradients in such situations.&lt;/p>
-&lt;h2 id="gradient-of-addition">Gradient of Addition&lt;/h2>
-&lt;p>Consider a simple sequence of operations. $A$ and $B$ are inputs which
-ultimately leads to computation of a scalar loss/error term $l$.&lt;/p>
-&lt;p>$$ z = A+B $$
-$$ l \twoheadleftarrow z $$&lt;/p></description></item><item><title>Linear Classifiers</title><link>https://daxpy.xyz/notes/linear_classifiers/</link><pubDate>Sun, 18 Feb 2018 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/linear_classifiers/</guid><description>&lt;h1 id="linear-classifiers">Linear Classifiers&lt;/h1>
-&lt;p>In the post on bayes error, we discussed what is the best classifier if
+broadcasting. In this post, we examine how to compute gradients in such situations.&lt;/p&gt;
+&lt;h2 id="gradient-of-addition"&gt;Gradient of Addition&lt;/h2&gt;
+&lt;p&gt;Consider a simple sequence of operations. $A$ and $B$ are inputs which
+ultimately leads to computation of a scalar loss/error term $l$.&lt;/p&gt;
+&lt;p&gt;$$ z = A+B $$
+$$ l \twoheadleftarrow z $$&lt;/p&gt;</description></item><item><title>Linear Classifiers</title><link>https://daxpy.xyz/notes/linear_classifiers/</link><pubDate>Sun, 18 Feb 2018 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/linear_classifiers/</guid><description>&lt;h1 id="linear-classifiers"&gt;Linear Classifiers&lt;/h1&gt;
+&lt;p&gt;In the post on bayes error, we discussed what is the best classifier if
 the features are not enough to tell the class apart. We also derived
 that in such situation, the best classifier is
-$$h(x) = sign \left( n(x) - \frac{1}{2} \right)$$&lt;/p>
-&lt;p>This formulation cannot be used in general situations as there is no easy way
+$$h(x) = sign \left( n(x) - \frac{1}{2} \right)$$&lt;/p&gt;
+&lt;p&gt;This formulation cannot be used in general situations as there is no easy way
 to estimate $n(x) = P(y=+1|x)$ for a general distribution. But what if
-$x$ has a simple distribution?&lt;/p></description></item><item><title>Bayes Error</title><link>https://daxpy.xyz/notes/bayes_error/</link><pubDate>Sun, 11 Feb 2018 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/bayes_error/</guid><description>&lt;h1 id="bayes-error">Bayes Error&lt;/h1>
-&lt;p>In an ideal world, everything has reason. Every question has a unambiguous answer. The data in sufficient to explain its behaviours, like the class it belongs to.&lt;/p>
-&lt;p>$$\begin{aligned}
-g(x) = y \end{aligned}$$&lt;/p>
-&lt;p>In the non ideal world, however, there is always something missing that stops us from knowing the entire truth. $g$ is beyond reach. In such cases we resort to probability.&lt;/p>
-&lt;p>$$\begin{aligned}
-n(x) = P(y=1|x)\end{aligned}$$&lt;/p>
-&lt;p>It simply tells us how probable is the data belonging to a class($y=1$) if my observations are $x$.&lt;/p></description></item></channel></rss>
+$x$ has a simple distribution?&lt;/p&gt;</description></item><item><title>Bayes Error</title><link>https://daxpy.xyz/notes/bayes_error/</link><pubDate>Sun, 11 Feb 2018 05:04:51 +0530</pubDate><guid>https://daxpy.xyz/notes/bayes_error/</guid><description>&lt;h1 id="bayes-error"&gt;Bayes Error&lt;/h1&gt;
+&lt;p&gt;In an ideal world, everything has reason. Every question has a unambiguous answer. The data in sufficient to explain its behaviours, like the class it belongs to.&lt;/p&gt;
+&lt;p&gt;$$\begin{aligned}
+g(x) = y \end{aligned}$$&lt;/p&gt;
+&lt;p&gt;In the non ideal world, however, there is always something missing that stops us from knowing the entire truth. $g$ is beyond reach. In such cases we resort to probability.&lt;/p&gt;
+&lt;p&gt;$$\begin{aligned}
+n(x) = P(y=1|x)\end{aligned}$$&lt;/p&gt;
+&lt;p&gt;It simply tells us how probable is the data belonging to a class($y=1$) if my observations are $x$.&lt;/p&gt;</description></item></channel></rss>

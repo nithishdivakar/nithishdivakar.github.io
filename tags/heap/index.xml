@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Heap on DAXPY</title><link>https://daxpy.xyz/tags/heap/</link><description>Recent content in Heap on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/heap/index.xml" rel="self" type="application/rss+xml"/><item><title>Median in a Stream</title><link>https://daxpy.xyz/notes_collection/lc_notes/32a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/32a/</guid><description>&lt;h2 id="find-median-from-data-stream-lc295"&gt;Find Median from Data Stream [LC#295]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For example, for arr = [2,3,4], the median is 3.&lt;/li&gt;
+&lt;li&gt;For example, for arr = [2,3], the median is (2 + 3) / 2 = 2.5.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;We can easily find median if we have access to the 2 middle elements.&lt;/li&gt;
+&lt;li&gt;The middle elements are largest of the first half and smallest of the second half if the array was sorted&lt;/li&gt;
+&lt;li&gt;We can maintain first half of elements in a max heap and second half in min heap&lt;/li&gt;
+&lt;li&gt;Always maintain insertion so that max heap has at most 1 value more than the min heap&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;MedianFinder&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;low &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [] &lt;span style="color:#75715e"&gt;# stores n or n+1 elements&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;high &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [] &lt;span style="color:#75715e"&gt;# stores n elements&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;add&lt;/span&gt;(self, num: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; val &lt;span style="color:#f92672"&gt;=&lt;/span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappushpop(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;low, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;num)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappush(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;high, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;val)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; len(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;low) &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; len(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;high):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; val &lt;span style="color:#f92672"&gt;=&lt;/span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappop(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;high)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappush(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;low, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;val)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;find_median&lt;/span&gt;(self) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; float:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; len(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;low) &lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; len(self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;high):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;low[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; (&lt;span style="color:#f92672"&gt;-&lt;/span&gt;self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;low[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;+&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;high[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;])&lt;span style="color:#f92672"&gt;/&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$T(n) = O(\log n) $ for each insertion and median can be computed in $O(1)$ always&lt;/li&gt;
+&lt;li&gt;$S(n) = O(n)$ for the heaps&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

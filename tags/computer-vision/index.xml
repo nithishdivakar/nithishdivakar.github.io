@@ -1,45 +1,45 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Computer-Vision on DAXPY</title><link>https://daxpy.xyz/tags/computer-vision/</link><description>Recent content in Computer-Vision on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 12 Mar 2022 12:00:00 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/computer-vision/index.xml" rel="self" type="application/rss+xml"/><item><title>Canny Edge detector</title><link>https://daxpy.xyz/notes/canny-edge-detector/</link><pubDate>Sat, 12 Mar 2022 12:00:00 +0530</pubDate><guid>https://daxpy.xyz/notes/canny-edge-detector/</guid><description>&lt;h1 id="canny-edge-detector">Canny Edge detector&lt;/h1>
-&lt;p>Steps:&lt;/p>
-&lt;ul>
-&lt;li>Apply &lt;strong>Gaussian filtering&lt;/strong> to smooth out noise in the image&lt;/li>
-&lt;li>&lt;strong>Compute gradients&lt;/strong>: Compute horizontal($G_x$) and vertical gradients ($G_y$). Magnitude and direction of gradients can then be compluted as
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Computer-Vision on DAXPY</title><link>https://daxpy.xyz/tags/computer-vision/</link><description>Recent content in Computer-Vision on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 12 Mar 2022 12:00:00 +0530</lastBuildDate><atom:link href="https://daxpy.xyz/tags/computer-vision/index.xml" rel="self" type="application/rss+xml"/><item><title>Canny Edge detector</title><link>https://daxpy.xyz/notes/canny-edge-detector/</link><pubDate>Sat, 12 Mar 2022 12:00:00 +0530</pubDate><guid>https://daxpy.xyz/notes/canny-edge-detector/</guid><description>&lt;h1 id="canny-edge-detector"&gt;Canny Edge detector&lt;/h1&gt;
+&lt;p&gt;Steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Apply &lt;strong&gt;Gaussian filtering&lt;/strong&gt; to smooth out noise in the image&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compute gradients&lt;/strong&gt;: Compute horizontal($G_x$) and vertical gradients ($G_y$). Magnitude and direction of gradients can then be compluted as
 $$\begin{aligned}
 m &amp;amp;= \sqrt{G_x^2+G_y^2}
 &amp;amp;
 \theta &amp;amp;= \tan ^{-1}\left(\frac{G_y}{G_x}\right)
 \end{aligned}$$
-The angle is then rounded off so that $\theta \in {0,45,90,135}$&lt;/li>
-&lt;li>&lt;strong>Non-maximal suppression&lt;/strong>: For each pixel $(m,\theta)$, if its gradient intensity is maximum among the pixels in negative and positive gradient direction, the value is preserved. Otherwise it is suppressed.&lt;/li>
-&lt;li>&lt;strong>Double thresholding&lt;/strong>
+The angle is then rounded off so that $\theta \in {0,45,90,135}$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Non-maximal suppression&lt;/strong&gt;: For each pixel $(m,\theta)$, if its gradient intensity is maximum among the pixels in negative and positive gradient direction, the value is preserved. Otherwise it is suppressed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Double thresholding&lt;/strong&gt;
 $$\begin{aligned}
 m \geq t_h &amp;amp;\implies \text{strong edge pixel}
 \\
 t_l &amp;lt; m &amp;lt; t_h &amp;amp;\implies \text{weak edge pixel}
 \\
 m \leq t_l &amp;amp;\implies \text{suppress}
-\end{aligned}$$&lt;/li>
-&lt;li>&lt;strong>Edge tracking by hysteresis&lt;/strong>: All strong pixels are selected as true edge pixels. All the weak pixels which has a strong pixel in its $8 \times 8$ neighbourhood are also selected as a true edge. All the others are removed.&lt;/li>
-&lt;/ul></description></item><item><title>Histogram of Oriented Gradients</title><link>https://daxpy.xyz/notes/histogram-of-oriented-gradients/</link><pubDate>Sat, 12 Mar 2022 00:00:30 +0530</pubDate><guid>https://daxpy.xyz/notes/histogram-of-oriented-gradients/</guid><description>&lt;h1 id="histogram-of-oriented-gradients">Histogram of Oriented Gradients&lt;/h1>
-&lt;p>Steps to compute HoG of an image.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Gradients computation:&lt;/strong> Compute image gradients $G_x$ and $G_y$ by convolving the image with $[−1,0,1]$ and $[−1,0,1]^{T}$ respectively&lt;/li>
-&lt;li>&lt;strong>Magnitude and direction&lt;/strong> of each pixel
+\end{aligned}$$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Edge tracking by hysteresis&lt;/strong&gt;: All strong pixels are selected as true edge pixels. All the weak pixels which has a strong pixel in its $8 \times 8$ neighbourhood are also selected as a true edge. All the others are removed.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Histogram of Oriented Gradients</title><link>https://daxpy.xyz/notes/histogram-of-oriented-gradients/</link><pubDate>Sat, 12 Mar 2022 00:00:30 +0530</pubDate><guid>https://daxpy.xyz/notes/histogram-of-oriented-gradients/</guid><description>&lt;h1 id="histogram-of-oriented-gradients"&gt;Histogram of Oriented Gradients&lt;/h1&gt;
+&lt;p&gt;Steps to compute HoG of an image.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Gradients computation:&lt;/strong&gt; Compute image gradients $G_x$ and $G_y$ by convolving the image with $[−1,0,1]$ and $[−1,0,1]^{T}$ respectively&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Magnitude and direction&lt;/strong&gt; of each pixel
 $$\begin{aligned}
 m &amp;amp;= \sqrt{G_x^2+G_y^2}
 &amp;amp;
 \theta &amp;amp;= \tan^{-1}\left(\frac{G_y}{G_x}\right)
-\end{aligned}$$&lt;/li>
-&lt;li>For each cell in the image ($8 \times 16$)
-&lt;ul>
-&lt;li>&lt;strong>Oriented histogram&lt;/strong> The histogram is created by binning pixel orientation $\theta$&lt;/li>
-&lt;li>For a consecutive bin pair $(\theta_l,\theta_r)$ where a pixel $(m,\theta)$ falls, the histogram is populated as
+\end{aligned}$$&lt;/li&gt;
+&lt;li&gt;For each cell in the image ($8 \times 16$)
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Oriented histogram&lt;/strong&gt; The histogram is created by binning pixel orientation $\theta$&lt;/li&gt;
+&lt;li&gt;For a consecutive bin pair $(\theta_l,\theta_r)$ where a pixel $(m,\theta)$ falls, the histogram is populated as
 $$\begin{aligned}
 V(\theta_l) &amp;amp;= \frac{(\theta-\theta_L)}{|bin|}m
 &amp;amp;
 V(\theta_r) &amp;amp;= \frac{(\theta_r-\theta)}{|bin|}m
-\end{aligned}$$&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Normalise histograms&lt;/strong>
-Combine(concatenate) histograms of neighbouring $2 \times 2$ overlapping cells blocks and $\ell_2$ normalise this histogram. This step is to prevent lighting based variations in the image on the histogram&lt;/li>
-&lt;/ul></description></item></channel></rss>
+\end{aligned}$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Normalise histograms&lt;/strong&gt;
+Combine(concatenate) histograms of neighbouring $2 \times 2$ overlapping cells blocks and $\ell_2$ normalise this histogram. This step is to prevent lighting based variations in the image on the histogram&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

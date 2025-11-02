@@ -1,0 +1,33 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>All Nodes Distance K in Binary Tree | DAXPY</title><link rel=stylesheet href=/css/main.min.09b566cf287e6fb5c0477b301eeb6144854b92718d35549d0fa0f150a67136eb.css integrity="sha256-CbVmzyh+b7XAR3swHuthRIVLknGNNVSdD6DxUKZxNus=" crossorigin=anonymous><script src=/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js integrity="sha256-I80MfYNyY7nq65buLZzPopadqj+gD6HB/ocBqbhyUaE=" crossorigin=anonymous></script></head><body><header><nav><ul><li><a class=text_secondary href=https://daxpy.xyz/>DAXPY</a></li><li>|</li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/stories/>Stories</a></li><li><a href=/about>About</a></li></ul></nav></header><main><section><article><h2 id=all-nodes-distance-k-in-binary-tree-lc863>All Nodes Distance K in Binary Tree [LC#863]</h2><blockquote><p>Given the root of a binary tree, the value of a target node target, and an integer k, return an array of the values of all nodes that have a distance k from the target node. You can return the answer in any order.</p></blockquote><h3 id=intuition>Intuition</h3><p>Nodes at distance <code>k</code> can be children of the node or can be be children of one of the ancestors of the node. But without parent pointers searching for children on ancestors is very inefficient. So we create auxillary struture to maintain parent pointers and then perform BFS on the induced graph.</p><h3 id=code>Code</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>nodes_at_k_hops</span>(root: TreeNode, target: TreeNode, k: int) <span style=color:#f92672>-&gt;</span> List[int]:
+</span></span><span style=display:flex><span>    parent_node <span style=color:#f92672>=</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>create_parent_node</span>(parent, node):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> node:
+</span></span><span style=display:flex><span>            parent_node[node] <span style=color:#f92672>=</span> parent
+</span></span><span style=display:flex><span>            create_parent_node(node, node<span style=color:#f92672>.</span>left)
+</span></span><span style=display:flex><span>            create_parent_node(node, node<span style=color:#f92672>.</span>right)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    create_parent_node(<span style=color:#66d9ef>None</span>, root)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># BFS</span>
+</span></span><span style=display:flex><span>    visited <span style=color:#f92672>=</span> set()
+</span></span><span style=display:flex><span>    queue <span style=color:#f92672>=</span> deque([(target, k)])
+</span></span><span style=display:flex><span>    answers <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> queue:
+</span></span><span style=display:flex><span>        node, distance <span style=color:#f92672>=</span> queue<span style=color:#f92672>.</span>popleft()
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> node <span style=color:#f92672>or</span> node <span style=color:#f92672>in</span> visited:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>continue</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        visited<span style=color:#f92672>.</span>add(node)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> distance <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>            answers<span style=color:#f92672>.</span>append(node<span style=color:#f92672>.</span>val)
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>continue</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        queue<span style=color:#f92672>.</span>append((node<span style=color:#f92672>.</span>left, distance <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>))
+</span></span><span style=display:flex><span>        queue<span style=color:#f92672>.</span>append((node<span style=color:#f92672>.</span>right, distance <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>))
+</span></span><span style=display:flex><span>        queue<span style=color:#f92672>.</span>append((parent_node[node], distance <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>))
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> answers
+</span></span></code></pre></div><h3 id=time-complexity>Time complexity</h3><p>Parent pointer creation is $O(n)$ and takes $O(n)$ space. BFS takes simlar space and time.</p><ul><li>$T(n) = O(n)$</li><li>$S(n) = O(n)$</li></ul></article><br><br><br><i>tags:</i>
+<a class=gray style=padding-right:5px href=/tags#binary%20tree><i>#binary tree</i></a>
+<a class=gray style=padding-right:5px href=/tags#bfs><i>#bfs</i></a></section></main><footer><p>Found something useful here? pass it on; or tell me about it!<nav><ul><li><a href="https://drive.google.com/drive/folders/18LU6PKnxy8rDrAXhpiPXV2yOYlO_I8cF?usp=sharing">Resume</a></li><li><a href=https://daxpy.xyz/omnia_mea>Coding notes</a></li><li><a href=https://www.linkedin.com/in/ndivakar/>Linkedin</a></li></ul></nav><small><a href=#top>↑ Top of page</a></small></p></footer></body></html>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monotonic Stack on DAXPY</title><link>https://daxpy.xyz/tags/monotonic-stack/</link><description>Recent content in Monotonic Stack on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/monotonic-stack/index.xml" rel="self" type="application/rss+xml"/><item><title>Daily Temperatures</title><link>https://daxpy.xyz/notes_collection/lc_notes/60c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/60c/</guid><description>&lt;h2 id="daily-temperatures-lc739"&gt;Daily Temperatures [LC#739]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given an array of integers temperatures represents the daily temperatures, return an array answer such that &lt;code&gt;answer[i]&lt;/code&gt; is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future day for which this is possible, keep &lt;code&gt;answer[i] == 0&lt;/code&gt; instead.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;p&gt;We have to fine the next largest in the array for every element.&lt;/p&gt;
+&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;next_warmer_day&lt;/span&gt;(temperatures: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(temperatures)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; answers &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; n
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(n &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; stack &lt;span style="color:#f92672"&gt;and&lt;/span&gt; temperatures[stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]] &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; temperatures[i]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pop()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; stack:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; answers[i] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;-&lt;/span&gt; i
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(i)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; answers
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;OR
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;next_warmer_day&lt;/span&gt;(temperatures: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(temperatures)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; answers &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; n
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; curr_day &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(n):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; stack &lt;span style="color:#f92672"&gt;and&lt;/span&gt; temperatures[stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]] &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; temperatures[curr_day]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; prev_day &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pop()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; answers[prev_day] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; curr_day &lt;span style="color:#f92672"&gt;-&lt;/span&gt; prev_day
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(curr_day)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; answers
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Note the different comparison signs between 2 implementation&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Largest Rectangle in Histogram</title><link>https://daxpy.xyz/notes_collection/lc_notes/60a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/60a/</guid><description>&lt;h2 id="largest-rectangle-in-histogram--lc-84"&gt;Largest Rectangle in Histogram [ LC# 84]&lt;/h2&gt;
+&lt;p&gt;Given an array of integers heights representing the histogram&amp;rsquo;s bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.&lt;/p&gt;
+&lt;h3 id="brute-force"&gt;Brute Force&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Enumerate every range. Compute the Area&lt;/li&gt;
+&lt;li&gt;$T(n) = O(n^2)$; $S(n) = O(n^2)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;area[i][j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; min_heights[i:j] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; ( j&lt;span style="color:#f92672"&gt;-&lt;/span&gt;i&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;min_heights[i:j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; min(min_heights[i&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:j&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;], heights[i], heights[j])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;min_heights[i:i] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; heights[i]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="intuition-monotonic-stack"&gt;Intuition: Monotonic Stack&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;If we are at a rectangle of height $h$ and we are interested in finding the largest rectangle with minimum height $h$ in the histogram. We can extend the rectangle to both the sides till we encounter a height that is smaller.&lt;/li&gt;
+&lt;li&gt;If we trasverse the histogram from left to right and maintain a non-decreasing monotonic stack, it will have all these states that we need.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt; ┌─┐ ┌─┐ 
+ ┌─┐ │ │ ┌─┤ │ 
+ ┌─┐ │ ├─┤ │ ┌─┤ │ │ 
+ │ ├─┤ │ │ │ ┌─┤ │ │ │ 
+ │ │ │ │ │ │...│h│ │ │ ├─┐ 
+ ┌─┤ │ │ │ │ │ │ │ │ │ │ │ 
+ └─┴─┴─┴─┴─┴─┘ └─┴─┴─┴─┴─┘ 
+ └─────────────────────┘ 
+┌─┴──┐ ┌─┴─┐ ┌──┴──┐
+ left mid right
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;largest_rectangle_in_historgam&lt;/span&gt;(heights: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#75715e"&gt;# monotonic stack : non decreasing order&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_area &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heights&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(len(heights)):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; stack &lt;span style="color:#f92672"&gt;and&lt;/span&gt; heights[stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]] &lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; heights[i]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mid &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pop()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; i
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_area &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(max_area, heights[mid] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (right &lt;span style="color:#f92672"&gt;-&lt;/span&gt; left))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(i)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; max_area
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$T(n) = O(n)$; $S(n) = O(n)$&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Monotonic Stack</title><link>https://daxpy.xyz/notes_collection/lc_notes/60/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/60/</guid><description>&lt;h2 id="monotonic-stack"&gt;Monotonic Stack&lt;/h2&gt;
+&lt;p&gt;A monotonic decreasing stack is a data structure based on a stack. While traversing an array, it maintains a sorted list of elements encountered so far that are strictly greater than or equal to the current element being processed. It upholds this property by continuously removing elements from the top of the stack that violate the requirement (i.e., elements that are less than the current element).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; num &lt;span style="color:#f92672"&gt;in&lt;/span&gt; nums:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; stack &lt;span style="color:#f92672"&gt;and&lt;/span&gt; stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; num:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pop()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(num)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# stack[-1] &amp;gt; stack[-2] &amp;gt; ... &amp;gt; stack[0]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Although a monotonic stack can be used to solve problems that require finding previous smaller (or larger) elements from the stack, a more interesting use is to exploit the interim states of the monotonic stack while it updates itself to maintain the property of monotonicity. Ex.&lt;/p&gt;</description></item><item><title>Remove Nodes From Linked List</title><link>https://daxpy.xyz/notes_collection/lc_notes/18h/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/18h/</guid><description>&lt;h2 id="remove-nodes-from-linked-list-lc2487"&gt;Remove Nodes From Linked List [LC#2487]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You are given the head of a linked list. Remove every node which has a node with a greater value anywhere to the right side of it. Return the head of the modified linked list.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Use a monotonic increasing stack. The nodes that are left on the stack is the answer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;remove_nodes&lt;/span&gt;(self, head: Optional[Node]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Optional[Node]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node &lt;span style="color:#f92672"&gt;=&lt;/span&gt; head
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; node:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; stack &lt;span style="color:#f92672"&gt;and&lt;/span&gt; node &lt;span style="color:#f92672"&gt;and&lt;/span&gt; stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;val &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; node&lt;span style="color:#f92672"&gt;.&lt;/span&gt;val:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mid &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pop()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(node)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node &lt;span style="color:#f92672"&gt;=&lt;/span&gt; node&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dummy &lt;span style="color:#f92672"&gt;=&lt;/span&gt; node &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Node(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; v &lt;span style="color:#f92672"&gt;in&lt;/span&gt; stack:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next &lt;span style="color:#f92672"&gt;=&lt;/span&gt; v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node &lt;span style="color:#f92672"&gt;=&lt;/span&gt; v
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; dummy&lt;span style="color:#f92672"&gt;.&lt;/span&gt;next
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$T(n) = O(n)$&lt;/li&gt;
+&lt;li&gt;$S(n) = O(n)$&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Sum of Subarray Minimums</title><link>https://daxpy.xyz/notes_collection/lc_notes/60b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/60b/</guid><description>&lt;h2 id="sum-of-subarray-minimums-lc907"&gt;Sum of Subarray Minimums [LC#907]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given an array of integers &lt;code&gt;arr&lt;/code&gt;, find the sum of &lt;code&gt;min(b)&lt;/code&gt;, where &lt;code&gt;b&lt;/code&gt; ranges over every (contiguous) subarray of &lt;code&gt;arr&lt;/code&gt;. Since the answer may be large, return the answer modulo $10^9 + 7$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;p&gt;If &lt;code&gt;arr[k]&lt;/code&gt; is minimum element in &lt;code&gt;[i, j]&lt;/code&gt;, then &lt;code&gt;arr[k]&lt;/code&gt; appears in &lt;code&gt;(k - i) * (j - k)&lt;/code&gt; subarrays.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Monotonic Stack&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sum_subarrray_mins&lt;/span&gt;(arr: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sum_of_minimums &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; arr&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(&lt;span style="color:#f92672"&gt;-&lt;/span&gt;math&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inf) &lt;span style="color:#75715e"&gt;# so that everything gets popped out in the end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(len(arr)):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; stack &lt;span style="color:#f92672"&gt;and&lt;/span&gt; arr[stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]] &lt;span style="color:#f92672"&gt;&amp;gt;=&lt;/span&gt; arr[i]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mid &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pop()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#f92672"&gt;not&lt;/span&gt; stack &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt; stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; i
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; count &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (mid &lt;span style="color:#f92672"&gt;-&lt;/span&gt; left) &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (right &lt;span style="color:#f92672"&gt;-&lt;/span&gt; mid)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sum_of_minimums &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; (count &lt;span style="color:#f92672"&gt;*&lt;/span&gt; arr[mid])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(i)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; sum_of_minimums
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time Complexity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$T(n) = O(n)$ ; $S(n) = O(n)$&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

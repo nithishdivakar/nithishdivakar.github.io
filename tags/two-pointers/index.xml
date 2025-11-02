@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Two Pointers on DAXPY</title><link>https://daxpy.xyz/tags/two-pointers/</link><description>Recent content in Two Pointers on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/two-pointers/index.xml" rel="self" type="application/rss+xml"/><item><title>Containers with Most Water</title><link>https://daxpy.xyz/notes_collection/lc_notes/25a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/25a/</guid><description>&lt;h2 id="containers-with-most-water-lc11"&gt;Containers with most water [LC#11]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given $n$ non-negative integers $a_1$, $a_2$, &amp;hellip; , $a_n$ , where each represents a point at coordinate $(i, a_i)$. $n$ vertical lines are drawn such that the two endpoints of the line $i$ is at $(i, a_i)$ and $(i, 0)$. Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Two pointer approach&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Given 2 walls, the volume of water between them is limited by the smaller one. So we can move inwards from the smaller wall.&lt;/li&gt;
+&lt;li&gt;This can be implemented using a 2 pointer approach closing in from both ends.&lt;/li&gt;
+&lt;li&gt;$T(n) = O(n)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;max_water&lt;/span&gt;(height: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left, right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, len(height)&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_area &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; left &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; right:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_area &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_area, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; (right &lt;span style="color:#f92672"&gt;-&lt;/span&gt; left)&lt;span style="color:#f92672"&gt;*&lt;/span&gt;(min(height[left], height[right])) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# we have to move away from the smaller wall&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# as it is limiting factor of the area&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; height[left] &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; height[right]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; right &lt;span style="color:#f92672"&gt;-=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; max_area
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Longest Substring Without Repeating Characters</title><link>https://daxpy.xyz/notes_collection/lc_notes/27a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/27a/</guid><description>&lt;h2 id="longest-substring-without-repeating-characters-lc3"&gt;Longest Substring Without Repeating Characters [LC#3]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given a string &lt;code&gt;s&lt;/code&gt;, find the length of the longest substring without repeating characters.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Sliding Window and 2 pointers&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Start with &lt;code&gt;left&lt;/code&gt; and &lt;code&gt;right&lt;/code&gt; at 0.&lt;/li&gt;
+&lt;li&gt;Expand: Move &lt;code&gt;right&lt;/code&gt; to add characters and update counts until a repeat is found.&lt;/li&gt;
+&lt;li&gt;Shrink: Move &lt;code&gt;left&lt;/code&gt; to remove characters until all are unique.&lt;/li&gt;
+&lt;li&gt;Track maximum length of the window.&lt;/li&gt;
+&lt;li&gt;$T(n) = O(n)$; $S(n) = O(|char set|)$
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;max_substring_without_repetition&lt;/span&gt;(s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; char_count &lt;span style="color:#f92672"&gt;=&lt;/span&gt; defaultdict(int)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; right &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(len(s)):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; current_char &lt;span style="color:#f92672"&gt;=&lt;/span&gt; s[right]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; char_count[current_char] &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; char_count[current_char]&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; char_count[s[left]] &lt;span style="color:#f92672"&gt;-=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left &lt;span style="color:#f92672"&gt;+=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(ans, right&lt;span style="color:#f92672"&gt;-&lt;/span&gt;left&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; ans
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Optimised Sliding window&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>String Compression</title><link>https://daxpy.xyz/notes_collection/lc_notes/27b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/27b/</guid><description>&lt;h2 id="string-compression-lc443"&gt;String Compression [LC#443]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Given an array of characters chars, compress it using the following algorithm:
+Begin with an empty string s. For each group of consecutive repeating characters in chars:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If the group&amp;rsquo;s length is 1, append the character to s.&lt;/li&gt;
+&lt;li&gt;Otherwise, append the character followed by the group&amp;rsquo;s length.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars. After you are done modifying the input array, return the new length of the array.&lt;/p&gt;</description></item></channel></rss>

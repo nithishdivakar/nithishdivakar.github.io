@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Intervals on DAXPY</title><link>https://daxpy.xyz/tags/intervals/</link><description>Recent content in Intervals on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/intervals/index.xml" rel="self" type="application/rss+xml"/><item><title>Insert Interval</title><link>https://daxpy.xyz/notes_collection/lc_notes/50b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/50b/</guid><description>&lt;h2 id="insert-interval-lc57"&gt;Insert Interval [LC#57]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an interval newInterval = [start, end] that represents the start and end of another interval.&lt;/p&gt;
+&lt;p&gt;Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals still does not have any overlapping intervals (merge overlapping intervals if necessary).&lt;/p&gt;</description></item><item><title>Merge Intervals</title><link>https://daxpy.xyz/notes_collection/lc_notes/50a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/50a/</guid><description>&lt;h2 id="merge-intervals-lc56"&gt;Merge Intervals [LC#56]&lt;/h2&gt;
+&lt;p&gt;Given an array of intervals where &lt;code&gt;intervals[i] = [starti, endi]&lt;/code&gt;, merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sort and Itrate approach&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sort the intervals by start time&lt;/li&gt;
+&lt;li&gt;Iterate over the intervals one by on merging the current with the previous if there is an overlap&lt;/li&gt;
+&lt;li&gt;$T(n) = O(n \log n + n)$; $S(n) = O(n)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;merge_intervals&lt;/span&gt;(intervals: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[List[int]]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; intervals &lt;span style="color:#f92672"&gt;=&lt;/span&gt; sorted(intervals)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [intervals[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; start, end &lt;span style="color:#f92672"&gt;in&lt;/span&gt; intervals[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; start &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; ans[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;][&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;][&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(ans[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;][&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;], end)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;else&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append([start, end])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; ans
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Min Meeting Rooms</title><link>https://daxpy.xyz/notes_collection/lc_notes/50c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/50c/</guid><description>&lt;h2 id="min-meeting-rooms-lc253"&gt;Min meeting rooms [LC#253]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Meeting Rooms II :
+Given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return the minimum number of conference rooms required.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Sort all meetings by their start time&lt;/li&gt;
+&lt;li&gt;Keep the ending times of currently occupied meeting rooms in the min heap&lt;/li&gt;
+&lt;li&gt;If current start time is earlier than the min heap end time, we need a new room else we can pop the top and add a new room&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;min_meeting_rooms&lt;/span&gt;(intervals: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; intervals &lt;span style="color:#f92672"&gt;=&lt;/span&gt; sorted(intervals)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heap &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [intervals[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;][&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]] &lt;span style="color:#75715e"&gt;# first end time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; meeting_rooms &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; start_time, end_time &lt;span style="color:#f92672"&gt;in&lt;/span&gt; intervals[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; start_time &lt;span style="color:#f92672"&gt;&amp;gt;=&lt;/span&gt; heap[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappop(heap)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappush(heap, end_time)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; meeting_rooms &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(meeting_rooms, len(heap))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; meeting_rooms
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time Complexity&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$T(n) = O(n \log n + n \log n)$ sorting + n pops&lt;/li&gt;
+&lt;li&gt;$S(n) = O(n)$&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Minimum Number of Arrows to Burst Balloons</title><link>https://daxpy.xyz/notes_collection/lc_notes/50e/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/50e/</guid><description>&lt;h2 id="minimum-number-of-arrows-to-burst-balloons-lc452"&gt;Minimum Number of Arrows to Burst Balloons [LC#452]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There are some spherical balloons taped onto a flat wall that represents the XY-plane. The balloons are represented as a 2D integer array points where points[i] = [xstart, xend] denotes a balloon whose horizontal diameter stretches between xstart and xend. You do not know the exact y-coordinates of the balloons.&lt;/p&gt;
+&lt;p&gt;Arrows can be shot up directly vertically (in the positive y-direction) from different points along the x-axis. A balloon with xstart and xend is burst by an arrow shot at x if xstart &amp;lt;= x &amp;lt;= xend. There is no limit to the number of arrows that can be shot. A shot arrow keeps traveling up infinitely, bursting any balloons in its path.&lt;/p&gt;</description></item><item><title>Smallest Range Covering Elements from K Lists</title><link>https://daxpy.xyz/notes_collection/lc_notes/50d03/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/50d03/</guid><description>&lt;h2 id="smallest-range-covering-elements-from-k-lists-lc632"&gt;Smallest Range Covering Elements from K Lists [LC#632]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You have k lists of sorted integers in non-decreasing order. Find the smallest range that includes at least one number from each of the k lists. We define the range &lt;code&gt;[a, b]&lt;/code&gt; is smaller than range &lt;code&gt;[c, d] if b - a &amp;lt; d - c or a &amp;lt; c if b - a == d - c&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intution"&gt;Intution&lt;/h3&gt;
+&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;smallestRange&lt;/span&gt;(nums: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heap &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [(arr[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;], i, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i, arr &lt;span style="color:#f92672"&gt;in&lt;/span&gt; enumerate(nums)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heapify(heap)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(arr[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; arr &lt;span style="color:#f92672"&gt;in&lt;/span&gt; nums)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (&lt;span style="color:#f92672"&gt;-&lt;/span&gt;math&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inf, math&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inf)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; heap:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left, row, col &lt;span style="color:#f92672"&gt;=&lt;/span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappop(heap)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; right &lt;span style="color:#f92672"&gt;-&lt;/span&gt; left &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; ans[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;-&lt;/span&gt; ans[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; left, right
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; col &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#f92672"&gt;==&lt;/span&gt; len(nums[row]):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; ans
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; next_point &lt;span style="color:#f92672"&gt;=&lt;/span&gt; nums[row][col &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(right, next_point)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappush(heap, (next_point, row, col &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
+&lt;p&gt;$n$ max size of lists and $m$ is number of lists&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Line Sweep on DAXPY</title><link>https://daxpy.xyz/tags/line-sweep/</link><description>Recent content in Line Sweep on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/tags/line-sweep/index.xml" rel="self" type="application/rss+xml"/><item><title>Line Sweep Technique</title><link>https://daxpy.xyz/notes_collection/lc_notes/50d/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/50d/</guid><description>&lt;h2 id="line-sweep"&gt;Line Sweep&lt;/h2&gt;
+&lt;p&gt;This is a technique where we sweep an imaginary line across the whole domain, and the line&amp;rsquo;s intersections with intervals are used to solve problems. They are particularly useful for problems where we have range updates and we need to find the final state of the array.&lt;/p&gt;
+&lt;p&gt;Say we are given &lt;code&gt;queries = [(left, right, value),]&lt;/code&gt; implying all values in &lt;code&gt;[left, right]&lt;/code&gt; are to be incremented by &lt;code&gt;value&lt;/code&gt;. To quickly find the final value, we can do the following.&lt;/p&gt;</description></item><item><title>Smallest Range Covering Elements from K Lists</title><link>https://daxpy.xyz/notes_collection/lc_notes/50d03/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/50d03/</guid><description>&lt;h2 id="smallest-range-covering-elements-from-k-lists-lc632"&gt;Smallest Range Covering Elements from K Lists [LC#632]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You have k lists of sorted integers in non-decreasing order. Find the smallest range that includes at least one number from each of the k lists. We define the range &lt;code&gt;[a, b]&lt;/code&gt; is smaller than range &lt;code&gt;[c, d] if b - a &amp;lt; d - c or a &amp;lt; c if b - a == d - c&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intution"&gt;Intution&lt;/h3&gt;
+&lt;h3 id="code"&gt;Code&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;smallestRange&lt;/span&gt;(nums: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heap &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [(arr[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;], i, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i, arr &lt;span style="color:#f92672"&gt;in&lt;/span&gt; enumerate(nums)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heapify(heap)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(arr[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; arr &lt;span style="color:#f92672"&gt;in&lt;/span&gt; nums)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (&lt;span style="color:#f92672"&gt;-&lt;/span&gt;math&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inf, math&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inf)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; heap:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left, row, col &lt;span style="color:#f92672"&gt;=&lt;/span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappop(heap)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; right &lt;span style="color:#f92672"&gt;-&lt;/span&gt; left &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; ans[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;-&lt;/span&gt; ans[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; left, right
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; col &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#f92672"&gt;==&lt;/span&gt; len(nums[row]):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; ans
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; next_point &lt;span style="color:#f92672"&gt;=&lt;/span&gt; nums[row][col &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(right, next_point)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heappush(heap, (next_point, row, col &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
+&lt;p&gt;$n$ max size of lists and $m$ is number of lists&lt;/p&gt;</description></item><item><title>Zero Array Transformation I</title><link>https://daxpy.xyz/notes_collection/lc_notes/50d01/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/50d01/</guid><description>&lt;h2 id="zero-array-transformation-i-lc3355"&gt;Zero Array Transformation I [LC#3355]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You are given an integer array nums of length n and a 2D array queries, where &lt;code&gt;queries[i] = [li, ri]&lt;/code&gt;. For each &lt;code&gt;queries[i]&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Select a subset of indices within the range [li, ri] in nums.&lt;/li&gt;
+&lt;li&gt;Decrement the values at the selected indices by 1.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A Zero Array is an array where all elements are equal to 0. Return true if it is possible to transform nums into a Zero Array after processing all the queries sequentially, otherwise return false.&lt;/p&gt;</description></item><item><title>Zero Array Transformation II</title><link>https://daxpy.xyz/notes_collection/lc_notes/50d02/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/notes_collection/lc_notes/50d02/</guid><description>&lt;h2 id="zero-array-transformation-ii-lc3356"&gt;Zero Array Transformation II [LC#3356]&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You are given an integer array nums of length &lt;code&gt;n&lt;/code&gt; and a 2D array queries where &lt;code&gt;queries[i] = [l_i, r_i, val_i]&lt;/code&gt;. Each &lt;code&gt;queries[i]&lt;/code&gt; represents the following action on nums:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Decrement the value at each index in the range &lt;code&gt;[l_i, r_i]&lt;/code&gt; in nums by at most &lt;code&gt;val_i&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;The amount by which each value is decremented can be chosen independently for each index.
+A Zero Array is an array with all its elements equal to 0. Return the minimum possible non-negative value of &lt;code&gt;k&lt;/code&gt;, such that after processing the first &lt;code&gt;k&lt;/code&gt; queries in sequence, nums becomes a Zero Array. If no such &lt;code&gt;k&lt;/code&gt; exists, return &lt;code&gt;-1&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
+&lt;p&gt;Line sweep and binary search on min queries required.&lt;/p&gt;</description></item></channel></rss>
