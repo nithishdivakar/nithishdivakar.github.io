@@ -1,0 +1,55 @@
+{{ define "main" }}
+<h1>Notes Collection: LC</h1>
+
+<p><b>Table of Content</b></p>
+{{ $.Scratch.Set "pages" (slice) }}
+
+{{ range .Pages }}
+  {{ $.Scratch.Set "key" (printf "%s~~~~~~~~~~" .Params.slug) }}
+  {{ $.Scratch.Add "pages" (dict "page" . "key" ($.Scratch.Get "key")) }}
+{{ end }}
+
+<ul>
+  {{ range sort ($.Scratch.Get "pages") "key" }}
+    {{ $p := .page }}
+    {{ $level := $p.Params.level }}
+    
+  <li>
+    <a href="#{{ $p.Params.slug }}">    
+      <span style="
+        {{ if eq $level "h1" }}font-size:larger;color:red;{{ end }}
+        {{ if eq $level "h2" }}font-size:medium;color:green;{{ end }}
+        {{ if eq $level "h3" }}font-size:normal;{{ end }}
+      ">
+        {{ $p.Params.slug }} {{ $p.Title }}
+      </span>
+    </a>
+  </li>
+
+  {{ end }}
+</ul>
+
+<hr>
+
+{{ range sort ($.Scratch.Get "pages") "key" }}
+    {{ $p := .page }}
+    {{ $level := $p.Params.level }}
+
+
+  <div class="note" id="{{ $p.Params.slug }}">
+    <div style="text-align: right;height:5px"> 
+      <a name="{{ $p.Params.slug }}" href="{{ $p.RelPermalink }}" class="xxs grey monospace">{{ $p.Params.slug }}</a>
+    </div>
+    {{ $p.Content }}
+
+    {{ range $index, $tag := $p.Params.Tags }}
+      <span class="tag">{{ . }}</span>
+    {{ end }}
+  </div>
+
+
+
+  {{ end }}
+
+
+{{ end }}

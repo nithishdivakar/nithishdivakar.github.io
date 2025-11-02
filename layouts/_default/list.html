@@ -8,7 +8,6 @@
         {{.Content}}
     </article>
     <!-- Ranges through content/posts/*.md -->
-
     <div style="margin-top:1em;" >
     {{ range .Pages }}
         {{- partial "list_item.html" . -}}

@@ -162,3 +162,28 @@ footer {
   margin: 4rem 0 2rem;
   padding: 2rem 0;
 }
+
+.xxs{font-size: 8px;} 
+
+.grey{color: gray} 
+.monospace{font-family:monospace} 
+.italics{font-style: italic;}
+.note{
+  margin-bottom: 25px;
+}
+
+span.tag{
+  font-size: small;
+  font-family: sans-serif;
+  border: 1px solid black;
+  padding: 3px;
+}
+
+blockquote {
+  border-left: 1.5px solid #e91e63;
+  color: #222;
+  padding-left: 20px;
+  /* font-style: italic; */
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}

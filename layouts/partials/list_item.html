@@ -12,12 +12,13 @@
   </a>
   <ul>
     <li>
-    <time class="black small">{{- .Date.Format "Posted: 2006 Jan 02" -}}</time>
-    {{- if .Params.Tags -}}
-      <span class="black small">, Tags:</span>
-      {{ range $index, $tag := .Params.Tags }}
-        <a class="small" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }}, {{ end }}
-      {{ end }}
-    {{- end -}}
+      <time class="black small">{{- .Date.Format "Posted: 2006 Jan 02" -}}</time>
+      {{- if .Params.Tags -}}
+        <span class="black small"> | Tags:</span>
+        {{ range $index, $tag := .Params.Tags }}
+          <a class="small" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }}, {{ end }}
+        {{ end }}
+      {{- end -}}
+    </li>
   </ul>
 </li>
