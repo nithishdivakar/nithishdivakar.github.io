@@ -1,5 +1,5 @@
 {{ define "main" }}
-
+<a name="top"></a>
 <h1>Collection: {{.Title}}</h1>
 <div style="text-align: right;height:5px" class="italics"> 
 Back to <a href="{{.Parent.RelPermalink}}">all collections</a>
@@ -42,7 +42,7 @@ Back to <a href="{{.Parent.RelPermalink}}">all collections</a>
 
   <div class="note" id="{{ $p.Params.slug }}">
     <div style="text-align: right;height:5px"> 
-      <a name="{{ $p.Params.slug }}" href="{{ $p.RelPermalink }}" class="xxs grey monospace">{{ $p.Params.slug }}</a>
+      <a href="#top" class="xxs grey monospace">[top]</a><a name="{{ $p.Params.slug }}" href="{{ $p.RelPermalink }}" class="xxs grey monospace">[{{ $p.Params.slug }}]</a>
     </div>
     {{ $p.Content }}
 
