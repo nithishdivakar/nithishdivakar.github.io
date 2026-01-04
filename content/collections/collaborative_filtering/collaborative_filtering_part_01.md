@@ -163,4 +163,4 @@ There are many nuances here. If a system presents 20 items to a user and they cl
 
 This change however leads to a different problem. Vast majority of matrix A would be empty. Singular Value Desomposition cannot process a matrix where  cells are empty. None of the linear algebra factorisation algorithms can. 
 
-We deal with this missing values with a clever change in the formulation. Read more in part 2.
+We deal with this missing values with a clever change in the formulation. Read more in [part 2](../02).

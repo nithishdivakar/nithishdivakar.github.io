@@ -19,14 +19,13 @@
     
     <li>
       {{ if eq $p.Params.status "done" }}
-
-      <a href="{{ $p.RelPermalink }}">    
-          {{ $p.Title }}
-      </a>
+        <a href="{{ $p.RelPermalink }}">    
+            {{ $p.Title }}
+        </a>
       {{ else }}
-        <span>
+      <a href="{{ $p.RelPermalink }}"> 
           [wip] {{ $p.Title }}
-        </span>
+      </a>
       {{ end }}
     </li>
 

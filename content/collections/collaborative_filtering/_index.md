@@ -72,3 +72,5 @@ corner stone component of modern day recommender systems.
 
 - How Do We Know It's Working? (Evaluation Metrics: Offline, Online, Biases)
 - Conclusion: The Journey and What's Next. Multi-Task Learning (MTL), Reinforcement Learning (Contextual Bandits)
+
+## Collection
