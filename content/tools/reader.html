@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS Reader</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; --card: #ffffff; }
+        body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; background: var(--bg); color: #1e293b; padding: 10px; padding-bottom: 50px; }
+        
+        /* Fixed/Sticky Controls for Mobile */
+        .controls { background: var(--card); padding: 15px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: sticky; top: 10px; z-index: 100; border: 1px solid #e2e8f0; }
+        
+        .status { font-size: 0.85rem; font-weight: 600; color: #64748b; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .filter-section { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 10px; padding-top: 12px; }
+        
+        .search-input { width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.9rem; box-sizing: border-box; margin-bottom: 8px; }
+        .filter-group { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.85rem; }
+        input[type="range"] { flex: 1; }
+
+        .source-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        .bulk-actions { font-size: 0.75rem; color: var(--primary); font-weight: bold; cursor: pointer; display: flex; gap: 10px; }
+        
+        .source-scroll { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 6px; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+        .source-scroll::-webkit-scrollbar { height: 4px; }
+        .source-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        .tag { font-size: 0.7rem; padding: 5px 12px; border-radius: 20px; border: 1px solid #cbd5e1; cursor: pointer; white-space: nowrap; background: white; transition: all 0.2s; }
+        .tag.active { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        .item { display: flex; gap: 12px; margin-bottom: 16px; background: var(--card); padding: 12px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .thumb { width: 75px; height: 75px; object-fit: cover; background: #e2e8f0; border-radius: 6px; flex-shrink: 0; }
+        .content { flex: 1; min-width: 0; } /* min-width 0 prevents flex overflow */
+        .meta { font-size: 0.7rem; color: #64748b; margin-bottom: 4px; font-weight: 500; }
+        .title { font-weight: 700; text-decoration: none; color: #0f172a; display: block; line-height: 1.3; font-size: 1.05rem; margin-bottom: 6px; word-wrap: break-word; }
+        .title:visited { color: #64748b; }
+        .blurb { font-size: 0.85rem; color: #475569; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        @media (max-width: 600px) {
+            .item { gap: 10px; padding: 10px; }
+            .thumb { width: 65px; height: 65px; }
+            .title { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div class="controls">
+        <div class="status">
+            <span>{{ loadedCount }}/{{ rssLinks.length }} Sources</span>
+            <span>Showing {{ filteredEntries.length }}</span>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-group">
+                <label>Past <strong>{{ daysFilter }}</strong> days</label>
+                <input type="range" v-model="daysFilter" min="1" max="60">
+            </div>
+
+            <div>
+                <input type="text" v-model="sourceSearch" placeholder="Search sources..." class="search-input">
+                <div class="source-header">
+                    <span style="font-size: 0.75rem; color: #64748b;">Toggle Sources:</span>
+                    <div class="bulk-actions">
+                        <span @click="selectAllSources(true)">All</span>
+                        <span @click="selectAllSources(false)">None</span>
+                    </div>
+                </div>
+                <div class="source-scroll">
+                    <div v-for="source in searchedSources" 
+                         :key="source" 
+                         class="tag" 
+                         :class="{ active: selectedSources.includes(source) }"
+                         @click="toggleSource(source)">
+                        {{ source }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feed List -->
+    <div v-for="item in filteredEntries" :key="item.link + item.date.getTime()" class="item">
+        <img v-if="item.image" :src="item.image" class="thumb" loading="lazy" @error="item.image = null">
+        <div class="content">
+            <div class="meta">{{ item.source }} • {{ formatDate(item.date) }}</div>
+            <a :href="item.link" target="_blank" class="title">{{ item.title }}</a>
+            <div class="blurb">{{ item.blurb }}</div>
+        </div>
+    </div>
+</div>
+
+<script>
+const { createApp, ref, computed, onMounted, watch } = Vue;
+
+createApp({
+    setup() {
+        const rssLinks = [
+            "http://antirez.com/rss",
+            "http://www.aaronsw.com/2002/feeds/pgessays.rss",
+            "https://anildash.com/feed.xml",
+            "https://aresluna.org/main.rss",
+            "https://beej.us/blog/rss.xml",
+            "https://bernsteinbear.com/feed.xml",
+            "https://berthub.eu/articles/index.xml",
+            "https://blog.jim-nielsen.com/feed.xml",
+            "https://blog.miguelgrinberg.com/feed",
+            "https://blog.pixelmelt.dev/rss/",
+            "https://bogdanthegeek.github.io/blog/index.xml",
+            "https://borretti.me/feed.xml",
+            "https://brutecat.com/rss.xml",
+            "https://buttondown.com/hillelwayne/rss",
+            "https://chadnauseam.com/rss.xml",
+            "https://computer.rip/rss.xml",
+            "https://danielchasehooper.com/feed.xml",
+            "https://danieldelaney.net/feed",
+            "https://danielwirtz.com/rss.xml",
+            "https://daringfireball.net/feeds/main",
+            "https://devblogs.microsoft.com/oldnewthing/feed",
+            "https://dfarq.homeip.net/feed/",
+            "https://dynomight.net/feed.xml",
+            "https://eli.thegreenplace.net/feeds/all.atom.xml",
+            "https://entropicthoughts.com/feed.xml",
+            "https://ericmigi.com/rss.xml",
+            "https://evanhahn.com/feed.xml",
+            "https://fabiensanglard.net/rss.xml",
+            "https://feed.tedium.co/",
+            "https://garymarcus.substack.com/feed",
+            "https://geohot.github.io/blog/feed.xml",
+            "https://gilesthomas.com/feed/rss.xml",
+            "https://grantslatton.com/rss.xml",
+            "https://gwern.substack.com/feed",
+            "https://herman.bearblog.dev/feed/",
+            "https://hey.paris/index.xml",
+            "https://hugotunius.se/feed.xml",
+            "https://idiallo.com/feed.rss",
+            "https://it-notes.dragas.net/feed/",
+            "https://jayd.ml/feed.xml",
+            "https://joanwestenberg.com/rss",
+            "https://jyn.dev/atom.xml",
+            "https://keygen.sh/blog/feed.xml",
+            "https://krebsonsecurity.com/feed/",
+            "https://lcamtuf.substack.com/feed",
+            "https://lucumr.pocoo.org/feed.atom",
+            "https://martinalderson.com/feed.xml",
+            "https://matklad.github.io/feed.xml",
+            "https://matuggan.com/rss/",
+            "https://maurycyz.com/index.xml",
+            "https://micahflee.com/feed/",
+            "https://michael.stapelberg.ch/feed.xml",
+            "https://minimaxir.com/index.xml",
+            "https://mitchellh.com/feed.xml",
+            "https://mjg59.dreamwidth.org/data/rss",
+            "https://nesbitt.io/feed.xml",
+            "https://oldvcr.blogspot.com/feeds/posts/default",
+            "https://overreacted.io/rss.xml",
+            "https://philiplaine.com/index.xml",
+            "https://pluralistic.net/feed/",
+            "https://rachelbythebay.com/w/atom.xml",
+            "https://rakhim.exotext.com/rss.xml",
+            "https://refactoringenglish.com/index.xml",
+            "https://shkspr.mobi/blog/feed/",
+            "https://simone.org/feed/",
+            "https://simonwillison.net/atom/everything/",
+            "https://skyfall.dev/rss.xml",
+            "https://steveblank.com/feed/",
+            "https://susam.net/feed.xml",
+            "https://terriblesoftware.org/feed/",
+            "https://timsh.org/rss/",
+            "https://tomrenner.com/index.xml",
+            "https://utcc.utoronto.ca/~cks/space/blog/?atom",
+            "https://worksonmymachine.substack.com/feed",
+            "https://www.abortretry.fail/feed",
+            "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/feed.xml",
+            "https://www.construction-physics.com/feed",
+            "https://www.downtowndougbrown.com/feed/",
+            "https://www.dwarkeshpatel.com/feed",
+            "https://www.experimental-history.com/feed",
+            "https://www.filfre.net/feed/",
+            "https://www.geoffreylitt.com/feed.xml",
+            "https://www.jeffgeerling.com/blog.xml",
+            "https://www.johndcook.com/blog/feed/",
+            "https://www.righto.com/feeds/posts/default",
+            "https://www.seangoedecke.com/rss.xml",
+            "https://www.tedunangst.com/flak/rss",
+            "https://www.theatlantic.com/feed/author/derek-thompson/",
+            "https://www.troyhunt.com/rss/",
+            "https://www.wheresyoured.at/rss/",
+            "https://xania.org/feed",
+            "https://xeiaso.net/blog.rss"
+        ];
+
+        const proxyPrefix = "https://api.allorigins.win/raw?url=";
+        const allEntries = ref([]);
+        const loadedCount = ref(0);
+        
+        // Filters
+        const daysFilter = ref(14);
+        const sourceSearch = ref("");
+        const selectedSources = ref([]);
+
+        const uniqueSources = computed(() => {
+            const sources = [...new Set(allEntries.value.map(e => e.source))];
+            return sources.sort();
+        });
+
+        const searchedSources = computed(() => {
+            if (!sourceSearch.value) return uniqueSources.value;
+            return uniqueSources.value.filter(s => 
+                s.toLowerCase().includes(sourceSearch.value.toLowerCase())
+            );
+        });
+
+        // Initialize selected sources once when first batch of data arrives
+        watch(uniqueSources, (newVal, oldVal) => {
+            if (oldVal.length === 0 && newVal.length > 0) {
+                selectedSources.value = [...newVal];
+            }
+        });
+
+        const toggleSource = (source) => {
+            const index = selectedSources.value.indexOf(source);
+            if (index > -1) selectedSources.value.splice(index, 1);
+            else selectedSources.value.push(source);
+        };
+
+        const selectAllSources = (bool) => {
+            if (bool) selectedSources.value = [...uniqueSources.value];
+            else selectedSources.value = [];
+        };
+
+        const fetchFeed = async (url) => {
+            let responseText = "";
+            let fetchSuccess = false;
+
+            // Step 1: Try Direct Fetch (Fastest, Privacy-Friendly)
+            try {
+                const res = await fetch(url, { mode: 'cors' });
+                if (res.ok) {
+                    responseText = await res.text();
+                    fetchSuccess = true;
+                }
+            } catch (directError) {
+                // Silently move to fallback if direct fetch fails (likely CORS)
+            }
+
+            // Step 2: Fallback to Proxy
+            if (!fetchSuccess) {
+                try {
+                    const res = await fetch(proxyPrefix + encodeURIComponent(url));
+                    if (res.ok) {
+                        responseText = await res.text();
+                        fetchSuccess = true;
+                    }
+                } catch (proxyError) {
+                    console.warn("Total failure for:", url);
+                }
+            }
+
+            if (fetchSuccess && responseText) {
+                parseFeed(responseText);
+            }
+            
+            loadedCount.value++;
+        };
+
+        const parseFeed = (text) => {
+            const xml = new DOMParser().parseFromString(text, "text/xml");
+            
+            // Extract Source Name
+            let source = xml.querySelector("channel > title, feed > title")?.textContent || "Source";
+            source = source.split(' - ')[0].split(': ')[0].trim();
+            
+            xml.querySelectorAll("item, entry").forEach(el => {
+                const title = el.querySelector("title")?.textContent;
+                let link = el.querySelector("link")?.textContent || el.querySelector("link")?.getAttribute("href");
+                
+                if (!link || link.trim() === "") {
+                     link = el.querySelector("link")?.innerHTML;
+                }
+
+                const dateStr = el.querySelector("pubDate, published, updated")?.textContent;
+                const date = new Date(dateStr);
+                const rawB = el.querySelector("description, summary, content")?.textContent || "";
+                
+                let img = el.querySelector("enclosure[type^='image']")?.getAttribute("url") || 
+                          el.querySelector("content[type^='image']")?.getAttribute("url");
+                if (!img) {
+                    const m = rawB.match(/<img[^>]+src="([^">]+)"/);
+                    if (m) img = m[1];
+                }
+
+                if (title && link) {
+                    allEntries.value.push({
+                        title, link: link.trim(), date, source,
+                        blurb: (new DOMParser().parseFromString(rawB, 'text/html').body.textContent || "").substring(0, 160).trim() + "...",
+                        image: img
+                    });
+                }
+            });
+        };
+
+        const filteredEntries = computed(() => {
+            const now = new Date();
+            const cutoff = new Date();
+            cutoff.setDate(now.getDate() - daysFilter.value);
+
+            return allEntries.value
+                .filter(e => {
+                    const isWithinDate = !isNaN(e.date) && e.date >= cutoff;
+                    const isSelectedSource = selectedSources.value.includes(e.source);
+                    return isWithinDate && isSelectedSource;
+                })
+                .sort((a, b) => b.date - a.date);
+        });
+
+        const formatDate = (d) => {
+            const now = new Date();
+            if (d.toDateString() === now.toDateString()) return 'Today';
+            return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+        };
+
+        onMounted(() => rssLinks.forEach(fetchFeed));
+        
+        return { 
+            rssLinks, filteredEntries, loadedCount, 
+            formatDate, daysFilter, sourceSearch, searchedSources, 
+            selectedSources, toggleSource, selectAllSources, uniqueSources
+        };
+    }
+}).mount('#app');
+</script>
+</body>
+</html>
