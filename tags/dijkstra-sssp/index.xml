@@ -4,7 +4,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph = {u : [(v, w(u,v)), ..], ... }&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dijkstra&lt;/span&gt;(graph: List[List[Tuple[int, float]]], source: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[float]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dijkstra&lt;/span&gt;(graph: List[List[Tuple[int, float]]], source: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[float]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(graph)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; distances: List[float] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [math&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inf] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; n
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; distances[source] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0.0&lt;/span&gt;

@@ -26,7 +26,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;p&gt;BFS starting at all 0. BFS for binary graph give shortest path.&lt;/p&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;neares_zero&lt;/span&gt;(matrix: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[List[int]]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;neares_zero&lt;/span&gt;(matrix: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[List[int]]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; m &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(matrix)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(matrix[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;])
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -67,7 +67,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;p&gt;We are given an array asteroids of integers representing asteroids in a row. The indices of the asteriod in the array represent their relative position in space. For each asteroid, the absolute value represents its size, and the sign represents its direction (positive meaning right, negative meaning left). Each asteroid moves at the same speed.&lt;/p&gt;
 &lt;p&gt;Find out the state of the asteroids after all collisions. If two asteroids meet, the smaller one will explode. If both are the same size, both will explode. Two asteroids moving in the same direction will never meet.&lt;/p&gt;</description></item><item><title>Backtracking</title><link>https://daxpy.xyz/collections/lc_notes/85/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/85/</guid><description>&lt;h1 id="backtracking"&gt;Backtracking&lt;/h1&gt;
 &lt;p&gt;Code template&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;backtrack&lt;/span&gt;(state):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; is_valid(state):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(state)
@@ -77,7 +77,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; new_state &lt;span style="color:#f92672"&gt;=&lt;/span&gt; state &lt;span style="color:#f92672"&gt;+&lt;/span&gt; candidate
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; backtrack(new_state)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Bellman-Ford Algorithm</title><link>https://daxpy.xyz/collections/lc_notes/40b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/40b/</guid><description>&lt;h2 id="bellman-ford"&gt;Bellman-Ford&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;bellman_ford&lt;/span&gt;(graph, source):
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;bellman_ford&lt;/span&gt;(graph, source):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# Initialize distances from source to all vertices as INFINITE&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; distances &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {v: float(&lt;span style="color:#e6db74"&gt;&amp;#34;inf&amp;#34;&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; v &lt;span style="color:#f92672"&gt;in&lt;/span&gt; graph}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; distances[source] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#75715e"&gt;# Distance from source to itself is always 0&lt;/span&gt;
@@ -105,7 +105,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;blockquote&gt;
 &lt;p&gt;You are given an integer array prices where prices[i] is the price of a given stock on the ith day, and an integer k. Find the maximum profit you can achieve. You may complete at most k transactions: i.e. you may buy at most k times and sell at most k times. Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).&lt;/p&gt;</description></item><item><title>BFS</title><link>https://daxpy.xyz/collections/lc_notes/35/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/35/</guid><description>&lt;h2 id="bfs"&gt;BFS&lt;/h2&gt;
 &lt;p&gt;Template&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;bfs&lt;/span&gt;():
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;bfs&lt;/span&gt;():
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; deque()
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen &lt;span style="color:#f92672"&gt;=&lt;/span&gt; set()
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(start_node)
@@ -126,7 +126,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;Set up the boundary to include all possible elements&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;binary_search&lt;/span&gt;(search_space) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;binary_search&lt;/span&gt;(search_space) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left, right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; min(search_space), max(search_space)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; left &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; right:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mid &lt;span style="color:#f92672"&gt;=&lt;/span&gt; left &lt;span style="color:#f92672"&gt;+&lt;/span&gt; (right &lt;span style="color:#f92672"&gt;-&lt;/span&gt; left) &lt;span style="color:#f92672"&gt;//&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;
@@ -137,7 +137,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; left
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Binary Search in Array</title><link>https://daxpy.xyz/collections/lc_notes/75a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/75a/</guid><description>&lt;h1 id="binary-search-in-array"&gt;Binary Search in Array&lt;/h1&gt;</description></item><item><title>Binary Search in Sorted Array</title><link>https://daxpy.xyz/collections/lc_notes/75a01/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/75a01/</guid><description>&lt;h2 id="binary-search-in-a-sorted-array"&gt;Binary search in a sorted array&lt;/h2&gt;
 &lt;pre tabindex="0"&gt;&lt;code&gt; [ &amp;lt; ][ = ][ &amp;gt; ] 
-&lt;/code&gt;&lt;/pre&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;binary_search_array&lt;/span&gt;(arr: List[int], target: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/code&gt;&lt;/pre&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;binary_search_array&lt;/span&gt;(arr: List[int], target: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left, right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, len(arr) &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; left &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; right:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mid &lt;span style="color:#f92672"&gt;=&lt;/span&gt; left &lt;span style="color:#f92672"&gt;+&lt;/span&gt; (right &lt;span style="color:#f92672"&gt;-&lt;/span&gt; left) &lt;span style="color:#f92672"&gt;//&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;
@@ -156,7 +156,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;p&gt;A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.&lt;/p&gt;
 &lt;p&gt;The path sum of a path is the sum of the node&amp;rsquo;s values in the path. Given the root of a binary tree, return the maximum path sum of any non-empty path.&lt;/p&gt;</description></item><item><title>Bounded Knapsack</title><link>https://daxpy.xyz/collections/lc_notes/87a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/87a/</guid><description>&lt;h2 id="bounded-knapsack"&gt;Bounded Knapsack&lt;/h2&gt;
 &lt;p&gt;Bounded knapsack is when we have $n$ items $[(w_i, v_i, n_i)]$ representing weight, value and copies available of each item. This is tribvially reducible to 0/1 knapsack if we simply assume that there are $n_i$ number of distinct items with same weight and value for each of the original item. The time complexity would then be $O(sum(n_i)\times sum(w_i n_i))$.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;knapsack_01&lt;/span&gt;(weights: List[int], values: List[int], capacity: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;knapsack_01&lt;/span&gt;(weights: List[int], values: List[int], capacity: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_value &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (capacity &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; weight, value &lt;span style="color:#f92672"&gt;in&lt;/span&gt; zip(weights, values):
@@ -179,7 +179,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;li&gt;We should not encounter a null/empty node twice before queue is empty.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;is_complete_tree&lt;/span&gt;(root: Optional[TreeNode]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;is_complete_tree&lt;/span&gt;(root: Optional[TreeNode]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; deque([root])
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; null_found &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;False&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; queue:
@@ -205,7 +205,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;/blockquote&gt;
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;coin_change&lt;/span&gt;(amount: int, coins: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;coin_change&lt;/span&gt;(amount: int, coins: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]&lt;span style="color:#f92672"&gt;*&lt;/span&gt;(amount &lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dp[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; coin &lt;span style="color:#f92672"&gt;in&lt;/span&gt; coins:
@@ -226,7 +226,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;li&gt;when we need to add this element to subset, we add it once per each frequency&lt;/li&gt;
 &lt;li&gt;$T(n) = O(2^n)$; $S(n) = O(2^n)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;subsets_of_multiset&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[List[int]]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;subsets_of_multiset&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[List[int]]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; powerset &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [[],]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; freq &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; num &lt;span style="color:#f92672"&gt;in&lt;/span&gt; nums:
@@ -250,7 +250,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;li&gt;This can be implemented using a 2 pointer approach closing in from both ends.&lt;/li&gt;
 &lt;li&gt;$T(n) = O(n)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;max_water&lt;/span&gt;(height: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;max_water&lt;/span&gt;(height: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left, right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, len(height)&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_area &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; left &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; right:
@@ -289,7 +289,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;li&gt;Only corner case is a prefix array sum itself that &lt;code&gt;sum%k&lt;/code&gt; to 0.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="solution"&gt;Solution&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;check_subarray_sum&lt;/span&gt;(nums: List[int], k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;check_subarray_sum&lt;/span&gt;(nums: List[int], k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(nums)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mod_seen &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;: &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;} &lt;span style="color:#75715e"&gt;# for prefixes that exactly sum%k to 0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; prefix_sum &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
@@ -314,7 +314,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;p&gt;Expand around Center&lt;/p&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;count_palindromic_substrings&lt;/span&gt;(s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;count_palindromic_substrings&lt;/span&gt;(s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;expand_around_center&lt;/span&gt;(left: int, right: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; count &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; left &lt;span style="color:#f92672"&gt;&amp;gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;and&lt;/span&gt; right &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; len(s) &lt;span style="color:#f92672"&gt;and&lt;/span&gt; s[left] &lt;span style="color:#f92672"&gt;==&lt;/span&gt; s[right]:
@@ -372,7 +372,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;li&gt;&lt;code&gt;Count[L &amp;lt;= s &amp;lt;= U] = Count[s &amp;lt;= U] - Count[s &amp;lt;= L - 1]&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;pairs_within_bounds&lt;/span&gt;(self, nums: List[int], lower: int, upper: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;pairs_within_bounds&lt;/span&gt;(self, nums: List[int], lower: int, upper: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; nums &lt;span style="color:#f92672"&gt;=&lt;/span&gt; sorted(nums)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; U &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;count_lower_sorted(nums, upper)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; L &lt;span style="color:#f92672"&gt;=&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;count_lower_sorted(nums, lower &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
@@ -400,7 +400,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;p&gt;We have to fine the next largest in the array for every element.&lt;/p&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;next_warmer_day&lt;/span&gt;(temperatures: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;next_warmer_day&lt;/span&gt;(temperatures: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(temperatures)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; answers &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; n
@@ -433,7 +433,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;graph = {u : [(v, w(u,v)), ..], ... }&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dijkstra&lt;/span&gt;(graph: List[List[Tuple[int, float]]], source: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[float]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;dijkstra&lt;/span&gt;(graph: List[List[Tuple[int, float]]], source: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[float]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(graph)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; distances: List[float] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [math&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inf] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; n
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; distances[source] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0.0&lt;/span&gt;
@@ -465,7 +465,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;/blockquote&gt;
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;count_distinct_subsequences&lt;/span&gt;(s: str, t: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;count_distinct_subsequences&lt;/span&gt;(s: str, t: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; m &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(s) 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (n &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; _ &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(m &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)]
@@ -499,7 +499,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;li&gt;$T(n) = O(mn)$&lt;/li&gt;
 &lt;li&gt;$S(n) = O(mn)$ but optimised to $O(\min\{m,n\})$&lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>DSU Union-Find</title><link>https://daxpy.xyz/collections/lc_notes/73/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/73/</guid><description>&lt;h2 id="dsu-union-find"&gt;DSU Union-Find&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;DSU&lt;/span&gt;:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;DSU&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;parent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;rank &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {}
@@ -534,7 +534,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;ul&gt;
 &lt;li&gt;We do not add path compression as addition of roll back will results in unnecessary operations. This results in O(log n) for find (due to merge by rank)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;DSU_rollback&lt;/span&gt;:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;DSU_rollback&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;parent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;rank &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {}
@@ -602,7 +602,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=uSFzHCZ4E-8"&gt;https://www.youtube.com/watch?v=uSFzHCZ4E-8&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.kartynnik.info/posts/fenwick-trees-are-nothing-but"&gt;https://blog.kartynnik.info/posts/fenwick-trees-are-nothing-but&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 0· 1· 2· 3· 4· 5· 6· 7· 8· 9·10·11·12·13·14·15
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 0· 1· 2· 3· 4· 5· 6· 7· 8· 9·10·11·12·13·14·15
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; A = [ | | | | | | | | | | | | | | | ]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T[ 0] = [ ✚| | | | | | | | | | | | | | | ]
@@ -621,7 +621,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T[13] = [ | | | | | | | | | | | | ✚| ✚| | ]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T[14] = [ | | | | | | | | | | | | | | ✚| ]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;T[15] = [ ✚| ✚| ✚| ✚| ✚| ✚| ✚| ✚| ✚| ✚| ✚| ✚| ✚| ✚| ✚| ✚]
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;OP &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;lambda&lt;/span&gt; a, b: a&lt;span style="color:#f92672"&gt;+&lt;/span&gt;b
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;OP &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;lambda&lt;/span&gt; a, b: a&lt;span style="color:#f92672"&gt;+&lt;/span&gt;b
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;OP_INV &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;lambda&lt;/span&gt; a, b: a &lt;span style="color:#f92672"&gt;-&lt;/span&gt; b
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;E &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;lambda&lt;/span&gt; : &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -674,7 +674,7 @@ $$x_1, \ldots, x_n = \frac{(u_1,\ldots, u_n)}{\sqrt{u_1^2+\ldots+u_{n+2}^{2}}}$$
 &lt;p&gt;Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value. If target is not found in the array, return [-1, -1]. You must write an algorithm with O(log n) runtime complexity.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;searchRange&lt;/span&gt;(nums: List[int], target: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Tuple[int, int]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;searchRange&lt;/span&gt;(nums: List[int], target: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Tuple[int, int]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;binary_search&lt;/span&gt;(value):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left, right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, len(nums) &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; left &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; right:
@@ -719,7 +719,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Node&lt;/span&gt;:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Node&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self, key, val, nxt&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;, prev&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;key &lt;span style="color:#f92672"&gt;=&lt;/span&gt; key
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;val &lt;span style="color:#f92672"&gt;=&lt;/span&gt; val
@@ -772,7 +772,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;li&gt;$O(n)$ storage for dictionary and linkeidnlist&lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>Implementing Self Attention</title><link>https://daxpy.xyz/collections/ml_notes/03a/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/ml_notes/03a/</guid><description>&lt;h2 id="implementing-self-attention"&gt;Implementing Self Attention&lt;/h2&gt;
 &lt;p&gt;b is batch, t is tokens and d is token embedding size.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;scaled_dot_attention&lt;/span&gt;(
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;scaled_dot_attention&lt;/span&gt;(
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Q: Tensor[b, t, d],
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; K: Tensor[b, t, d],
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; V: Tensor[b, t, d]
@@ -804,7 +804,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;li&gt;Dynamic Prgraming&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; functools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; cache
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; functools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; cache
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;isInterleave&lt;/span&gt;(u: str, v: str, t: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; m, n, k &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(u), len(v), len(t)
@@ -838,7 +838,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;li&gt;traverse the array in the reverse order. If we can reach on of the exisiting reachable position from current index, then the curent index is also in reachable.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;jump_game&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;jump_game&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(nums)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left_limit &lt;span style="color:#f92672"&gt;=&lt;/span&gt; n &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; pos &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(n &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;):
@@ -868,7 +868,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;li&gt;BFS&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;jump&lt;/span&gt;(arr: List[int], start: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;jump&lt;/span&gt;(arr: List[int], start: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; seen &lt;span style="color:#f92672"&gt;=&lt;/span&gt; set([start])
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; queue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; deque([start])
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(arr)
@@ -902,7 +902,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;p&gt;REF: &lt;a href="https://www.youtube.com/watch?v=EL4ZbRF587g"&gt;https://www.youtube.com/watch?v=EL4ZbRF587g&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;KMP&lt;/span&gt;:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;KMP&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self, pattern):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# longest prefix suffix (LPS) array&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; m &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(pattern)
@@ -952,7 +952,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;li&gt;Go in order of lowest to highest weighted edges.&lt;/li&gt;
 &lt;li&gt;Add edge to the graph if it doesn&amp;rsquo;t create a cycle.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@dataclass&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@dataclass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Edge&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; u: int
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; v: int
@@ -987,7 +987,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;li&gt;Enumerate every range. Compute the Area&lt;/li&gt;
 &lt;li&gt;$T(n) = O(n^2)$; $S(n) = O(n^2)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;area[i][j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; min_heights[i:j] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; ( j&lt;span style="color:#f92672"&gt;-&lt;/span&gt;i&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; )
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;area[i][j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; min_heights[i:j] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; ( j&lt;span style="color:#f92672"&gt;-&lt;/span&gt;i&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; )
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;min_heights[i:j] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; min(min_heights[i&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:j&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;], heights[i], heights[j])
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;min_heights[i:i] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; heights[i]
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="intuition-monotonic-stack"&gt;Intuition: Monotonic Stack&lt;/h3&gt;
@@ -1006,7 +1006,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 ┌─┴──┐ ┌─┴─┐ ┌──┴──┐
  left mid right
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;largest_rectangle_in_historgam&lt;/span&gt;(heights: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;largest_rectangle_in_historgam&lt;/span&gt;(heights: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#75715e"&gt;# monotonic stack : non decreasing order&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_area &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
@@ -1050,7 +1050,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;h3 id="dynamic-programming-approach"&gt;Dynamic programming approach&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Find the length of longest increasing subsequence ending at i.
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;length_of_lis&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;length_of_lis&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#f92672"&gt;not&lt;/span&gt; nums: &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_length &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; len(nums)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, len(nums)):
@@ -1066,7 +1066,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;li&gt;If the number is larger than the largest element in the temporary array, append it. Otherwise, replace the found position with the current number.&lt;/li&gt;
 &lt;li&gt;The length of the temporary array will give the length of the longest increasing subsequence.&lt;/li&gt;
 &lt;li&gt;The temp array may not always have a valid subsequence, but its length will always be equal to longest subsequence.
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; bisect &lt;span style="color:#f92672"&gt;import&lt;/span&gt; bisect_left
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; bisect &lt;span style="color:#f92672"&gt;import&lt;/span&gt; bisect_left
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;length_of_lis&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; &lt;span style="color:#f92672"&gt;not&lt;/span&gt; nums: &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
@@ -1092,7 +1092,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;p&gt;Expand around Center&lt;/p&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;longestPalindrome&lt;/span&gt;(string: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;longestPalindrome&lt;/span&gt;(string: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;expand_around_center&lt;/span&gt;(left: int, right: int, string: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; left &lt;span style="color:#f92672"&gt;&amp;gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;and&lt;/span&gt; right &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt; len(string) &lt;span style="color:#f92672"&gt;and&lt;/span&gt; string[left] &lt;span style="color:#f92672"&gt;==&lt;/span&gt; string[right]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left &lt;span style="color:#f92672"&gt;=&lt;/span&gt; left &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
@@ -1123,7 +1123,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;li&gt;Shrink: Move &lt;code&gt;left&lt;/code&gt; to remove characters until all are unique.&lt;/li&gt;
 &lt;li&gt;Track maximum length of the window.&lt;/li&gt;
 &lt;li&gt;$T(n) = O(n)$; $S(n) = O(|char set|)$
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;max_substring_without_repetition&lt;/span&gt;(s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;max_substring_without_repetition&lt;/span&gt;(s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; char_count &lt;span style="color:#f92672"&gt;=&lt;/span&gt; defaultdict(int)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
@@ -1141,7 +1141,7 @@ The functions get and put must each run in $O(1)$ average time complexity.&lt;/l
 &lt;p&gt;Given a string containing just the characters &amp;lsquo;(&amp;rsquo; and &amp;lsquo;)&amp;rsquo;, return the length of the longest valid (well-formed) parentheses
 substring&lt;/p&gt;
 &lt;h3 id="using-stack"&gt;Using stack&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;longest_valid_parentheses&lt;/span&gt;(self, s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;longest_valid_parentheses&lt;/span&gt;(self, s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(len(s)):
@@ -1169,7 +1169,7 @@ substring&lt;/p&gt;
 &lt;li&gt;Then for each 0, compute largest island you can make by flipping it.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;largest_island&lt;/span&gt;(grid: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;largest_island&lt;/span&gt;(grid: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; parent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; size &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -1226,7 +1226,7 @@ substring&lt;/p&gt;
 &lt;li&gt;$S(n) = O(mn)$&lt;/li&gt;
 &lt;/ul&gt;</description></item><item><title>Manacher Algorithm</title><link>https://daxpy.xyz/collections/lc_notes/22c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/22c/</guid><description>&lt;h2 id="manacher-algorithm"&gt;Manacher Algorithm&lt;/h2&gt;
 &lt;p&gt;All palindromes in $O(1)$&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;manacher&lt;/span&gt;(s: str):
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;manacher&lt;/span&gt;(s: str):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; t &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;#&amp;#39;&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;join(&lt;span style="color:#e6db74"&gt;&amp;#39;^&lt;/span&gt;&lt;span style="color:#e6db74"&gt;{}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;$&amp;#39;&lt;/span&gt;&lt;span style="color:#f92672"&gt;.&lt;/span&gt;format(s))
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(t)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; n
@@ -1254,7 +1254,7 @@ substring&lt;/p&gt;
 &lt;li&gt;When we are a number and chunk&amp;rsquo;s limit cannot be expanded beyond the same position, we can start a new chunk.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;maximum_chunks&lt;/span&gt;(arr: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;maximum_chunks&lt;/span&gt;(arr: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; right_limit &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; count &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i, num &lt;span style="color:#f92672"&gt;in&lt;/span&gt; enumerate(arr):
@@ -1277,7 +1277,7 @@ substring&lt;/p&gt;
 &lt;p&gt;Return the maximum subarray sum across all possible resulting arrays.&lt;/p&gt;
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="time-complexity"&gt;Time complexity&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;$T(n) = $&lt;/li&gt;
 &lt;li&gt;$S(n) = $&lt;/li&gt;
@@ -1290,7 +1290,7 @@ substring&lt;/p&gt;
 &lt;li&gt;Find the max sum of subarray ending at location &lt;code&gt;i&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;$T(n) = O(n)$; $S(n) = O(1)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;max_subarray_sum&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;max_subarray_sum&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; curr, ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, nums[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; num &lt;span style="color:#f92672"&gt;in&lt;/span&gt; nums:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; curr &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(curr &lt;span style="color:#f92672"&gt;+&lt;/span&gt; num, num)
@@ -1317,7 +1317,7 @@ substring&lt;/p&gt;
 &lt;li&gt;Always maintain insertion so that max heap has at most 1 value more than the min heap&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;MedianFinder&lt;/span&gt;:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;MedianFinder&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;low &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [] &lt;span style="color:#75715e"&gt;# stores n or n+1 elements&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;high &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [] &lt;span style="color:#75715e"&gt;# stores n elements&lt;/span&gt;
@@ -1345,7 +1345,7 @@ substring&lt;/p&gt;
 &lt;li&gt;Iterate over the intervals one by on merging the current with the previous if there is an overlap&lt;/li&gt;
 &lt;li&gt;$T(n) = O(n \log n + n)$; $S(n) = O(n)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;merge_intervals&lt;/span&gt;(intervals: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[List[int]]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;merge_intervals&lt;/span&gt;(intervals: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[List[int]]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; intervals &lt;span style="color:#f92672"&gt;=&lt;/span&gt; sorted(intervals)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [intervals[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;]]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; start, end &lt;span style="color:#f92672"&gt;in&lt;/span&gt; intervals[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:]:
@@ -1370,7 +1370,7 @@ substring&lt;/p&gt;
 &lt;li&gt;$T(n) = O(k + n \log k)$ heapify + n pop root&lt;/li&gt;
 &lt;li&gt;$S(n) = O(k)$ for the heap&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;merge_sorted_lists&lt;/span&gt;(lists: List[Optional[ListNode]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Optional[ListNode]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;merge_sorted_lists&lt;/span&gt;(lists: List[Optional[ListNode]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Optional[ListNode]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;HeapNode&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self, node: ListNode):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;node &lt;span style="color:#f92672"&gt;=&lt;/span&gt; node
@@ -1394,7 +1394,7 @@ substring&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Iterative Mergesort on sorted lists&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Merging Two Sorted Linked Lists</title><link>https://daxpy.xyz/collections/lc_notes/18c/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/18c/</guid><description>&lt;h2 id="merge-two-sorted-lists-lc21"&gt;Merge Two Sorted Lists [LC#21]&lt;/h2&gt;
 &lt;p&gt;You are given the heads of two sorted linked lists list1 and list2. Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
 Return the head of the merged linked list.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Definition for singly-linked list.&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Definition for singly-linked list.&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@dataclass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;ListNode&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; val: int &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
@@ -1403,7 +1403,7 @@ Return the head of the merged linked list.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$T(n) = O(m+n)$; $S(n) = O(1)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;merge_two_sorted_lists&lt;/span&gt;(list1: Optional[ListNode], list2: Optional[ListNode]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Optional[ListNode]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;merge_two_sorted_lists&lt;/span&gt;(list1: Optional[ListNode], list2: Optional[ListNode]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Optional[ListNode]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fake_head &lt;span style="color:#f92672"&gt;=&lt;/span&gt; ListNode()
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; current &lt;span style="color:#f92672"&gt;=&lt;/span&gt; fake_head
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
@@ -1432,7 +1432,7 @@ Given an array of meeting time intervals intervals where intervals[i] = [starti,
 &lt;li&gt;If current start time is earlier than the min heap end time, we need a new room else we can pop the top and add a new room&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;min_meeting_rooms&lt;/span&gt;(intervals: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;min_meeting_rooms&lt;/span&gt;(intervals: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; intervals &lt;span style="color:#f92672"&gt;=&lt;/span&gt; sorted(intervals)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heap &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [intervals[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;][&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]] &lt;span style="color:#75715e"&gt;# first end time&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; meeting_rooms &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
@@ -1453,7 +1453,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;/blockquote&gt;
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;make_valid&lt;/span&gt;(s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;make_valid&lt;/span&gt;(s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; insert_count &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; char &lt;span style="color:#f92672"&gt;in&lt;/span&gt; s:
@@ -1495,7 +1495,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;p&gt;There are some spherical balloons taped onto a flat wall that represents the XY-plane. The balloons are represented as a 2D integer array points where points[i] = [xstart, xend] denotes a balloon whose horizontal diameter stretches between xstart and xend. You do not know the exact y-coordinates of the balloons.&lt;/p&gt;
 &lt;p&gt;Arrows can be shot up directly vertically (in the positive y-direction) from different points along the x-axis. A balloon with xstart and xend is burst by an arrow shot at x if xstart &amp;lt;= x &amp;lt;= xend. There is no limit to the number of arrows that can be shot. A shot arrow keeps traveling up infinitely, bursting any balloons in its path.&lt;/p&gt;</description></item><item><title>Minimum Spanning Tree</title><link>https://daxpy.xyz/collections/lc_notes/42/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/42/</guid><description>&lt;h2 id="minimum-spanning-tree"&gt;Minimum Spanning Tree&lt;/h2&gt;</description></item><item><title>Monotonic Stack</title><link>https://daxpy.xyz/collections/lc_notes/60/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/60/</guid><description>&lt;h2 id="monotonic-stack"&gt;Monotonic Stack&lt;/h2&gt;
 &lt;p&gt;A monotonic decreasing stack is a data structure based on a stack. While traversing an array, it maintains a sorted list of elements encountered so far that are strictly greater than or equal to the current element being processed. It upholds this property by continuously removing elements from the top of the stack that violate the requirement (i.e., elements that are less than the current element).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; num &lt;span style="color:#f92672"&gt;in&lt;/span&gt; nums:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; stack &lt;span style="color:#f92672"&gt;and&lt;/span&gt; stack[&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;] &lt;span style="color:#f92672"&gt;&amp;lt;=&lt;/span&gt; num:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pop()
@@ -1513,7 +1513,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;/blockquote&gt;
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;count_components&lt;/span&gt;(self, n: int, edges: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;count_components&lt;/span&gt;(self, n: int, edges: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; parent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {i: i &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(n)}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;find&lt;/span&gt;(a):
@@ -1548,7 +1548,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;li&gt;If the span and the current index coincide, then the string can be partitioned at the current index.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;partition_string&lt;/span&gt;(string: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;partition_string&lt;/span&gt;(string: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; last_pos &lt;span style="color:#f92672"&gt;=&lt;/span&gt; defaultdict(int)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i, char &lt;span style="color:#f92672"&gt;in&lt;/span&gt; enumerate(string):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; last_pos[char] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; i
@@ -1586,7 +1586,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;kth_permutation&lt;/span&gt;(n: int, k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;kth_permutation&lt;/span&gt;(n: int, k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; factorials &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; digits &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#e6db74"&gt;&amp;#34;1&amp;#34;&lt;/span&gt;]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, n):
@@ -1612,7 +1612,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;li&gt;Find an edge such that one vertex is in the constructed mst, the other is not and the weight is smallest. Add this edge and vertex to mst&lt;/li&gt;
 &lt;li&gt;repeat untill mst has all vertices.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@dataclass&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@dataclass&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;Edge&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; u: int
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; v: int
@@ -1650,7 +1650,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;p&gt;Given an integer array nums, return an array answer such that &lt;code&gt;answer[i]&lt;/code&gt; is equal to the product of all the elements of nums except &lt;code&gt;nums[i]&lt;/code&gt;. The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer. You must write an algorithm that runs in O(n) time and without using the division operation.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;product_except&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;product_except&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(nums)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ans &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;,]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(n &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;):
@@ -1670,7 +1670,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;li&gt;Maintain 2 pointer, &lt;code&gt;left&lt;/code&gt; and &lt;code&gt;right&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;Traverse the array updating both pointers such that the values in &lt;code&gt;[left, right]&lt;/code&gt; is always &lt;code&gt;&amp;gt;&lt;/code&gt; the pivot.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# [ ≤ ][ ≤ ][ &amp;gt; ][ &amp;gt; ][ &amp;gt; ][ &amp;gt; ][ ? ][ hi ] &lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# [ ≤ ][ ≤ ][ &amp;gt; ][ &amp;gt; ][ &amp;gt; ][ &amp;gt; ][ ? ][ hi ] &lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# └─ left └─ right &lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;lomuto_partition&lt;/span&gt;(A, lo, hi):
@@ -1683,7 +1683,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; A[left], A[hi] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; A[hi], A[left]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; left
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="quick-sort-using-the-partition-scheme"&gt;Quick sort using the partition scheme&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;quicksort&lt;/span&gt;(A, lo, hi):
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;quicksort&lt;/span&gt;(A, lo, hi):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; lo &lt;span style="color:#f92672"&gt;&amp;gt;=&lt;/span&gt;hi &lt;span style="color:#f92672"&gt;or&lt;/span&gt; lo &lt;span style="color:#f92672"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; p &lt;span style="color:#f92672"&gt;=&lt;/span&gt; lomuto_partition(A, lo, hi)
@@ -1707,7 +1707,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;li&gt;Use a monotonic increasing stack. The nodes that are left on the stack is the answer.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;remove_nodes&lt;/span&gt;(self, head: Optional[Node]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Optional[Node]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;remove_nodes&lt;/span&gt;(self, head: Optional[Node]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Optional[Node]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; node &lt;span style="color:#f92672"&gt;=&lt;/span&gt; head
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; node:
@@ -1730,7 +1730,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;p&gt;Given the head of a linked list, remove the nth node from the end of the list and return its head.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;remove_nth_from_end&lt;/span&gt;(head: Optional[ListNode], n: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Optional[ListNode]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;remove_nth_from_end&lt;/span&gt;(head: Optional[ListNode], n: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Optional[ListNode]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fake_head &lt;span style="color:#f92672"&gt;=&lt;/span&gt; ListNode(&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, head)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; P &lt;span style="color:#f92672"&gt;=&lt;/span&gt; fake_head
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; n&lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#f92672"&gt;and&lt;/span&gt; P:
@@ -1754,7 +1754,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;li&gt;Simply arrange max frequent character in interleaved indexes and fill out other characters in the gaps.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;reorganize_string&lt;/span&gt;(self, s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;reorganize_string&lt;/span&gt;(self, s: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; character_counts &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Counter(s)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(s)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; max(character_counts&lt;span style="color:#f92672"&gt;.&lt;/span&gt;values()) &lt;span style="color:#f92672"&gt;&amp;gt;&lt;/span&gt; (n &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;) &lt;span style="color:#f92672"&gt;//&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;:
@@ -1797,7 +1797,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
  ┌────┐ ┌────┐ ┌────┐
  &amp;lt;-- │ │ &amp;lt;--│prev│ |curr│--&amp;gt;
  └────┘ └────┘ └────┘
-&lt;/code&gt;&lt;/pre&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fn&lt;/span&gt;(head):
+&lt;/code&gt;&lt;/pre&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;fn&lt;/span&gt;(head):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; curr &lt;span style="color:#f92672"&gt;=&lt;/span&gt; head
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; prev &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;while&lt;/span&gt; curr:
@@ -1820,7 +1820,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;li&gt;We use 1 extra storage and simply swap the elemnts to their right position.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;rotate_array&lt;/span&gt;(nums: List[int], k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;rotate_array&lt;/span&gt;(nums: List[int], k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(nums)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; k &lt;span style="color:#f92672"&gt;=&lt;/span&gt; k &lt;span style="color:#f92672"&gt;%&lt;/span&gt; n &lt;span style="color:#75715e"&gt;# for k &amp;gt; n&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; start &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
@@ -1846,7 +1846,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;p&gt;90 degree Rotation clockwise = tranpose + reflect&lt;/p&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;rotate&lt;/span&gt;(matrix: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;rotate&lt;/span&gt;(matrix: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;None&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(matrix)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;# tranpose&lt;/span&gt;
@@ -1867,7 +1867,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;p&gt;You are given a 2D array of integers envelopes where envelopes[i] = [wi, hi] represents the width and the height of an envelope. One envelope can fit into another if and only if both the width and height of one envelope are greater than the other envelope&amp;rsquo;s width and height. Return the maximum number of envelopes you can Russian doll (i.e., put one inside the other).
 &lt;em&gt;Note: You cannot rotate an envelope.&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Segment Trees</title><link>https://daxpy.xyz/collections/lc_notes/30d/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/30d/</guid><description>&lt;h1 id="segment-trees"&gt;Segment Trees&lt;/h1&gt;
 &lt;p&gt;The sum of the root vertex at index 1, the sums of its two child vertices at indices 2 and 3.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;SegmentTree&lt;/span&gt;:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;SegmentTree&lt;/span&gt;:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;__init__&lt;/span&gt;(self, arr: List[int]):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;size &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(arr)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;tree &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (&lt;span style="color:#ae81ff"&gt;4&lt;/span&gt; &lt;span style="color:#f92672"&gt;*&lt;/span&gt; self&lt;span style="color:#f92672"&gt;.&lt;/span&gt;size) &lt;span style="color:#75715e"&gt;# Allocate space for the segment tree&lt;/span&gt;
@@ -1917,7 +1917,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;li&gt;Requires $2\cdot n+1$ storage.&lt;/li&gt;
 &lt;li&gt;Implemented as a collection of complete binary tree.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;┌───────────────────────────────────────────────────────────────┐
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;┌───────────────────────────────────────────────────────────────┐
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ 1: │ 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ ----- │
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;╔═══════════════════════════════╗───────────────────────────────┤
@@ -1944,7 +1944,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;p&gt;BFS gives the shortest path in binary matrix&lt;/p&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;shortest_path_in_binary_matrix&lt;/span&gt;(grid: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;shortest_path_in_binary_matrix&lt;/span&gt;(grid: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(grid[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;])
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;neighbours&lt;/span&gt;(x, y):
@@ -1983,7 +1983,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;/blockquote&gt;
 &lt;h3 id="intution"&gt;Intution&lt;/h3&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;smallestRange&lt;/span&gt;(nums: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;smallestRange&lt;/span&gt;(nums: List[List[int]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[int]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heap &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [(arr[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;], i, &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i, arr &lt;span style="color:#f92672"&gt;in&lt;/span&gt; enumerate(nums)]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; heapq&lt;span style="color:#f92672"&gt;.&lt;/span&gt;heapify(heap)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(arr[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; arr &lt;span style="color:#f92672"&gt;in&lt;/span&gt; nums)
@@ -2008,7 +2008,7 @@ Return the minimum number of moves required to make &lt;code&gt;s&lt;/code&gt; v
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;p&gt;Binary search on the range of possible values.&lt;/p&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;splita_array_largest_sum&lt;/span&gt;(nums: List[int], k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;splita_array_largest_sum&lt;/span&gt;(nums: List[int], k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left, right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; max(nums), sum(nums)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;valid&lt;/span&gt;(th):
@@ -2054,7 +2054,7 @@ Begin with an empty string s. For each group of consecutive repeating characters
 &lt;li&gt;While we are computing prefix(i) if &lt;code&gt;residue = prefix(i) - k&lt;/code&gt; is already among prefixes, then there is a subarray with sum k. We simply have to keep a count.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="solution"&gt;Solution&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;count_subarray_sum_to_targets&lt;/span&gt;(nums: List[int], k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;count_subarray_sum_to_targets&lt;/span&gt;(nums: List[int], k: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; prefixes &lt;span style="color:#f92672"&gt;=&lt;/span&gt; defaultdict(int)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; prefixes[&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#75715e"&gt;# empty array is a subarray of sum 0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
@@ -2091,7 +2091,7 @@ The &amp;lsquo;.&amp;rsquo; character indicates empty cells.&lt;/li&gt;
 &lt;li&gt;Contribution of &lt;code&gt;num&lt;/code&gt; to the final sum is &lt;code&gt;(num * count[num])&lt;/code&gt;. But to avoid duplicates, we iterate over the array and keep the total in another counter&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="solution"&gt;Solution&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sum_of_good_subsequences&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sum_of_good_subsequences&lt;/span&gt;(nums: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mod &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;10&lt;/span&gt; &lt;span style="color:#f92672"&gt;**&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;9&lt;/span&gt; &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; total &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Counter()
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; count &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Counter()
@@ -2110,7 +2110,7 @@ The &amp;lsquo;.&amp;rsquo; character indicates empty cells.&lt;/li&gt;
 &lt;h3 id="intuition"&gt;Intuition&lt;/h3&gt;
 &lt;p&gt;If &lt;code&gt;arr[k]&lt;/code&gt; is minimum element in &lt;code&gt;[i, j]&lt;/code&gt;, then &lt;code&gt;arr[k]&lt;/code&gt; appears in &lt;code&gt;(k - i) * (j - k)&lt;/code&gt; subarrays.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Monotonic Stack&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sum_subarrray_mins&lt;/span&gt;(arr: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;sum_subarrray_mins&lt;/span&gt;(arr: List[int]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; stack &lt;span style="color:#f92672"&gt;=&lt;/span&gt; []
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sum_of_minimums &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; arr&lt;span style="color:#f92672"&gt;.&lt;/span&gt;append(&lt;span style="color:#f92672"&gt;-&lt;/span&gt;math&lt;span style="color:#f92672"&gt;.&lt;/span&gt;inf) &lt;span style="color:#75715e"&gt;# so that everything gets popped out in the end&lt;/span&gt;
@@ -2142,7 +2142,7 @@ Return the number of different expressions that you can build, which evaluates t
 &lt;p&gt;Given an integer array nums, return all the triplets &lt;code&gt;[nums[i], nums[j], nums[k]]&lt;/code&gt; such that &lt;code&gt;i != j, i != k, and j != k&lt;/code&gt;, and &lt;code&gt;nums[i] + nums[j] + nums[k] == 0&lt;/code&gt;. Notice that the solution set must not contain duplicate triplets.&lt;/p&gt;
 &lt;/blockquote&gt;</description></item><item><title>Topological Sort</title><link>https://daxpy.xyz/collections/lc_notes/44/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/44/</guid><description>&lt;h2 id="topological-sort"&gt;Topological Sort&lt;/h2&gt;
 &lt;h3 id="kahns-algorithm-bfs-like"&gt;Kahn&amp;rsquo;s Algorithm (BFS-like)&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;topological_sort_kahn&lt;/span&gt;(graph: Dict[str, List[str]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[str]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;topological_sort_kahn&lt;/span&gt;(graph: Dict[str, List[str]]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; List[str]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; in_degree &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {u: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; u &lt;span style="color:#f92672"&gt;in&lt;/span&gt; graph} &lt;span style="color:#75715e"&gt;# Initialize in-degrees to 0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; u &lt;span style="color:#f92672"&gt;in&lt;/span&gt; graph:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; v &lt;span style="color:#f92672"&gt;in&lt;/span&gt; graph[u]:
@@ -2171,7 +2171,7 @@ Return the number of different expressions that you can build, which evaluates t
 &lt;ul&gt;
 &lt;li&gt;$T(n) = O(n \log n)$; $S(n) = O(n)$ for maintaining the index.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;two_sum&lt;/span&gt;(nums: List[int], target:Int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Tuple[int, int]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;two_sum&lt;/span&gt;(nums: List[int], target:Int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Tuple[int, int]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; indexed_nums &lt;span style="color:#f92672"&gt;=&lt;/span&gt; sorted((n, i) &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i, n &lt;span style="color:#f92672"&gt;in&lt;/span&gt; enumerate(nums))
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; left, right &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;, len(indexed_nums) &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; 
@@ -2190,7 +2190,7 @@ Return the number of different expressions that you can build, which evaluates t
 &lt;ul&gt;
 &lt;li&gt;$T(n) = O(n)$; $S(n) = O(n)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;two_sum&lt;/span&gt;(nums: List[int], target: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Tuple[int, int]:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;two_sum&lt;/span&gt;(nums: List[int], target: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; Tuple[int, int]:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; num_to_idx &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i, num &lt;span style="color:#f92672"&gt;in&lt;/span&gt; enumerate(nums):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; residue &lt;span style="color:#f92672"&gt;=&lt;/span&gt; target &lt;span style="color:#f92672"&gt;-&lt;/span&gt; num
@@ -2200,7 +2200,7 @@ Return the number of different expressions that you can build, which evaluates t
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; (&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Unbounded Knapsack</title><link>https://daxpy.xyz/collections/lc_notes/87b/</link><pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/lc_notes/87b/</guid><description>&lt;h2 id="unbounded-knapsack"&gt;Unbounded Knapsack&lt;/h2&gt;
 &lt;p&gt;Unbounded knpasack is when we have infinite number of each items.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;unbounded_knapsack&lt;/span&gt;(weights: List[int], values: List[int], capacity: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;unbounded_knapsack&lt;/span&gt;(weights: List[int], values: List[int], capacity: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; max_value &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [&lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;] &lt;span style="color:#f92672"&gt;*&lt;/span&gt; (capacity &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, capacity &lt;span style="color:#f92672"&gt;+&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;):
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; j &lt;span style="color:#f92672"&gt;in&lt;/span&gt; range(len(weights)):
@@ -2229,7 +2229,7 @@ Return the number of different expressions that you can build, which evaluates t
 &lt;li&gt;Return &lt;code&gt;reachable[n]&lt;/code&gt; to determine if the entire string can be segmented.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="code"&gt;Code&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;word_break&lt;/span&gt;(string: str, vocabulary: List[str]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;word_break&lt;/span&gt;(string: str, vocabulary: List[str]) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; bool:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; n &lt;span style="color:#f92672"&gt;=&lt;/span&gt; len(string)
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; TRIE &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {}
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; EOW &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;$&amp;#34;&lt;/span&gt;
@@ -2318,7 +2318,7 @@ We can quantify information gain as difference in entropy when random variable i
 &lt;p&gt;How can you uniformly sample $k$ items from a stream?&lt;/p&gt;
 &lt;p&gt;Reservoir Sampling is used when you want a uniform sample from a stream. The length of the stream is not known before and the stream is large enough that we cannot look back or store everything.&lt;/p&gt;
 &lt;p&gt;The algorithm is simple.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Reservoir Sampling&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#75715e"&gt;# Reservoir Sampling&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;reservoir[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:k] &lt;span style="color:#f92672"&gt;=&lt;/span&gt; stream[&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;:k]
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; i&lt;span style="color:#f92672"&gt;=&lt;/span&gt;k&lt;span style="color:#f92672"&gt;+&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; to n
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; j &lt;span style="color:#f92672"&gt;=&lt;/span&gt; random(&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;,i)
@@ -2516,4 +2516,340 @@ g(x) = y \end{aligned}$$&lt;/p&gt;
 n(x) = P(y=1|x)\end{aligned}$$&lt;/p&gt;
 &lt;p&gt;It simply tells us how probable is the data belonging to a class($y=1$) if my observations are $x$.&lt;/p&gt;</description></item><item><title>About</title><link>https://daxpy.xyz/about/</link><pubDate>Sun, 13 Oct 1991 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/about/</guid><description>&lt;h1 id="welcome-to-daxpy"&gt;Welcome to DAXPY&lt;/h1&gt;
 &lt;p&gt;This space is inspired by the iconic DAXPY subroutine from the LINPACK package, a cornerstone of high-performance numerical computing.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;DAXPY&lt;/strong&gt;, which stands for &amp;ldquo;Double-precision A*X Plus Y,&amp;rdquo;&amp;quot; represents a fundamental operation in linear algebra. It performs the calculation , $Y \gets A \cdot X + Y$ where $A$ is a scalar (a single number), and $X$ and $Y$ are vectors (arrays of numbers). This elegant operation serves as a building block for more complex mathematical computations, such as matrix multiplication and solving large systems of equations.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;DAXPY&lt;/strong&gt;, which stands for &amp;ldquo;Double-precision A*X Plus Y,&amp;rdquo;&amp;quot; represents a fundamental operation in linear algebra. It performs the calculation , $Y \gets A \cdot X + Y$ where $A$ is a scalar (a single number), and $X$ and $Y$ are vectors (arrays of numbers). This elegant operation serves as a building block for more complex mathematical computations, such as matrix multiplication and solving large systems of equations.&lt;/p&gt;</description></item><item><title/><link>https://daxpy.xyz/tools/reader/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/tools/reader/</guid><description>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+ &lt;meta charset="UTF-8"&gt;
+ &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+ &lt;title&gt;RSS Reader&lt;/title&gt;
+ &lt;script src="https://unpkg.com/vue@3/dist/vue.global.js"&gt;&lt;/script&gt;
+ &lt;style&gt;
+ :root { --primary: #2563eb; --bg: #f8fafc; --card: #ffffff; }
+ body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; background: var(--bg); color: #1e293b; padding: 10px; padding-bottom: 50px; }
+ 
+ /* Fixed/Sticky Controls for Mobile */
+ .controls { background: var(--card); padding: 15px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: sticky; top: 10px; z-index: 100; border: 1px solid #e2e8f0; }
+ 
+ .status { font-size: 0.85rem; font-weight: 600; color: #64748b; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+ 
+ .filter-section { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 10px; padding-top: 12px; }
+ 
+ .search-input { width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 0.9rem; box-sizing: border-box; margin-bottom: 8px; }
+ .filter-group { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.85rem; }
+ input[type="range"] { flex: 1; }
+
+ .source-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+ .bulk-actions { font-size: 0.75rem; color: var(--primary); font-weight: bold; cursor: pointer; display: flex; gap: 10px; }
+ 
+ .source-scroll { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 6px; padding-bottom: 8px; -webkit-overflow-scrolling: touch; }
+ .source-scroll::-webkit-scrollbar { height: 4px; }
+ .source-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+ 
+ .tag { font-size: 0.7rem; padding: 5px 12px; border-radius: 20px; border: 1px solid #cbd5e1; cursor: pointer; white-space: nowrap; background: white; transition: all 0.2s; }
+ .tag.active { background: var(--primary); color: white; border-color: var(--primary); }
+ 
+ .item { display: flex; gap: 12px; margin-bottom: 16px; background: var(--card); padding: 12px; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+ .thumb { width: 75px; height: 75px; object-fit: cover; background: #e2e8f0; border-radius: 6px; flex-shrink: 0; }
+ .content { flex: 1; min-width: 0; } /* min-width 0 prevents flex overflow */
+ .meta { font-size: 0.7rem; color: #64748b; margin-bottom: 4px; font-weight: 500; }
+ .title { font-weight: 700; text-decoration: none; color: #0f172a; display: block; line-height: 1.3; font-size: 1.05rem; margin-bottom: 6px; word-wrap: break-word; }
+ .title:visited { color: #64748b; }
+ .blurb { font-size: 0.85rem; color: #475569; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+ @media (max-width: 600px) {
+ .item { gap: 10px; padding: 10px; }
+ .thumb { width: 65px; height: 65px; }
+ .title { font-size: 0.95rem; }
+ }
+ &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id="app"&gt;
+ &lt;div class="controls"&gt;
+ &lt;div class="status"&gt;
+ &lt;span&gt;{{ loadedCount }}/{{ rssLinks.length }} Sources&lt;/span&gt;
+ &lt;span&gt;Showing {{ filteredEntries.length }}&lt;/span&gt;
+ &lt;/div&gt;
+
+ &lt;div class="filter-section"&gt;
+ &lt;div class="filter-group"&gt;
+ &lt;label&gt;Past &lt;strong&gt;{{ daysFilter }}&lt;/strong&gt; days&lt;/label&gt;
+ &lt;input type="range" v-model="daysFilter" min="1" max="60"&gt;
+ &lt;/div&gt;
+
+ &lt;div&gt;
+ &lt;input type="text" v-model="sourceSearch" placeholder="Search sources..." class="search-input"&gt;
+ &lt;div class="source-header"&gt;
+ &lt;span style="font-size: 0.75rem; color: #64748b;"&gt;Toggle Sources:&lt;/span&gt;
+ &lt;div class="bulk-actions"&gt;
+ &lt;span @click="selectAllSources(true)"&gt;All&lt;/span&gt;
+ &lt;span @click="selectAllSources(false)"&gt;None&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="source-scroll"&gt;
+ &lt;div v-for="source in searchedSources" 
+ :key="source" 
+ class="tag" 
+ :class="{ active: selectedSources.includes(source) }"
+ @click="toggleSource(source)"&gt;
+ {{ source }}
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+
+ &lt;!-- Feed List --&gt;
+ &lt;div v-for="item in filteredEntries" :key="item.link + item.date.getTime()" class="item"&gt;
+ &lt;img v-if="item.image" :src="item.image" class="thumb" loading="lazy" @error="item.image = null"&gt;
+ &lt;div class="content"&gt;
+ &lt;div class="meta"&gt;{{ item.source }} • {{ formatDate(item.date) }}&lt;/div&gt;
+ &lt;a :href="item.link" target="_blank" class="title"&gt;{{ item.title }}&lt;/a&gt;
+ &lt;div class="blurb"&gt;{{ item.blurb }}&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+const { createApp, ref, computed, onMounted, watch } = Vue;
+
+createApp({
+ setup() {
+ const rssLinks = [
+ "http://antirez.com/rss",
+ "http://www.aaronsw.com/2002/feeds/pgessays.rss",
+ "https://anildash.com/feed.xml",
+ "https://aresluna.org/main.rss",
+ "https://beej.us/blog/rss.xml",
+ "https://bernsteinbear.com/feed.xml",
+ "https://berthub.eu/articles/index.xml",
+ "https://blog.jim-nielsen.com/feed.xml",
+ "https://blog.miguelgrinberg.com/feed",
+ "https://blog.pixelmelt.dev/rss/",
+ "https://bogdanthegeek.github.io/blog/index.xml",
+ "https://borretti.me/feed.xml",
+ "https://brutecat.com/rss.xml",
+ "https://buttondown.com/hillelwayne/rss",
+ "https://chadnauseam.com/rss.xml",
+ "https://computer.rip/rss.xml",
+ "https://danielchasehooper.com/feed.xml",
+ "https://danieldelaney.net/feed",
+ "https://danielwirtz.com/rss.xml",
+ "https://daringfireball.net/feeds/main",
+ "https://devblogs.microsoft.com/oldnewthing/feed",
+ "https://dfarq.homeip.net/feed/",
+ "https://dynomight.net/feed.xml",
+ "https://eli.thegreenplace.net/feeds/all.atom.xml",
+ "https://entropicthoughts.com/feed.xml",
+ "https://ericmigi.com/rss.xml",
+ "https://evanhahn.com/feed.xml",
+ "https://fabiensanglard.net/rss.xml",
+ "https://feed.tedium.co/",
+ "https://garymarcus.substack.com/feed",
+ "https://geohot.github.io/blog/feed.xml",
+ "https://gilesthomas.com/feed/rss.xml",
+ "https://grantslatton.com/rss.xml",
+ "https://gwern.substack.com/feed",
+ "https://herman.bearblog.dev/feed/",
+ "https://hey.paris/index.xml",
+ "https://hugotunius.se/feed.xml",
+ "https://idiallo.com/feed.rss",
+ "https://it-notes.dragas.net/feed/",
+ "https://jayd.ml/feed.xml",
+ "https://joanwestenberg.com/rss",
+ "https://jyn.dev/atom.xml",
+ "https://keygen.sh/blog/feed.xml",
+ "https://krebsonsecurity.com/feed/",
+ "https://lcamtuf.substack.com/feed",
+ "https://lucumr.pocoo.org/feed.atom",
+ "https://martinalderson.com/feed.xml",
+ "https://matklad.github.io/feed.xml",
+ "https://matuggan.com/rss/",
+ "https://maurycyz.com/index.xml",
+ "https://micahflee.com/feed/",
+ "https://michael.stapelberg.ch/feed.xml",
+ "https://minimaxir.com/index.xml",
+ "https://mitchellh.com/feed.xml",
+ "https://mjg59.dreamwidth.org/data/rss",
+ "https://nesbitt.io/feed.xml",
+ "https://oldvcr.blogspot.com/feeds/posts/default",
+ "https://overreacted.io/rss.xml",
+ "https://philiplaine.com/index.xml",
+ "https://pluralistic.net/feed/",
+ "https://rachelbythebay.com/w/atom.xml",
+ "https://rakhim.exotext.com/rss.xml",
+ "https://refactoringenglish.com/index.xml",
+ "https://shkspr.mobi/blog/feed/",
+ "https://simone.org/feed/",
+ "https://simonwillison.net/atom/everything/",
+ "https://skyfall.dev/rss.xml",
+ "https://steveblank.com/feed/",
+ "https://susam.net/feed.xml",
+ "https://terriblesoftware.org/feed/",
+ "https://timsh.org/rss/",
+ "https://tomrenner.com/index.xml",
+ "https://utcc.utoronto.ca/~cks/space/blog/?atom",
+ "https://worksonmymachine.substack.com/feed",
+ "https://www.abortretry.fail/feed",
+ "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/feed.xml",
+ "https://www.construction-physics.com/feed",
+ "https://www.downtowndougbrown.com/feed/",
+ "https://www.dwarkeshpatel.com/feed",
+ "https://www.experimental-history.com/feed",
+ "https://www.filfre.net/feed/",
+ "https://www.geoffreylitt.com/feed.xml",
+ "https://www.jeffgeerling.com/blog.xml",
+ "https://www.johndcook.com/blog/feed/",
+ "https://www.righto.com/feeds/posts/default",
+ "https://www.seangoedecke.com/rss.xml",
+ "https://www.tedunangst.com/flak/rss",
+ "https://www.theatlantic.com/feed/author/derek-thompson/",
+ "https://www.troyhunt.com/rss/",
+ "https://www.wheresyoured.at/rss/",
+ "https://xania.org/feed",
+ "https://xeiaso.net/blog.rss"
+ ];
+
+ const proxyPrefix = "https://api.allorigins.win/raw?url=";
+ const allEntries = ref([]);
+ const loadedCount = ref(0);
+ 
+ // Filters
+ const daysFilter = ref(14);
+ const sourceSearch = ref("");
+ const selectedSources = ref([]);
+
+ const uniqueSources = computed(() =&gt; {
+ const sources = [...new Set(allEntries.value.map(e =&gt; e.source))];
+ return sources.sort();
+ });
+
+ const searchedSources = computed(() =&gt; {
+ if (!sourceSearch.value) return uniqueSources.value;
+ return uniqueSources.value.filter(s =&gt; 
+ s.toLowerCase().includes(sourceSearch.value.toLowerCase())
+ );
+ });
+
+ // Initialize selected sources once when first batch of data arrives
+ watch(uniqueSources, (newVal, oldVal) =&gt; {
+ if (oldVal.length === 0 &amp;&amp; newVal.length &gt; 0) {
+ selectedSources.value = [...newVal];
+ }
+ });
+
+ const toggleSource = (source) =&gt; {
+ const index = selectedSources.value.indexOf(source);
+ if (index &gt; -1) selectedSources.value.splice(index, 1);
+ else selectedSources.value.push(source);
+ };
+
+ const selectAllSources = (bool) =&gt; {
+ if (bool) selectedSources.value = [...uniqueSources.value];
+ else selectedSources.value = [];
+ };
+
+ const fetchFeed = async (url) =&gt; {
+ let responseText = "";
+ let fetchSuccess = false;
+
+ // Step 1: Try Direct Fetch (Fastest, Privacy-Friendly)
+ try {
+ const res = await fetch(url, { mode: 'cors' });
+ if (res.ok) {
+ responseText = await res.text();
+ fetchSuccess = true;
+ }
+ } catch (directError) {
+ // Silently move to fallback if direct fetch fails (likely CORS)
+ }
+
+ // Step 2: Fallback to Proxy
+ if (!fetchSuccess) {
+ try {
+ const res = await fetch(proxyPrefix + encodeURIComponent(url));
+ if (res.ok) {
+ responseText = await res.text();
+ fetchSuccess = true;
+ }
+ } catch (proxyError) {
+ console.warn("Total failure for:", url);
+ }
+ }
+
+ if (fetchSuccess &amp;&amp; responseText) {
+ parseFeed(responseText);
+ }
+ 
+ loadedCount.value++;
+ };
+
+ const parseFeed = (text) =&gt; {
+ const xml = new DOMParser().parseFromString(text, "text/xml");
+ 
+ // Extract Source Name
+ let source = xml.querySelector("channel &gt; title, feed &gt; title")?.textContent || "Source";
+ source = source.split(' - ')[0].split(': ')[0].trim();
+ 
+ xml.querySelectorAll("item, entry").forEach(el =&gt; {
+ const title = el.querySelector("title")?.textContent;
+ let link = el.querySelector("link")?.textContent || el.querySelector("link")?.getAttribute("href");
+ 
+ if (!link || link.trim() === "") {
+ link = el.querySelector("link")?.innerHTML;
+ }
+
+ const dateStr = el.querySelector("pubDate, published, updated")?.textContent;
+ const date = new Date(dateStr);
+ const rawB = el.querySelector("description, summary, content")?.textContent || "";
+ 
+ let img = el.querySelector("enclosure[type^='image']")?.getAttribute("url") || 
+ el.querySelector("content[type^='image']")?.getAttribute("url");
+ if (!img) {
+ const m = rawB.match(/&lt;img[^&gt;]+src="([^"&gt;]+)"/);
+ if (m) img = m[1];
+ }
+
+ if (title &amp;&amp; link) {
+ allEntries.value.push({
+ title, link: link.trim(), date, source,
+ blurb: (new DOMParser().parseFromString(rawB, 'text/html').body.textContent || "").substring(0, 160).trim() + "...",
+ image: img
+ });
+ }
+ });
+ };
+
+ const filteredEntries = computed(() =&gt; {
+ const now = new Date();
+ const cutoff = new Date();
+ cutoff.setDate(now.getDate() - daysFilter.value);
+
+ return allEntries.value
+ .filter(e =&gt; {
+ const isWithinDate = !isNaN(e.date) &amp;&amp; e.date &gt;= cutoff;
+ const isSelectedSource = selectedSources.value.includes(e.source);
+ return isWithinDate &amp;&amp; isSelectedSource;
+ })
+ .sort((a, b) =&gt; b.date - a.date);
+ });
+
+ const formatDate = (d) =&gt; {
+ const now = new Date();
+ if (d.toDateString() === now.toDateString()) return 'Today';
+ return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+ };
+
+ onMounted(() =&gt; rssLinks.forEach(fetchFeed));
+ 
+ return { 
+ rssLinks, filteredEntries, loadedCount, 
+ formatDate, daysFilter, sourceSearch, searchedSources, 
+ selectedSources, toggleSource, selectAllSources, uniqueSources
+ };
+ }
+}).mount('#app');
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</description></item></channel></rss>
