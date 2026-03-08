@@ -95,8 +95,11 @@ nav {
   justify-content: flex-start;
   gap: 0 1.5rem;
 }
-
+nav .logo {
+  flex-shrink: 0; /* never shrink */
+}
 nav ul {
+  flex: 1;
   list-style-type: none;
   margin: 0;
   padding: 0;
