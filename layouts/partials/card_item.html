@@ -19,11 +19,13 @@
     </div>
 
     {{- if .Params.Tags -}}
-    <div class="card_body">
-      {{ range $index, $tag := .Params.Tags }}
+    <ul>
+      <li>
+        {{ range $index, $tag := .Params.Tags }}
         <a class="card_tag" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }},{{ end }}
       {{ end }}
-    </div>
+      </li>
+    </ul>
     {{- end -}}
   </div>
 </li>
