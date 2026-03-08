@@ -3,14 +3,14 @@
   <div>
     {{.Content}}
   </div>
-  <h2>Latest</h2>
+  <h2>Feed</h2>
   <ul>
     {{ $p := where .Site.RegularPages "Section" "in" (slice "posts" "stories") }}
 
     {{ range first 24 $p }}
       <!-- {{.Section }} -->
       {{ .Scratch.Set "display_section" "True" }}
-      {{- partial "list_item.html" . -}}
+      {{- partial "card_item.html" . -}}
       {{ .Scratch.Set "display_section" "False" }}
     {{ end }}
   </ul>
