@@ -2,15 +2,15 @@
 
 :root{
   /* --font-family-primary: "Georgia", serif; */
-  --font-family-primary: "Computer Modern Serif", "Latin Modern", Georgia, serif;
-  --font-family-secondary: "Helvetica", sans-serif;
+  --font-family-primary: "Computer Modern Serif", Georgia, serif;
+  --font-family-secondary: "Computer Modern Sans", sans-serif;
   --font-family-tertiary: "Helvetica", sans-serif;
-  --font-family-monospace: 'Menlo', monospace;
+  --font-family-monospace: "Computer Modern Typewriter", 'Menlo', monospace;
 
   --font-weight-normal: 400;
   --font-weight-bold: 700; 
 
-  --font-size-base: 11pt; 
+  --font-size-base: 13pt; 
 
   --line-height-primary: 1.2;
   --line-height-secondary: 1.0;
@@ -46,7 +46,7 @@ html {
 body {
   font: var(--font-primary);
   max-width: var(--site-max-wdth);
-  padding: 5px;
+  padding: 0.5rem 1rem;
   margin: 0 auto;
 }
 
@@ -89,6 +89,13 @@ header {
   border-bottom: 1px dashed var(--BLACK);
 }
 
+nav {    
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0 1.5rem;
+}
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -98,7 +105,7 @@ nav ul {
   flex-wrap: wrap;
   align-items: center;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
   column-gap: 0.5rem;
 }
 
@@ -134,6 +141,10 @@ p {
 li, h1, h2, h3, h4 {
   text-align: left;
 }
+h1, h2, h3, h4, p {
+  margin-bottom: 0rem;
+}
+
 a {
   color: var(--BLUE);
 }
@@ -167,6 +178,10 @@ div.highlight pre {
   background-color: var(--GREY);
   padding:  0.05rem 0.3rem;
   border-radius: 0.3rem;
+}
+
+main {
+  margin-top: 2rem;
 }
 
 footer {
@@ -267,8 +282,8 @@ ul:has(li.card_item) {
 .card_dots {
   flex: 1;
   display: block;
-  border-bottom: 1.5px dotted currentColor;
-  opacity: 0.35;
+  border-bottom: 1.5px dotted var(--BLACK);
+  opacity: 0.6;
   margin: 0 0.5rem 0.25rem 0.5rem;
   min-width: 1.5rem;
 }

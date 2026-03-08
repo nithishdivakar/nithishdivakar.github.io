@@ -1,26 +1,30 @@
 {{ define "main" }}
 
-    <br>
+<h1>Tags</h1>
+    <!-- <br>
     {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
         <span class="black">&bull;</span>
         <a href="#{{$key}}">
             #{{- $key -}}<small>({{len $taxonomy.Pages}})</small>
         </a>
-    {{ end }}
+    {{ end }} -->
     
     {{ range $key, $taxonomy := .Site.Taxonomies.tags }}
-        <h2 id="{{$key}}" style="margin-bottom: 1rem"> #{{ $key }} </h2>
+        <h2 id="{{$key}}" style="text-transform: capitalize;"> {{ $key }} </h2>
         <div id="{{$key}}"></div>
+        <ul>
         {{ range $taxonomy.Pages }}
-                <span class="tiny green">[{{ .Section }}]</span>
+            <li>
+                <!-- <span class="tiny green">[{{ .Section }}]</span> -->
                 <a href="{{ .Permalink}}"> 
                     {{if .Params.draft}} 
                         [draft]
                     {{end}}
                     {{ .LinkTitle }} 
                 </a> 
-            <br>
+            </li>
         {{ end }}
+        </ul>
     {{ end }}
 
 {{ end }}
