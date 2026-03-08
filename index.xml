@@ -2514,6 +2514,10 @@ g(x) = y \end{aligned}$$&lt;/p&gt;
 &lt;p&gt;In the non ideal world, however, there is always something missing that stops us from knowing the entire truth. $g$ is beyond reach. In such cases we resort to probability.&lt;/p&gt;
 &lt;p&gt;$$\begin{aligned}
 n(x) = P(y=1|x)\end{aligned}$$&lt;/p&gt;
-&lt;p&gt;It simply tells us how probable is the data belonging to a class($y=1$) if my observations are $x$.&lt;/p&gt;</description></item><item><title>About</title><link>https://daxpy.xyz/about/</link><pubDate>Sun, 13 Oct 1991 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/about/</guid><description>&lt;h1 id="welcome-to-daxpy"&gt;Welcome to DAXPY&lt;/h1&gt;
-&lt;p&gt;This space is inspired by the iconic DAXPY subroutine from the LINPACK package, a cornerstone of high-performance numerical computing.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;DAXPY&lt;/strong&gt;, which stands for &amp;ldquo;Double-precision A*X Plus Y,&amp;rdquo;&amp;quot; represents a fundamental operation in linear algebra. It performs the calculation , $Y \gets A \cdot X + Y$ where $A$ is a scalar (a single number), and $X$ and $Y$ are vectors (arrays of numbers). This elegant operation serves as a building block for more complex mathematical computations, such as matrix multiplication and solving large systems of equations.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;It simply tells us how probable is the data belonging to a class($y=1$) if my observations are $x$.&lt;/p&gt;</description></item><item><title>About</title><link>https://daxpy.xyz/about/</link><pubDate>Sun, 13 Oct 1991 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/about/</guid><description>&lt;h1 id="daxpy"&gt;DAXPY&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;D&lt;/strong&gt;ouble-precision &lt;strong&gt;A&lt;/strong&gt;·&lt;strong&gt;X&lt;/strong&gt; &lt;strong&gt;P&lt;/strong&gt;lus &lt;strong&gt;Y&lt;/strong&gt; is a subroutine from the LINPACK package, and a cornerstone of high-performance numerical computing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The operation is deceptively simple:&lt;/p&gt;
+&lt;p&gt;$$Y \gets A \cdot X + Y$$&lt;/p&gt;
+&lt;p&gt;where $A$ is a scalar and $X$, $Y$ are vectors. Yet this single routine underlies nearly all of computational linear algebra; matrix factorisation, iterative solvers, least-squares problems. Its elegance lies not in complexity, but in composition: a primitive so well-optimised that everything built on top of it inherits that efficiency.&lt;/p&gt;</description></item></channel></rss>
