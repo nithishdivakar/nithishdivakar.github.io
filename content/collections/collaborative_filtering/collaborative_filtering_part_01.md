@@ -27,17 +27,14 @@ There’s one more complication: what does it actually mean to "like" content? T
 
 > Users click on content because they like it.
 
-Of course, real life behaviour is messier.  People click out of curiosity, boredom, mistakes, click-bait, doom-scrolling or butter fingers. But as a first step, let's forge ahead with this assumption.
-
-So the core problem is calculating:
+Of course, real behaviour is messier. People click out of curiosity, boredom, mistakes, or doom-scrolling. But as a first step, let's forge ahead.
 
 ## P(click)
-
-Given specific user and a content, can we predict the probability that the user will click? or .. 
+So the core problem becomes: given a specific user and a piece of content, can we predict the probability of a click?
 
 $$P(click | \\\{content, user\\\})$$
 
-A quick segue: This $P(click)$ problem underpins a variety of systems like ranking, feed, search and more. Simply the definition of content and user might change to suit the problem.
+This framing turns out to be remarkably general. Swap in different definitions of "user" and "content" and the same $P(click)$ machinery underpins ranking feeds, search results, ad targeting, and more. But we'll stay focused on recommendations for now.
 
 ## The "Naive" Approach: Neighborhood-Based CF
 
@@ -163,4 +160,4 @@ There are many nuances here. If a system presents 20 items to a user and they cl
 
 This change however leads to a different problem. Vast majority of matrix A would be empty. Singular Value Desomposition cannot process a matrix where  cells are empty. None of the linear algebra factorisation algorithms can. 
 
-We deal with this missing values with a clever change in the formulation. Read more in [part 2](../02).
+We deal with this missing values with a clever change in the formulation. Read more in [part 2](../02)
