@@ -30,7 +30,7 @@ brought up and then "finding users who behave similarly, then recommend items th
         └─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘ 
         
 ```
-<center><small><b>Fig :</b> The mythical user item interaction matrix.</small></center>
+<center><small><b>Fig:</b> The mythical user item interaction matrix.</small></center>
 
 It’s a helpful mental model and historically accurate for early recommender systems.
 
@@ -49,7 +49,7 @@ corner stone component of modern day recommender systems.
 - Introduction - The P(click) Problem
 - The "Naive" Approach: Neighborhood-Based CF
 - The Classic Foundation: Matrix Factorization (MF)
-- The "Zero" Problem: Why Standard MF is Wrong for Clicks
+- The "Zero" Problem
 
 **Part 2: The "Zero" Problem - Solving for Implicit Data**
 

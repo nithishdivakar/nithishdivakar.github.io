@@ -8,3 +8,7 @@ title: Collaborative Filtering Part 3 - Scaling with Features & Neural Networks
 ---
 
 # Collaborative Filtering Part 03
+
+- The Scaling Wall: Limitations of Pure Collaborative Filtering
+- The Modern Solution: Feature-Based Neural Networks
+- The "Magic" Ingredient: How Features are Represented (Embeddings)
