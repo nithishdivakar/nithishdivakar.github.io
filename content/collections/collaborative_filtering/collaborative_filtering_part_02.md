@@ -97,7 +97,7 @@ This is the algorithm commonly known as **Implicit ALS** (Alternating Least Squa
 
 ### Alternating Least Squares (ALS) Derivation
 
-*This section derives the ALS update rules. MAth heavy, safe to skip. The key takeaway is at the bottom.*
+*This section derives the ALS update rules. Math heavy, safe to skip. The key takeaway is at the end of this section.*
 
 Let $P \in \mathbb{R}^{m \times k}$, $Q \in \mathbb{R}^{n \times k}$, and $C \in \mathbb{R}^{m \times n}$ be the confidence matrix. The full loss is:
 
@@ -105,18 +105,16 @@ $$\mathcal{L}(P, Q) = \\|C \odot (R - PQ^T)\\|_F^2$$
 
 This is non-convex in $P$ and $Q$ jointly, but convex in each separately. So we can fix one, solve the other in closed form, update and itertate towards a lower loss value.
 
-**Fixing $Q$, solving for $p_u$:** 
 
-Let $C_u = \text{diag}(c_{u1}, \dots, c_{un})$. The per-user loss reduces to $\mathcal{L}\_u = \\|C_{u}^{1/2}(r_u - Qp_u)\\|^2$, a standard weighted least squares problem. Setting $\nabla_{p_u}\mathcal{L}_u = 0$:
+- *Fixing $Q$, solving for $p_u$:*
+  Let $C_u = \text{diag}(c_{u1}, \dots, c_{un})$. The per-user loss reduces to $\mathcal{L}\_u = \\|C_{u}^{1/2}(r_u - Qp_u)\\|^2$, a standard [weighted least squares](https://en.wikipedia.org/wiki/Weighted_least_squares#Motivation) problem. Setting $\nabla_{p_u}\mathcal{L}_u = 0$:
+  
+  $$p_u = (Q^T C_u Q)^{-1} Q^T C_u r_u$$
+- *Fixing $P$, solving for $q_i$:* By symmetry
 
-$$p_u = (Q^T C_u Q)^{-1} Q^T C_u r_u$$
+  $$q_i = (P^T C_i P)^{-1} P^T C_i r_i$$
 
-**Fixing $P$, solving for $q_i$:** By symmetry
-
-$$q_i = (P^T C_i P)^{-1} P^T C_i r_i$$
-
-**The algorithm**
-
+The algorithm
 - Initialise P, Q randomly
 - Repeat until convergence
     -  for each user u:
@@ -124,9 +122,73 @@ $$q_i = (P^T C_i P)^{-1} P^T C_i r_i$$
     -  for each item i:
         - $q_i = (P^T C_i P)^{-1} P^T C_i r_i$
 
-**The takeaway:** ALS alternates between re-solving all user vectors and all item vectors, each time computing an exact closed-form update. Every iteration is guaranteed to reduce the loss. In practice it converges in a handful of iterations and scales to millions of users and items through parallelism.
+**The key takeaway:** ALS alternates between re-solving all user vectors and all item vectors, each time computing an exact closed-form update. Every iteration is guaranteed to reduce the loss. In practice it converges in a handful of iterations.
 
-The reason ALS scales well is that each user and item update is **independent**. All user updates in a given iteration can be parallelised, and likewise for items. This makes WMF practical even at the scale of millions of users and items.
+As each user and item update is independent, both steps parallelise trivially; making WMF practical at the scale of millions of users and items through parallelism.
 
+### So what's wrong with WMF?
+
+WMF works by pulling every unobserved cell toward zero with a small but nonzero weight. This is a practical compromise, but it encodes a quiet assumption: every item a user hasn't interacted with is slightly bad for them.
+
+At scale, this compounds quietly. Popular items accumulate interactions across many users, so the model sees plenty of positive signal to counteract the weak negatives. Meanwhile niche items accumulate false negatives quietly.
+
+The root cause is structural. WMF must say something about every cell, so it assigns weak beliefs everywhere.
+
+We must allow the model to have no opinion on items where there are no interactions. *Negative Sampling.*
+
+
+## Logistic Matrix Factorization (LMF)
+*\... and Negative Sampling*
+
+> Only learn from what you've seen ... and a few carefully chosen counterexamples.
+
+Quick recap from part 1 where we said, 
+$$P(click \mid \\\{u, i\\\}) = \sigma(p_u^T q_i)$$
+
+The $\sigma(\square)$ is new as we are now modelling probabilities and sigmoid function properly bound the output as a probabilities. $\sigma(z) = \frac{1}{1+e^{-z}}$.
+
+If we train this against the full matrix, we're back to the same opinion problem as WMF. Every unobserved cell is a negative.
+
+So instead, for each user we take their clicks as positives and sample a small number of unobserved items as negatives. Everything else, no opinion. The model simply doesn't model them. 
+
+This is now a [logistic regression](https://en.wikipedia.org/wiki/Logistic_regression) problem over a chosen set of observations. The standard way to fit logistic regression is through [Maximum Likelihood Estimation (MLE)](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation). The resulting loss is binary cross-entropy:
+
+LMF maximises log-likelihood over positives and sampled negatives only 
+
+$$\mathcal{L}(P,Q) = - \sum_{(u,i) \in \text{clicks}} \log \sigma(p_u^T q_i) - \sum_{(u,j) \in \text{sampled}} \log(1 - \sigma(p_u^T q_j))$$
+
+But now the model's quality depends entirely on how we choose negatives.
+
+### Sampling Negatives
+
+- Uniform sampling: Pick any unseen item at random with equal probability ... but if item X has been seen by 80% of users, it almost never appears as a negative even though it should for the 20% who haven't engaged with it. Undersamples popular items.
+- Popularity-based sampling: If a user has never clicked on a widely-loved item, that's more informative than never clicking on an obscure one. So sample negatives proportional to item popularity. 
+  $$P(\text{sample item } i) \propto f_i^\alpha$$
+  where $f_i$ is the item's interaction frequency and $\alpha \in (0,1)$ is a smoothing factor (commonly $0.75$, see [word2vec](https://arxiv.org/abs/1301.3781)). 
+
+- Hard negative sampling: Deliberately sample items the model currently thinks the user *would* like, but hasn't clicked. See *Dynamic Negative Sampling* in [this paper](https://wnzhang.net/papers/lambdarankcf-sigir.pdf). Also [this](https://www.yuan-meng.com/posts/negative_sampling/) deep dive for a thorough treatment of hard negative strategies in production systems.
+
+In practice, most production systems use popularity-based sampling as the default, with a fraction of hard negatives mixed in.
+
+
+## The Cold Start Problem
+
+WMF and LMF solve the zero problem from different directions. WMF keeps all the data but up-weights what it trusts. LMF throws most of the data away and samples strategically. Both work and both are still widely used in production today.
+
+But they share a deeper limitation.
+
+Both models learn by adjusting $p_u$ and $q_i$ vectors to agree with observed interactions ... and therein lies the flaw. The whole system breaks down when there are no observations to learn from.
+
+This surfaces in two concrete scenarios:
+
+**New user** A user signs up and hasn't clicked anything. So we have no interactions to learn $p_u$ from.
+
+**New item** A new piece of content is added to the catalogue. No user has interacted with it yet, so $q_i$ is uninitialised. The item is effectively invisible.
+
+
+
+This is the **cold start problem**. WMF and LMF have no mechanism to handle it because they are built entirely on interaction history. They cannot reason about a user an item from its inherent features. They only know what has been clicked.
+
+The fix requires a fundamentally different approach,  where the system understands *who* the user is and *what* the item is, independent of past interactions.
 
 *Read more in [Part 3](../03)*
