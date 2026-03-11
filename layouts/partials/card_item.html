@@ -14,7 +14,13 @@
       </a>
       <span class="card_dots"></span>
       <div class="card_meta">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006 Jan 02" }}</time>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">
+          {{ if ge .Date.Unix 0 }}
+            {{ .Date.Format "2006 Jan 02" }}
+          {{ else }}
+          ꧁𑗊⁂𑗊꧂
+          {{ end }}
+        </time>
       </div>
     </div>
 

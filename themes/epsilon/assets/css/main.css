@@ -288,10 +288,10 @@ ul:has(li.card_item) {
 .card_dots {
   flex: 1;
   display: block;
-  border-bottom: 1.5px dotted var(--BLACK);
+  border-bottom: 1px dashed var(--BLACK);
   opacity: 0.6;
   margin: 0 0.5rem 0.25rem 0.5rem;
-  min-width: 1.5rem;
+  /* min-width: 1.5rem; */
 }
 
 .card_meta {
