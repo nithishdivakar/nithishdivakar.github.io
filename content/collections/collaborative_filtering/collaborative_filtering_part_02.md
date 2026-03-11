@@ -1,13 +1,14 @@
 ---
-date: 2024-01-01 00:00:00 +0000
+date: 2026-02-02 00:00:00 +0000
 layout: post
 level: h1
 slug: '02'
+tags : [recommendation system]
 status: done
-title: 'Collaborative Filtering Part 02 - The "Zero" Problem - Solving for Implicit Data'
+title: 'Collaborative Filtering Part 02'
 ---
 
-# Collaborative Filtering Part 02
+# Collaborative Filtering Part 02 - The "Zero" Problem - Solving for Implicit Data
 
 In Part 1, we discussed predicting $P(click)$ using an interaction matrix. However, we concluded that traditional matrix factorization is not viable when the matrix contains empty cells.
 

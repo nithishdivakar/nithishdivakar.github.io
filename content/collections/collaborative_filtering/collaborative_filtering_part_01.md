@@ -4,7 +4,8 @@ layout: post
 level: h1
 slug: '01'
 status: done
-title: Collaborative Filtering Part 01 - The Foundations & Classic Flaws
+tags : [recommendation system]
+title: Collaborative Filtering Part 01
 type: "series_collection"
 ---
 
