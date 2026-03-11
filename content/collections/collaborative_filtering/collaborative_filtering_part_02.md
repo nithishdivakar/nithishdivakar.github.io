@@ -5,10 +5,12 @@ level: h1
 slug: '02'
 tags : [recommendation system]
 status: done
-title: 'Collaborative Filtering Part 02'
+title: 'The "Zero" Problem - Solving for Implicit Data'
 ---
 
-# Collaborative Filtering Part 02 - The "Zero" Problem - Solving for Implicit Data
+# The "Zero" Problem - Solving for Implicit Data
+
+*Part 2/5 of [Collaborative Filtering Collection](/collections/collaborative_filtering)*
 
 In Part 1, we discussed predicting $P(click)$ using an interaction matrix. However, we concluded that traditional matrix factorization is not viable when the matrix contains empty cells.
 
@@ -192,4 +194,4 @@ This is the **cold start problem**. WMF and LMF have no mechanism to handle it b
 
 The fix requires a fundamentally different approach,  where the system understands *who* the user is and *what* the item is, independent of past interactions.
 
-*Read more in [Part 3](../03)*
+*Read more in [part 3](../03)*

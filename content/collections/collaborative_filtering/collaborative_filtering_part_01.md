@@ -5,11 +5,13 @@ level: h1
 slug: '01'
 status: done
 tags : [recommendation system]
-title: Collaborative Filtering Part 01
+title: Collaborative Filtering - The Foundations & Classic Flaws
 type: "series_collection"
 ---
 
 # Collaborative Filtering - The Foundations & Classic Flaws
+
+*Part 1/5 of [Collaborative Filtering Collection](/collections/collaborative_filtering)*
 
 In the world of recommendation-system, the main objective simple to state but hard to do:
 

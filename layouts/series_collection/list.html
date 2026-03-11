@@ -12,7 +12,7 @@
   {{ $.Scratch.Add "pages" (dict "page" . "key" ($.Scratch.Get "key")) }}
 {{ end }}
 
-<ul>
+<!-- <ul>
   {{ range sort ($.Scratch.Get "pages") "key" }}
     {{ $p := .page }}
     {{ $level := $p.Params.level }}
@@ -30,6 +30,6 @@
     </li>
 
   {{ end }}
-</ul>
+</ul> -->
 
 {{ end }}

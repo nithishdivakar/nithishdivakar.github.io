@@ -1,14 +1,16 @@
 ---
-date: 2026-03-01 00:00:00 +0000
+date: 2026-03-11 00:00:00 +0000
 layout: post
 level: h1
 slug: '03'
 tags : [recommendation system]
-status: done
-title: Collaborative Filtering Part 03
+status: todo
+draft: true
+title: Scaling with Features & Neural Networks
 ---
 
-# Collaborative Filtering Part 03  - Scaling with Features & Neural Networks
+# Scaling with Features & Neural Networks
+*Part 3/5 of [Collaborative Filtering Collection](/collections/collaborative_filtering)*
 
 In Part 2, we ended with the cold start problem. WMF and LMF are powerful, but they are built entirely on interaction history. No interactions means no recommendations. A new user or a new item is effectively invisible to these models.
 
@@ -113,4 +115,4 @@ In MF, scoring an item for a user was a single dot product. Now it's a neural ne
 
 The solution is a fundamental architectural choice that defines how all large-scale recommendation systems are built today.
 
-*Read more in [Part 4](../04)*
+*Read more in [part 4](../04)*
