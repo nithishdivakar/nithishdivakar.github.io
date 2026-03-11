@@ -3,26 +3,21 @@
 ⟩ <a href=/>home</a></div><h1>Collaborative Filtering</h1><p>Whenever we discuss about collaborative filtering, the following image is
 implicitly made as a anchor point to talk about how
 collaborative filtering discovers &lsquo;similar users&rsquo; and use that to
-recommend unseen items.</p><p>Whenever collaborative filtering is talked about, the following illustration is
-brought up and then &ldquo;finding users who behave similarly, then recommend items they liked but haven&rsquo;t seen yet&rdquo; is discussed.</p><pre tabindex=0><code>
-          movie 1   movie 2                                 movie n    
-        ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐ 
- user 1 │         │    ✓    │         │    ✓    │         │    ✓    │ 
-        ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ 
- user 2 │    ✓    │    ✓    │         │         │         │         │ 
-        ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ 
-        │    ✓    │         │         │    ✓    │    ✓    │    ✓    │ 
-        ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ 
-        │         │         │    ✓    │         │         │         │ 
-        ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ 
-        │    ✓    │    ✓    │         │    ✓    │    ✓    │    ✓    │ 
-        ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ 
- user m │         │    ✓    │         │    ✓    │         │         │ 
-        └─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘ 
-        
-</code></pre><center><small><b>Fig:</b> The mythical user item interaction matrix.</small></center><p>It’s a helpful mental model and historically accurate for early recommender systems.</p><p>However, that similar users picture is only a small part of how modern
-recommendation models actually work. Real-world systems rarely operate
-directly on this matrix, and the notion of similarity today is far more
-nuanced than simple row-to-row comparison.</p><p>This 5 part series is walkthrough of how collaborative filtering is practiced today.
-We will talk about how the row-to-row comparison idea evolves into one of the
-corner stone component of modern day recommender systems.</p><p><strong>Part 1: Collaborative Filtering - The Foundations & Classic Flaws</strong></p><ul><li>Introduction - The P(click) Problem</li><li>The &ldquo;Naive&rdquo; Approach: Neighborhood-Based CF</li><li>The Classic Foundation: Matrix Factorization (MF)</li><li>The &ldquo;Zero&rdquo; Problem</li></ul><p><strong>Part 2: The &ldquo;Zero&rdquo; Problem - Solving for Implicit Data</strong></p><ul><li>Solution 1: Weighted Matrix Factorization (WMF / Implicit ALS)</li><li>Solution 2: Logistic Matrix Factorization (LMF) & The Practical Hurdle of Negative Sampling</li></ul><p><strong>Part 3: The Modern Solution: Scaling with Features & Neural Networks</strong></p><ul><li>The Scaling Wall: Limitations of Pure Collaborative Filtering</li><li>The Modern Solution: Feature-Based Neural Networks</li><li>The &ldquo;Magic&rdquo; Ingredient: How Features are Represented (Embeddings)</li></ul><p><strong>Part 4: Retrieval & Ranking - Modern Recommendation Architectures</strong></p><ul><li>&ldquo;Two-Stage&rdquo; (Retrieval & Ranking) paradigm.</li><li>Architectural Deep Dive 1: The Two-Tower Model (For Retrieval)</li><li>Architectural Deep Dive 2: The Cross-Tower (or Fused) Model (For Ranking)</li></ul><p><strong>Part 5: Evaluation and Pitfalls</strong></p><ul><li>How Do We Know It&rsquo;s Working? (Evaluation Metrics: Offline, Online, Biases)</li><li>Conclusion: The Journey and What&rsquo;s Next. Multi-Task Learning (MTL), Reinforcement Learning (Contextual Bandits)</li></ul><h2 id=collection>Collection</h2><ul><li><a href=/collections/collaborative_filtering/01/>Collaborative Filtering Part 01</a></li><li><a href=/collections/collaborative_filtering/02/>Collaborative Filtering Part 02</a></li><li><a href=/collections/collaborative_filtering/03/>Collaborative Filtering Part 03</a></li></ul></main><footer><p>Found something useful here? pass it on; or tell me about it!<nav><ul><li><a href="https://drive.google.com/drive/folders/18LU6PKnxy8rDrAXhpiPXV2yOYlO_I8cF?usp=sharing">Resume</a></li><li><a href=https://daxpy.xyz/collections/>Collections</a></li><li><a href=https://www.linkedin.com/in/ndivakar/>Linkedin</a></li></ul></nav><small><a href=#top>↑ Top of page</a></small></p></footer></body></html>
+recommend unseen items.</p><p>$$
+\begin{array}{c|cccccc|}
+& i_1 & i_2 & & \cdots & & i_n \\
+\hline
+u_1 & & \checkmark & & & & \checkmark \\
+%\hline
+u_2 & \checkmark & \checkmark & & & & \\
+%\hline
+& \checkmark & & & \checkmark & \checkmark & \checkmark \\
+%\hline
+\vdots& & & \checkmark & & & \\
+%\hline
+& \checkmark & \checkmark & & \checkmark & \checkmark & \checkmark \\
+%\hline
+u_m & & \checkmark & & \checkmark & & \\
+\hline
+\end{array}
+$$</p><center><small><b>Fig:</b> The mythical user item interaction matrix.</small></center><p>It&rsquo;s a helpful mental model and historically accurate for early recommender systems.</p><p>However, that <em>similar users</em> picture is only a small part of how modern recommendation models actually work. Real-world systems rarely operate directly on this matrix, and the notion of similarity today is far more nuanced than simple row-to-row comparison.</p><p>This 5 part series is a walkthrough of how collaborative filtering is practiced today. We will talk about how the row-to-row comparison idea evolves into one of the cornerstones of modern recommender systems.</p><ol><li><a href=01>Collaborative Filtering - The Foundations & Classic Flaws</a></li><li><a href=02>The &ldquo;Zero&rdquo; Problem - Solving for Implicit Data</a></li><li>Scaling with Features & Neural Networks</li><li>Retrieval & Ranking</li><li>How Do We Know It’s Working?</li></ol></main><footer><p>Found something useful here? pass it on; or tell me about it!<nav><ul><li><a href="https://drive.google.com/drive/folders/18LU6PKnxy8rDrAXhpiPXV2yOYlO_I8cF?usp=sharing">Resume</a></li><li><a href=https://daxpy.xyz/collections/>Collections</a></li><li><a href=https://www.linkedin.com/in/ndivakar/>Linkedin</a></li></ul></nav><small><a href=#top>↑ Top of page</a></small></p></footer></body></html>
