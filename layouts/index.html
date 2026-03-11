@@ -5,9 +5,9 @@
   </div>
   <h2>Feed</h2>
   <ul>
-    {{ $p := where .Site.RegularPages "Section" "in" (slice "posts" "stories") }}
+    {{ $p := where .Site.RegularPages "Section" "in" (slice "posts" "stories" "collections") }}
 
-    {{ range first 24 $p }}
+    {{ range first 30 $p }}
       <!-- {{.Section }} -->
       {{ .Scratch.Set "display_section" "True" }}
       {{- partial "card_item.html" . -}}

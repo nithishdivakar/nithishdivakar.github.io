@@ -25,7 +25,7 @@
 {{ end }}
 {{ $parents = $rev }}
 
-<div style="text-align: right;height:5px; margin-top:10px;" class="italic"> 
+<div style="text-align: right; font-size: small; margin-top:10px;" class="text_secondary"> 
     this page 
     {{ range $parents }}
       ⟩ <a href="{{ .RelPermalink }}">{{lower .Title }}</a>

@@ -89,36 +89,40 @@ header {
   border-bottom: 1px dashed var(--BLACK);
 }
 
-nav {    
+nav {
   display: flex;
-  flex-direction: row;
+  align-items: flex-start; /* Ensures logo and list align vertically */
   justify-content: flex-start;
-  gap: 0 1.5rem;
-}
-nav .logo {
-  flex-shrink: 0; /* never shrink */
-}
-nav ul {
-  flex: 1;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-end;
-  column-gap: 0.5rem;
-}
+  gap: 1.5rem; /* Simplified: single value for 4-way gap or use '0 1.5rem' */
 
-nav li a {
-  display: block;
-  text-align: center;
-  color: var(--BLUE);
-}
+  & .logo {
+    flex-shrink: 0;
+  }
 
-/* </nav> */
+  & ul {
+    flex: 1;
+    display: flex;
+    flex-flow: row wrap; /* Shorthand for direction and wrap */
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  & a {
+    text-decoration: none;
+    color: var(--BLUE);
+    
+    li & {
+      display: block;
+      text-align: center;
+    }
+  }
+}
 
 /* <global_styles> */
 
