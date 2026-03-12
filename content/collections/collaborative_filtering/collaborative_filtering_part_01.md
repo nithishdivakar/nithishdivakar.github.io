@@ -35,7 +35,7 @@ Of course, real behaviour is messier. People click out of curiosity, boredom, mi
 ## P(click)
 So the core problem becomes: given a specific user and a piece of content, can we predict the probability of a click?
 
-$$P(click | \\\{content, user\\\})$$
+$$P(click | \\\{user, content\\\})$$
 
 This framing turns out to be remarkably general. Swap in different definitions of "user" and "content" and the same $P(click)$ machinery underpins ranking feeds, search results, ad targeting, and more. But we'll stay focused on recommendations for now.
 
@@ -54,23 +54,26 @@ To measure similarity between two users, we compare their rows. A straightforwar
 
 $$\text{Jaccard similarity} = \frac{\text{item both clicked}}{\text{ items either clicked}} $$
 
-```
- 
-      m1  m2  m3  m4  m5  m6 
-    ┌───┬───┬───┬───┬───┬───┐ 
- u1 │   │ ✓ │   │ ✓ │   │ ✓ │ 
-    ├───┼───┼───┼───┼───┼───┤ 
- u2 │ ✓ │ ✓ │   │   │   │   │ 
-    ├───┼───┼───┼───┼───┼───┤ 
- u3 │ ✓ │ ✓ │   │ ✓ │   │   │ 
-    └───┴───┴───┴───┴───┴───┘ 
-     
-         J(u1,u2) = 1/4
-         J(u1,u3) = 2/4
-         J(u2,u3) = 2/3
- 
-```
+$$
+\begin{array}{c|ccccc|}
+ & i_1 & i_2 & i_3 & i_4 &i_5 \\\\
+\hline 
+u_1 &  & \checkmark&  &\checkmark &\checkmark\\\\
+u_2 & \checkmark& \checkmark&  &  &\\\\
+u_3 & \checkmark& \checkmark&  &\checkmark & \\\\
+\hline
+\end{array}
+$$
 
+$$
+\begin{align}
+         J(u_1,u_2) &= 1/4
+         \\\\
+         J(u_1,u_3) &= 2/4
+         \\\\
+         J(u_2,u_3) &= 2/3
+\end{align}
+$$
 
 Jaccard similarity gives us a number between 0 and 1 indicating the degree of similarity between any two users. With a reasonable threshold on this score, we can decide who counts as a “similar user.” Once we have that set, Step 2 and Step 3 follow immediately: compute $P(click)$ as the fraction of those similar users who clicked on the item.
 
@@ -104,7 +107,7 @@ But irrespective of metrics, Neighborhood-Based CF has some fundamental flaws.
 
 3. Sparse interactions.
 
-    The user-item matrix is extremly sparse. Almost every cell is a zero. When we compare 2 users, there is very little overlap to base similarity on. Since Neighbourhood CF doesn't infer latent behaviour, it only recommend items with explict co-click evidence. This creates a negative feedback loop. Sparse Data -> No shared clicks -> no recommendation -> Sparser data. 
+    The user-item matrix is extremly sparse. Almost every cell is a zero. When we compare 2 users, there is very little overlap to base similarity on. Since Neighbourhood CF doesn't infer latent behaviour, it only recommend items with explict co-click evidence. This creates a negative feedback loop. Sparse Data $\to$ No shared clicks $\to$ no recommendation $\to$ Sparser data. 
     
     Even for users who are genuinely similar, we never make the connection because the model cannot infer them without explicit evidence.
 
