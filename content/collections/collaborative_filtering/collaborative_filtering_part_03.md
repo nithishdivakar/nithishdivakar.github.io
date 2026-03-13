@@ -6,6 +6,7 @@ slug: '03'
 tags : [recommendation system]
 status: done
 draft: false
+type: "series_collection"
 title: Scaling with Features & Neural Networks
 ---
 
