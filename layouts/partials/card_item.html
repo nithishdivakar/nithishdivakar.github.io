@@ -24,14 +24,24 @@
       </div>
     </div>
 
-    {{- if .Params.Tags -}}
+    {{ $isSeries := eq .Params.type "series_collection" }}
+
+    {{ if or .Params.Tags $isSeries }}
     <ul>
+      {{ if $isSeries }}
+      <li style="font-size: 0.8rem;">
+        Part {{ .Params.slug }} of <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a> collection.
+      </li>
+      {{ end }}
+    
+      {{ if .Params.Tags }}
       <li>
         {{ range $index, $tag := .Params.Tags }}
-        <a class="card_tag" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }},{{ end }}
-      {{ end }}
+          <a class="card_tag" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }},{{ end }}
+        {{ end }}
       </li>
+      {{ end }}
     </ul>
-    {{- end -}}
+    {{ end }}
   </div>
 </li>

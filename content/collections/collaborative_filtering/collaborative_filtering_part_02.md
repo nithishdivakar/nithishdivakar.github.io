@@ -6,6 +6,7 @@ slug: '02'
 tags : [recommendation system]
 status: done
 title: 'The "Zero" Problem - Solving for Implicit Data'
+type: "series_collection"
 ---
 
 # The "Zero" Problem - Solving for Implicit Data
