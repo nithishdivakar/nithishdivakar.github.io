@@ -11,9 +11,9 @@ type: "series_collection"
 
 # The "Zero" Problem - Solving for Implicit Data
 
-*Part 2/5 of [Collaborative Filtering Collection](/collections/collaborative_filtering)*
+*Part 2/5 of [Collaborative Filtering](/collections/collaborative_filtering) Collection* 
 
-In Part 1, we discussed predicting $P(click)$ using an interaction matrix. However, we concluded that traditional matrix factorization is not viable when the matrix contains empty cells.
+In [part 1](../01), we discussed predicting $P(click)$ using an interaction matrix. However, we concluded that traditional matrix factorization is not viable when the matrix contains empty cells.
 
 Our approach should account for the uncertainty of probability of a click for those empty cells. So we pivot: instead of trying to factorize a full matrix, we treat this as an **Optimisation Problem** over the data we actually have.
 

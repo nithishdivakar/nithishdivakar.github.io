@@ -11,7 +11,7 @@ type: "series_collection"
 
 # Collaborative Filtering - The Foundations & Classic Flaws
 
-*Part 1/5 of [Collaborative Filtering Collection](/collections/collaborative_filtering)*
+*Part 1/5 of [Collaborative Filtering](/collections/collaborative_filtering) Collection* 
 
 In the world of recommendation-system, the main objective simple to state but hard to do:
 

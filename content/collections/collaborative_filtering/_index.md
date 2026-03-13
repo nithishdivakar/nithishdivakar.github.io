@@ -37,6 +37,6 @@ This 5 part series is a walkthrough of how collaborative filtering is practiced 
 
 1. [Collaborative Filtering - The Foundations & Classic Flaws](01)
 2. [The "Zero" Problem - Solving for Implicit Data](02)
-3. Scaling with Features & Neural Networks
+3. [Scaling with Features & Neural Networks](03)
 4. Retrieval & Ranking
 5. How Do We Know It’s Working?

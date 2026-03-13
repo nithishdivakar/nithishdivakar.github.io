@@ -1,47 +1,52 @@
 <li class="card_item">
-  <div class="card_entry">
-    <div class="card_head">
-      <a href="{{ .Permalink }}" class="card_link">
-        <span class="card_title">
-          {{- if eq (.Scratch.Get "display_section") "True" -}}
-            {{- if eq .Section "links" -}}
-              <span class="card_external">⇗</span>
+  <div class="card">
+
+    <div class="card_l">
+      <div class="card_head">
+        <a href="{{ .Permalink }}" class="card_link">
+          <span class="card_title">
+            {{- if eq (.Scratch.Get "display_section") "True" -}}
+              {{- if eq .Section "links" -}}
+                <span class="card_external">⇗</span>
+              {{- end -}}
             {{- end -}}
-          {{- end -}}
-          {{if .Params.draft}}<span class="card_draft">[draft]</span>{{end}}
-          {{- .Title -}}
-        </span>
-      </a>
-      <span class="card_dots"></span>
-      <div class="card_meta">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">
-          {{ if ge .Date.Unix 0 }}
-            {{ .Date.Format "2006 Jan 02" }}
-          {{ else }}
-          ꧁𑗊⁂𑗊꧂
+            {{if .Params.draft}}<span class="card_draft">[draft]</span>{{end}}
+            {{- .Title -}}
+          </span>
+        </a>
+        <div class="card_dots"></div>
+      </div>
+
+      <div class="card_body">
+        {{ $isSeries := eq .Params.type "series_collection" }}
+        {{ if or .Params.Tags $isSeries }}
+        <ul>
+          {{ if $isSeries }}
+          <li style="font-size: 0.8rem;">
+            Part {{ .Params.slug }} of <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a> collection.
+          </li>
           {{ end }}
-        </time>
+          {{ if .Params.Tags }}
+          <li>
+            {{ range $index, $tag := .Params.Tags }}
+              <a class="card_tag" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }},{{ end }}
+            {{ end }}
+          </li>
+          {{ end }}
+        </ul>
+        {{ end }}
       </div>
     </div>
 
-    {{ $isSeries := eq .Params.type "series_collection" }}
-
-    {{ if or .Params.Tags $isSeries }}
-    <ul>
-      {{ if $isSeries }}
-      <li style="font-size: 0.8rem;">
-        Part {{ .Params.slug }} of <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a> collection.
-      </li>
-      {{ end }}
-    
-      {{ if .Params.Tags }}
-      <li>
-        {{ range $index, $tag := .Params.Tags }}
-          <a class="card_tag" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }},{{ end }}
+    <div class="card_meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">
+        {{ if ge .Date.Unix 0 }}
+          {{ .Date.Format "2006 Jan 02" }}
+        {{ else }}
+          ꧁𑗊⁂𑗊꧂
         {{ end }}
-      </li>
-      {{ end }}
-    </ul>
-    {{ end }}
+      </time>
+    </div>
+
   </div>
 </li>

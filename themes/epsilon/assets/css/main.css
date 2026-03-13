@@ -40,7 +40,7 @@
 
 
 html {
-  font-size: var(--font-size-base); /* Default root font size */
+  font-size: var(--font-size-base);
 }
 
 body {
@@ -48,6 +48,10 @@ body {
   max-width: var(--site-max-wdth);
   padding: 0.5rem 1rem;
   margin: 0 auto;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  text-justify: inter-word;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -82,7 +86,6 @@ small, .small {
 /* </typography> */
 
 
-
 /* <nav> */
 
 header {
@@ -91,9 +94,9 @@ header {
 
 nav {
   display: flex;
-  align-items: flex-start; /* Ensures logo and list align vertically */
+  align-items: flex-start;
   justify-content: flex-start;
-  gap: 1.5rem; /* Simplified: single value for 4-way gap or use '0 1.5rem' */
+  gap: 1.5rem;
 
   & .logo {
     flex-shrink: 0;
@@ -102,7 +105,7 @@ nav {
   & ul {
     flex: 1;
     display: flex;
-    flex-flow: row wrap; /* Shorthand for direction and wrap */
+    flex-flow: row wrap;
     justify-content: flex-end;
     align-items: center;
     gap: 0.5rem;
@@ -134,14 +137,7 @@ pre {
   background-color: var(--GREY);
 }
 
-body {
-  text-align: justify;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  text-justify: inter-word;
-}
 p {
-  /* to avoid orphaned words at the end of paragraphs */
   orphans: 3;
   widows: 3;
 }
@@ -166,10 +162,12 @@ ul.link_item li {
   display: inline;
   padding-right:5px;
 }
+
 img {
   max-width: 100%;
   height: auto;
 }
+
 /* </global_styles> */
 
 div.highlight {
@@ -217,11 +215,9 @@ blockquote {
   border-left: 1.5px solid #e91e63;
   color: #222;
   padding-left: 20px;
-  /* font-style: italic; */
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
-
 
 .breadcrumbs {
   list-style: none;
@@ -238,37 +234,42 @@ blockquote {
 .breadcrumbs a {display: inline;}
 
 
+/* <card> */
+
 ul:has(li.card_item) {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  /* row-gap: 0.5rem; */
 }
 
 .card_item {
   list-style: none;
 }
 
-.card_entry {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Title + dot leader + date on one line */
-.card_head {
+.card {
   display: flex;
   align-items: baseline;
-  gap: 0;
+  gap: 0.5rem;
+}
+
+.card_l {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.card_head {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
   width: 100%;
 }
 
 .card_link {
+  flex: 0 1 auto;
+  min-width: 0;
   text-decoration: none;
-  /* color: inherit; */
-  flex-shrink: 0;
-  max-width: 70%;
 }
 
 .card_link:hover .card_title {
@@ -278,32 +279,28 @@ ul:has(li.card_item) {
 
 .card_title {
   display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
   font-size: 1rem;
 }
 
-/* Dot leader — grows to fill available space */
 .card_dots {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   display: block;
   border-bottom: 1px dashed var(--BLACK);
   opacity: 0.6;
   margin: 0 0.5rem 0.25rem 0.5rem;
-  /* min-width: 1.5rem; */
 }
 
 .card_meta {
-  flex-shrink: 0;
-  margin-left: auto;
+  flex: 0 0 auto;
+  text-align: right;
 }
 
 .card_meta time {
   font-size: 0.8rem;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.01em;
-  opacity: 0.75;
   white-space: nowrap;
 }
 
@@ -318,7 +315,6 @@ ul:has(li.card_item) {
   text-underline-offset: 2px;
 }
 
-/* Draft & external markers */
 .card_draft {
   opacity: 0.5;
   margin-right: 0.25rem;
@@ -328,3 +324,5 @@ ul:has(li.card_item) {
   margin-right: 0.2rem;
   font-style: normal;
 }
+
+/* </card> */
