@@ -4,6 +4,7 @@ tags : []
 date: 2023-04-22T10:21:00+05:30
 startdate: 2023-04-22T10:21:00+05:30
 draft: true
+type: post
 ---
 
 

@@ -3,6 +3,7 @@ title: Statistics from Streaming Data
 tags : [algorithms, statistics]
 date: 2022-02-16
 draft: true
+type: post
 ---
 
 Compute average of 500B numbers

@@ -5,11 +5,11 @@ level: h1
 slug: '02'
 tags : [recommendation system]
 status: done
-title: 'The "Zero" Problem - Solving for Implicit Data'
+title: 'The "Zero" Problem'
 type: "series_collection"
 ---
 
-# The "Zero" Problem - Solving for Implicit Data
+# The "Zero" Problem
 
 *Part 2/5 of [Collaborative Filtering](/collections/collaborative_filtering) Collection* 
 

@@ -3,6 +3,7 @@ title: Differentiable Computations
 tags: [computational-graph]
 date: 2018-02-18
 draft: False
+type: post
 ---
 
 # Differentiable Computations

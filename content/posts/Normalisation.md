@@ -4,6 +4,7 @@ tags : [machine-learning]
 date: 2023-10-24T18:33:10+05:30
 start_date: 2023-08-12T15:16:00+05:30
 draft: false
+type: post
 ---
 
 

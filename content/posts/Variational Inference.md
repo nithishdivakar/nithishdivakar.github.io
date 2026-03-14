@@ -3,6 +3,7 @@ title: Variational Inference
 tags : [machine-learning, optimisation, probability]
 date: 2023-04-16T12:15:00+05:30
 draft: false
+type: post
 ---
 
 # Variational Inference

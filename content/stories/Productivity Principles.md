@@ -4,6 +4,7 @@ tags : [stories]
 date: 2023-04-30
 startdate: 2023-04-28
 draft: false
+type: "stories"
 ---
 # Productivity Principles
 

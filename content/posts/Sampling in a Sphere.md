@@ -4,6 +4,7 @@ tags : [statistics,probability]
 date: 2024-03-17T21:44:15+05:30
 start_date: 2024-03-10T09:36:53+05:30
 draft: false
+type: post
 ---
 
 # Sampling in a Sphere

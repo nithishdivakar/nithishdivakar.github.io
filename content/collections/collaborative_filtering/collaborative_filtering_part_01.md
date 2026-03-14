@@ -5,11 +5,11 @@ level: h1
 slug: '01'
 status: done
 tags : [recommendation system]
-title: Collaborative Filtering - The Foundations & Classic Flaws
+title: Collaborative Filtering - The Foundations and Flaws
 type: "series_collection"
 ---
 
-# Collaborative Filtering - The Foundations & Classic Flaws
+# Collaborative Filtering - The Foundations and Flaws
 
 *Part 1/5 of [Collaborative Filtering](/collections/collaborative_filtering) Collection* 
 

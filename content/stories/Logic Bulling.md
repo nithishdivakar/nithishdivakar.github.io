@@ -3,6 +3,7 @@ title: Logic Bulling
 tags : [stories]
 date: 2022-02-24
 draft: false
+type: "stories"
 ---
 # Logic Bulling
 

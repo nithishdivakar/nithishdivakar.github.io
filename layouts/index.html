@@ -7,6 +7,13 @@
   <ul>
     {{ $p := where .Site.RegularPages "Section" "in" (slice "posts" "stories" "collections") }}
 
+    {{ $p := where .Site.RegularPages "Params.type" "in" (slice "posts" "stories" "series_collection") }}
+
+    {{ $sections := where .Site.RegularPages "Section" "in" (slice "posts" "stories") }}
+    {{ $types := where .Site.RegularPages "Params.type" "in" (slice "series_collection") }}
+
+    {{ $p := $sections | union $types }}
+
     {{ range first 30 $p }}
       <!-- {{.Section }} -->
       {{ .Scratch.Set "display_section" "True" }}

@@ -3,6 +3,7 @@ title : With and max structure in Algorithms
 tags: [algorithms]
 date: 2021-04-30T05:04:51+05:30
 draft: true
+type: post
 ---
 
 # Kadane's Algorithm

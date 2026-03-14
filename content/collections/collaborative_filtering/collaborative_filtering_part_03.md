@@ -7,10 +7,10 @@ tags : [recommendation system]
 status: done
 draft: false
 type: "series_collection"
-title: Scaling with Features & Neural Networks
+title: Scaling CF with Neural Networks and Features
 ---
 
-# Scaling with Features & Neural Networks
+# Scaling CF with Neural Networks and Features
 *Part 3/5 of [Collaborative Filtering](/collections/collaborative_filtering) Collection* 
 
 So far, we have discussed Neighborhood-Based Collaborative Filtering, Matrix Factorisation,  Weighted Matrix Factorization and Logistic Matrix Factorization ([part 1](../01) and [part 2](../02)). They all have the inherent flaw of "cold start" as they are built on top of interaction history. No interactions means no recommendations. New users and items are practically invisible to these algorithms.

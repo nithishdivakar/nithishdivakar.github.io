@@ -35,8 +35,8 @@ However, that *similar users* picture is only a small part of how modern recomme
 
 This 5 part series is a walkthrough of how collaborative filtering is practiced today. We will talk about how the row-to-row comparison idea evolves into one of the cornerstones of modern recommender systems.
 
-1. [Collaborative Filtering - The Foundations & Classic Flaws](01)
-2. [The "Zero" Problem - Solving for Implicit Data](02)
-3. [Scaling with Features & Neural Networks](03)
-4. Retrieval & Ranking
+1. [Collaborative Filtering - The Foundations and Flaws](01)
+2. [The "Zero" Problem](02)
+3. [Scaling CF with Neural Networks and Features](03)
+4. A Tale of Two Towers: Scalable Architectures for Ranking
 5. How Do We Know It’s Working?

@@ -4,6 +4,7 @@ tags : []
 date: 2025-02-24T07:30:00+05:30
 start_date: 2025-02-24T07:30:00+05:30
 draft: true
+type: post
 ---
 
 # LoRA: Low-rank adaptation of large language models

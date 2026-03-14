@@ -3,6 +3,7 @@ title : Theme test
 tags: [tag1, tag2]
 date: 1991-10-13T00:35:00+05:30
 draft: true
+type: post
 ---
 
 # Heading1

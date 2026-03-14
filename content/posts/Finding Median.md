@@ -3,6 +3,7 @@ title: Finding Median
 tags : [algorithms]
 date: 2022-03-01T06:59:51+05:30
 draft: false
+type: post
 ---
 
 # Finding Median

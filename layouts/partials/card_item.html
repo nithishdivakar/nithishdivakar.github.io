@@ -23,7 +23,7 @@
         <ul>
           {{ if $isSeries }}
           <li style="font-size: 0.8rem;">
-            Part {{ .Params.slug }} of <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a> collection.
+            <i>part {{ .Params.slug }} of <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a> collection.</i>
           </li>
           {{ end }}
           {{ if .Params.Tags }}
