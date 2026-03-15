@@ -38,5 +38,5 @@ This 5 part series is a walkthrough of how collaborative filtering is practiced 
 1. [Collaborative Filtering - The Foundations and Flaws](01)
 2. [The "Zero" Problem](02)
 3. [Scaling CF with Neural Networks and Features](03)
-4. A Tale of Two Towers: Scalable Architectures for Ranking
+4. [A Tale of Two Towers](04)
 5. How Do We Know It’s Working?
