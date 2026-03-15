@@ -29,10 +29,6 @@ $$\bar{W} = m \frac{W + UV}{\|W + UV\|_c}$$
 
 where $\|\cdot\|_c$ is the column-wise norm and $m$ is a learnable magnitude vector. $UV$ is the same low-rank update as in LoRA. This decoupling lets the model adjust the scale and direction of each weight column independently, which the authors show better mimics the behaviour of full finetuning compared to LoRA alone.
 
-[LoRA paper][Edward and Yelong (2022)]
-
-[DoRA paper][Shih and Chien (2024)]
-
 ## References
 <reference>
  <small>
