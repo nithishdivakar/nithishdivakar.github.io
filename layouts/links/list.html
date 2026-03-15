@@ -6,7 +6,7 @@
 
 <ul>
   <li>
-    <a href="/links_fav" class="green"> only <span class="red">❤︎ </span></a>
+    <a href="/links_fav" class="green"> Show only <span class="red">❤︎</span></a>
    </li>
   {{ range sort $p "Params.date" "asc" | collections.Reverse }}
     {{- partial "link_item.html" . -}}

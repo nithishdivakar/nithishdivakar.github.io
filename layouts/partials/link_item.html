@@ -1,15 +1,19 @@
 <li class="link_item">
-  {{ if .Params.favorite }}
-    <span class="small red">[❤︎]</span>
-  {{ else }}
-    <span class="small green">[♣]</span>
-  {{ end }}
-  <a href="{{ .Permalink }}">
-    {{- .Title -}}
-  </a>
+  <div class="link_item_head">
+    {{ if .Params.favorite }}
+      <span class="small red">[❤︎]</span>
+    {{ else }}
+      <span class="small green">[♣]</span>
+    {{ end }}
+    <a href="{{ .Permalink }}">
+      {{- .Title -}}
+    </a>
+  </div>
   <ul>
     <li>
-      <time class="black small">{{time.Format "Added: 2006 Jan 02," .Params.date }}</time>
+      <time class="black small">{{time.Format "Added: 2006 Jan 02" .Params.date }}</time>
+    </li>
+    <li>
       <span class="gray small"><i>Author(s): {{ range .Params.authors }} {{.}} {{ end }}</i></span>
     </li>
   </ul>

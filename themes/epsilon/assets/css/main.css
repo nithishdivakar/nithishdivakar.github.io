@@ -1,7 +1,6 @@
 @import url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css');
 
 :root{
-  /* --font-family-primary: "Georgia", serif; */
   --font-family-primary: "Computer Modern Serif", Georgia, serif;
   --font-family-secondary: "Computer Modern Sans", sans-serif;
   --font-family-tertiary: "Helvetica", sans-serif;
@@ -163,6 +162,13 @@ ul.link_item li {
   padding-right:5px;
 }
 
+.link_item_head {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0 0.5rem;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -236,7 +242,7 @@ blockquote {
 
 /* <card> */
 
-ul:has(li.card_item) {
+ul:has(li.card_item) , ul:has(li.link_item){
   list-style: none;
   padding: 0;
   margin: 0;
@@ -285,6 +291,10 @@ ul:has(li.card_item) {
   text-overflow: clip;
   font-size: 1rem;
   max-width: 40ch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0 0.25rem;
 }
 
 .card_dots {
@@ -307,7 +317,6 @@ ul:has(li.card_item) {
 }
 
 .card_tag {
-  font-size: 0.8rem;
   text-decoration: none;
   color: inherit;
 }
@@ -319,7 +328,8 @@ ul:has(li.card_item) {
 
 .card_draft {
   opacity: 0.5;
-  margin-right: 0.25rem;
+  font: var(--font-monospace);
+  font-size: 6pt;
 }
 
 .card_external {

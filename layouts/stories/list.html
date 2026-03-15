@@ -4,7 +4,7 @@
 <ul>
   {{ range (where .Site.RegularPages "Section" "stories") }}
     {{ .Scratch.Set "display_section" "True" }}
-    {{- partial "list_item.html" . -}}
+    {{- partial "card_item.html" . -}}
     {{ .Scratch.Set "display_section" "False" }}
   {{- end }}
 </ul>

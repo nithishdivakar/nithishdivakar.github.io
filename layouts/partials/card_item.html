@@ -4,32 +4,32 @@
     <div class="card_l">
       <div class="card_head">
         <a href="{{ .Permalink }}" class="card_link">
-          <span class="card_title">
-            {{- if eq (.Scratch.Get "display_section") "True" -}}
-              {{- if eq .Section "links" -}}
-                <span class="card_external">⇗</span>
-              {{- end -}}
-            {{- end -}}
-            {{if .Params.draft}}<span class="card_draft">[draft]</span>{{end}}
-            {{- .Title -}}
-          </span>
+          <div class="card_title">
+            <span class="card_title_text">{{- .Title -}}</span>
+            {{- if .Params.draft -}}<span class="card_draft">[draft]</span>{{- end -}}
+            {{- if eq .Section "notes" -}}<span class="card_draft">[note]</span>{{- end -}}
+          </div>
         </a>
         <div class="card_dots"></div>
       </div>
 
       <div class="card_body">
         {{ $isSeries := eq .Params.type "series_collection" }}
+
         {{ if or .Params.Tags $isSeries }}
-        <ul>
+        <ul class="small">
           {{ if $isSeries }}
-          <li style="font-size: 0.8rem;">
+          <li>
             <i>part {{ .Params.slug }} of <a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a> collection.</i>
           </li>
           {{ end }}
-          {{ if .Params.Tags }}
-          <li>
-            {{ range $index, $tag := .Params.Tags }}
-              <a class="card_tag" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }},{{ end }}
+      
+          {{ if or .Params.Tags }}
+          <li>      
+            {{ if .Params.Tags }}
+              {{ range $index, $tag := .Params.Tags }}
+                <a class="card_tag" href="/tags#{{ . | urlize }}">{{ . }}</a>{{ if ne (add $index 1) (len $.Params.Tags) }},{{ end }}
+              {{ end }}
             {{ end }}
           </li>
           {{ end }}
