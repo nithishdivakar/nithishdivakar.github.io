@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Reinforcement Learning on DAXPY</title><link>https://daxpy.xyz/collections/rl/</link><description>Recent content in Reinforcement Learning on DAXPY</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 25 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://daxpy.xyz/collections/rl/index.xml" rel="self" type="application/rss+xml"/><item><title>Reinforcement Learning - Mathematical Tools</title><link>https://daxpy.xyz/collections/rl/01/</link><pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate><guid>https://daxpy.xyz/collections/rl/01/</guid><description>&lt;h2 id="expectation-and-the-log-derivative-trick"&gt;Expectation and the Log-Derivative Trick&lt;/h2&gt;
+&lt;p&gt;Throughout this note we will frequently differentiate expectations whose underlying distribution depends on a parameter $\theta \in \mathbb{R}^d$. The fundamental identity that makes this tractable is the &lt;em&gt;log-derivative&lt;/em&gt; (or &lt;em&gt;score function&lt;/em&gt;) identity.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Proposition:&lt;/strong&gt; (Log-Derivative Identity)
+Let $p_\theta(x)$ be a density parameterized by $\theta$, differentiable in $\theta$ for all $x$, and let $f(x)$ be independent of $\theta$. Then&lt;/p&gt;
+&lt;p&gt;$$
+\nabla_\theta \mathbb{E}_{x \sim p_\theta}[f(x)] = \mathbb{E}_{x \sim p_\theta}\!\left[f(x)\,\nabla_\theta \log p_\theta(x)\right]
+$$&lt;/p&gt;</description></item></channel></rss>

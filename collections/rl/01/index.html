@@ -1,0 +1,53 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]]}}</script><script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><title>Reinforcement Learning - Mathematical Tools | DAXPY</title><link rel=stylesheet href=/css/main.min.3f0cb62190cd4bd931a108646ad8292808cfdf92901603746bc01ef702adb53b.css integrity="sha256-Pwy2IZDNS9kxoQhkatgpKAjP35KQFgN0a8Ae9wKttTs=" crossorigin=anonymous><script src=/js/main.2c88299cd630f51d5ee2dae47b13dc9d01dba4b54013fc5bfd87fde8381dd5f2.js integrity="sha256-LIgpnNYw9R1e4trkexPcnQHbpLVAE/xb/Yf96Dgd1fI=" crossorigin=anonymous></script></head><body><header><nav class=text_secondary><div class=logo><a href=https://daxpy.xyz/><span style=vertical-align:text-top>𑗊</span>DAXPY</a></div><ul><li><a href=https://daxpy.xyz/collections/>Collections</a></li><li><a href=https://daxpy.xyz/notes/>Notes</a></li><li><a href=https://daxpy.xyz/posts/>Posts</a></li><li><a href=https://daxpy.xyz/links/>Links</a></li><li><a href=https://daxpy.xyz/stories/>Stories</a></li><li><a href=/about>About</a></li></ul></nav></header><main><section><div style=text-align:right;font-size:small;margin-top:10px class=text_secondary>this page
+⟩ <a href=/collections/rl/>reinforcement learning</a>
+⟩ <a href=/collections/>collections</a>
+⟩ <a href=/>home</a></div><article><h2 id=expectation-and-the-log-derivative-trick>Expectation and the Log-Derivative Trick</h2><p>Throughout this note we will frequently differentiate expectations whose underlying distribution depends on a parameter $\theta \in \mathbb{R}^d$. The fundamental identity that makes this tractable is the <em>log-derivative</em> (or <em>score function</em>) identity.</p><p><strong>Proposition:</strong> (Log-Derivative Identity)
+Let $p_\theta(x)$ be a density parameterized by $\theta$, differentiable in $\theta$ for all $x$, and let $f(x)$ be independent of $\theta$. Then</p><p>$$
+\nabla_\theta \mathbb{E}_{x \sim p_\theta}[f(x)] = \mathbb{E}_{x \sim p_\theta}\!\left[f(x)\,\nabla_\theta \log p_\theta(x)\right]
+$$</p><p><em>Proof:</em>
+By Leibniz&rsquo;s rule (assuming sufficient regularity to interchange differentiation and integration):
+$$
+\begin{aligned}
+\nabla_\theta \mathbb{E}_{x \sim p_\theta}[f(x)]
+&= \int f(x)\,\nabla_\theta p_\theta(x)\,dx
+\\
+&= \int f(x)\,\frac{\nabla_\theta p_\theta(x)}{p_\theta(x)}\,p_\theta(x)\,dx
+\\
+&= \mathbb{E}_{x \sim p_\theta}\!\left[f(x)\,\nabla_\theta \log p_\theta(x)\right]
+\end{aligned}
+$$</p><p>The term $\nabla_\theta \log p_\theta(x)$ is the <em>score function</em>. Its key virtue is that we can estimate the gradient using only <em>samples</em> from $p_\theta$&mdash;no analytical gradient of $p_\theta$ itself is needed. This identity is the engine behind every policy gradient algorithm.</p><p><strong>Remark:</strong> (Policy Gradient via the Log-Derivative Trick)
+A canonical application is maximising an expected reward. Let $\pi_\theta(a \mid s)$ be a parametric policy and let $R(a, s)$ be a reward function that is independent of $\theta$.</p><p>Define the objective
+$$
+J(\theta) = \mathbb{E}_{a \sim \pi_\theta(\cdot \mid s)}\!\left[R(a, s)\right]
+$$
+Applying Log-Derivative Identity $\nabla \mathbb{E}_{p}[f] = \mathbb{E}_{p}\left[f\nabla \log p\right]$ with $f = R(a,s)$ and $p = \pi_\theta(\cdot \mid s)$ gives
+$$
+\nabla_\theta J(\theta)
+= \mathbb{E}_{a \sim \pi_\theta(\cdot \mid s)}\left[R(a, s)\nabla_\theta \log \pi_\theta(a \mid s)\right]
+$$
+This expectation can be estimated by Monte Carlo: collect a batch of actions $a^{(i)} \sim \pi_\theta(\cdot \mid s)$, evaluate their rewards, and form the estimator
+$$
+\widehat{\nabla_\theta J}(\theta)
+= \frac{1}{N}\sum_{i=1}^{N} R(a^{(i)}, s)\nabla_\theta \log \pi_\theta(a^{(i)} \mid s)
+$$
+Crucially, $R$ need not be differentiable&mdash;or even analytically known&mdash;since only $\nabla_\theta \log \pi_\theta$ appears in the estimator. The update has a natural interpretation: directions in parameter space that produced high-reward actions are reinforced, while those that produced low-reward actions are suppressed. This is precisely the REINFORCE estimator <a href=https://link.springer.com/content/pdf/10.1007/BF00992696.pdf title="Ronald J Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. Machine learning, 8:229–256, 1992.">Williams (1992)</a>, and it underpins modern policy-gradient methods such as TRPO and PPO.</p><h2 id=variance-reduction-and-the-baseline-theorem>Variance Reduction and the Baseline Theorem</h2><p>Monte Carlo estimators of gradients are unbiased but exhibit high variance. A central technique is subtracting a <em>baseline</em>.</p><p><strong>Proposition:</strong> (Baseline Theorem)
+Let $b(s)$ be any function independent of action $a$. Then
+$\mathbb{E}_{a \sim \pi_\theta(\cdot|s)}\!\left[\nabla_\theta \log \pi_\theta(a|s)\cdot b(s)\right] = 0.$</p><p><em>Proof:</em>
+$b(s)\nabla_\theta \sum_a \pi_\theta(a|s) = b(s)\nabla_\theta 1 = 0.$</p><p><em>Detailed Proof:</em>
+We begin with the identity that the sum of probabilities over the action space must equal unity:$\sum_a \pi_\theta(a|s) = 1$.
+Differentiating both sides with respect to $\theta$ gives</p><p>$$\nabla_\theta \sum_a \pi_\theta(a|s) = \nabla_\theta 1 = 0$$</p><p>Moving the gradient through the sum &ndash; $\sum_a \nabla_\theta \pi_\theta(a|s) = 0$ &ndash; and applying the log-derivative identity $\nabla \pi = \pi\nabla \log \pi$ we obtain:</p><p>$$\sum_a \pi_\theta(a|s)\nabla_\theta \log \pi_\theta(a|s) = 0.$$</p><p>This is precisely $\mathbb{E}_{a \sim \pi_\theta(\cdot|s)}\!\left[\nabla_\theta \log \pi_\theta(a|s)\right] = 0$. Since $b(s)$ is independent of $a$, it factors out of the expectation:</p><p>$$\mathbb{E}_{a \sim \pi_\theta(\cdot|s)}\!\left[\nabla_\theta \log \pi_\theta(a|s)\cdot b(s)\right] = b(s)\cdot 0 = 0.$$</p><p>Thus, the proposition.</p><p><strong>Remark:</strong> (Baseline Subtraction and the Advantage Function)
+The Baseline Theorem has an immediately useful consequence: for any baseline $b(s)$ independent of $a$, the modified estimator
+$$
+\nabla_\theta \log \pi_\theta(a|s)\cdot\bigl(f(s,a) - b(s)\bigr)
+$$
+remains an <em>unbiased</em> estimator of $\nabla_\theta J(\theta)$, since subtracting $b(s)$ contributes zero in expectation. The freedom to choose $b(s)$ is then used to <em>reduce variance</em>: the optimal baseline is the one that minimises the variance of the estimator without introducing bias.</p><p>The canonical choice is $b(s) = V^\pi(s)$, the <em>state value function</em>, defined as the expected cumulative reward from state $s$ under policy $\pi$. This yields the <em>advantage function</em>
+$$
+A^\pi(s, a) = Q^\pi(s,a) - V^\pi(s),
+$$
+where $Q^\pi(s,a)$ is the action-value function. Intuitively, $A^\pi(s,a)$ measures how much better action $a$ is compared to the average action taken by $\pi$ in state $s$ &mdash; a positive advantage means the action is better than average, and a negative advantage means it is worse. The policy gradient then becomes
+$$
+\nabla_\theta J(\theta) = \mathbb{E}_{a \sim \pi_\theta(\cdot|s)}\!\left[\nabla_\theta \log \pi_\theta(a|s)\cdot A^\pi(s,a)\right],
+$$
+which updates the policy to increase the probability of advantageous actions and decrease the probability of disadvantageous ones. The advantage function is the central quantity in all modern policy-gradient methods for LLM alignment, including PPO and GRPO.</p><h2 id=synopsis>Synopsis</h2><p>This section builds a single pipeline for computing tractable, low-variance policy gradients in three steps.</p><ol><li><strong>Log-derivative identity.</strong> The gradient of an expectation under $p_\theta$ is rewritten as another expectation under $p_\theta$, making it estimable from samples without differentiating through the distribution directly.
+$$\nabla \,\mathbb{E}_{p}[f] = \mathbb{E}_{p}\!\left[f\,\nabla \log p\right]$$</li><li><strong>Policy gradient.</strong> Setting $f = R$ in the identity above yields an unbiased, sample-based estimator of $\nabla_\theta J(\theta)$, where $J(\theta) = \mathbb{E}[R]$, even when the reward $R$ is a black box.</li><li><strong>Baseline subtraction and the advantage function.</strong> Subtracting any state-dependent baseline $b(s)$ from $R$ leaves the estimator unbiased but reduces its variance. The optimal choice $b(s) = V^\pi(s)$ produces the advantage function $A^\pi(s,a) = Q^\pi(s,a) - V^\pi(s)$, the central quantity in all modern policy-gradient methods.</li></ol><h2 id=references>References</h2><reference><small><ul><li><a href=https://link.springer.com/content/pdf/10.1007/BF00992696.pdf title="Ronald J Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. Machine learning, 8:229–256, 1992.">Williams (1992)</a>: Ronald J Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. Machine learning, 8:229–256, 1992.</li></ul></small></reference></article><br><br><br><i>tags:</i>
+<a class=gray style=padding-right:5px href=/tags#reinforcement%20learning><i>#reinforcement learning</i></a></section></main><footer><p>Found something useful here? pass it on; or tell me about it!<nav><ul><li><a href="https://drive.google.com/drive/folders/18LU6PKnxy8rDrAXhpiPXV2yOYlO_I8cF?usp=sharing">Resume</a></li><li><a href=https://daxpy.xyz/collections/>Collections</a></li><li><a href=https://www.linkedin.com/in/ndivakar/>Linkedin</a></li></ul></nav><small><a href=#top>↑ Top of page</a></small></p></footer></body></html>
