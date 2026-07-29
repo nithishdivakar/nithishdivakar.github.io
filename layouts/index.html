@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section>
   <div>
-    {{.Content}}
+    {{.Content}} ??
   </div>
   <h2>Feed</h2>
   <ul>
@@ -9,7 +9,7 @@
     {{ $types := where .Site.RegularPages "Params.type" "in" (slice "series_collection") }}
     {{ $p := $sections | union $types }}
 
-    {{ range first 1000 $p }}
+    {{ range first 1000 ($p.ByDate.Reverse)}}
       <!-- {{.Section }} -->
       {{ .Scratch.Set "display_section" "True" }}
       {{- partial "card_item.html" . -}}
