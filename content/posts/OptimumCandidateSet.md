@@ -1,19 +1,24 @@
 ---
 title: Optimum Aggregate Candidate Pool Selection
 tags : [machine-learning, reocmmender-system]
-date: 2026-07-27T00:00:00+00:00
+date: 2026-07-31T00:00:00+00:00
 start_date: 2026-07-27T00:00:00+00:00
 draft: false
 type: post
 ---
 
-# Optimum Aggregate Candidate Pool Selection
+# Optimum Candidate Pool Selection
 
-Let $U$ be a set of users with request distribution $P(u)$, and let $I$ be a catalog of items.
 
-In large-scale systems, constraints often force serving systems to commit in advance to a single, small shared candidate pool $C \in I_k$ and serve all users from within this bounded set (of size $k$). $$I_k= \\{ C \subseteq I : \vert{}C\vert{} \leq k \\}$$
+In large-scale recommender systems, constraints often force serving systems to commit in advance to a single, small shared candidate pool. How do we select this pool?
 
-No universal set will satisfy everyone (short of the entire catalog). Then how do we select a pool that minimizes selection loss and maximizes overall utility across the population?
+We end up doing `ORDER BY clicks DESC LIMIT k` or something similar. But let us look at how we arrived at this answer.
+
+## The Problem
+
+Let $U$ be a set of users with request distribution $P(u)$, and let $I$ be a catalog of items. The system must serve all users from a bounded subset $C \in I_k$ of maximum size $k$, where:$$I_k= \\{ C \subseteq I : \vert{}C\vert{} \leq k \\}$$
+
+Our problem revolves around how to select the best $C$ to serve all users. Of course, no single bounded set will perfectly satisfy everyone (short of including the entire catalog). How do we select a pool that minimizes selection loss and maximizes overall utility across the population then?
 
 Let us define the utility of item $i$ to user $u$ as the probability of engagement:
 
