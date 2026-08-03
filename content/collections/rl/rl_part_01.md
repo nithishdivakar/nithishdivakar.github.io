@@ -9,6 +9,8 @@ title: Reinforcement Learning - Mathematical Tools
 type: "series_collection"
 ---
 
+# Reinforcement Learning - Mathematical Tools
+
 ## Expectation and the Log-Derivative Trick
 
 Throughout this note we will frequently differentiate expectations whose underlying distribution depends on a parameter $\theta \in \mathbb{R}^d$. The fundamental identity that makes this tractable is the *log-derivative* (or *score function*) identity.
@@ -22,16 +24,16 @@ $$
 
 *Proof:*
 By Leibniz's rule (assuming sufficient regularity to interchange differentiation and integration):
-$$
-\begin{aligned}
+
+\begin{align}
     \nabla_\theta \mathbb{E}\_{x \sim p_\theta}[f(x)]
     &= \int f(x)\\,\nabla_\theta p_\theta(x)\\,dx
     \\\\
     &= \int f(x)\\,\frac{\nabla_\theta p_\theta(x)}{p_\theta(x)}\\,p_\theta(x)\\,dx
     \\\\
     &= \mathbb{E}\_{x \sim p_\theta}\\!\left[f(x)\\,\nabla_\theta \log p_\theta(x)\right]
-\end{aligned}
-$$
+\end{align}
+
 
 The term $\nabla_\theta \log p_\theta(x)$ is the *score function*. Its key virtue is that we can estimate the gradient using only *samples* from $p_\theta$---no analytical gradient of $p_\theta$ itself is needed. This identity is the engine behind every policy gradient algorithm.
 

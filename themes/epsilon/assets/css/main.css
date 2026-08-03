@@ -282,6 +282,7 @@ ul:has(li.card_item) , ul:has(li.link_item){
 .card_link:hover .card_title {
   text-decoration: underline;
   text-underline-offset: 3px;
+  text-decoration-color: color:var(--BLACK);
 }
 
 .card_title {
@@ -295,6 +296,11 @@ ul:has(li.card_item) , ul:has(li.link_item){
   flex-direction: column;
   align-items: flex-start;
   gap: 0 0.25rem;
+}
+
+
+.card_title_text {
+  color:var(--BLACK);
 }
 
 .card_dots {
@@ -318,7 +324,7 @@ ul:has(li.card_item) , ul:has(li.link_item){
 
 .card_tag {
   text-decoration: none;
-  color: inherit;
+  color: var(--GREEN);
 }
 
 .card_tag:hover {
